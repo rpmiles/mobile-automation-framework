@@ -1,0 +1,19 @@
+<configuration>
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- Silence verbose logs from AndroidDriver and Selenium -->
+    <logger name="io.appium.java_client.android" level="WARN" />
+    <logger name="org.openqa.selenium.remote" level="WARN" />
+    <logger name="org.openqa.selenium" level="WARN" />
+    <logger name="org.openqa.selenium.remote" level="OFF"/>
+    <logger name="io.appium" level="OFF"/>
+    <logger name="org.openqa.selenium.support.events" level="OFF"/>
+    <logger name="org.apache.http" level="OFF"/>
+    <root level="OFF">
+        <appender-ref ref="STDOUT"/>
+    </root>
+
+</configuration>

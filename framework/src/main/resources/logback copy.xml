@@ -1,0 +1,27 @@
+<configuration debug="false" scan="false" >
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener" />
+    <!-- Console appender -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <!-- Set root logger to INFO or WARN -->
+    <root level="ERROR">
+        <appender-ref ref="CONSOLE" />
+    </root>
+
+    <!-- Silence Selenium logs except errors -->
+    <logger name="org.openqa.selenium" level="ERROR" />
+
+    <!-- Silence Appium logs except errors -->
+    <logger name="io.appium" level="ERROR" />
+    <logger name="org.openqa.selenium.remote" level="ERROR" />
+    <logger name="org.openqa.selenium.remote.http" level="ERROR" />
+    <logger name="org.openqa.selenium.support.ui" level="ERROR" />
+    <logger name="org.openqa.selenium.server" level="ERROR" />
+    <logger name="org.openqa.selenium.internal" level="ERROR" />
+
+
+</configuration>
