@@ -201,6 +201,8 @@ public class confirmationFunctions extends Base_PO {
                     getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(text(), '" + option + "')]"));
 
             String actualSelectedOption = selectedOption.getText();
+            System.out.println("\"" + actualSelectedOption + "\" is a selected option");
+
             Assert.assertEquals(selectedOption.getText(), option);
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm selected Picklist selections");
@@ -316,12 +318,12 @@ public class confirmationFunctions extends Base_PO {
 
     public void confirmSwitchNotSelected(String switchText) throws IOException, URISyntaxException, InterruptedException {
         try {
-            System.out.println("Confirming " + switchText + " is selected");
+            System.out.println("Confirming " + switchText + " is not selected");
             WebElement selectedSwitch = getDriver().findElement(By.xpath("//lib-switch-control//lib-options-list-item[contains(text(),  '" + switchText + "')]"));
             String selectedSwitchText = selectedSwitch.getText();
             waitForWebElementToBeVisible(selectedSwitch);
             Assert.assertTrue(selectedSwitchText.contains(switchText), "Actual text does not contain expected text.");
-            System.out.println("\"" +selectedSwitchText + "\" is selected");
+            System.out.println("\"" +selectedSwitchText + "\" is not selected");
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm switch selected");
         }
@@ -329,11 +331,11 @@ public class confirmationFunctions extends Base_PO {
 
     public void confirmSwitchSelected(String switchText) throws IOException, URISyntaxException, InterruptedException {
         try {
-            System.out.println("Confirming " + switchText + " is not selected");
+            System.out.println("Confirming " + switchText + " is selected");
             WebElement selectedSwitchNot = getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(@class, 'bg-gray-400') and contains(text(), '" + switchText + "')]"));
             String selectedSwitchTextNot = selectedSwitchNot.getText();
             waitForWebElementToBeVisible(selectedSwitchNot);
-            System.out.println(selectedSwitchTextNot + " is not selected");
+            System.out.println("\"" + selectedSwitchTextNot + "\" is selected");
             Assert.assertTrue(selectedSwitchTextNot.contains(switchText), "Actual text does not contain expected text.");
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm switch selected");

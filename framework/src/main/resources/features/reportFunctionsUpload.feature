@@ -53,6 +53,7 @@ Feature: Testing report uploads
       And I confirm the previous option is selected "Option 3"
     And I select the item "This Has Baked In Tokens"
       And I select the tick or done button
+      And I confirm This Has Baked In Tokens holds the correct value
     And I select the item "This is Predefined Responses"
       And I select three more responses "<response2>", "<response3>", "<response4>"
       And I select the tick or done button
