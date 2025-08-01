@@ -40,7 +40,7 @@ Feature: Testing report uploads
     And I select the item "This is a Date"
       And I select a day "10"
       And I select the tick or done button
-      And I confirm the correct date is listed in the report view "10 July 2025"
+      And I confirm the correct date is listed in the report view "10 August 2025"
       And I select the item "This is a Switch"
       And I select switch "Switch 2"
       And I select the tick or done button
@@ -88,7 +88,7 @@ Feature: Testing report uploads
       And I select the tick or done button
     And I select the back arrow
     And I select the upload button
-    And I select upload
+    #And I select upload
     Then I confirm the upload has completed
     And I close the upload dialog
     And I select the context menu

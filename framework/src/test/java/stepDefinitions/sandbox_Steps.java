@@ -153,5 +153,11 @@ public class sandbox_Steps extends Base_PO {
         String rating = confirmationFunctions.ratingReportView.getText();
         System.out.println("Rating: " + rating);
     }
+
+    @And("I type")
+    public void i_Type() throws IOException, URISyntaxException {
+      sendKeys(testAllControlsRM_po.multiText, "*bold* \n_italic_ \n~strikethrough~");
+
+    }
 }
 

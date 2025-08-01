@@ -233,8 +233,7 @@ public class Homepage_PO extends Base_PO {
             System.out.println("Locating uploads test report");
             WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
-
-            System.out.println("Report variable: " + report);
+            //System.out.println("Report variable: " + report);
             List<WebElement> items = getDriver().findElements(By.tagName("app-report-list-items"));
             List<WebElement> editButton = getDriver().findElements(By.id("edit-report"));
 

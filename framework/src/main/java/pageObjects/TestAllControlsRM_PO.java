@@ -493,5 +493,27 @@ public class TestAllControlsRM_PO extends Base_PO {
         }
     }
 
+    public void retrieveNumericValue() {
+        try {
+            System.out.println("Retrieving numeric input");
+
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+            By numericFieldLocator = By.cssSelector("input[numericfield]");
+
+            // Wait until the input field is visible and enabled
+            WebElement numericFieldElement = wait.until(ExpectedConditions.elementToBeClickable(numericFieldLocator));
+
+            // Send new value
+            String numericEntry = numericFieldElement.getText();
+
+            System.out.println("Successfully retrieve numeric value: '" + numericEntry);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            Assert.fail("Failed to send numeric input: " + e.getMessage());
+        }
+    }
+
+
 }
 

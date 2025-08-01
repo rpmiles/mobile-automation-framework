@@ -18,7 +18,7 @@ Feature: Single text item testing
 
 
     Examples:
-      | Datacapture          | ReportName                         | ReferenceText                 | AddNotes                        | item                |
-      | Test All Controls RM | Report Items - Single Text Feature | Single Text Feature Reference | Single Text Feature Extra Notes | This is Single Text |
+      | Datacapture          | ReportName                         | ReferenceText                 | AddNotes                        | item        |
+      | Test All Controls RM | Report Items - Single Text Feature | Single Text Feature Reference | Single Text Feature Extra Notes | Single Text |
 
   #https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=50.9034045&lon=--3.4871714

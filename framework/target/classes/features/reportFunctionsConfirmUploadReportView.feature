@@ -5,9 +5,8 @@ Feature: Confirm the previously uploaded report has been received and processed 
     Given I select the profile menu
     And I select sync
     And I download a specific report with name "Report Items"
-    And I select the report which the title contains "Report Items"
+    And I select the report which the title contains "Report Items - Upload"
     And I confirm Preformatted Text for Copy and Paste Tests holds the correct value
-    And I select the Preformatted Text for Copy and Paste Tests field
     And I confirm This is Single Text holds the correct value
     And I confirm This is Multi Text holds the correct value
     And I confirm This is Multi Text Rating holds the correct value

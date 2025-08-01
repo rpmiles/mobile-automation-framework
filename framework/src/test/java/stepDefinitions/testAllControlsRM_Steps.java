@@ -47,6 +47,43 @@ public class testAllControlsRM_Steps extends Base_PO {
             "sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. " +
             "Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.";
 
+    private String preFormattedText = ("Number list entry 1\n" +
+            "Number list entry 2\n" +
+            "Number list entry 3");
+
+    //Report view expected values
+    private String preformattedTextExpected = "Number list entry 1\n" +
+            "Number list entry 2\n" +
+            "Number list entry 3";
+    private String singleTextExpected = "Single line of text entered into the single item text item";
+    private String multiTextExpected = "This is bold text\n" +
+            "This is italicized text\n" +
+            "This is underlined text\n" +
+            "This is strikethrough text";
+    private String multiTextRatingExpected = "3";
+    private String prefilledSingleExpected = "This item was previously prefilled but has now been replaced with this text";
+    private String prefilledMultiExpected = "New Paragraph\n" +
+            "THIS IS NEW TEXT ADDED FOR TESTING Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac molestie odio. Cras in est dolor. Maecenas nec augue eu arcu tincidunt ullamcorper. In eu magna sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.";
+    private String dateExpected = "10 July 2025";
+    private String switchExpected = "Switch 2";
+    private String picklistExpected = "Option 2,Option 3";
+    private String bakedInTokensExpected = "These are the baked in values:\n" +
+            "\n" +
+            "Date : .Date.\n" +
+            "Author Name : .AuthorName.\n" +
+            "Author Initials : .AuthorInitials.";
+    private String predefinedResponsesExpected = "Multiple more entries are required to test\n" +
+            " Third option specifically for testing \n" +
+            " Text the same as the button for testing purposes";
+
+    private String numericExpected = "123,456,789,000,000,000";
+    private String enterBoldExpected = "Entering some bold text to confirm form uploads correctly";
+    private String enterItalicsExpected = "Entering some italics text to confirm form uploads correctly";
+    private String enterUnderlinedExpected = "Entering some underlined text to confirm form uploads correctly";
+    private String enterMultiformatExpected = "Bold text with some added italics, added underline but removed bold, completed with strikethrough changed with simple bold and finally removed all formatting";
+    private String ratingExpected = "N";
+
+
     public testAllControlsRM_Steps() throws IOException, URISyntaxException {
         //System.out.println("testAllControlsRM_Steps constructor called");
 
@@ -77,7 +114,7 @@ public class testAllControlsRM_Steps extends Base_PO {
 
     @And("I confirm the location coordinates have saved")
     public void i_confirm_the_location_coordinates_have_saved() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmCoordinates();
+        confirmationFunctions.confirmNotEmpty();
     }
 
     @And("I select the notes button")
@@ -244,7 +281,6 @@ public class testAllControlsRM_Steps extends Base_PO {
 
     @And("I confirm all the multi text has been retained")
     public void i_confirm_all_the_multi_text_has_been_retained() throws IOException, URISyntaxException, InterruptedException {
-        System.out.print("Confirming MultiText retained");
         confirmationFunctions.confirmFormatting();
     }
 
@@ -655,6 +691,7 @@ public class testAllControlsRM_Steps extends Base_PO {
         sendKeys(testAllControlsRM_po.multiText, (Keys.chord(Keys.CONTROL, "v")));
     }
 
+
     @And("confirm the formatting has been retained")
     public void confirm_the_formatting_has_been_retained() throws IOException, URISyntaxException {
         notesControl_po.confirmFormattingNoLists();
@@ -841,6 +878,7 @@ public class testAllControlsRM_Steps extends Base_PO {
         sendKeys(homepage_po.confirmDeleteText, "Delete");
         System.out.println("Selecting Confirm button");
         waitForWebElementAndClick(homepage_po.deleteReport);
+        Thread.sleep(1000);
     }
 
     @And("I select the context menu")
@@ -991,6 +1029,67 @@ public class testAllControlsRM_Steps extends Base_PO {
         confirmationFunctions.confirmReportViewRating();
     }
 
+    @And("I confirm the single text {string} is present")
+    public void i_Confirm_The_Single_Text_Is_Present(String text) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmReportViewPrefilledSingleUpload(text);
+
+    }
+
+    @And("I confirm the specific uploaded text is displayed")
+    public void i_Confirm_The_Specific_Uploaded_Text_Is_Displayed() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmCorrectMultiPrefilledTextUpload();
+
+    }
+
+    @And("I confirm switch {string} is selected")
+    public void i_Confirm_Switch_Is_Selected(String switchConfirm) throws IOException, URISyntaxException, InterruptedException {
+    confirmationFunctions.confirmSwitchSelected(switchConfirm);
+    }
+
+    @And("I confirm switch {string} is not selected")
+    public void i_Confirm_Switch_Is_Not_Selected(String switchConfirm) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmSwitchNotSelected(switchConfirm);
+    }
+
+    @And("I confirm option {string} is selected")
+    public void i_Confirm_Option_Is_Selected(String option) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmSinglePicklist(option);
+    }
+
+    @And("I confirm the Baked In Tokens Text")
+    public void i_Confirm_The_Baked_In_Tokens_Text() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmBakedInTokens();
+    }
+
+    @And("I confirm the predefined responses are correct")
+    public void i_Confirm_The_Predefined_Responses_Are_Correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmReportPredefinedResponsesUpload();
+    }
+
+    @And("I confirm the correct number is listed")
+    public void i_Confirm_The_Correct_Number_Is_Listed() {
+        confirmationFunctions.confirmNumeric(numericExpected);
+    }
+
+    @And("I confirm the text is correct and formatted in bold")
+    public void i_Confirm_The_Text_Is_Correct_And_Formatted_In_Bold() throws IOException, URISyntaxException {
+         confirmationFunctions.confirmBoldUpload(enterBoldExpected);
+    }
+
+    @And("I confirm the text is correct and formatted in italics")
+    public void i_Confirm_The_Text_Is_Correct_And_Formatted_In_Italics() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmItalicsUpload(enterItalicsExpected);
+    }
+
+    @And("I confirm the text is correct and formatted in underlined")
+    public void i_Confirm_The_Text_Is_Correct_And_Formatted_In_Underlined() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmUnderlinedUpload(enterUnderlinedExpected);
+    }
+
+    @And("I confirm the text is correct and formatted correctly")
+    public void i_Confirm_The_Text_Is_Correct_And_Formatted_Correctly() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmSingleMultiFormat();
+    }
 }
 
 

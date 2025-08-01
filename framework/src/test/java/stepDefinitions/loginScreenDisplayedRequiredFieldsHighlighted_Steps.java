@@ -62,5 +62,4 @@ public class loginScreenDisplayedRequiredFieldsHighlighted_Steps extends Base_PO
         System.out.println("'Password is required' is displayed");
 
     }
-
 }

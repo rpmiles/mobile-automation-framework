@@ -21,12 +21,10 @@ public class syncProfileMenu_Steps extends Base_PO {
 
     @And("I select the profile menu")
     public void select_the_profile_menu() throws IOException, URISyntaxException {
-        System.out.println("Selecting Profile menu");
         hompeage_po.clickProfileMenu();
     }
     @And("I select sync")
     public void select_sync() throws IOException, URISyntaxException {
-        System.out.println("Selecting Profile menu Sync");
         hompeage_po.clickProfileSync();
 
     }

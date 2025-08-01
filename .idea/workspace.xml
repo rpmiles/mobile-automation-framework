@@ -4,7 +4,33 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba102cfd-b902-4f60-ac45-126db305af24" name="Changes" comment="" />
+    <list default="true" id="ba102cfd-b902-4f60-ac45-126db305af24" name="Changes" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/java/functions/confirmationFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/functions/confirmationFunctions.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/Homepage_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/Homepage_PO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/TestAllControlsRM_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/TestAllControlsRM_PO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUpload.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUploadReportView.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUploadReportView.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsUpload.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsSingleText.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsSingleText.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/sandbox.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/sandbox.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/loginScreenDisplayedRequiredFieldsHighlighted_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/loginScreenDisplayedRequiredFieldsHighlighted_Steps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/sandbox_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/sandbox_Steps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/syncProfileMenu_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/syncProfileMenu_Steps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/testAllControlsRM_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/testAllControlsRM_Steps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/automation-framework-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/automation-framework-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUpload.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUploadReportView.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUploadReportView.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsUpload.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportItemsSingleText.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportItemsSingleText.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/sandbox.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/sandbox.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/confirmationFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/functions/confirmationFunctions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Homepage_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/Homepage_PO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/TestAllControlsRM_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/TestAllControlsRM_PO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/sandbox_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/sandbox_Steps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/syncProfileMenu_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/syncProfileMenu_Steps.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/testAllControlsRM_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/testAllControlsRM_Steps.class" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -24,6 +50,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;rpmiles&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/rpmiles/mobile-automation-framework&quot;,
+    &quot;accountId&quot;: &quot;b1071f3b-6392-4970-890c-6ca5ffa79f38&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
@@ -38,6 +76,8 @@
     "Cucumber Java.Feature: deleteReport.executor": "Run",
     "Cucumber Java.Feature: initialLogin.executor": "Run",
     "Cucumber Java.Feature: loginTests.executor": "Run",
+    "Cucumber Java.Feature: reportFunctionsConfirmUpload.executor": "Run",
+    "Cucumber Java.Feature: reportFunctionsUpload.executor": "Run",
     "Cucumber Java.Feature: reportItemsDate.executor": "Run",
     "Cucumber Java.Feature: reportItemsMultiTextPrefilled.executor": "Run",
     "Cucumber Java.Feature: reportItemsMultiTextRTF.executor": "Run",
@@ -58,6 +98,7 @@
     "Cucumber Java.Scenario: Complete indepth testing of an items notes.executor": "Run",
     "Cucumber Java.Scenario: Confirm picklists working correctly.executor": "Run",
     "Cucumber Java.Scenario: Confirm ratings are working correctly.executor": "Run",
+    "Cucumber Java.Scenario: Confirm successful upload (1).executor": "Run",
     "Cucumber Java.Scenario: Confirm successful upload.executor": "Run",
     "Cucumber Java.Scenario: Confirming date fields function correctly.executor": "Run",
     "Cucumber Java.Scenario: Confirming multi text fields function correctly.executor": "Run",
@@ -82,6 +123,7 @@
     "Cucumber Java.Scenario: Sandboxing.executor": "Run",
     "Cucumber Java.Scenario: Successful login and logout.executor": "Run",
     "Cucumber Java.Scenario: Successful login.executor": "Run",
+    "Cucumber Java.Scenario: Test 'Single Text' item.executor": "Run",
     "Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming (1).executor": "Run",
     "Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming.executor": "Run",
     "Cucumber Java.Scenario: Testing the numeric item with data entry via keyboard entry only.executor": "Run",
@@ -118,27 +160,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Cucumber Java.Scenario: Confirm successful upload">
-    <configuration name="Scenario: Confirm ratings are working correctly" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsRatings.feature" />
-      <option name="GLUE" value="stepDefinitions" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="automation-framework" />
-      <option name="NAME_FILTER" value="^Confirm ratings are working correctly$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Confirm ratings are working correctly$&quot;" />
-      <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Scenario: Confirm ratings are working correctly" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="Scenario: Confirm successful upload" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUpload.feature" />
@@ -160,16 +181,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Delete a non uploaded report" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Delete non uploaded reports" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/toolsDeleteReport.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="automation-framework" />
-      <option name="NAME_FILTER" value="^Delete a non uploaded report$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Delete a non uploaded report$&quot;" />
+      <option name="NAME_FILTER" value="^Delete non uploaded reports$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Delete non uploaded reports$&quot;" />
       <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Scenario: Delete a non uploaded report" />
+      <option name="SUGGESTED_NAME" value="Scenario: Delete non uploaded reports" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -181,16 +202,37 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Delete non uploaded reports" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Remove an uploaded report" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/toolsDeleteReport.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/toolsRemoveReport.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="automation-framework" />
-      <option name="NAME_FILTER" value="^Delete non uploaded reports$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Delete non uploaded reports$&quot;" />
+      <option name="NAME_FILTER" value="^Remove an uploaded report$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Remove an uploaded report$&quot;" />
       <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Scenario: Delete non uploaded reports" />
+      <option name="SUGGESTED_NAME" value="Scenario: Remove an uploaded report" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Sandboxing" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="5" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/sandbox.feature" />
+      <option name="GLUE" value="stepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="automation-framework" />
+      <option name="NAME_FILTER" value="^Sandboxing$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Sandboxing$&quot;" />
+      <shortenClasspath name="NONE" />
+      <option name="SUGGESTED_NAME" value="Scenario: Sandboxing" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -233,19 +275,19 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Cucumber Java.Scenario: Confirm ratings are working correctly" />
       <item itemvalue="Cucumber Java.Scenario: Confirm successful upload" />
-      <item itemvalue="Cucumber Java.Scenario: Delete a non uploaded report" />
-      <item itemvalue="Cucumber Java.Scenario: Delete non uploaded reports" />
+      <item itemvalue="Cucumber Java.Scenario: Remove an uploaded report" />
+      <item itemvalue="Cucumber Java.Scenario: Sandboxing" />
       <item itemvalue="Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming" />
+      <item itemvalue="Cucumber Java.Scenario: Delete non uploaded reports" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Cucumber Java.Scenario: Confirm successful upload" />
         <item itemvalue="Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming" />
-        <item itemvalue="Cucumber Java.Scenario: Delete a non uploaded report" />
+        <item itemvalue="Cucumber Java.Scenario: Remove an uploaded report" />
         <item itemvalue="Cucumber Java.Scenario: Delete non uploaded reports" />
-        <item itemvalue="Cucumber Java.Scenario: Confirm ratings are working correctly" />
+        <item itemvalue="Cucumber Java.Scenario: Sandboxing" />
       </list>
     </recent_temporary>
   </component>
@@ -258,6 +300,15 @@
       <option name="presentableId" value="Default" />
       <updated>1750237426284</updated>
     </task>
+    <task id="LOCAL-00001" summary="Initial commit">
+      <option name="closed" value="true" />
+      <created>1753947329362</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1753947329362</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -271,6 +322,10 @@
       </map>
     </option>
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+  </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
@@ -278,16 +333,6 @@
           <url>file://$PROJECT_DIR$/framework/src/test/java/stepDefinitions/sharedStepsConfirmNotes_Steps.java</url>
           <line>86</line>
           <option name="timeStamp" value="33" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/framework/src/main/java/pageObjects/TestAllControlsRM_PO.java</url>
-          <line>404</line>
-          <option name="timeStamp" value="86" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/framework/src/main/java/functions/confirmationFunctions.java</url>
-          <line>208</line>
-          <option name="timeStamp" value="114" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NoClassDefFoundError" package="java.lang" />
