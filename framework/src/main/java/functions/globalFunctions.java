@@ -9,6 +9,8 @@ import utils.ElementHelper;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.time.Duration;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 
 public class globalFunctions extends Base_PO {
@@ -225,7 +227,7 @@ public class globalFunctions extends Base_PO {
     }
 
     public void scrollAndSelectHomepage(String buttonXpath)  throws IOException, URISyntaxException, InterruptedException  {
-        //System.out.println("Performing scroll and select to item: '" + option + "'");
+        System.out.println("Performing scroll and select to item: '" + buttonXpath + "'");
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(buttonXpath)
         ));
@@ -249,6 +251,55 @@ public class globalFunctions extends Base_PO {
             System.out.println("Standard click failed, attempting JS click");
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
         }
+
+        /*System.out.println("Performing scroll and select to item: '" + elementText + "'");
+
+
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//span[contains(text(), '" + elementText + "')]")
+        ));
+
+        By scrolledElement = By.xpath("//span[contains(text(), '" + elementText + "')]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledElement));
+
+
+        WebElement selectElement = getDriver().findElement(scrolledElement);
+
+        // Scroll into view using JavaScript
+        ((JavascriptExecutor) getDriver()).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'});", selectElement);
+        Thread.sleep(300);
+
+        // Try normal click, fallback to JS click
+        try {
+            selectElement.click();
+        } catch (Exception e) {
+            System.out.println("Standard click failed, attempting JS click");
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
+        }*/
+
     }
+
+    public static class DateHelper {
+        public static String getFormattedDate() {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+            return today.format(formatter);
+        }
+    }
+
+    public static String reportDateGenerator(String dateInput) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+
+        if ("TODAY".equalsIgnoreCase(dateInput)) {
+            return LocalDate.now().format(formatter);
+        } else if ("ONEWEEK".equalsIgnoreCase(dateInput)) {
+            return LocalDate.now().plusWeeks(1).format(formatter);
+        }
+        // Otherwise, return as-is
+        return dateInput;
+    }
+
 
 }

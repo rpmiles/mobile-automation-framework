@@ -3,7 +3,7 @@ Feature: Testing Predefined Responses
 
   Scenario Outline: Testing the Predefined Responses item
 
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<AddNotes>"
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
@@ -18,7 +18,7 @@ Feature: Testing Predefined Responses
     And I validate the location coordinates have been added
     And I send the cursor to the end of the text
     And I select the carriage return button
-    Then I enter some text "<text>"
+    And I enter some text "<text>"
     And I select the tick or done button
     And I select the item "<item>"
     And I confirm the previously entered Text "<text>"
@@ -28,7 +28,13 @@ Feature: Testing Predefined Responses
     And I confirm the notes have saved
     And I select the back arrow
     And the list of reports is displayed
+    And I select the upload button
+    And I select upload
+    Then I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                          | ReferenceText | AddNotes        | item                         | response                                           | response2                                  | response3                             | response4                                        | text                                    |
-      | Test All Controls RM | Report Items - Predefined Responses | PDR Reference | PDR Extra Notes | This is Predefined Responses | Another testing entry for testing multiple entries | Multiple more entries are required to test | Third option specifically for testing | Text the same as the button for testing purposes | Additional not predefined response text |
+      | Datacapture          | ReportName                          | ReferenceText | ReportDate | DueDate | AddNotes        | item                         | response                                           | response2                                  | response3                             | response4                                        | text                                    |
+      | Test All Controls RM | Report Items - Predefined Responses | PDR Reference | TODAY      | ONEWEEK | PDR Extra Notes | This is Predefined Responses | Another testing entry for testing multiple entries | Multiple more entries are required to test | Third option specifically for testing | Text the same as the button for testing purposes | Additional not predefined response text |

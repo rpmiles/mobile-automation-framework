@@ -41,5 +41,4 @@ public class homepage_Steps extends Base_PO {
         confirmationFunctions.initElements();
     }
 
-
 }

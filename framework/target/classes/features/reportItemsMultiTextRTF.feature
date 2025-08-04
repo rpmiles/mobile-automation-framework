@@ -2,7 +2,7 @@
 Feature: Multi Text Rich Formatting Item Testing
 
   Scenario Outline: Confirming multi text fields function correctly
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<AddNotes>"
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     When I select the item "<item>"
     And I check navigation
@@ -36,11 +36,17 @@ Feature: Multi Text Rich Formatting Item Testing
     And I select the item "<item>"
     And I confirm the notes have saved
     And I select the back arrow
-    Then the list of reports is displayed
+    And the list of reports is displayed
+    And I select the upload button
+    And I select upload
+    Then I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                    | ReferenceText            | AddNotes                   | item               | text                                          |
-      | Test All Controls RM | Report Items - Multi Text RTF | Multi Item RTF Reference | Multi Item RTF Extra Notes | This is Multi Text | Specific text entered for validation purposes |
+      | Datacapture          | ReportName                    | ReferenceText            | ReportDate | DueDate | AddNotes                   | item               | text                                          |
+      | Test All Controls RM | Report Items - Multi Text RTF | Multi Item RTF Reference | TODAY      | ONEWEEK | Multi Item RTF Extra Notes | This is Multi Text | Specific text entered for validation purposes |
 
 
     

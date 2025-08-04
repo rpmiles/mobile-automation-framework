@@ -2,11 +2,11 @@ Feature: Feature
 
   Scenario Outline: Scenario
 
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<AddNotes>"
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     And I select the item "<item>"
 
 
-    Examples:
-      | Datacapture          | ReportName                  | ReferenceText | AddNotes           | item             |
-      | Test All Controls RM | Report Items - Switch Tests | Reference     | Switch Extra Notes | This is a Switch |
+   Examples:
+         | Datacapture          | ReportName                  | ReferenceText | ReportDate | DueDate | AddNotes           | item             |
+         | Test All Controls RM | Report Items - Switch Tests | Reference     | TODAY      | ONEWEEK | Switch Extra Notes | This is a Switch |

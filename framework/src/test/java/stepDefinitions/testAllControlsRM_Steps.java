@@ -12,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pageObjects.*;
+
+import javax.swing.plaf.UIResource;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
@@ -26,6 +28,7 @@ public class testAllControlsRM_Steps extends Base_PO {
     SharedStepsFieldNav_PO sharedStepsFieldNav_po;
     globalFunctions globalFunctions;
     confirmationFunctions confirmationFunctions;
+    CreateReport_PO createReport_po;
 
     private final String boldText = "This is bold text";
     private final String italicsText = "This is italicized text";
@@ -104,6 +107,9 @@ public class testAllControlsRM_Steps extends Base_PO {
 
         confirmationFunctions = new confirmationFunctions();
         confirmationFunctions.initElements();
+
+        createReport_po = new CreateReport_PO();
+        createReport_po.initElements();
     }
 
 
@@ -232,6 +238,8 @@ public class testAllControlsRM_Steps extends Base_PO {
         System.out.println("Deleting all text");
         testAllControlsRM_po.multiText.clear();
     }
+
+
 
 
     //Text formatting steps
@@ -899,6 +907,12 @@ public class testAllControlsRM_Steps extends Base_PO {
 
     }
 
+    @And("I select Report Settings")
+    public void i_select_report_settings() throws IOException, URISyntaxException, InterruptedException {
+        System.out.println("Selecting Remove button from flipped context menu");
+        waitForWebElementAndClick(homepage_po.reportSettings);
+    }
+
     @And("I enter specific multi text")
     public void i_Enter_Specific_MultiText() throws IOException, URISyntaxException {
         testAllControlsRM_po.enterMultiText(prefilledText);
@@ -1089,6 +1103,22 @@ public class testAllControlsRM_Steps extends Base_PO {
     @And("I confirm the text is correct and formatted correctly")
     public void i_Confirm_The_Text_Is_Correct_And_Formatted_Correctly() throws IOException, URISyntaxException {
         confirmationFunctions.confirmSingleMultiFormat();
+    }
+
+    @And("I delete the report name")
+    public void i_delete_the_report_name() throws IOException, URISyntaxException {
+        createReport_po.deleteReportName();
+    }
+
+    @And("I select the logo")
+    public void i_Select_The_Logo() throws IOException, URISyntaxException {
+        waitForWebElementAndClick(testAllControlsRM_po.logo);
+    }
+
+    @And("I flip the card")
+    public void i_Flip_The_Card() throws IOException, URISyntaxException {
+        System.out.println("Flipping the card back over to report details");
+        waitForWebElementAndClick(homepage_po.contextX);
     }
 }
 

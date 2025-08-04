@@ -3,7 +3,7 @@ Feature: Ratings testing
 
   Scenario Outline: Confirm ratings are working correctly
 
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<AddNotes>"
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     When I select the "<item>" rating "<option1>" in report view
     And I confirm for "<item>" there is now a "<option1>" at the end of the row in report view
@@ -35,19 +35,20 @@ Feature: Ratings testing
     And I confirm the "<item>" rating "<option2>" is deselected
     And I select the "<item>" rating "<option2>"
     And I confirm the "<item>" rating "<option1>" is deselected
-    Then I confirm the "<item>" rating "<option3>" is deselected
+    And I confirm the "<item>" rating "<option3>" is deselected
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
     And I select the back arrow
     And the list of reports is displayed
-
-
-
-
-
+    And I select the upload button
+    And I select upload
+    Then I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                          | ReferenceText     | AddNotes            | item               | option1 | option2 | option3 |
-      | Test All Controls RM | Report Items - Ratings              | Ratings Reference | Ratings Extra Notes | This is a Rating   | Y       | N       | M       |
-      | Test All Controls RM | Report Items - Ratings (Multi-Text) | Ratings Reference | Ratings Extra Notes | This is Multi Text | 1       | 2       | 3       |
+      | Datacapture          | ReportName                          | ReferenceText     | ReportDate | DueDate | AddNotes            | item               | option1 | option2 | option3 |
+      | Test All Controls RM | Report Items - Ratings              | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is a Rating   | Y       | N       | M       |
+      | Test All Controls RM | Report Items - Ratings (Multi-Text) | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is Multi Text | 1       | 2       | 3       |

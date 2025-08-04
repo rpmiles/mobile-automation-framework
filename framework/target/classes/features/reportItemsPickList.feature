@@ -2,7 +2,7 @@
 Feature: Testing picklists
 
   Scenario Outline: Confirm picklists working correctly
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<AddNotes>"
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
@@ -22,10 +22,16 @@ Feature: Testing picklists
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
-    Then I confirm the options displayed in report view are correct "<option1>", "<option2>", "<option3>"
+    And I confirm the options displayed in report view are correct "<option1>", "<option2>", "<option3>"
     And I select the back arrow
     And the list of reports is displayed
+    And I select the upload button
+    And I select upload
+    Then I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                    | ReferenceText       | AddNotes             | item                | option1  | option2  | option3  |
-      | Test All Controls RM | Report Items - Picklist Tests | Picklists Reference | Picklist Extra Notes | This is a Pick List | Option 1 | Option 2 | Option 3 |
+      | Datacapture          | ReportName                    | ReferenceText       | ReportDate | DueDate | AddNotes             | item                | option1  | option2  | option3  |
+      | Test All Controls RM | Report Items - Picklist Tests | Picklists Reference |  TODAY      | ONEWEEK |Picklist Extra Notes | This is a Pick List | Option 1 | Option 2 | Option 3 |

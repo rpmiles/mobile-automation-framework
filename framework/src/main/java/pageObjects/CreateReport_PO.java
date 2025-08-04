@@ -1,6 +1,8 @@
 package pageObjects;
 
+import functions.globalFunctions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
@@ -8,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.globalVariables;
+import functions.globalFunctions;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -24,6 +27,8 @@ public class CreateReport_PO extends Base_PO {
     public @FindBy(id = "template-name") WebElement dataCapture;
     public @FindBy(id = "report-name") WebElement reportName;
     public @FindBy(id = "report-reference") WebElement reference;
+    public @FindBy(id = "report-date") WebElement reportDate;
+    public @FindBy(id = "due-date") WebElement reportDueDate;
     public @FindBy(id = "notes") WebElement extraNotes;
     public @FindBy(xpath = "//button[@id='save-report']") WebElement saveReport;
 
@@ -68,6 +73,11 @@ public class CreateReport_PO extends Base_PO {
             Assert.fail("Unable to select datacapture");
             }
 
+    }
+
+    public void deleteReportName() throws IOException, URISyntaxException {
+        reportName.sendKeys(Keys.chord(Keys.CONTROL, "a"));
+        reportName.sendKeys(Keys.chord(Keys.BACK_SPACE));
     }
 
     public void enterReportName(String nameOfReport) throws IOException, URISyntaxException {
@@ -180,7 +190,7 @@ public class CreateReport_PO extends Base_PO {
 /////////////////////////////////Create Report in One Step/////////////////////////////////////
 
 
-    public void createReport (String dataCap, String nameOfReport, String referenceText, String notesText)
+    public void createReport (String dataCap, String nameOfReport, String referenceText, String inspectionDate, String dueDate, String notesText)
             throws IOException, URISyntaxException, InterruptedException {
 
 
@@ -229,7 +239,16 @@ public class CreateReport_PO extends Base_PO {
         sendKeys(reference, fullReferenceText);
 
         /////////////////////////Select Inspection Date////////////////////////////
-        try {
+
+        // Use dateInput in your test logic
+        String processedReportDate = globalFunctions.reportDateGenerator(inspectionDate);
+        sendKeys(reportDate, (Keys.chord(Keys.CONTROL, "a")));
+        sendKeys(reportDate, (Keys.chord(Keys.BACK_SPACE)));
+        sendKeys(reportDate, processedReportDate);
+
+        ///////////////////////////////////////////////////////////////////////////
+
+        /*try {
             String inspectionDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd"));
             System.out.println("Setting inspection date as today");
             //Thread.sleep(2000);
@@ -264,10 +283,10 @@ public class CreateReport_PO extends Base_PO {
             }
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to select inspection date");
-        }
+        }*/
 
         /////////////////////////Select Due Date////////////////////////////
-        try {
+        /*try {
             //Thread.sleep(2000);
             LocalDate today = LocalDate.now();
             LocalDate twoWeeksLater = today.plusWeeks(2);
@@ -310,7 +329,13 @@ public class CreateReport_PO extends Base_PO {
             }
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to select due date");
-        }
+        }*/
+
+
+        /////////////////////////////Select Due Date///////////////////////////////
+
+        dueDate = globalFunctions.reportDateGenerator(dueDate);
+        sendKeys(reportDueDate, dueDate);
 
         /////////////////////////Add Notes////////////////////////////
         sendKeys(extraNotes, notesText);

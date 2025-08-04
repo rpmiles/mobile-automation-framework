@@ -18,6 +18,10 @@ import java.util.NoSuchElementException;
 
 public class TestAllControlsRM_PO extends Base_PO {
 
+    //logo
+    public @FindBy(xpath = "//modern-layout[contains(@class, 'ng-star-inserted')]//img[contains(@src, 'logo.svg')]") WebElement logo;
+
+
     //Items
     public @FindBy(xpath = "//lib-editor-item//div[contains(text(), 'Preformatted Text for Copy/Paste Tests')]") WebElement preformattedTextCopyPaste;
     public @FindBy(xpath = "//lib-editor-item//div[contains(text(), 'This Is Single Text')]") WebElement thisIsSingleText;
@@ -129,6 +133,11 @@ public class TestAllControlsRM_PO extends Base_PO {
     public void clearSingleTextX() {
         System.out.println("Clicking X");
         clearSingleText.click();
+    }
+
+    public void deleteAllSingleText() {
+        System.out.println("Deleting text from single text field");
+        singleText.sendKeys(Keys.chord(Keys.BACK_SPACE));
     }
 
 

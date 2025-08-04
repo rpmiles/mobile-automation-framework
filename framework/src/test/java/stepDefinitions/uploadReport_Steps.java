@@ -46,12 +46,12 @@ public class uploadReport_Steps extends Base_PO {
 
     @And("I select cancel")
     public void i_select_cancel() throws IOException, URISyntaxException, InterruptedException {
-        globalFunctions.scrollAndSelectHomepage("//button[@id='cancel-confirm-button']");
+        globalFunctions.scrollAndSelectHomepage("//button[@id='cancel']");
     }
 
     @When("I select upload")
     public void i_select_upload() throws IOException, URISyntaxException, InterruptedException {
-        By firstUploadConfirm = By.xpath("//button[@id='confirm-button']");
+        By firstUploadConfirm = By.xpath("//span[contains(text(), 'Cancel')]");
 
         WebElement upload = getDriver().findElement(firstUploadConfirm);
         waitForWebElementToBeVisible(upload);

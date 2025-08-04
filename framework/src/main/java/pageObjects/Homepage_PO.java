@@ -44,6 +44,8 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(xpath = "//input[@formcontrolname='confirmationText']") WebElement confirmRemoveText;
     public @FindBy(xpath = "//button[.//span[text()=' Remove ']]") WebElement removeReport;
     public @FindBy(xpath = "//p[contains(text(), 'Upload complete')]") WebElement uploadCompleted;
+    public @FindBy(xpath = "//span[contains(text(), 'Report Settings')]") WebElement reportSettings;
+    public @FindBy(xpath = "//gr-icon-button[contains(@id, 'context-menu') and not(contains(@class, 'ng-star-inserted'))]") WebElement contextX;
 
 
     public Homepage_PO() throws IOException, URISyntaxException {
@@ -251,6 +253,12 @@ public class Homepage_PO extends Base_PO {
             Assert.fail("Unable to select upload report");
         }
 
+    }
+
+    public void selectField(String field) throws IOException, URISyntaxException {
+        System.out.println("Selecting " + field + " from context menu");
+        waitForWebElementToBeVisible(reportSettings);
+        waitForSyncFinish(cloudReports);
     }
 
 }

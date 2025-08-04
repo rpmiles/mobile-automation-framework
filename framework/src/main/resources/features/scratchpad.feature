@@ -1,7 +1,7 @@
 Feature: Checking another one
 
   Scenario Outline: Troubleshooting why elements are not linking
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<AddNotes>"
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
@@ -21,6 +21,6 @@ Feature: Checking another one
 
 
     Examples:
-      | Datacapture          | ReportName                  | ReferenceText                                       | AddNotes         | item               | year   | month | day  | reportDate         |
-      | Test All Controls RM | Report Items - Switch Tests | Reference                                           | Date Extra Notes | This is a Date     | "2017" | "NOV" | "26" | "26 November 2017" |
-      | This is a Date       | Test All Controls RM        | "Report Items - Date - Leap Year(<ReleaseVersion>)" | Reference        | Date control notes | "2024" | "FEB" | "25" | "25 February 2024" |
+      | Datacapture          | ReportName                  | ReferenceText                                       |  ReportDate | DueDate | AddNotes         | item               | year   | month | day  | reportDate         |
+      | Test All Controls RM | Report Items - Switch Tests | Reference                                           |  TODAY      | ONEWEEK | Date Extra Notes | This is a Date     | "2017" | "NOV" | "26" | "26 November 2017" |
+      | This is a Date       | Test All Controls RM        | "Report Items - Date - Leap Year(<ReleaseVersion>)" |  TODAY      | ONEWEEK | Reference        |  Date control notes | "2024" | "FEB" | "25" | "25 February 2024" |

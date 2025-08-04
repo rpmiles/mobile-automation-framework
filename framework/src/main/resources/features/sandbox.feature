@@ -1,6 +1,6 @@
 Feature: Sandbox feature for testing
 
-  Scenario Outline: Sandboxing
+  Scenario: Sandboxing
     #Given I login
     #Given the list of reports is displayed
     #When I select a report

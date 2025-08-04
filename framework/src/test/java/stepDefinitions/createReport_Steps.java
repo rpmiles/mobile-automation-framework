@@ -38,10 +38,9 @@ public class createReport_Steps extends Base_PO {
         createReport_po.selectCreateReport();
     }
 
-
-    @Given("I Create a Report {string}, {string}, {string}, {string}")
-    public void i_create_a_report(String dataCap, String reportName, String referenceText, String notesText) throws IOException, URISyntaxException, InterruptedException {
-        createReport_po.createReport(dataCap, reportName, referenceText, notesText);
+    @Given("I Create a Report {string}, {string}, {string}, {string}, {string}, {string}")
+    public void i_create_a_report(String dataCap, String reportName, String referenceText, String reportDate, String dueDate, String notesText) throws IOException, URISyntaxException, InterruptedException {
+        createReport_po.createReport(dataCap, reportName, referenceText, reportDate, dueDate, notesText);
         System.out.println("Creating Report");
     }
 
@@ -72,7 +71,7 @@ public class createReport_Steps extends Base_PO {
     @And("I enter a Reference {string}")
     public void i_enter_a_reference(String reference) throws IOException, URISyntaxException {
         String replacedRef = reference.replace("<ReleaseVersion>", releaseVersion);
-        //System.out.println("Report Name after replacement: " + replacedRef);
+        System.out.println("Report Name after replacement: " + replacedRef);
 
         createReport_po.enterReference(replacedRef);
         System.out.println("Entering a reference: " + replacedRef);

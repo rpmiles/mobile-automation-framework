@@ -3,7 +3,7 @@ Feature: Testing numeric item
 
   Scenario Outline: Testing the numeric item with data entry via keyboard entry only
 
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<AddNotes>"
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
@@ -28,11 +28,14 @@ Feature: Testing numeric item
     And I confirm the notes have saved
     And I confirm the correct value is listed in report view
     And I select the back arrow
-    Then the list of reports is displayed
-
-
-
+    And the list of reports is displayed
+    And I select the upload button
+    And I select upload
+    Then I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                              | ReferenceText              | AddNotes                     | item              | value0 | value1 | value2 |  | value3 |  | value4 |  | value5 |  | value6 |  | value7 |  | value8 |  | value9 |  | value0 |  | value00 |  | value000 |  | value0000 |  | valueDot |
-      | Test All Controls RM | Report Items - Numeric - Keyboard Entry | Numeric Keyboard Reference | Numeric Keyboard Extra Notes | This is a Numeric | 0      | 1      | 2      |  | 3      |  | 4      |  | 5      |  | 6      |  | 7      |  | 8      |  | 9      |  | 0      |  | 00      |  | 000      |  | 0000      |  | .        |
+      | Datacapture          | ReportName                              | ReferenceText              | ReportDate | DueDate | AddNotes                     | item              | value0 | value1 | value2 |  | value3 |  | value4 |  | value5 |  | value6 |  | value7 |  | value8 |  | value9 |  | value0 |  | value00 |  | value000 |  | value0000 |  | valueDot |
+      | Test All Controls RM | Report Items - Numeric - Keyboard Entry | Numeric Keyboard Reference | TODAY      | ONEWEEK | Numeric Keyboard Extra Notes | This is a Numeric | 0      | 1      | 2      |  | 3      |  | 4      |  | 5      |  | 6      |  | 7      |  | 8      |  | 9      |  | 0      |  | 00      |  | 000      |  | 0000      |  | .        |

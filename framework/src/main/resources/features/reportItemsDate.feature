@@ -2,7 +2,7 @@
 Feature: Date item testing
 
   Scenario Outline: Confirming date fields function correctly
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<AddNotes>"
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
@@ -21,10 +21,16 @@ Feature: Date item testing
     And I confirm the notes have saved
     And I confirm the correct date is listed in the report view <reportDate>
     And I select the back arrow
-    Then the list of reports is displayed
+    And the list of reports is displayed
+    And I select the upload button
+    And I select upload
+    Then I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
 
 
     Examples:
-      | Datacapture          | ReportName                      | ReferenceText                      | AddNotes                             | item           | year   | month | day  | reportDate         |
-      | Test All Controls RM | Report Items - Date             | Reference Date Testing             | Date Testing Extra Notes             | This is a Date | "2017" | "NOV" | "26" | "26 November 2017" |
-      | Test All Controls RM | Report Items - Date - Leap Year | Reference Date Testing (Leap Year) | Date Testing (Leap Year) Extra Notes | This is a Date | "2024" | "FEB" | "25" | "25 February 2024" |
+      | Datacapture          | ReportName                      | ReferenceText                      | ReportDate | DueDate | AddNotes                             | item           | year   | month | day  | reportDate         |
+      | Test All Controls RM | Report Items - Date             | Reference Date Testing             | TODAY      | ONEWEEK | Date Testing Extra Notes             | This is a Date | "2017" | "NOV" | "26" | "26 November 2017" |
+      | Test All Controls RM | Report Items - Date - Leap Year | Reference Date Testing (Leap Year) | TODAY      | ONEWEEK | Date Testing (Leap Year) Extra Notes | This is a Date | "2024" | "FEB" | "25" | "25 February 2024" |

@@ -23,4 +23,6 @@ Feature: Confirm the previously uploaded report has been received and processed 
     And I confirm Enter Underlined Text holds the correct value
     And I confirm Enter Multi Formatted Text holds the correct value
     And I confirm This is a Rating holds the correct value
-
+    And I select the back arrow
+    And I select the context menu
+    And I delete the report

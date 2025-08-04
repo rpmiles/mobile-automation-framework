@@ -91,6 +91,7 @@ public class confirmationFunctions extends Base_PO {
             "This is underlined text\n" +
             "This is strikethrough text";
     private String multiTextRatingExpected = "3";
+    private String prefilledSingleExpectedNoEdit = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor maximus faucibus. Vivamus blandit lorem.";
     private String prefilledSingleExpected = "This item was previously prefilled but has now been replaced with this text";
     private String prefilledMultiExpected = "New Paragraph\n" +
             "THIS IS NEW TEXT ADDED FOR TESTING Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac molestie odio. Cras in est dolor. Maecenas nec augue eu arcu tincidunt ullamcorper. In eu magna sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.";
@@ -124,8 +125,8 @@ public class confirmationFunctions extends Base_PO {
             System.out.println("Confirming text in prefilled text (single) item");
             waitForWebElementToBeVisible(singleText);
             String reportPrefilledSingleText = singleText.getText();
-            System.out.println("singleText: " + singleText);
-            Assert.assertTrue(prefilledSingleExpected.contains(reportPrefilledSingleText), "Actual text does not contain expected text.");
+            System.out.println("singleText: " + reportPrefilledSingleText);
+            Assert.assertTrue(prefilledSingleExpectedNoEdit.contains(reportPrefilledSingleText), "Actual text does not contain expected text.");
             System.out.println("Confirmed Single Text Prefilled item contains correct text");
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm single prefilled text");
@@ -139,7 +140,11 @@ public class confirmationFunctions extends Base_PO {
             waitForWebElementToBeVisible(multiTextItem);
             String prefilledText = multiTextItem.getText();
             System.out.println("multiTextItem: " + multiTextItem);
-            Assert.assertEquals(prefilledText, "Single SentenceLorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor maximus faucibus. Vivamus blandit lorem.New ParagraphLorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac molestie odio. Cras in est dolor. Maecenas nec augue eu arcu tincidunt ullamcorper. In eu magna sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.");
+            Assert.assertEquals(prefilledText, "Single Sentence\n" +
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor maximus faucibus. Vivamus blandit lorem.\n" +
+                    "\n" +
+                    "New Paragraph\n" +
+                    "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac molestie odio. Cras in est dolor. Maecenas nec augue eu arcu tincidunt ullamcorper. In eu magna sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.");
             System.out.println(" is displayed in report view");
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm multi prefilled text");
@@ -242,9 +247,10 @@ public class confirmationFunctions extends Base_PO {
         try {
             System.out.println("Confirming text in multi text item");
             waitForWebElementToBeVisible(multiTextItem);
+            System.out.println("Text parsed: " + text);
             String multiText = multiTextItem.getText();
             System.out.println("multiText: " + multiText);
-            Assert.assertTrue(text.contains(multiText), "Actual text does not contain expected text.");
+            Assert.assertTrue(multiText.contains(text), "Actual text does not contain expected text.");
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm multi text in report view");
         }
@@ -812,7 +818,7 @@ public class confirmationFunctions extends Base_PO {
     }
 
 
-    //Specific report view confirmations run during reportFunctionsUpload.feature test
+    //Specific report view confirmations run during reportFunctionsAddUpload.feature test
     public void confirmReportViewPrefilledSingleUpload(String option) throws IOException, URISyntaxException, InterruptedException {
         // Confirm first rating entry //lib-read-only-rating[contains(@class, 'ng-star-inserted')]//span[contains(text(), 'Y')]
         try {
