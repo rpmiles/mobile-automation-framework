@@ -49,7 +49,7 @@ public class createReport_Steps extends Base_PO {
         createReport_po.selectDataCapture(string);
         System.out.println("Selecting DataCapture: " + string);
     }
-    @And("I enter a Report Name {string}")
+    @And("I enter a report name {string}")
     public void i_select_a_name(String reportName) throws IOException, URISyntaxException {
         String replacedName = reportName.replace("<ReleaseVersion>", releaseVersion);
         //System.out.println("Report Name after replacement: " + replacedName);
@@ -61,7 +61,7 @@ public class createReport_Steps extends Base_PO {
 
     @And("I enter a Name {string}")
     public void i_enter_a_name(String item) throws IOException, URISyntaxException {
-        String replacedName = (item + releaseVersion);
+        String replacedName = (item + " <" + releaseVersion + ">");
         createReport_po.enterReportName(replacedName);
 
         System.out.println("Entering a report name: " + replacedName);
@@ -81,6 +81,7 @@ public class createReport_Steps extends Base_PO {
     public void i_select_an_inspection_date() throws IOException, URISyntaxException, InterruptedException {
         String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd"));
         System.out.println("Setting inspection date as today");
+        System.out.println("Setting date: " + date );
         createReport_po.selectInspectionDate(date);
     }
 

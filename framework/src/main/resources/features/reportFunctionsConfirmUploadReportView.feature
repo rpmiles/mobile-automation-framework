@@ -1,3 +1,4 @@
+@reportItems
 Feature: Confirm the previously uploaded report has been received and processed successfully
 
   Scenario: Confirm successful upload

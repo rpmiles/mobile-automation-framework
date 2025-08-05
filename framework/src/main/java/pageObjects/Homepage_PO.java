@@ -1,5 +1,7 @@
 package pageObjects;
 
+import functions.confirmationFunctions;
+import functions.globalFunctions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -20,7 +22,18 @@ import static utils.globalVariables.adminUser;
 
 public class Homepage_PO extends Base_PO {
 
+    TestAllControlsRM_PO testAllControlsRM_po;
+    NotesControl_PO notesControl_po;
+    Homepage_PO homepage_po;
+    SharedStepsFieldNav_PO sharedStepsFieldNav_po;
+    functions.globalFunctions globalFunctions;
+    functions.confirmationFunctions confirmationFunctions;
+    CreateReport_PO createReport_po;
+
+
     String userProfilePath = "//*[.//span[text()='" + adminUser + "']]";
+    String specialChars = "!@£$%^&*()_+-={}][:'\\?></.,~`";
+
 
     public @FindBy(xpath = "//button[.//span[text()=' Sync Now ']]") WebElement syncButton;
     public @FindBy(id = "user-profile") WebElement profileMenu;
@@ -46,14 +59,17 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(xpath = "//p[contains(text(), 'Upload complete')]") WebElement uploadCompleted;
     public @FindBy(xpath = "//span[contains(text(), 'Report Settings')]") WebElement reportSettings;
     public @FindBy(xpath = "//gr-icon-button[contains(@id, 'context-menu') and not(contains(@class, 'ng-star-inserted'))]") WebElement contextX;
+    public @FindBy(xpath = "//input[@id='report-name']") WebElement reportName;
 
-
-    public Homepage_PO() throws IOException, URISyntaxException {
+    public Homepage_PO() throws IOException, URISyntaxException
+    {
         super();
         //System.out.println("Homepage_PO constructor called");
         PageFactory.initElements(getDriver(), this);
         //System.out.println("Homepage_PO elements initialised");
 
+        createReport_po = new CreateReport_PO();
+        createReport_po.initElements();
     }
 
 

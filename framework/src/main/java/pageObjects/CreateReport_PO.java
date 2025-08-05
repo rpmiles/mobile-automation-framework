@@ -2,6 +2,7 @@ package pageObjects;
 
 import functions.globalFunctions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,13 +11,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import utils.globalVariables;
-import functions.globalFunctions;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.time.Duration;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
+import java.time.LocalDate;;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -28,9 +26,14 @@ public class CreateReport_PO extends Base_PO {
     public @FindBy(id = "report-name") WebElement reportName;
     public @FindBy(id = "report-reference") WebElement reference;
     public @FindBy(id = "report-date") WebElement reportDate;
+    public @FindBy(xpath = "//input[@id='report-date' and contains(@aria-invalid, 'true')]") WebElement reportDateInvalid;
+    public @FindBy(xpath = "//input[@id='due-date' and contains (@aria-invalid, 'true')]") WebElement dueDateInvalid;
     public @FindBy(id = "due-date") WebElement reportDueDate;
     public @FindBy(id = "notes") WebElement extraNotes;
     public @FindBy(xpath = "//button[@id='save-report']") WebElement saveReport;
+    public @FindBy(xpath = "//div[contains(@class, 'text-xl') and contains(@class, 'line-clamp-3')]") WebElement reportNameText;
+    public @FindBy(xpath = "//div[contains(@class, 'text-secondary') and contains(@class, 'text-md')]") WebElement referenceText;
+
 
     public CreateReport_PO() throws IOException, URISyntaxException {
         super();
@@ -84,8 +87,35 @@ public class CreateReport_PO extends Base_PO {
         sendKeys(reportName, nameOfReport);
     }
 
+    public void confirmReportName(String nameOfReport) throws IOException, URISyntaxException {
+
+        System.out.println("Confirming report name");
+
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        String text = (String) js.executeScript("return arguments[0].textContent;", reportNameText);
+        System.out.println("Report Name: " + text  );
+
+        Assert.assertTrue(text.contains(nameOfReport));
+    }
+
     public void selectReportName() throws IOException, URISyntaxException {
         waitForWebElementAndClick(reportName);
+    }
+
+    public void confirmReference(String reference) throws IOException, URISyntaxException {
+
+        System.out.println("Confirming reference");
+
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        String text = (String) js.executeScript("return arguments[0].textContent;", referenceText);
+        System.out.println("Report Name: " + referenceText  );
+
+        Assert.assertTrue(text.contains(reference));
+    }
+
+    public void deleteReference() throws IOException, URISyntaxException {
+        sendKeys(reference,  (Keys.chord(Keys.CONTROL, "a")));
+        sendKeys(reference, (Keys.chord(Keys.BACK_SPACE)));
     }
 
     public void enterReference (String referenceText) throws IOException, URISyntaxException {
@@ -130,6 +160,16 @@ public class CreateReport_PO extends Base_PO {
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to select inspection date");
             }
+    }
+
+    public void enterInvalidInspectionDate (String invalidInspectionDate) throws IOException, URISyntaxException {
+        sendKeys(reportDate, (Keys.chord(Keys.CONTROL, "a")));
+        sendKeys(reportDate, (Keys.chord(Keys.BACK_SPACE)));
+        sendKeys(reportDate, invalidInspectionDate);
+    }
+
+    public void confirmInvalidInspectionDate () throws IOException, URISyntaxException {
+        Assert.assertTrue(reportDateInvalid.isDisplayed(), "Expected report date field to be visible.");
     }
 
     public void selectDueDate (String dueDate) throws IOException, URISyntaxException, InterruptedException {
@@ -177,6 +217,16 @@ public class CreateReport_PO extends Base_PO {
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to select due date");
             }
+    }
+
+    public void enterInvalidDueDate (String invalidDueDate) throws IOException, URISyntaxException {
+        sendKeys(reportDueDate, (Keys.chord(Keys.CONTROL, "a")));
+        sendKeys(reportDueDate, (Keys.chord(Keys.BACK_SPACE)));
+        sendKeys(reportDueDate, invalidDueDate);
+    }
+
+    public void confirmInvalidDueDate () throws IOException, URISyntaxException {
+        Assert.assertTrue(dueDateInvalid.isDisplayed(), "Expected report date field to be visible.");
     }
 
     public void enterNotes (String notesText) throws IOException, URISyntaxException {
@@ -246,91 +296,6 @@ public class CreateReport_PO extends Base_PO {
         sendKeys(reportDate, (Keys.chord(Keys.BACK_SPACE)));
         sendKeys(reportDate, processedReportDate);
 
-        ///////////////////////////////////////////////////////////////////////////
-
-        /*try {
-            String inspectionDate = LocalDate.now().format(DateTimeFormatter.ofPattern("dd"));
-            System.out.println("Setting inspection date as today");
-            //Thread.sleep(2000);
-
-            List<WebElement> buttons = getDriver().findElements(By.tagName("button"));
-            int count = 0;
-
-
-            for (WebElement calenderPicker : buttons) {
-                //System.out.println("Is the " + calenderPicker.getText() + " button displayed? =  " + calenderPicker.isDisplayed());
-                String label = calenderPicker.getAttribute("aria-label");
-                if (label != null && label.contains("Open calendar")) {
-                    System.out.println("Selecting inspection date picker");
-                    calenderPicker.click();
-                    break;
-                }
-                count++;
-            }
-
-            List<WebElement> buttonsInMyTable = getDriver().findElements(By.xpath("//table[contains(@class, 'mat-calendar-table')]//button"));
-            //System.out.println("Entering inspection day loop");
-            for (WebElement datePicker : buttonsInMyTable) {
-                String label = datePicker.getText();
-                String actualDate = String.valueOf(Integer.parseInt(inspectionDate)); // result = "2"
-                if (label.contains(actualDate)) {
-                    System.out.println("Selecting inspection date day " + label);
-                    datePicker.click();
-                    //System.out.println("Exiting inspection day loop");
-                    break;
-                }
-                count++;
-            }
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to select inspection date");
-        }*/
-
-        /////////////////////////Select Due Date////////////////////////////
-        /*try {
-            //Thread.sleep(2000);
-            LocalDate today = LocalDate.now();
-            LocalDate twoWeeksLater = today.plusWeeks(2);
-            String dayOfMonth = String.valueOf(twoWeeksLater.getDayOfMonth());
-
-            System.out.println("Selecting the due date as in two weeks");
-
-            List<WebElement> buttons = getDriver().findElements(By.tagName("button"));
-            int matchCount = 0;
-            //System.out.println("Opening due date calender");
-            for (WebElement button : buttons) {
-                String label = button.getAttribute("aria-label");
-                //System.out.println("Found button " + label);
-                if ("Open calendar".equals(label)) {
-                    matchCount++;
-
-                    if (matchCount == 2) { // second instance
-                        System.out.println("Selecting due date calender picker");
-                        button.click(); // or perform any action here
-
-                        break;
-                    }
-                }
-            }
-
-
-            List<WebElement> buttonsInMyTable = getDriver().findElements(By.xpath("//table[contains(@class, 'mat-calendar-table')]//button"));
-            //System.out.println("Entering due date day loop");
-
-            for (WebElement datePicker : buttonsInMyTable) {
-                //System.out.println("Is the " + datePicker.getText() + " button displayed? =  " + datePicker.isDisplayed());
-                String label = datePicker.getText();
-                if (label.contains(dayOfMonth)) {
-                    System.out.println("Selecting due date day " + label);
-                    datePicker.click();
-                    //System.out.println("Exiting due date day loop");
-                    break;
-                }
-
-            }
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to select due date");
-        }*/
-
 
         /////////////////////////////Select Due Date///////////////////////////////
 
@@ -346,33 +311,6 @@ public class CreateReport_PO extends Base_PO {
         System.out.println("Performing scroll and select to 'Create' button");
 
         waitForWebElementAndClick(saveReport);
-
-
-        /*WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.visibilityOfElementLocated(
-
-                By.xpath("//button[@id='save-report']")
-        ));
-
-        By scrolledRating = By.xpath("//button[@id='save-report']"
-        );
-        wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledRating));
-
-
-        WebElement selectElement = getDriver().findElement(scrolledRating);
-
-        // Scroll into view using JavaScript
-        ((JavascriptExecutor) getDriver()).executeScript(
-                "arguments[0].scrollIntoView({block: 'center'});", selectElement);
-        Thread.sleep(300);
-
-        // Try normal click, fallback to JS click
-        try {
-            selectElement.click();
-        } catch (Exception e) {
-            System.out.println("Standard click failed, attempting JS click");
-            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
-        }*/
 
     }
 }

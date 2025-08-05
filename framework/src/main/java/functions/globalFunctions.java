@@ -7,10 +7,13 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
 import utils.ElementHelper;
 import java.io.IOException;
+import java.net.MalformedURLException;
 import java.net.URISyntaxException;
+import java.sql.Driver;
 import java.time.Duration;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import driver.DriverFactory;
 
 
 public class globalFunctions extends Base_PO {
@@ -296,10 +299,20 @@ public class globalFunctions extends Base_PO {
             return LocalDate.now().format(formatter);
         } else if ("ONEWEEK".equalsIgnoreCase(dateInput)) {
             return LocalDate.now().plusWeeks(1).format(formatter);
+        } else if ("TWOWEEK".equalsIgnoreCase(dateInput)) {
+            return LocalDate.now().plusWeeks(2).format(formatter);
         }
+
         // Otherwise, return as-is
         return dateInput;
     }
 
+    public static String jsRetriever(WebElement element) throws MalformedURLException, URISyntaxException {
+        JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getDriver();
 
+        String retrievedValue = (String) js.executeScript("return arguments[0].value;", element);
+
+        return retrievedValue;
+
+    }
 }

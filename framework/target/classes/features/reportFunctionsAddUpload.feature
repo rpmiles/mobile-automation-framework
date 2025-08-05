@@ -1,3 +1,4 @@
+@reportItems
 Feature: Testing report uploads
 
   Scenario Outline: Test uploads by creating, uploading, downloading and confirming

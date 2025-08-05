@@ -17,7 +17,7 @@ public class homepage_Steps extends Base_PO {
     SharedStepsFieldNav_PO sharedStepsFieldNav_po;
     functions.globalFunctions globalFunctions;
     functions.confirmationFunctions confirmationFunctions;
-
+    CreateReport_PO createReport_po;
 
     public homepage_Steps() throws IOException, URISyntaxException {
         //System.out.println("testAllControlsRM_Steps constructor called");
@@ -39,6 +39,100 @@ public class homepage_Steps extends Base_PO {
 
         confirmationFunctions = new confirmationFunctions();
         confirmationFunctions.initElements();
+
+        createReport_po = new CreateReport_PO();
+        createReport_po.initElements();
+    }
+
+    @And("I confirm the report name has not changed {string}")
+    public void i_confirm_the_report_name_has_not_changed(String name) throws IOException, URISyntaxException {
+        createReport_po.confirmReportName(name);
+    }
+
+    @And("I confirm the reference has not changed")
+    public void i_confirm_the_reference_has_not_changed() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmEmpty();
+    }
+
+    @And("I enter {string} as the report reference")
+    public void i_enter_as_the_report_reference(String reference) throws IOException, URISyntaxException {
+        createReport_po.enterReference(reference);
+    }
+    @And("I select update")
+    public void i_select_update() throws IOException, URISyntaxException {
+        createReport_po.saveReport();
+    }
+
+    @And("I delete the reference")
+    public void i_delete_the_reference() throws IOException, URISyntaxException {
+        createReport_po.deleteReference();
+    }
+
+    @And("I confirm the reports list report name is {string}")
+    public void i_confirm_the_report_name_is(String reportName) throws IOException, URISyntaxException {
+        createReport_po.confirmReportName(reportName);
+    }
+
+    @And("I confirm the reports list reference is {string}")
+    public void i_confirm_the_reports_reference_is(String reference) throws IOException, URISyntaxException {
+        createReport_po.confirmReference(reference);
+    }
+
+    @And("I confirm the reference is {string}")
+    public void i_confirm_the_reference_is(String reference) throws IOException, URISyntaxException {
+        createReport_po.confirmReference(reference);
+    }
+
+    @And("I enter an invalid inspection date {string}")
+    public void i_enter_an_invalid_inspection_date (String date) throws IOException, URISyntaxException {
+        createReport_po.enterInvalidInspectionDate(date);
+    }
+
+    @And("I select the reference field")
+    public void i_select_the_author_field() {
+        createReport_po.reference.click();
+    }
+
+    @And("I confirm the inspection date is marked as invalid")
+    public void i_confirm_the_inspection_date_is_marked_as_invalid() throws IOException, URISyntaxException {
+        createReport_po.confirmInvalidInspectionDate();
+    }
+
+
+    @And("I enter an invalid due date {string}")
+    public void i_enter_an_invalid_due_date(String date) throws IOException, URISyntaxException {
+        createReport_po.enterInvalidDueDate(date);
+    }
+
+    @And("I confirm the due date is marked as invalid")
+    public void i_confirm_the_due_date_is_marked_as_invalid() throws IOException, URISyntaxException {
+        createReport_po.confirmInvalidDueDate();
+    }
+
+    @And("I enter some report notes {string}")
+    public void i_enter_some_report_notes(String text) {
+        createReport_po.extraNotes.sendKeys(text);
+    }
+
+    @And("I clear the report notes field")
+    public void i_clear_the_notes_field() {
+        createReport_po.extraNotes.clear();
+    }
+
+    @And("I confirm the report details inspection date are correct {string}")
+    public void i_confirm_the_report_details_inspection_date_are_correct(String date) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmReportDetailsInspectionDate(date);
+    }
+
+    @And("I confirm the report details due date are correct {string}")
+    public void i_confirm_the_report_details_due_date_are_correct(String date) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmReportDetailsDueDate(date);
+    }
+
+    @And("I confirm the report details notes are correct {string}")
+    public void i_confirm_the_report_details_notes_are_correct(String notes) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmReportDetailsNotes(notes);
     }
 
 }
+

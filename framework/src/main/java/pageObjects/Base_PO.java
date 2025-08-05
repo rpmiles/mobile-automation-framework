@@ -2,6 +2,7 @@ package pageObjects;
 
 import driver.DriverFactory;
 import io.appium.java_client.android.AndroidDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -53,7 +54,6 @@ public class Base_PO {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
         wait.until(ExpectedConditions.visibilityOf(element));
     }
-
 
     public void waitForSyncFinish(WebElement element) throws IOException, URISyntaxException {
         System.out.println("Waiting for sync to complete");

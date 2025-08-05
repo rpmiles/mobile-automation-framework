@@ -8,8 +8,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
-import pageObjects.Base_PO;
-import pageObjects.TestAllControlsRM_PO;
+import pageObjects.*;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -22,11 +21,12 @@ import static org.testng.AssertJUnit.assertTrue;
 
 public class confirmationFunctions extends Base_PO {
 
+    CreateReport_PO createReport_po;
+
     public @FindBy(xpath = "//input[contains(@class, 'mat-mdc-input-element') and @spellcheck='false']") WebElement extractedTextField;
     public @FindBy(xpath = "//div[contains(@class, 'ql-editor')]") WebElement multiTextItem;
     public @FindBy(xpath = "//lib-single-text//span[contains(@class,'single-text')][1]") WebElement singleText;
     public @FindBy(xpath = "//lib-numeric-input//input[@numericfield]") WebElement numericItem;
-//lib-single-text//input
 
     private String boldText = "This is bold text";
     private String italicsText = "This is italicized text";
@@ -40,6 +40,11 @@ public class confirmationFunctions extends Base_PO {
     private String numlist2Text = "Number list entry 2";
     private String numlist3Text = "Number list entry 3";
     private String actualValue;
+
+    //Report details
+    public @FindBy(xpath = "//input[@id='report-date']") WebElement detailsInspectionDate;
+    public @FindBy(xpath = "//input[@id='due-date']") WebElement detailsDueDate;
+
 
     //Ratings
     public @FindBy(xpath = "//lib-read-only-rating[@class='ng-star-inserted']//span[normalize-space(text())='1']") WebElement multiTextReportViewRating1;
@@ -118,6 +123,55 @@ public class confirmationFunctions extends Base_PO {
     //Numeric elements
     public @FindBy(css = "div span.numeric") WebElement reportNumeric;
 
+    public confirmationFunctions() throws IOException, URISyntaxException {
+
+        createReport_po = new CreateReport_PO();
+        createReport_po.initElements();
+    }
+
+    //Report details
+    public void confirmReportDetailsInspectionDate(String date) throws IOException, URISyntaxException {
+        try {
+            String inspectionDate    = globalFunctions.jsRetriever(detailsInspectionDate);
+
+            String enteredDate = globalFunctions.reportDateGenerator(date);
+            System.out.println("Confirming Date displayed in report details");
+            System.out.println("\"" + inspectionDate + "\" is displayed in report details");
+            //System.out.println("\"" + enteredDate + "\" is passed in date");
+            Assert.assertTrue(inspectionDate.contains(enteredDate));
+
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm report date in report view");
+        }
+    }
+
+    public void confirmReportDetailsDueDate(String date) throws IOException, URISyntaxException {
+        try {
+            String dueDate    = globalFunctions.jsRetriever(detailsDueDate);
+
+            String enteredDate = globalFunctions.reportDateGenerator(date);
+            System.out.println("Confirming Date displayed in report details");
+            System.out.println("\"" + dueDate + "\" is displayed in report details");
+            //System.out.println("\"" + enteredDate + "\" is passed in date");
+            Assert.assertTrue(dueDate.contains(enteredDate));
+
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm report date in report view");
+        }
+    }
+
+    public void confirmReportDetailsNotes(String notes) throws IOException, URISyntaxException {
+        try {
+            String detailsNotes = globalFunctions.jsRetriever(createReport_po.extraNotes);
+
+            System.out.println("Confirming notes displayed in report details");
+            System.out.println("\"" + detailsNotes + "\" is displayed in report details");
+            Assert.assertTrue(detailsNotes.contains(notes));
+
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm report date in report view");
+        }
+    }
 
     //Item confirmations
     public void confirmCorrectSinglePrefilledText() throws IOException, URISyntaxException {
@@ -415,7 +469,7 @@ public class confirmationFunctions extends Base_PO {
     public void confirmEmpty() throws IOException, URISyntaxException {
         try {
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
-            String coordinatesText = (String) js.executeScript("return arguments[0].value;", extractedTextField);
+            String coordinatesText = (String) js.executeScript("return arguments[0].value;", createReport_po.referenceText);
             System.out.println("Value prior to trimming: " + coordinatesText);
             String cleaned = null;
             if (coordinatesText != null) {

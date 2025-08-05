@@ -1,40 +1,41 @@
+@reportItems
 Feature: Confirm the previously uploaded report has been received and processed successfully
 
   Scenario Outline: Confirm successful upload
 
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
+    #Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select report
     Given I select the profile menu
     And I select sync
     When I download a specific report with name "Report Items - Upload tests"
     And I select the report which the title contains "Report Items - Upload tests"
     And I select the item "Preformatted Text for Copy/Paste Tests"
-      And I confirm it's in a numbered list
-      And I select the tick or done button
-      And I confirm Preformatted Text for Copy and Paste Tests holds the correct value
+    And I confirm it's in a numbered list
+    And I select the tick or done button
+    And I confirm Preformatted Text for Copy and Paste Tests holds the correct value
     And I select the item "Single Text"
-      And I confirm the previously entered Single Text "Single line of text entered into the single item text item"
-      And I select the tick or done button
-      And I confirm This is Single Text holds the correct value
+    And I confirm the previously entered Single Text "Single line of text entered into the single item text item"
+    And I select the tick or done button
+    And I confirm This is Single Text holds the correct value
     And I select the item "This is Multi Text"
-      And I confirm all the multi text has been retained
-      And I select the tick or done button
-      And I confirm This is Multi Text holds the correct value
+    And I confirm all the multi text has been retained
+    And I select the tick or done button
+    And I confirm This is Multi Text holds the correct value
     And I select the item "This is Multi Text"
-      And I confirm for "This is Multi Text" the "3" rating is selected
-      And I select the tick or done button
-      And I confirm This is Multi Text Rating holds the correct value
+    And I confirm for "This is Multi Text" the "3" rating is selected
+    And I select the tick or done button
+    And I confirm This is Multi Text Rating holds the correct value
     And I select the item "This is Prefilled Text (Single)"
-      And I confirm the single text "This item was previously prefilled but has now been replaced with this text" is present
-      And I select the tick or done button
-      And I confirm This is Prefilled Text (Single) holds the correct value
+    And I confirm the single text "This item was previously prefilled but has now been replaced with this text" is present
+    And I select the tick or done button
+    And I confirm This is Prefilled Text (Single) holds the correct value
     And I select the item "This is Prefilled Text (Multi)"
-      And I confirm the specific uploaded text is displayed
-      And I select the tick or done button
-      And I confirm This is Prefilled Text (Multi) holds the correct value
+    And I confirm the specific uploaded text is displayed
+    And I select the tick or done button
+    And I confirm This is Prefilled Text (Multi) holds the correct value
     And I select the item "This is a Date"
-      And I select the tick or done button
-      And I confirm This is a Date holds the correct value
+    And I select the tick or done button
+    And I confirm This is a Date holds the correct value
     And I select the item "This is a Switch"
     And I confirm switch "Switch 2" is selected
     And I confirm switch "Switch 1" is not selected
@@ -99,5 +100,5 @@ Feature: Confirm the previously uploaded report has been received and processed 
 
 
     Examples:
-      | Datacapture          | ReportName                  | ReferenceText | ReportDate | DueDate | AddNotes           | item             |
-      | Test All Controls RM | Report Items - Switch Tests | Reference     | TODAY      | ONEWEEK | Switch Extra Notes | This is a Switch |
+      | Datacapture          | ReportName                    | ReferenceText | ReportDate | DueDate | AddNotes           | item             |
+      | Test All Controls RM | Report Items - Confirm Upload | Reference     | TODAY      | ONEWEEK | Switch Extra Notes | This is a Switch |
