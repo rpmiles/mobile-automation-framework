@@ -105,6 +105,7 @@ public class Hooks {
             System.out.println("Checking context: " + context);
             if (context.toLowerCase().contains("webview")) {
                 try {
+                    System.out.print("Switching to context: " + context);
                     driver.context(context);
                     System.out.println("Switched to context: " + context);
                 } catch (Exception e) {

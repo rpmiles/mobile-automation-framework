@@ -60,6 +60,7 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(xpath = "//span[contains(text(), 'Report Settings')]") WebElement reportSettings;
     public @FindBy(xpath = "//gr-icon-button[contains(@id, 'context-menu') and not(contains(@class, 'ng-star-inserted'))]") WebElement contextX;
     public @FindBy(xpath = "//input[@id='report-name']") WebElement reportName;
+    public @FindBy(xpath = "//button[@id='confirm-button']") WebElement confirmButton;
 
     public Homepage_PO() throws IOException, URISyntaxException
     {
@@ -201,6 +202,16 @@ public class Homepage_PO extends Base_PO {
         }
 
     }
+
+    public void confirmSignOutButtonClick() throws IOException, URISyntaxException {
+        try {
+            System.out.println("Confirming correct report downloaded");
+            waitForWebElementAndClick(confirmButton);
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to click confirm signout");
+        }
+    }
+
 
     public void checkFirstReport() throws IOException, URISyntaxException {
         String firstReportText = firstReport.getText();

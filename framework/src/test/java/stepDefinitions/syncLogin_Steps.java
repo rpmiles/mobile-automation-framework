@@ -55,6 +55,12 @@ public class syncLogin_Steps {
         homepage_po.signOut();
     }
 
+    @And("I confirm the sign out")
+    public void confirm_the_sign_out() throws IOException, URISyntaxException {
+        System.out.println("Confirming Sign Out");
+        homepage_po.confirmSignOutButtonClick();
+    }
+
     @Then("I receive a confirmation")
     public void i_receive_a_confirmation() throws IOException, URISyntaxException, InterruptedException {
         homepage_po.confirmSignout();

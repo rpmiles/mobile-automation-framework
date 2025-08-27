@@ -6,34 +6,36 @@
   <component name="ChangeListManager">
     <list default="true" id="ba102cfd-b902-4f60-ac45-126db305af24" name="Changes" comment="All run with upload - Details in progress">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/functions/confirmationFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/functions/confirmationFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/functions/globalFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/functions/globalFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/Base_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/Base_PO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/CreateReport_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/CreateReport_PO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/java/driver/DriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/driver/DriverFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/java/driver/drivers/chromedriver" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/Homepage_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/Homepage_PO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/utils/globalVariables.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/utils/globalVariables.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsAddUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsAddUpload.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUpload.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUploadReportView.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUploadReportView.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsDetails.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsDetails.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/loginTests.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/loginTests.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/base/Hooks.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/base/Hooks.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/createReport_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/createReport_Steps.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/homepage_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/homepage_Steps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/syncLogin_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/syncLogin_Steps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/automation-framework-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/automation-framework-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsAddUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsAddUpload.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUpload.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUploadReportView.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUploadReportView.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportItemsDetails.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportItemsDetails.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/confirmationFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/functions/confirmationFunctions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions$DateHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions$DateHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Base_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/Base_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/CreateReport_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/CreateReport_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Homepage_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/Homepage_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/utils/globalVariables.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/utils/globalVariables.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/driver/DriverFactory$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/driver/DriverFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/loginTests.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/loginTests.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/confirmationFunctions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions$DateHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Base_PO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/CloneReport_PO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/CreateReport_PO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Homepage_PO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Login_PO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/NotesControl_PO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/SharedStepsFieldNav_PO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/TestAllControlsRM_PO$DecimalTrimmer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/TestAllControlsRM_PO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/utils/ElementHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/utils/globalVariables$ElementHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/utils/globalVariables.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/base/Hooks.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/base/Hooks.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/createReport_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/createReport_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/homepage_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/homepage_Steps.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,95 +64,106 @@
 }</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/rpmiles/mobile-automation-framework&quot;,
-    &quot;accountId&quot;: &quot;b1071f3b-6392-4970-890c-6ca5ffa79f38&quot;
+    &quot;url&quot;: &quot;https://github.com/rpmiles/mobile-automation-framework.git&quot;,
+    &quot;accountId&quot;: &quot;c5cfd8f8-e82a-4db2-a51c-188f8e53be8d&quot;
   }
 }</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 2
 }</component>
   <component name="ProjectId" id="2yftOvpXAzqMRuesMbMIdSLyjkZ" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+  <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Cucumber Java.Feature: deleteReport.executor": "Run",
-    "Cucumber Java.Feature: initialLogin.executor": "Run",
-    "Cucumber Java.Feature: loginTests.executor": "Run",
-    "Cucumber Java.Feature: reportFunctionsConfirmUpload.executor": "Run",
-    "Cucumber Java.Feature: reportFunctionsUpload.executor": "Run",
-    "Cucumber Java.Feature: reportItemsDate.executor": "Run",
-    "Cucumber Java.Feature: reportItemsMultiTextPrefilled.executor": "Run",
-    "Cucumber Java.Feature: reportItemsMultiTextRTF.executor": "Run",
-    "Cucumber Java.Feature: reportItemsNotes.executor": "Run",
-    "Cucumber Java.Feature: reportItemsNumericButtons.executor": "Run",
-    "Cucumber Java.Feature: reportItemsNumericKeys.executor": "Run",
-    "Cucumber Java.Feature: reportItemsPickList.executor": "Run",
-    "Cucumber Java.Feature: reportItemsPredefinedResp.executor": "Run",
-    "Cucumber Java.Feature: reportItemsRatings.executor": "Run",
-    "Cucumber Java.Feature: reportItemsSingleText.executor": "Run",
-    "Cucumber Java.Feature: reportItemsSingleTextPrefilled.executor": "Run",
-    "Cucumber Java.Feature: reportItemsSwitch.executor": "Run",
-    "Cucumber Java.Feature: sandbox.executor": "Run",
-    "Cucumber Java.Feature: syncLogin.executor": "Run",
-    "Cucumber Java.Feature: toolsDeleteReport.executor": "Run",
-    "Cucumber Java.Scenario: A link will be shown to take the user to an information page on how to sign up with GoReport.executor": "Run",
-    "Cucumber Java.Scenario: An invalid password is provided with a correct email.executor": "Run",
-    "Cucumber Java.Scenario: Complete indepth testing of an items notes.executor": "Run",
-    "Cucumber Java.Scenario: Confirm picklists working correctly.executor": "Run",
-    "Cucumber Java.Scenario: Confirm ratings are working correctly.executor": "Run",
-    "Cucumber Java.Scenario: Confirm successful upload (1).executor": "Run",
-    "Cucumber Java.Scenario: Confirm successful upload.executor": "Run",
-    "Cucumber Java.Scenario: Confirming date fields function correctly.executor": "Run",
-    "Cucumber Java.Scenario: Confirming multi text fields function correctly.executor": "Run",
-    "Cucumber Java.Scenario: Confirming prefilled multi text fields function correctly.executor": "Run",
-    "Cucumber Java.Scenario: Confirming prefilled single text fields function correctly.executor": "Run",
-    "Cucumber Java.Scenario: Confirming the Switch item functions as intended.executor": "Run",
-    "Cucumber Java.Scenario: Create Report config.executor": "Run",
-    "Cucumber Java.Scenario: Delete a non uploaded report (1).executor": "Run",
-    "Cucumber Java.Scenario: Delete a non uploaded report.executor": "Run",
-    "Cucumber Java.Scenario: Delete non uploaded reports.executor": "Run",
-    "Cucumber Java.Scenario: Email field is validated as an email.executor": "Run",
-    "Cucumber Java.Scenario: I sign in then I sign out.executor": "Run",
-    "Cucumber Java.Scenario: I successfully login.executor": "Run",
-    "Cucumber Java.Scenario: If an invalid email is entered with any password a message is displayed.executor": "Run",
-    "Cucumber Java.Scenario: In depth testing of report details.executor": "Run",
-    "Cucumber Java.Scenario: Login and download a report after syncing, confirming the report data.executor": "Run",
-    "Cucumber Java.Scenario: Login and sync via the profile menu (1).executor": "Run",
-    "Cucumber Java.Scenario: Login and sync via the profile menu.executor": "Run",
-    "Cucumber Java.Scenario: Login to the Mobile Portal for the first time and sync.executor": "Run",
-    "Cucumber Java.Scenario: Remove a non uploaded report.executor": "Run",
-    "Cucumber Java.Scenario: Remove an uploaded report (1).executor": "Run",
-    "Cucumber Java.Scenario: Remove an uploaded report.executor": "Run",
-    "Cucumber Java.Scenario: Remove reports.executor": "Run",
-    "Cucumber Java.Scenario: Sandboxing.executor": "Run",
-    "Cucumber Java.Scenario: Successful login and logout.executor": "Run",
-    "Cucumber Java.Scenario: Successful login.executor": "Run",
-    "Cucumber Java.Scenario: Test 'Single Text' item.executor": "Run",
-    "Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming (1).executor": "Run",
-    "Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming.executor": "Run",
-    "Cucumber Java.Scenario: Testing the Predefined Responses item.executor": "Run",
-    "Cucumber Java.Scenario: Testing the numeric item with data entry via keyboard entry only.executor": "Run",
-    "Cucumber Java.Scenario: Testing the numeric item with data entry via the gui buttons only.executor": "Run",
-    "Maven.automation-framework [clean].executor": "Run",
-    "Maven.automation-framework [compile].executor": "Run",
-    "Maven.automation-framework [install].executor": "Run",
-    "Maven.automation-framework [test].executor": "Run",
-    "Maven.automation-framework [validate].executor": "Run",
-    "Maven.automation-framework [verify].executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "TestNG.MainRunner.executor": "Run",
-    "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/russellmiles/Desktop/mobile-portal-framework-pwa-only/framework/src/main/resources/features",
-    "settings.editor.selected.configurable": "editor.preferences.tabs"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Cucumber Java.Feature: deleteReport.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: initialLogin.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: loginTests.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportFunctionsConfirmUpload.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportFunctionsUpload.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsDate.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsMultiTextPrefilled.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsMultiTextRTF.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsNotes.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsNumericButtons.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsNumericKeys.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsPickList.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsPredefinedResp.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsRatings.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsSingleText.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsSingleTextPrefilled.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: reportItemsSwitch.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: sandbox.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: syncLogin.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Feature: toolsDeleteReport.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: A link will be shown to take the user to an information page on how to sign up with GoReport.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: An invalid password is provided with a correct email.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Complete indepth testing of an items notes.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirm picklists working correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirm ratings are working correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirm successful upload (1).executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirm successful upload.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirming date fields function correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirming multi text fields function correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirming prefilled multi text fields function correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirming prefilled single text fields function correctly.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Confirming the Switch item functions as intended.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Create Report config.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Delete a non uploaded report (1).executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Delete a non uploaded report.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Delete non uploaded reports.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Email field is validated as an email.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: I sign in then I sign out.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: I successfully login.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: If an invalid email is entered with any password a message is displayed.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: In depth testing of report details.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Login and download a report after syncing, confirming the report data.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Login and sync via the profile menu (1).executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Login and sync via the profile menu.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Login screen is displayed and required fields highlighted.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Login to the Mobile Portal for the first time and sync.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Remove a non uploaded report.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Remove an uploaded report (1).executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Remove an uploaded report.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Remove reports.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Sandboxing.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Successful login and logout.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Successful login.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Test 'Single Text' item.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming (1).executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Testing the Predefined Responses item.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Testing the numeric item with data entry via keyboard entry only.executor&quot;: &quot;Run&quot;,
+    &quot;Cucumber Java.Scenario: Testing the numeric item with data entry via the gui buttons only.executor&quot;: &quot;Run&quot;,
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Maven.automation-framework [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.automation-framework [compile].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.automation-framework [install].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.automation-framework [test].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.automation-framework [validate].executor&quot;: &quot;Run&quot;,
+    &quot;Maven.automation-framework [verify].executor&quot;: &quot;Run&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;TestNG.MainRunner.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Projects/mobile-automation-framework&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;settings.sync&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/framework/src/main/resources/features" />
@@ -168,38 +181,17 @@
       <recent name="backup" />
     </key>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Scenario: Delete a non uploaded report">
-    <configuration name="Scenario: Confirm successful upload" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUpload.feature" />
+  <component name="RunManager" selected="Cucumber Java.Scenario: Successful login and logout">
+    <configuration name="Scenario: Login screen is displayed and required fields highlighted" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/loginTests.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="automation-framework" />
-      <option name="NAME_FILTER" value="^Confirm successful upload$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Confirm successful upload$&quot;" />
+      <option name="NAME_FILTER" value="^Login screen is displayed and required fields highlighted$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Login screen is displayed and required fields highlighted$&quot;" />
       <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Scenario: Confirm successful upload" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="io.cucumber.core.cli.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Scenario: Delete a non uploaded report" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
-      <option name="CUCUMBER_CORE_VERSION" value="5" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/toolsDeleteReport.feature" />
-      <option name="GLUE" value="stepDefinitions" />
-      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
-      <module name="automation-framework" />
-      <option name="NAME_FILTER" value="^Delete a non uploaded report$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Delete a non uploaded report$&quot;" />
-      <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Scenario: Delete a non uploaded report" />
+      <option name="SUGGESTED_NAME" value="Scenario: Login screen is displayed and required fields highlighted" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -221,6 +213,27 @@
       <option name="PROGRAM_PARAMETERS" value=" --plugin org.jetbrains.plugins.cucumber.java.run.CucumberJvm5SMFormatter --name &quot;^Remove an uploaded report$&quot;" />
       <shortenClasspath name="NONE" />
       <option name="SUGGESTED_NAME" value="Scenario: Remove an uploaded report" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="io.cucumber.core.cli.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Scenario: Successful login and logout" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+      <option name="CUCUMBER_CORE_VERSION" value="7" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/loginTests.feature" />
+      <option name="GLUE" value="stepDefinitions" />
+      <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
+      <module name="automation-framework" />
+      <option name="NAME_FILTER" value="^Successful login and logout$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Successful login and logout$&quot;" />
+      <shortenClasspath name="NONE" />
+      <option name="SUGGESTED_NAME" value="Scenario: Successful login and logout" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -280,19 +293,17 @@
       </method>
     </configuration>
     <list>
-      <item itemvalue="Cucumber Java.Scenario: Confirm successful upload" />
-      <item itemvalue="Cucumber Java.Scenario: Delete a non uploaded report" />
+      <item itemvalue="Cucumber Java.Scenario: Login screen is displayed and required fields highlighted" />
+      <item itemvalue="Cucumber Java.Scenario: Successful login and logout" />
       <item itemvalue="Cucumber Java.Scenario: Remove an uploaded report" />
       <item itemvalue="Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming" />
       <item itemvalue="TestNG.MainRunner" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Cucumber Java.Scenario: Delete a non uploaded report" />
+        <item itemvalue="Cucumber Java.Scenario: Successful login and logout" />
+        <item itemvalue="Cucumber Java.Scenario: Login screen is displayed and required fields highlighted" />
         <item itemvalue="TestNG.MainRunner" />
-        <item itemvalue="Cucumber Java.Scenario: Remove an uploaded report" />
-        <item itemvalue="Cucumber Java.Scenario: Test uploads by creating, uploading, downloading and confirming" />
-        <item itemvalue="Cucumber Java.Scenario: Confirm successful upload" />
       </list>
     </recent_temporary>
   </component>

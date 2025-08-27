@@ -36,7 +36,9 @@ Feature: Login tests except for Initial login
     Given I enter a username
     And I enter a password
     And I select the sign-in button
+
     And I am met with the Mobile Portal homepage
     And I select the profile menu
     And I sign out
+    And I confirm the sign out
     Then I receive a confirmation
