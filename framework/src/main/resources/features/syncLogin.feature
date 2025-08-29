@@ -7,7 +7,7 @@ Feature: Sync after logging in
     And I enter a password
     And I select the sign-in button
     And I select the profile menu
-    And I sign out
+    And if the Sign out button is selected the user is signed out
     Then I receive a confirmation
 
   Scenario: Login and download a report after syncing, confirming the report data
@@ -25,5 +25,5 @@ Feature: Sync after logging in
     And I select the context menu
     And I delete the report
     And I select the profile menu
-    And I sign out
+    And if the Sign out button is selected the user is signed out
     And I receive a confirmation

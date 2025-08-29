@@ -16,7 +16,7 @@ Feature: Testing report uploads
     And I enter single text "Single line of text entered into the single item text item"
     And I select the tick or done button
     And I select the back arrow
-    And I select the report which the title contains "Upload Tests"
+    And I select the report which the title contains "Mobile - Report Items - Upload tests"
     And I confirm the entry is the same in report view "Single line of text entered into the single item text item"
     And I select the item "This is Multi Text"
     And I select the "This is Multi Text" rating "3"
@@ -36,7 +36,7 @@ Feature: Testing report uploads
     And I enter specific multi text
     And I select the tick or done button
     And I select the back arrow
-    And I select the report which the title contains "Upload Tests"
+    And I select the report which the title contains "Mobile - Report Items - Upload tests"
     And I confirm the specific text is showing in report view
     And I select the item "This is a Date"
     And I select a day "10"
@@ -102,5 +102,5 @@ Feature: Testing report uploads
 
 
     Examples:
-      | Datacapture          | ReportName                  | ReferenceText     | ReportDate | DueDate | AddNotes                 | response2                                  | response3                             | response4                                        |
-      | Test All Controls RM | Report Items - Upload tests | Uploads Reference | TODAY      | ONEWEEK | Upload items Extra Notes | Multiple more entries are required to test | Third option specifically for testing | Text the same as the button for testing purposes |
+      | Datacapture          | ReportName                           | ReferenceText     | ReportDate | DueDate | AddNotes                 | response2                                  | response3                             | response4                                        |
+      | Test All Controls RM | Mobile - Report Items - Upload tests | Uploads Reference | TODAY      | ONEWEEK | Upload items Extra Notes | Multiple more entries are required to test | Third option specifically for testing | Text the same as the button for testing purposes |

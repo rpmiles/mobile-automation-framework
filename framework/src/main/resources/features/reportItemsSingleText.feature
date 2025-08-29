@@ -23,7 +23,7 @@ Feature: Single text item testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                         | ReferenceText                 | ReportDate | DueDate | AddNotes                        | item        |
-      | Test All Controls RM | Report Items - Single Text Feature | Single Text Feature Reference | TODAY      | ONEWEEK | Single Text Feature Extra Notes | Single Text |
+      | Datacapture          | ReportName                                  | ReferenceText                 | ReportDate | DueDate | AddNotes                        | item        |
+      | Test All Controls RM | Mobile - Report Items - Single Text Feature | Single Text Feature Reference | TODAY      | ONEWEEK | Single Text Feature Extra Notes | Single Text |
 
   #https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=50.9034045&lon=--3.4871714

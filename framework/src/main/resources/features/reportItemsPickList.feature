@@ -33,5 +33,5 @@ Feature: Testing picklists
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                    | ReferenceText       | ReportDate | DueDate | AddNotes             | item                | option1  | option2  | option3  |
-      | Test All Controls RM | Report Items - Picklist Tests | Picklists Reference |  TODAY      | ONEWEEK |Picklist Extra Notes | This is a Pick List | Option 1 | Option 2 | Option 3 |
+      | Datacapture          | ReportName                             | ReferenceText       | ReportDate | DueDate | AddNotes             | item                | option1  | option2  | option3  |
+      | Test All Controls RM | Mobile - Report Items - Picklist Tests | Picklists Reference | TODAY      | ONEWEEK | Picklist Extra Notes | This is a Pick List | Option 1 | Option 2 | Option 3 |

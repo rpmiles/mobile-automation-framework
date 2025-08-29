@@ -54,7 +54,7 @@ Feature: Testing report details editing
     And I confirm the report name has not changed "<SpecialChars>"
     And I confirm the reference is "<SpecialChars>"
     And I confirm the report details inspection date are correct "<ReportDate>"
-    And I confirm the report details due date are correct "TWOWEEK"
+    And I confirm the report details due date are correct "<DueDate>"
     And I confirm the report details notes are correct "<ExtraNotes>"
     And I delete the report name
     And I enter a Name "<ReportName>"
@@ -73,4 +73,4 @@ Feature: Testing report details editing
 
     Examples:
       | Datacapture          | ReportName        | ReferenceText     | ReportDate | DueDate | AddNotes            | item            | SpecialChars                  | ExtraNotes                                       |
-      | Test All Controls RM | Reports - Details | Reference Details | TODAY      | ONEWEEK | Details Extra Notes | Report Settings | !@£$%^&*()_+-={}][:'\?></.,~` | Extra notes as part of document creation testing |
+      | Test All Controls RM | Reports - Details | Reference Details | TODAY      | TODAY   | Details Extra Notes | Report Settings | !@£$%^&*()_+-={}][:'\?></.,~` | Extra notes as part of document creation testing |

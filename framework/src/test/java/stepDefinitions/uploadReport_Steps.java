@@ -7,6 +7,7 @@ import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import pageObjects.*;
+import utils.globalVariables;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -85,7 +86,9 @@ public class uploadReport_Steps extends Base_PO {
     @Given("I download a specific report with name {string}")
     public void i_Download_A_Specific_Report_With_Name(String reportName) throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementAndClick(homepage_po.cloudReports);
-        homepage_po.downloadUploadedReport(reportName);
+        String updatedReportName = (reportName + " <" + globalVariables.releaseVersion + ">");
+        System.out.println("Report to download:" + updatedReportName);
+        homepage_po.downloadUploadedReport(updatedReportName);
     }
 
 

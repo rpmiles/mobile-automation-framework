@@ -7,8 +7,8 @@ Feature: Confirm the previously uploaded report has been received and processed 
     #Given I select report
     Given I select the profile menu
     And I select sync
-    When I download a specific report with name "Report Items - Upload tests"
-    And I select the report which the title contains "Report Items - Upload tests"
+    When I download a specific report with name "Mobile - Report Items - Upload tests"
+    And I select the report which the title contains "Mobile - Report Items - Upload tests"
     And I select the item "Preformatted Text for Copy/Paste Tests"
     And I confirm it's in a numbered list
     And I select the tick or done button
@@ -76,9 +76,10 @@ Feature: Confirm the previously uploaded report has been received and processed 
     And I confirm Enter Multi Formatted Text holds the correct value
     And I select the item "This is a Rating"
     And I confirm for "This is a Rating" the "N" is selected
+    And I select the tick or done button
     And I select the back arrow
     And I select the context menu
-    And I remove the report
+    And I delete the report
 
 
 

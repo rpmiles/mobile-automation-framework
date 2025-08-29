@@ -76,9 +76,10 @@ Feature: Confirm the previously uploaded report has been received and processed 
     And I confirm Enter Multi Formatted Text holds the correct value
     And I select the item "This is a Rating"
     And I confirm for "This is a Rating" the "N" is selected
+    And I select the tick or done button
     And I select the back arrow
     And I select the context menu
-    And I remove the report
+    And I delete the report
 
 
 

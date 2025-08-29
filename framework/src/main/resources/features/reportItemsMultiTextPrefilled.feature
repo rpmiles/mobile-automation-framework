@@ -26,5 +26,5 @@ Feature: Multi text prefilled item testing
 
 
     Examples:
-      | Datacapture          | ReportName                          | ReferenceText                  | ReportDate | DueDate | AddNotes                         | item                           | ExtraText                                 |
-      | Test All Controls RM | Report Items - Multi Text Prefilled | Multi Text Prefilled Reference | TODAY      | ONEWEEK | Multi Text Prefilled Extra Notes | This is Prefilled Text (Multi) | This was edited and should be normal text |
+      | Datacapture          | ReportName                                   | ReferenceText                  | ReportDate | DueDate | AddNotes                         | item                           | ExtraText                                 |
+      | Test All Controls RM | Mobile - Report Items - Multi Text Prefilled | Multi Text Prefilled Reference | TODAY      | ONEWEEK | Multi Text Prefilled Extra Notes | This is Prefilled Text (Multi) | This was edited and should be normal text |

@@ -24,5 +24,5 @@ Feature: Single text prefilled item testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                                 | ReferenceText | ReportDate | DueDate | AddNotes                          | item                            |
-      | Test All Controls RM | Report Items - Single Text Prefilled Tests | STP Reference | TODAY      | ONEWEEK | Single Text Prefilled Extra Notes | This is Prefilled Text (Single) |
+      | Datacapture          | ReportName                                          | ReferenceText | ReportDate | DueDate | AddNotes                          | item                            |
+      | Test All Controls RM | Mobile - Report Items - Single Text Prefilled Tests | STP Reference | TODAY      | ONEWEEK | Single Text Prefilled Extra Notes | This is Prefilled Text (Single) |

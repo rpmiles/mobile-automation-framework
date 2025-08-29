@@ -205,7 +205,7 @@ public class Homepage_PO extends Base_PO {
 
     public void confirmSignOutButtonClick() throws IOException, URISyntaxException {
         try {
-            System.out.println("Confirming correct report downloaded");
+            System.out.println("Confirming sign out");
             waitForWebElementAndClick(confirmButton);
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to click confirm signout");

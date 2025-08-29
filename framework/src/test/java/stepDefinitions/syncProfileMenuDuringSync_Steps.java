@@ -27,5 +27,6 @@ public class syncProfileMenuDuringSync_Steps {
     public void if_the_button_is_selected_the_user_is_signed_out() throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Signing the user out");
         homepage_po.signOut();
+        homepage_po.confirmSignOutButtonClick();
     }
 }

@@ -17,11 +17,11 @@ public class DriverFactory {
     private static final ThreadLocal<AndroidDriver> webDriver = new ThreadLocal<>();
 
     public static AndroidDriver getDriver() throws MalformedURLException, URISyntaxException {
-        System.out.println("Creating driver");
+        //System.out.println("Creating driver");
         if (webDriver.get() == null) {
             webDriver.set(createDriver());
         }
-        System.out.println("Returning driver");
+        //System.out.println("Returning driver");
         return webDriver.get();
     }
 

@@ -32,6 +32,6 @@ Feature: Switch item testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                  | ReferenceText    | ReportDate | DueDate | AddNotes           | item             | switch1  | switch2  |
-      | Test All Controls RM | Report Items - Switch Tests | Switch Reference | TODAY      | ONEWEEK | Switch Extra Notes | This is a Switch | Switch 1 | Switch 2 |
+      | Datacapture          | ReportName                           | ReferenceText    | ReportDate | DueDate | AddNotes           | item             | switch1  | switch2  |
+      | Test All Controls RM | Mobile - Report Items - Switch Tests | Switch Reference | TODAY      | ONEWEEK | Switch Extra Notes | This is a Switch | Switch 1 | Switch 2 |
 
