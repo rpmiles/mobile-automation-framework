@@ -1,10 +1,12 @@
 package stepDefinitions;
 
+import functions.globalFunctions;
 import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import pageObjects.Base_PO;
 import pageObjects.Homepage_PO;
@@ -77,12 +79,17 @@ public class createReport_Steps extends Base_PO {
         System.out.println("Entering a reference: " + replacedRef);
     }
 
-    @And("I select an inspection date")
-    public void i_select_an_inspection_date() throws IOException, URISyntaxException, InterruptedException {
-        String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd"));
+    @And("I select an inspection date {string}")
+    public void i_select_an_inspection_date(String inspectionDate) throws IOException, URISyntaxException, InterruptedException {
+        String processedReportDate = globalFunctions.reportDateGenerator(inspectionDate);
+        sendKeys(createReport_po.reportDate, (Keys.chord(Keys.CONTROL, "a")));
+        sendKeys(createReport_po.reportDate, (Keys.chord(Keys.BACK_SPACE)));
+        sendKeys(createReport_po.reportDate, processedReportDate);
+
+        /*String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd"));
         System.out.println("Setting inspection date as today");
         System.out.println("Setting date: " + date );
-        createReport_po.selectInspectionDate(date);
+        createReport_po.selectInspectionDate(date);*/
     }
 
     @And("I select the report name")
@@ -91,14 +98,18 @@ public class createReport_Steps extends Base_PO {
        System.out.println("Selecting a report");
     }
 
-    @And("I select a due date")
-    public void i_select_a_due_date() throws IOException, URISyntaxException, InterruptedException {
-        LocalDate today = LocalDate.now();
-        LocalDate twoWeeksLater = today.plusWeeks(2);
-        String dayOfMonth = String.valueOf(twoWeeksLater.getDayOfMonth());
+    @And("I select a due date {string}")
+    public void i_select_a_due_date(String dueDate) throws IOException, URISyntaxException, InterruptedException {
+        //LocalDate today = LocalDate.now();
+        //LocalDate twoWeeksLater = today.plusWeeks(2);
+        //String dayOfMonth = String.valueOf(twoWeeksLater.getDayOfMonth());
 
-        System.out.println("Selecting the due date as in two weeks");
-        createReport_po.selectDueDate(dayOfMonth);
+        System.out.println("Selecting the due date");
+        sendKeys(createReport_po.reportDueDate, (Keys.chord(Keys.CONTROL, "a")));
+        sendKeys(createReport_po.reportDueDate, (Keys.chord(Keys.BACK_SPACE)));
+        dueDate = globalFunctions.reportDateGenerator(dueDate);
+        sendKeys(createReport_po.reportDueDate, dueDate);
+        //createReport_po.selectDueDate(dueDate);
     }
 
     @And("I add some notes {string}")

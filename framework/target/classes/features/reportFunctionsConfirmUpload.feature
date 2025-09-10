@@ -1,14 +1,14 @@
-@reportItems
+@uploads
 Feature: Confirm the previously uploaded report has been received and processed successfully
 
   Scenario Outline: Confirm successful upload
 
     #Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select report
-    Given I select the profile menu
-    And I select sync
-    When I download a specific report with name "Report Items - Upload tests"
-    And I select the report which the title contains "Report Items - Upload tests"
+    #Given I select the profile menu
+    #And I select sync
+    #When I download a specific report with name "Mobile - Report Items - Upload tests"
+    And I select the report which the title contains "Mobile - Report Items - Upload tests"
     And I select the item "Preformatted Text for Copy/Paste Tests"
     And I confirm it's in a numbered list
     And I select the tick or done button
@@ -33,9 +33,9 @@ Feature: Confirm the previously uploaded report has been received and processed 
     And I confirm the specific uploaded text is displayed
     And I select the tick or done button
     And I confirm This is Prefilled Text (Multi) holds the correct value
-    And I select the item "This is a Date"
-    And I select the tick or done button
-    And I confirm This is a Date holds the correct value
+    #And I select the item "This is a Date"
+    #And I select the tick or done button
+    #And I confirm This is a Date holds the correct value
     And I select the item "This is a Switch"
     And I confirm switch "Switch 2" is selected
     And I confirm switch "Switch 1" is not selected

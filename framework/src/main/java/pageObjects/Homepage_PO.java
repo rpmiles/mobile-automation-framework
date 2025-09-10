@@ -3,6 +3,7 @@ package pageObjects;
 import functions.confirmationFunctions;
 import functions.globalFunctions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 
 import org.openqa.selenium.support.FindBy;
@@ -34,6 +35,12 @@ public class Homepage_PO extends Base_PO {
     String userProfilePath = "//*[.//span[text()='" + adminUser + "']]";
     String specialChars = "!@£$%^&*()_+-={}][:'\\?></.,~`";
 
+    public @FindBy(id = "email") WebElement userName;
+    public @FindBy(id = "password") WebElement password;
+    public @FindBy(xpath = "//*[text()='Got it!']") WebElement cookieDialog;
+    public @FindBy(id = "sign-in") WebElement signInButton;
+    private @FindBy(id = "mat-mdc-error-1") WebElement emailReq;
+    private @FindBy(xpath = "//div[text()=' Wrong email or password ']") WebElement wrongUserPsw;
 
     public @FindBy(xpath = "//button[.//span[text()=' Sync Now ']]") WebElement syncButton;
     public @FindBy(id = "user-profile") WebElement profileMenu;
@@ -60,7 +67,15 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(xpath = "//span[contains(text(), 'Report Settings')]") WebElement reportSettings;
     public @FindBy(xpath = "//gr-icon-button[contains(@id, 'context-menu') and not(contains(@class, 'ng-star-inserted'))]") WebElement contextX;
     public @FindBy(xpath = "//input[@id='report-name']") WebElement reportName;
+    public @FindBy(id = "download-report") WebElement downloadReport;
     public @FindBy(xpath = "//button[@id='confirm-button']") WebElement confirmButton;
+
+    public @FindBy (id = "open-cloud-report-search") WebElement cloudSearchButton;
+    public @FindBy (id = "local-report-search-input") WebElement searchBoxLocal;
+    public @FindBy (id = "cloud-report-search-input") WebElement searchBoxCloud;
+    public @FindBy (id = "close-local-report-search") WebElement closeLocalSearch;
+    public @FindBy (id = "close-cloud-report-search")  WebElement closeCloudSearch;
+
 
     public Homepage_PO() throws IOException, URISyntaxException
     {
@@ -96,8 +111,23 @@ public class Homepage_PO extends Base_PO {
 
     }
 
+    public void searchForLocal(String searchTerm) throws IOException, URISyntaxException, InterruptedException {
+        //searchButton.click();
+        sendKeys(searchBoxLocal, searchTerm);
+    }
+
+    public void searchForCloud(String searchTerm) throws IOException, URISyntaxException, InterruptedException {
+        System.out.println("Searching cloud reports for: " + searchTerm);
+        waitForWebElementAndClick(cloudSearchButton);
+        sendKeys(searchBoxCloud, searchTerm);
+    }
+
+
     public void downloadSyncTemplate() throws IOException, URISyntaxException, InterruptedException {
-        try {
+        waitForWebElementAndClick(downloadReport);
+        waitForWebElementAndClick(downloadConfirm);
+
+        /*try {
             System.out.println("Downloading template");
             WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
@@ -122,7 +152,7 @@ public class Homepage_PO extends Base_PO {
             }
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to download template");
-        }
+        }*/
 
     }
 
@@ -287,5 +317,7 @@ public class Homepage_PO extends Base_PO {
         waitForWebElementToBeVisible(reportSettings);
         waitForSyncFinish(cloudReports);
     }
+
+
 
 }

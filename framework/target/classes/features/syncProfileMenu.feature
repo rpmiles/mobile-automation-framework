@@ -1,5 +1,5 @@
 Feature: Sync from the profile menu
-  @test
+  @Sync
   Scenario: Login and sync via the profile menu
     Given I launch the mobile app
     And I enter a username

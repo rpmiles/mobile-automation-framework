@@ -1,6 +1,5 @@
-@reportItems
 Feature: Testing numeric item
-
+  @reportItems
   Scenario Outline: Testing the numeric item with data entry via the gui buttons only
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"

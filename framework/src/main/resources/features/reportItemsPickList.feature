@@ -1,6 +1,5 @@
-@reportItems
 Feature: Testing picklists
-
+  @reportItems
   Scenario Outline: Confirm picklists working correctly
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report

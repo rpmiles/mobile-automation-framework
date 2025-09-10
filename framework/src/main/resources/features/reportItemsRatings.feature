@@ -1,6 +1,5 @@
-@reportItems
 Feature: Ratings testing
-
+  @reportItems
   Scenario Outline: Confirm ratings are working correctly
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"

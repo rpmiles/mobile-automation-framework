@@ -1,12 +1,12 @@
-@reportItems
 Feature: Single text item testing
-
+  @reportItems
   Scenario Outline: Test 'Single Text' item
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
-    #Given I select a report
+    #Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
+    Given I select a report
     When I select the item "<item>"
     And I check navigation
-    And I select the crosshairs icon
+    And I select the x at the end of the field
+    And I select the location icon
     And I return to the report
     And I select the item "<item>"
     And I confirm the location coordinates have saved

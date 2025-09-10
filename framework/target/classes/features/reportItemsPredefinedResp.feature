@@ -1,6 +1,5 @@
-@reportItems
 Feature: Testing Predefined Responses
-
+  @reportItems
   Scenario Outline: Testing the Predefined Responses item
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
@@ -36,5 +35,5 @@ Feature: Testing Predefined Responses
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                          | ReferenceText | ReportDate | DueDate | AddNotes        | item                         | response                                           | response2                                  | response3                             | response4                                        | text                                    |
-      | Test All Controls RM | Report Items - Predefined Responses | PDR Reference | TODAY      | ONEWEEK | PDR Extra Notes | This is Predefined Responses | Another testing entry for testing multiple entries | Multiple more entries are required to test | Third option specifically for testing | Text the same as the button for testing purposes | Additional not predefined response text |
+      | Datacapture          | ReportName                                   | ReferenceText | ReportDate | DueDate | AddNotes        | item                         | response                                         | response2                                  | response3                                            | response4 | text                                    |
+      | Test All Controls RM | Mobile - Report Items - Predefined Responses | PDR Reference | TODAY      | ONEWEEK | PDR Extra Notes | This is Predefined Responses | Text the same as the button for testing purposes | Multiple more entries are required to test | Entering more options to confirm multiple selections | Testing   | Additional not predefined response text |

@@ -29,6 +29,7 @@ public class DriverFactory {
         UiAutomator2Options options = new UiAutomator2Options();
 
         //Galaxy A8 Details
+        //options.setDeviceName("R9PW10PFT5V"); //A7 Lite
         options.setDeviceName("R9YT90YL90V"); //A8
         options.setAppPackage("org.chromium.webapk.a5e29f87b2a738c26_v2"); //A8
 

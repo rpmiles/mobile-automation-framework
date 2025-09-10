@@ -1,6 +1,5 @@
-@reportItems
 Feature: Date item testing
-
+  @reportItems
   Scenario Outline: Confirming date fields function correctly
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
@@ -31,6 +30,6 @@ Feature: Date item testing
 
 
     Examples:
-      | Datacapture          | ReportName                      | ReferenceText                      | ReportDate | DueDate | AddNotes                             | item           | year   | month | day  | reportDate         |
-      | Test All Controls RM | Report Items - Date             | Reference Date Testing             | TODAY      | ONEWEEK | Date Testing Extra Notes             | This is a Date | "2017" | "NOV" | "26" | "26 November 2017" |
-      | Test All Controls RM | Report Items - Date - Leap Year | Reference Date Testing (Leap Year) | TODAY      | ONEWEEK | Date Testing (Leap Year) Extra Notes | This is a Date | "2024" | "FEB" | "25" | "25 February 2024" |
+      | Datacapture          | ReportName                               | ReferenceText                      | ReportDate | DueDate | AddNotes                             | item           | year   | month | day  | reportDate         |
+      | Test All Controls RM | Mobile - Report Items - Date             | Reference Date Testing             | TODAY      | ONEWEEK | Date Testing Extra Notes             | This is a Date | "2017" | "NOV" | "26" | "26 November 2017" |
+      | Test All Controls RM | Mobile - Report Items - Date - Leap Year | Reference Date Testing (Leap Year) | TODAY      | ONEWEEK | Date Testing (Leap Year) Extra Notes | This is a Date | "2024" | "FEB" | "25" | "25 February 2024" |

@@ -3,6 +3,7 @@ package pageObjects;
 import driver.DriverFactory;
 import io.appium.java_client.android.AndroidDriver;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import utils.globalVariables;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
 import java.time.Duration;
 
@@ -66,6 +68,21 @@ public class Base_PO {
         System.out.println("Waiting for " + element);
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
         wait.until(ExpectedConditions.visibilityOf(element));
+    }
+
+    public void waitForAngular(WebElement element) throws IOException, URISyntaxException {
+        System.out.println("Waiting for " + element);
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
+        wait.until(d -> (Boolean)((JavascriptExecutor)d).executeScript(
+                "return window.getAllAngularTestabilities ? window.getAllAngularTestabilities().every(x=>x.isStable()) : true"
+        ));
+    }
+
+    public void waitForPresenceOfLocated(WebElement element) throws IOException, URISyntaxException {
+        WebElement el = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT))
+                .until(ExpectedConditions.elementToBeClickable(element));
+        el.click();
+
     }
 
     /*public void waitForSignOutComplete () throws IOException, URISyntaxException {

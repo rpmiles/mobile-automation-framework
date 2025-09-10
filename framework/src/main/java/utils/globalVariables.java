@@ -26,7 +26,7 @@ public class globalVariables {
     public static String standardUser = "user@beta.com";
     public static String standardPsw = "run my testing decisively";
     //public static String releaseVersion = "202568";
-    public static String releaseVersion = "20250826-0";
+    public static String releaseVersion = "Dummy";
 
 
     public class ElementHelper extends Base_PO {

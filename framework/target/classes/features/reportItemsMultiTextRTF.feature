@@ -1,6 +1,5 @@
-@reportItems
 Feature: Multi Text Rich Formatting Item Testing
-
+  @reportItems
   Scenario Outline: Confirming multi text fields function correctly
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
@@ -45,8 +44,8 @@ Feature: Multi Text Rich Formatting Item Testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                    | ReferenceText            | ReportDate | DueDate | AddNotes                   | item               | text                                          |
-      | Test All Controls RM | Report Items - Multi Text RTF | Multi Item RTF Reference | TODAY      | ONEWEEK | Multi Item RTF Extra Notes | This is Multi Text | Specific text entered for validation purposes |
+      | Datacapture          | ReportName                             | ReferenceText            | ReportDate | DueDate | AddNotes                   | item               | text                                          |
+      | Test All Controls RM | Mobile - Report Items - Multi Text RTF | Multi Item RTF Reference | TODAY      | ONEWEEK | Multi Item RTF Extra Notes | This is Multi Text | Specific text entered for validation purposes |
 
 
     

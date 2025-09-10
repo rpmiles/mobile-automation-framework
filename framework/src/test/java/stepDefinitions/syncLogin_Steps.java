@@ -30,8 +30,8 @@ public class syncLogin_Steps {
         homepage_po.selectCloudReports();
     }
 
-    @And("I download a specific report")
-    public void download_a_specific_report() throws IOException, URISyntaxException, InterruptedException {
+    @And("I download the report")
+    public void download_the_report() throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Downloading report");
         homepage_po.downloadSyncTemplate();
     }

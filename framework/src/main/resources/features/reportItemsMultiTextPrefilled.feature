@@ -1,6 +1,5 @@
-@reportItems
 Feature: Multi text prefilled item testing
-
+  @reportItems
   Scenario Outline: Confirming prefilled multi text fields function correctly
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"

@@ -6,6 +6,7 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import functions.globalFunctions;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -48,11 +49,11 @@ public class TestAllControlsRM_PO extends Base_PO {
     public @FindBy(className = "ql-strike") WebElement strikethrough;
     public @FindBy(xpath = "//div[contains(@class, 'ql-editor')]") WebElement multiText;
     public @FindBy(css = ".svg-inline--fa.fa-paragraph.fa-2xl") WebElement carriageReturn;
-    public @FindBy(css = ".svg-inline--fa.fa-location-crosshairs.fa-2xl") WebElement locationCrosshairs;
+    public @FindBy(css = "svg[data-icon='location-crosshairs']") WebElement locationCrosshairs;
 
 
     //Single Text Field
-    public @FindBy(xpath = "//app-location") WebElement crosshairsIcon;
+    public @FindBy(css = "app-location div.cursor-pointer") WebElement crosshairsIcon;
     public @FindBy(xpath = "//lib-single-text//input[@matinput]") WebElement singleText;
     public @FindBy(xpath = "//button[.//mat-icon[text()='close']]") WebElement clearSingleText;
 
@@ -110,6 +111,7 @@ public class TestAllControlsRM_PO extends Base_PO {
 
         //FOR SINGLE LINE TEXT BOXES
         System.out.println("Selecting crosshairs");
+
         waitForWebElementToBeVisible(crosshairsIcon);
         waitForWebElementAndClick(crosshairsIcon);
         Thread.sleep(2000);

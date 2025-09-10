@@ -1,13 +1,13 @@
-@reportItems
+@uploads
 Feature: Testing report uploads
 
   Scenario Outline: Test uploads by creating, uploading, downloading and confirming
 
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
-    #Given I select a report
+    #Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
+    Given I select a report
     #Set values for all items
     And I select the item "Preformatted Text for Copy/Paste Tests"
-    And I delete all the text in the Multi Text Prefilled item
+    And I clear the field
     And I select the numbered list button
     And I add three lines of text
     And I select the tick or done button
@@ -41,7 +41,7 @@ Feature: Testing report uploads
     And I select the item "This is a Date"
     And I select a day "10"
     And I select the tick or done button
-    And I confirm the correct date is listed in the report view "10 August 2025"
+    And I confirm the correct date is listed in the report view "10 September 2025"
     And I select the item "This is a Switch"
     And I select switch "Switch 2"
     And I select the tick or done button

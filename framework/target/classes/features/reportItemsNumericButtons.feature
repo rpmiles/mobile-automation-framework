@@ -1,6 +1,5 @@
-@reportItems
 Feature: Testing numeric item
-
+  @reportItems
   Scenario Outline: Testing the numeric item with data entry via the gui buttons only
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
@@ -65,6 +64,6 @@ Feature: Testing numeric item
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                                  | ReferenceText             | ReportDate | DueDate | AddNotes                    | item              | value0 | value1 | value2 |  | value3 |  | value4 |  | value5 |  | value6 |  | value7 |  | value8 |  | value9 |  | value0 |  | value00 |  | value000 |  | value0000 |  | valueDot |
-      | Test All Controls RM | Report Items - Numeric - Item Buttons Entry | Numeric Buttons Reference | TODAY      | ONEWEEK | Numeric Buttons Extra Notes | This is a Numeric | 0      | 1      | 2      |  | 3      |  | 4      |  | 5      |  | 6      |  | 7      |  | 8      |  | 9      |  | 0      |  | 00      |  | 000      |  | 0000      |  | .        |
+      | Datacapture          | ReportName                                           | ReferenceText             | ReportDate | DueDate | AddNotes                    | item              | value0 | value1 | value2 |  | value3 |  | value4 |  | value5 |  | value6 |  | value7 |  | value8 |  | value9 |  | value0 |  | value00 |  | value000 |  | value0000 |  | valueDot |
+      | Test All Controls RM | Mobile - Report Items - Numeric - Item Buttons Entry | Numeric Buttons Reference | TODAY      | ONEWEEK | Numeric Buttons Extra Notes | This is a Numeric | 0      | 1      | 2      |  | 3      |  | 4      |  | 5      |  | 6      |  | 7      |  | 8      |  | 9      |  | 0      |  | 00      |  | 000      |  | 0000      |  | .        |
 

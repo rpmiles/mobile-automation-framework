@@ -4,10 +4,14 @@ import functions.confirmationFunctions;
 import functions.globalFunctions;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
+import org.openqa.selenium.JavascriptExecutor;
 import pageObjects.*;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.URISyntaxException;
+
+import static utils.globalVariables.adminUser;
 
 public class homepage_Steps extends Base_PO {
 
@@ -42,6 +46,12 @@ public class homepage_Steps extends Base_PO {
 
         createReport_po = new CreateReport_PO();
         createReport_po.initElements();
+    }
+
+    @And("I sign in as Richard Watterson")
+    public void i_sign_in_as_richard_watterson() throws IOException, URISyntaxException {
+        sendKeys(homepage_po.userName, "user@beta.com");
+        sendKeys(homepage_po.password, "run my testing decisively");
     }
 
     @And("I confirm the report name has not changed {string}")
@@ -134,5 +144,13 @@ public class homepage_Steps extends Base_PO {
         confirmationFunctions.confirmReportDetailsNotes(notes);
     }
 
-}
+    @And("I search cloud reports for {string}")
+    public void i_search_for (String searchTerm) throws IOException, URISyntaxException, InterruptedException {
+        homepage_po.searchForCloud(searchTerm);
+    }
 
+    @And("I close the search field")
+    public void i_search_close_the_search_field () throws IOException, URISyntaxException {
+     homepage_po.closeLocalSearch.click();
+    }
+}

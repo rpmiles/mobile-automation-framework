@@ -1,12 +1,12 @@
-@reportItems
+@uploads
 Feature: Confirm the previously uploaded report has been received and processed successfully
 
   Scenario: Confirm successful upload
 
     Given I select the profile menu
     And I select sync
-    And I download a specific report with name "Report Items"
-    And I select the report which the title contains "Report Items - Upload"
+    And I download a specific report with name "Mobile - Report Items - Upload testsReport Items"
+    And I select the report which the title contains "Mobile - Report Items - Upload"
     And I confirm Preformatted Text for Copy and Paste Tests holds the correct value
     And I confirm This is Single Text holds the correct value
     And I confirm This is Multi Text holds the correct value

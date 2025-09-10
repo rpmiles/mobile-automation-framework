@@ -1,6 +1,5 @@
-@reportItems
 Feature: Ratings testing
-
+  @reportItems
   Scenario Outline: Confirm ratings are working correctly
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
@@ -49,6 +48,6 @@ Feature: Ratings testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                          | ReferenceText     | ReportDate | DueDate | AddNotes            | item               | option1 | option2 | option3 |
-      | Test All Controls RM | Report Items - Ratings              | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is a Rating   | Y       | N       | M       |
-      | Test All Controls RM | Report Items - Ratings (Multi-Text) | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is Multi Text | 1       | 2       | 3       |
+      | Datacapture          | ReportName                                   | ReferenceText     | ReportDate | DueDate | AddNotes            | item               | option1 | option2 | option3 |
+      | Test All Controls RM | Mobile - Report Items - Ratings              | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is a Rating   | Y       | N       | M       |
+      | Test All Controls RM | Mobile - Report Items - Ratings (Multi-Text) | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is Multi Text | 1       | 2       | 3       |

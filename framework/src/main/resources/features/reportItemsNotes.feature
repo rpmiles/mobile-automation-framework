@@ -47,5 +47,5 @@ Feature: Report notes testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                                     | ReferenceText           | ReportDate | DueDate | AddNotes                               | item                                   | text                       |
-      | Test All Controls RM | Mobile - Report Items - Notes (ReleaseVersion) | Reference Notes Testing | TODAY      | ONEWEEK | Notes for each report item extra notes | Preformatted Text for Copy/Paste Tests | !@$%^&*()_+=-[]}{\?><,./~` |
+      | Datacapture          | ReportName                    | ReferenceText           | ReportDate | DueDate | AddNotes                               | item                                   | text                       |
+      | Test All Controls RM | Mobile - Report Items - Notes | Reference Notes Testing | TODAY      | ONEWEEK | Notes for each report item extra notes | Preformatted Text for Copy/Paste Tests | !@$%^&*()_+=-[]}{\?><,./~` |

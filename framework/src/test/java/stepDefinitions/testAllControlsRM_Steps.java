@@ -8,10 +8,15 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pageObjects.*;
+import utils.globalVariables;
+
+import static utils.globalVariables.*;
 
 import javax.swing.plaf.UIResource;
 import java.io.IOException;
@@ -85,6 +90,8 @@ public class testAllControlsRM_Steps extends Base_PO {
     private String enterUnderlinedExpected = "Entering some underlined text to confirm form uploads correctly";
     private String enterMultiformatExpected = "Bold text with some added italics, added underline but removed bold, completed with strikethrough changed with simple bold and finally removed all formatting";
     private String ratingExpected = "N";
+
+    private @FindBy(xpath = "//button[@value='ordered']") WebElement orderedList;
 
 
     public testAllControlsRM_Steps() throws IOException, URISyntaxException {
@@ -239,8 +246,24 @@ public class testAllControlsRM_Steps extends Base_PO {
         testAllControlsRM_po.multiText.clear();
     }
 
+    @And("I clear the field")
+    public void i_clear_the_field() throws IOException, URISyntaxException {
+        System.out.println("Deleting all text");
+        sendKeys(testAllControlsRM_po.multiText, (Keys.chord(Keys.CONTROL, "a")));
+        sendKeys(testAllControlsRM_po.multiText, (Keys.chord(Keys.BACK_SPACE)));
+    }
 
+    @And("I select the location icon")
+    public void i_select_the_location_icon() throws IOException, URISyntaxException, InterruptedException {
+        WebElement wrapper = new WebDriverWait(getDriver(), Duration.ofSeconds(8))
+                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("app-location div.cursor-pointer")));
 
+        new Actions(getDriver())
+                .moveToElement(wrapper)
+                .pause(Duration.ofMillis(150))
+                .click()
+                .perform();
+    }
 
     //Text formatting steps
     @When("I enter specific text")
@@ -539,7 +562,6 @@ public class testAllControlsRM_Steps extends Base_PO {
 
     @And("I select the location crosshairs icon")
     public void i_select_the_location_crosshairs_icon() throws IOException, URISyntaxException, InterruptedException {
-        testAllControlsRM_po.clearMultiText();
         testAllControlsRM_po.selectLocationCrosshairs();
     }
 
@@ -800,7 +822,9 @@ public class testAllControlsRM_Steps extends Base_PO {
     }
 
     @And("I confirm it's in a numbered list")
-    public void i_confirm_it_s_in_a_numbered_list() throws IOException, URISyntaxException {
+    public void i_confirm_it_s_in_a_numbered_list() throws IOException, URISyntaxException, InterruptedException {
+        //Thread.sleep(2000);
+        waitForAngular(orderedList);
         confirmationFunctions.confirmNumberlist();
     }
 

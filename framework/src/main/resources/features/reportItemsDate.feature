@@ -1,6 +1,5 @@
-@reportItems
 Feature: Date item testing
-
+  @reportItems
   Scenario Outline: Confirming date fields function correctly
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report

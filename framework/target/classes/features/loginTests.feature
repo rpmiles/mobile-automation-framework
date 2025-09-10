@@ -1,3 +1,4 @@
+@login
 Feature: Login tests except for Initial login
 
   Scenario: Login screen is displayed and required fields highlighted

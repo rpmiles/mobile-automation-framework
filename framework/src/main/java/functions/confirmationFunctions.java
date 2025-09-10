@@ -45,6 +45,9 @@ public class confirmationFunctions extends Base_PO {
     public @FindBy(xpath = "//input[@id='report-date']") WebElement detailsInspectionDate;
     public @FindBy(xpath = "//input[@id='due-date']") WebElement detailsDueDate;
 
+    //Co-ordinates check
+    public @FindBy(css= "[id*='mat-input-']") WebElement coordinatesCheck;
+
 
     //Ratings
     public @FindBy(xpath = "//lib-read-only-rating[@class='ng-star-inserted']//span[normalize-space(text())='1']") WebElement multiTextReportViewRating1;
@@ -446,10 +449,11 @@ public class confirmationFunctions extends Base_PO {
     public void confirmNotEmpty() throws IOException, URISyntaxException {
         try {
             System.out.println("Confirming data maintained");
-            waitForWebElement(extractedTextField);
+            Thread.sleep(2000);
+            waitForWebElement(coordinatesCheck);
             //System.out.println("Extracting text");
             JavascriptExecutor js = (JavascriptExecutor) getDriver();
-            String coordinatesText = (String) js.executeScript("return arguments[0].value;", extractedTextField);
+            String coordinatesText = (String) js.executeScript("return arguments[0].value;", coordinatesCheck);
             System.out.println("Value prior to trimming: " + coordinatesText);
             String cleaned = null;
             if (coordinatesText != null) {
@@ -463,6 +467,8 @@ public class confirmationFunctions extends Base_PO {
             System.out.println("Confirmed text is in field");
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm the field is not empty");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
         }
     }
 
@@ -767,6 +773,7 @@ public class confirmationFunctions extends Base_PO {
         try{
         // Confirm number list entries
         WebElement numberItem = getDriver().findElement(By.xpath("//li[@data-list='ordered' and contains(text(),'" + numlist1Text + "')]"));
+        waitForWebElement(numberItem);
         Assert.assertTrue(numberItem.isDisplayed());
         System.out.println("Number list entry 1 is correctly formatted");
         //System.out.println(numlist1Text);

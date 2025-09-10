@@ -1,6 +1,5 @@
-@reportItems
 Feature: Single text prefilled item testing
-
+  @reportItems
   Scenario Outline: Confirming prefilled single text fields function correctly
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
@@ -17,12 +16,12 @@ Feature: Single text prefilled item testing
     And I select the back arrow
     And the list of reports is displayed
     And I select the upload button
-    #And I select upload
+    And I select upload
     Then I confirm the upload has completed
     And I close the upload dialog
     And I select the context menu
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                                 | ReferenceText | ReportDate | DueDate | AddNotes                          | item                            |
-      | Test All Controls RM | Report Items - Single Text Prefilled Tests | STP Reference | TODAY      | ONEWEEK | Single Text Prefilled Extra Notes | This is Prefilled Text (Single) |
+      | Datacapture          | ReportName                                          | ReferenceText | ReportDate | DueDate | AddNotes                          | item                            |
+      | Test All Controls RM | Mobile - Report Items - Single Text Prefilled Tests | STP Reference | TODAY      | ONEWEEK | Single Text Prefilled Extra Notes | This is Prefilled Text (Single) |

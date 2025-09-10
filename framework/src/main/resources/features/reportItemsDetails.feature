@@ -1,6 +1,5 @@
-@reportItems
 Feature: Testing report details editing
-
+  @reportItems
   Scenario Outline: In depth testing of report details
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
@@ -42,11 +41,11 @@ Feature: Testing report details editing
     And I enter an invalid inspection date "29 February 2031"
     And I select the reference field
     And I confirm the inspection date is marked as invalid
-    And I select an inspection date
+    And I select an inspection date "<ReportDate>"
     And I enter an invalid due date "29 Feburary 2031"
     And I select the reference field
     And I confirm the due date is marked as invalid
-    And I select a due date
+    And I select a due date "<DueDate>"
     And I clear the report notes field
     And I enter some report notes "<ExtraNotes>"
     And I select update
@@ -73,4 +72,4 @@ Feature: Testing report details editing
 
     Examples:
       | Datacapture          | ReportName        | ReferenceText     | ReportDate | DueDate | AddNotes            | item            | SpecialChars                  | ExtraNotes                                       |
-      | Test All Controls RM | Reports - Details | Reference Details | TODAY      | TODAY   | Details Extra Notes | Report Settings | !@£$%^&*()_+-={}][:'\?></.,~` | Extra notes as part of document creation testing |
+      | Test All Controls RM | Reports - Details | Reference Details | TODAY      | ONEWEEK | Details Extra Notes | Report Settings | !@£$%^&*()_+-={}][:'\?></.,~` | Extra notes as part of document creation testing |

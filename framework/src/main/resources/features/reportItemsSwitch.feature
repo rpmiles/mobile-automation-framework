@@ -1,6 +1,6 @@
-@reportItems
-Feature: Switch item testing
 
+Feature: Switch item testing
+  @reportItems
   Scenario Outline: Confirming the Switch item functions as intended
 
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
