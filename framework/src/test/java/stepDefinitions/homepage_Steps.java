@@ -124,10 +124,12 @@ public class homepage_Steps extends Base_PO {
         createReport_po.extraNotes.sendKeys(text);
     }
 
+
     @And("I clear the report notes field")
     public void i_clear_the_notes_field() {
         createReport_po.extraNotes.clear();
     }
+
 
     @And("I confirm the report details inspection date are correct {string}")
     public void i_confirm_the_report_details_inspection_date_are_correct(String date) throws IOException, URISyntaxException {
@@ -151,6 +153,54 @@ public class homepage_Steps extends Base_PO {
 
     @And("I close the search field")
     public void i_search_close_the_search_field () throws IOException, URISyntaxException {
-     homepage_po.closeLocalSearch.click();
+        waitForWebElementAndClick(homepage_po.closeLocalSearch);
+    }
+
+    @And("I delete the report")
+    public void i_delete_the_report() throws IOException, URISyntaxException, InterruptedException {
+        waitForWebElementAndClick(homepage_po.deleteButton);
+        System.out.println("Selecting Delete button from context menu");
+        waitForWebElementAndClick(homepage_po.confirmDelete);
+        System.out.println("Typing Delete");
+        sendKeys(homepage_po.confirmDeleteText, "Delete");
+        System.out.println("Selecting Confirm button");
+        waitForWebElementAndClick(homepage_po.deleteReport);
+        Thread.sleep(1000);
+    }
+
+    @And("I select if I want to include photos and audio {string}")
+    public void i_select_if_i_want_to_include_photos_and_audio(String addPhotos) throws IOException, URISyntaxException, InterruptedException {
+        if ("true".equals(addPhotos)) {
+            System.out.println("Including photos and audio");
+            waitForWebElementAndClick(homepage_po.addPhotos);
+        }
+    }
+
+
+    @And("I select if I want to include notes {string}")
+    public void i_select_if_i_want_to_include_notes (String addNotes) throws IOException, URISyntaxException, InterruptedException {
+        if ("true".equals(addNotes)) {
+            System.out.println("Including notes");
+            waitForWebElementAndClick(homepage_po.addNotes);
+        }
+    }
+
+
+    @And("I select clone")
+    public void i_select_clone() throws IOException, URISyntaxException {
+        System.out.println("Clicking Clone");
+        waitForWebElementAndClick(homepage_po.cloneButton);
+    }
+
+
+    @And("I select the cloned report {string}")
+    public void i_select_the_cloned_report(String reportName) throws IOException, URISyntaxException {
+        waitForWebElementAndClick(homepage_po.editReport);
     }
 }
+/*
+@And("")
+public void () throws IOException, URISyntaxException {
+
+}
+*/

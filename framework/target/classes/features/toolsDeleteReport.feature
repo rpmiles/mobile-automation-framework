@@ -12,6 +12,7 @@ Feature: Deleting a report on the homepage (copy paste instances for more than o
     And I delete the report
     And I select a report
     And I select the back arrow
+
     #2
     And I select the context menu
     And I delete the report

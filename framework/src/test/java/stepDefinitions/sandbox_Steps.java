@@ -93,8 +93,8 @@ public class sandbox_Steps extends Base_PO {
 
     @And("Export the picklist field in report view")
     public void export_the_picklist_field_in_report_view() throws IOException, URISyntaxException {
-        waitForWebElementToBeVisible(confirmationFunctions.picklistReportView);
-        String picklist = confirmationFunctions.picklistReportView.getText();
+        waitForWebElementToBeVisible(confirmationFunctions.multiPickListReportView);
+        String picklist = confirmationFunctions.multiPickListReportView.getText();
         System.out.println("Picklist: " + picklist);
     }
 

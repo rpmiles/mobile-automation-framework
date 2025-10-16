@@ -21,8 +21,9 @@ import java.util.NoSuchElementException;
 import static driver.DriverFactory.getDriver;
 
 
-public class CloneReport_PO extends Base_PO{
+public class CloneReport_PO extends Base_PO {
 
+    Homepage_PO homepagePo;
 
     public @FindBy(id = "template-name") WebElement dataCapture;
     public @FindBy(id = "report-name") WebElement reportName;
@@ -31,7 +32,7 @@ public class CloneReport_PO extends Base_PO{
     public @FindBy(id = "save-report") WebElement saveReport;
     public @FindBy(xpath = "//span[contains(@class, 'ml-2') and normalize-space(text())='Clone Report']") WebElement cloneButton;
     public @FindBy(id = "include-notes-button") WebElement includeNotes;
-   // public @FindBy(xpath = "//button[contains(@id, 'include-notes-button') and contains(@class, 'mdc-switch--checked')]") WebElement includeNotes;
+    // public @FindBy(xpath = "//button[contains(@id, 'include-notes-button') and contains(@class, 'mdc-switch--checked')]") WebElement includeNotes;
     public @FindBy(id = "include-photos-audio-button") WebElement includePhotosAudio;
     public @FindBy(id = "report-date") WebElement inspectionDateElement;
     public @FindBy(id = "due-date") WebElement dueDateElement;
@@ -40,36 +41,21 @@ public class CloneReport_PO extends Base_PO{
     public CloneReport_PO() throws IOException, URISyntaxException {
         super();
         PageFactory.initElements(getDriver(), this);
+        homepagePo = new Homepage_PO();
+        homepagePo.initElements();
     }
 
     public void selectAll(WebElement fieldToSelect) throws IOException, URISyntaxException {
         sendKeys(fieldToSelect, (Keys.chord(Keys.CONTROL, "a")));
     }
+
     public void cloneReport(String targetReport, String nameOfReport, String referenceText,
-                            String inspectionDateReq, String inspectionDate, String dueDateReq, String dueDate,  String notesText, String addNotes, String addPhotos) throws IOException, URISyntaxException, InterruptedException {
+                            String inspectionDateReq, String inspectionDate, String dueDateReq, String dueDate, String notesText, String addNotes, String addPhotos) throws IOException, URISyntaxException, InterruptedException {
 
         /////////////////////////Select Report Clone Button////////////////////////////
-        try {
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
-
-            List<WebElement> items = getDriver().findElements(By.tagName("app-report-list-items"));
-            List<WebElement> ellipsisButtons = getDriver().findElements(By.id("context-menu"));
-
-            int count = 0;
-            for (WebElement item : items) {
-                String title = item.getText().trim();
-                if (title.contains(targetReport)) {
-                    ellipsisButtons.get(count).click();
-                    break;
-                }
-                count++;
-            }
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to clone template");
-        }
-
+        System.out.println("Clicking Clone");
         waitForWebElementAndClick(cloneButton);
+
         /////////////////////////Enter Report Name////////////////////////////
         nameOfReport = (nameOfReport + " <" + globalVariables.releaseVersion + ">");
         reportName.clear();
@@ -77,10 +63,11 @@ public class CloneReport_PO extends Base_PO{
 
         /////////////////////////Enter Reference////////////////////////////
         String fullReferenceText = (referenceText + " <" + globalVariables.releaseVersion + ">");
+        reference.clear();
         sendKeys(reference, fullReferenceText);
 
         /////////////////////////Select Inspection Date////////////////////////////
-        if(inspectionDateReq.equals("true")) {
+        if (inspectionDateReq.equals("true")) {
 
             selectAll(inspectionDateElement);
             sendKeys(inspectionDateElement, inspectionDate);
@@ -91,34 +78,30 @@ public class CloneReport_PO extends Base_PO{
 
             selectAll(dueDateElement);
             sendKeys(dueDateElement, dueDate);
-
-            /////////////////////////Add Notes////////////////////////////
-            sendKeys(extraNotes, notesText);
-
-
-            /////////////////////////Include Photo's and Audio?////////////////////////////
-            String ariaChecked = includePhotosAudio.getAttribute("aria-checked");
-            if (!ariaChecked.equals(addPhotos)) {
-                waitForWebElementAndClick(includePhotosAudio);
-                if (addPhotos.equals("true")) {
-                    System.out.println("Selecting to include all photographs and audio");
-                }
-            }
-
-            /////////////////////////Include Notes?////////////////////////////
-
-            ariaChecked = includeNotes.getAttribute("aria-checked");
-            if (!ariaChecked.equals(addNotes)) {
-                waitForWebElementAndClick(includeNotes);
-                if (addNotes.equals("true")) {
-                    System.out.println("Selecting to include all photographs and audio");
-                }
-            }
-
-
-            /////////////////////////Create Report////////////////////////////
-            waitForWebElementAndClick(saveReport);
-
         }
+        /////////////////////////Add Notes////////////////////////////
+        sendKeys(extraNotes, notesText);
+
+
+        /////////////////////////Include Photo's and Audio?////////////////////////////
+        if ("true".equals(addPhotos)) {
+            System.out.println("Including photos and audio");
+            waitForWebElementAndClick(homepagePo.addPhotos);
+        }
+
+
+        /////////////////////////Include Notes?////////////////////////////
+
+        if ("true".equals(addNotes)) {
+            System.out.println("Including notes");
+            waitForWebElementAndClick(homepagePo.addNotes);
+        }
+
+
+        /////////////////////////Create Report///////////////////////////
+
+        waitForWebElementAndClick(saveReport);
+
     }
+
 }

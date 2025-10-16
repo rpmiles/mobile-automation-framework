@@ -47,7 +47,7 @@ public class testAllControlsRM_Steps extends Base_PO {
     private final String numlist3Text = "Number list entry 3";
     private String expectedNumber;
     public String prefilledText = "New Paragraph\n" +
-            "THIS IS NEW TEXT ADDED FOR TESTING "+
+            "THIS IS NEW TEXT ADDED FOR TESTING " +
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. " +
             "Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus " +
             "urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac " +
@@ -74,7 +74,7 @@ public class testAllControlsRM_Steps extends Base_PO {
             "THIS IS NEW TEXT ADDED FOR TESTING Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac molestie odio. Cras in est dolor. Maecenas nec augue eu arcu tincidunt ullamcorper. In eu magna sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.";
     private String dateExpected = "10 July 2025";
     private String switchExpected = "Switch 2";
-    private String picklistExpected = "Option 2,Option 3";
+    private String picklistExpected = "Option 4,Option 3";
     private String bakedInTokensExpected = "These are the baked in values:\n" +
             "\n" +
             "Date : .Date.\n" +
@@ -531,7 +531,7 @@ public class testAllControlsRM_Steps extends Base_PO {
     }
 
     @And("I can delete some text {string}")
-    public void i_can_delete_some_text(String response3) throws MalformedURLException, URISyntaxException{
+    public void i_can_delete_some_text(String response3) throws MalformedURLException, URISyntaxException {
         testAllControlsRM_po.deleteText(response3);
     }
 
@@ -901,18 +901,6 @@ public class testAllControlsRM_Steps extends Base_PO {
         }
     }
 
-    @And("I delete the report")
-    public void i_delete_the_report() throws IOException, URISyntaxException, InterruptedException {
-        waitForWebElementAndClick(homepage_po.deleteButton);
-        System.out.println("Selecting Delete button from context menu");
-        waitForWebElementAndClick(homepage_po.confirmDelete);
-        System.out.println("Typing Delete");
-        sendKeys(homepage_po.confirmDeleteText, "Delete");
-        System.out.println("Selecting Confirm button");
-        waitForWebElementAndClick(homepage_po.deleteReport);
-        Thread.sleep(1000);
-    }
-
     @And("I select the context menu")
     public void i_select_the_context_menu() throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementAndClick(homepage_po.contextMenu);
@@ -1081,7 +1069,7 @@ public class testAllControlsRM_Steps extends Base_PO {
 
     @And("I confirm switch {string} is selected")
     public void i_Confirm_Switch_Is_Selected(String switchConfirm) throws IOException, URISyntaxException, InterruptedException {
-    confirmationFunctions.confirmSwitchSelected(switchConfirm);
+        confirmationFunctions.confirmSwitchSelected(switchConfirm);
     }
 
     @And("I confirm switch {string} is not selected")
@@ -1111,7 +1099,7 @@ public class testAllControlsRM_Steps extends Base_PO {
 
     @And("I confirm the text is correct and formatted in bold")
     public void i_Confirm_The_Text_Is_Correct_And_Formatted_In_Bold() throws IOException, URISyntaxException {
-         confirmationFunctions.confirmBoldUpload(enterBoldExpected);
+        confirmationFunctions.confirmBoldUpload(enterBoldExpected);
     }
 
     @And("I confirm the text is correct and formatted in italics")
@@ -1144,9 +1132,115 @@ public class testAllControlsRM_Steps extends Base_PO {
         System.out.println("Flipping the card back over to report details");
         waitForWebElementAndClick(homepage_po.contextX);
     }
+
+    @And("I confirm the cloned this is single text report view value is correct")
+    public void i_confirm_the_cloned_this_is_single_text_report_view_value_is_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewSingleText();
+    }
+
+    @And("I confirm the cloned text in Multi Text RTF report view")
+    public void i_confirm_the_cloned_text_in_multi_text_rtf() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewMultiText();
+    }
+
+
+    @And("I confirm the cloned text in Single Text Prefilled is correct")
+    public void i_confirm_the_cloned_text_in_single_text_prefilled_is_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewPrefilledSingle();
+    }
+
+
+    @And("I confirm the modified text in Multi Text Prefilled is correct")
+    public void i_confirm_the_modified_text_in_multi_text_prefilled_is_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewPrefilledMulti();
+    }
+
+    @And("I confirm the cloned date entry is correct {string}")
+    public void  i_confirm_the_cloned_date_entry_is_correct(String clonedReportViewDate) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedReportViewDate(clonedReportViewDate);
+
+    }
+
+
+    @And("I confirm the cloned this is a switch is correct")
+    public void i_confirm_the_cloned_this_is_a_switch_is_correct () throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedReportViewSwitch();
+    }
+
+
+    @And("I confirm the cloned multi select pick list is correct")
+    public void i_confirm_the_cloned_multi_select_pick_list_is_correct() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedReportViewMultiSelectPicklist();
+    }
+
+
+
+    @And("I confirm the cloned single select pick list is correct")
+    public void i_confirm_the_cloned_single_select_pick_list_is_correct() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedReportViewSingleSelectPicklist();
+    }
+
+
+    @And("I confirm the cloned this has baked in tokens is correct")
+    public void i_confirm_the_cloned_this_has_baked_in_tokens_is_correct () throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedReportBakedInTokens();
+    }
+
+
+    @And("I confirm the cloned this is predefined responses is correct")
+    public void i_confirm_the_cloned_this_is_predefined_response_is_correct() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedPredefinedResponses();
+    }
+
+
+    @And("I confirm the cloned this is a numeric is correct")
+    public void i_confirm_the_cloned_this_is_a_numeric_is_correct () throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedNumeric();
+    }
+
+
+
+    @And("I confirm the cloned enter bold text is correct")
+    public void i_confirm_the_cloned_enter_bold_text_is_correct() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedEnterBold();
+    }
+
+
+
+    @And("I confirm the cloned enter italics text is correct")
+    public void  i_confirm_the_cloned_enter_italics_text_is_correct () throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedEnterItalics();
+    }
+
+
+
+    @And("I confirm the cloned enter underlined text is correct")
+    public void  i_confirm_the_cloned_enter_underlined_text_is_correct() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedEnterUnderlined();
+    }
+
+
+    @And("I confirm the cloned multi formatted text is correct")
+    public void  i_confirm_the_cloned_enter_multi_formatted_text_is_correct() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedMultiFormatted();
+    }
+
+
+    @And("I confirm the cloned this is a rating is correct")
+    public void  i_confirm_the_cloned_this_is_a_rating_is_correct() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClonedRating();
+    }
+
 }
 
+/*
 
+@And("")
+public void () throws IOException, URISyntaxException {
+
+}
+
+*/
 
 
 

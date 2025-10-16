@@ -85,10 +85,10 @@ public class globalFunctions extends Base_PO {
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(text(), '" + numericValue + "')]")
+                By.xpath("//lib-options-list-item[contains(@class,'ng-star-inserted') and contains(.,'" + numericValue + "')]")
         ));
 
-        By scrolledNumeric = By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(text(), '" + numericValue + "')]");
+        By scrolledNumeric = By.xpath("//lib-options-list-item[contains(@class,'ng-star-inserted') and contains(.,'" + numericValue + "')]");
         wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledNumeric));
 
 
@@ -114,11 +114,11 @@ public class globalFunctions extends Base_PO {
             WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
             wait.until(ExpectedConditions.visibilityOfElementLocated(
 
-                    By.xpath("//lib-editor-item[@class='ng-star-inserted']//span[text()='" + option + "']")
+                    By.xpath("//lib-rating[contains(@class,'ng-star-inserted')]//span[text()='" + option + "']")
             ));
 
 
-            By scrolledRating = By.xpath("//lib-editor-item[@class='ng-star-inserted']//span[text()='" + option + "']");
+            By scrolledRating = By.xpath("//lib-rating[contains(@class,'ng-star-inserted')]//span[text()='" + option + "']");
             System.out.println("ScrolledRating value " + scrolledRating);
             wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledRating));
 

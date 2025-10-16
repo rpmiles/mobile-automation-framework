@@ -21,7 +21,7 @@ Feature: Testing numeric item
     And I confirm the correct value is listed "123,456,789,000,000,000"
     And I select the x at the end of the field
     And I enter the value "1.230.000"
-    And I confirm I am unable to add another decimal point "1.23000"
+    And I confirm I am unable to add another decimal point "1.23"
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved

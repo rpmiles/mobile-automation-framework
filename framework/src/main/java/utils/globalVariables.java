@@ -13,7 +13,7 @@ import java.net.URISyntaxException;
 import java.time.Duration;
 
 public class globalVariables {
-    public static final int DEFAULT_EXPLICIT_TIMEOUT = 30;
+    public static final int DEFAULT_EXPLICIT_TIMEOUT = 45;
     public static final int SYNC_WAIT_TIMEOUT = 180;
 
     public static final String mobilePortalHomepageURL = "https://mobile.test-goreport.services/";

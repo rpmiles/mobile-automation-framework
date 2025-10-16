@@ -30,10 +30,16 @@ public class syncLogin_Steps {
         homepage_po.selectCloudReports();
     }
 
+    @And("I select Local Reports")
+    public void select_local_reports() throws IOException, URISyntaxException {
+        System.out.println("Selecting 'Cloud reports'");
+        homepage_po.selectLocalReports();
+    }
+
     @And("I download the report")
     public void download_the_report() throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Downloading report");
-        homepage_po.downloadSyncTemplate();
+        homepage_po.downloadReport();
     }
 
 

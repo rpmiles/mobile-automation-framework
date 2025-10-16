@@ -2,10 +2,10 @@ package pageObjects;
 
 import functions.confirmationFunctions;
 import functions.globalFunctions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -56,6 +56,7 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(tagName = "app-report-list-items") WebElement firstReport;
     public @FindBy(id = "context-menu") WebElement contextMenu;
     public @FindBy(xpath = "//button[.//span[text()='Delete Report']]") WebElement deleteButton;
+    public @FindBy(xpath = "//button[.//span[text()='Clone Report']]") WebElement cloneButton;
     public @FindBy(xpath = "//button[@id='confirm-button']") WebElement confirmDelete;
     public @FindBy(xpath = "//button[.//span[text()=' Delete ']]") WebElement deleteReport;
     public @FindBy(xpath = "//input[@formcontrolname='confirmationText']") WebElement confirmDeleteText;
@@ -69,11 +70,15 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(xpath = "//input[@id='report-name']") WebElement reportName;
     public @FindBy(id = "download-report") WebElement downloadReport;
     public @FindBy(xpath = "//button[@id='confirm-button']") WebElement confirmButton;
+    public @FindBy(id = "include-photos-audio-button") WebElement addPhotos;
+    public @FindBy(id = "include-notes-button") WebElement addNotes;
+
+    public @FindBy (id = "open-local-report-search") WebElement localSearchButton;
+    public @FindBy (id = "local-report-search-input") WebElement searchBoxLocal;
+    public @FindBy (id = "close-local-report-search") WebElement closeLocalSearch;
 
     public @FindBy (id = "open-cloud-report-search") WebElement cloudSearchButton;
-    public @FindBy (id = "local-report-search-input") WebElement searchBoxLocal;
     public @FindBy (id = "cloud-report-search-input") WebElement searchBoxCloud;
-    public @FindBy (id = "close-local-report-search") WebElement closeLocalSearch;
     public @FindBy (id = "close-cloud-report-search")  WebElement closeCloudSearch;
 
 
@@ -112,7 +117,11 @@ public class Homepage_PO extends Base_PO {
     }
 
     public void searchForLocal(String searchTerm) throws IOException, URISyntaxException, InterruptedException {
-        //searchButton.click();
+        waitForWebElementAndClick(cloudReports);
+        waitForWebElementAndClick(localReports);
+
+        waitForWebElementAndClick(localSearchButton);
+
         sendKeys(searchBoxLocal, searchTerm);
     }
 
@@ -123,7 +132,7 @@ public class Homepage_PO extends Base_PO {
     }
 
 
-    public void downloadSyncTemplate() throws IOException, URISyntaxException, InterruptedException {
+    public void downloadReport() throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementAndClick(downloadReport);
         waitForWebElementAndClick(downloadConfirm);
 
@@ -153,7 +162,7 @@ public class Homepage_PO extends Base_PO {
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to download template");
         }*/
-
+    Thread.sleep(3000);
     }
 
     public void downloadUploadedReport(String reportName) throws IOException, URISyntaxException, InterruptedException {
@@ -319,5 +328,22 @@ public class Homepage_PO extends Base_PO {
     }
 
 
+    public void clickWhenReady(WebElement el, int timeoutSeconds) throws IOException, URISyntaxException {
+        WebDriver driver = getDriver();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
+        wait.until(ExpectedConditions.visibilityOf(el));
+        wait.until(ExpectedConditions.elementToBeClickable(el));
 
+        try {
+            el.click();
+            return;
+        } catch (Throwable t1) {
+            try {
+                new Actions(driver).moveToElement(el).click().perform();
+                return;
+            } catch (Throwable t2) {
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'}); arguments[0].click();", el);
+            }
+        }
+    }
 }

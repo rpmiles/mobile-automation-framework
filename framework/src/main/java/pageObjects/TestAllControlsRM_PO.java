@@ -378,10 +378,10 @@ public class TestAllControlsRM_PO extends Base_PO {
     public void selectSwitch(String switchToSelect) throws IOException, URISyntaxException {
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(text(), '" + switchToSelect + "')]")
+                By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + switchToSelect + "')]")
         ));
 
-        By scrolledElement = By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(text(), '" + switchToSelect + "')]");
+        By scrolledElement = By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + switchToSelect + "')]");
         wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledElement));
 
 
@@ -392,7 +392,7 @@ public class TestAllControlsRM_PO extends Base_PO {
     public void switchSelected(String switchSelected) throws IOException, URISyntaxException {
         try {
             WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-            List<WebElement> elements = getDriver().findElements(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(@class, 'bg-gray-400') and contains(normalize-space(.), '" + switchSelected + "')]"));
+            List<WebElement> elements = getDriver().findElements(By.xpath("//lib-options-list-item[contains(@class, 'selected-option') and contains(., '" + switchSelected + "')]"));
             Assert.assertTrue(elements.size() > 0, "Element does not exist");
         } catch (NoSuchElementException e) {
             Assert.fail("Failed to assert " + switchSelected + " selected");
@@ -402,7 +402,7 @@ public class TestAllControlsRM_PO extends Base_PO {
     public void switchNotSelected(String switchNotSelected) throws IOException, URISyntaxException {
         try {
             WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-            List<WebElement> elements = getDriver().findElements(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(normalize-space(.), '" + switchNotSelected + "')]"));
+            List<WebElement> elements = getDriver().findElements(By.xpath("//lib-options-list-item[not(contains(@class, 'selected-option')) and contains(., '" + switchNotSelected + "')]"));
             Assert.assertTrue(elements.size() > 0, "Element does not exist");
         } catch (NoSuchElementException e) {
             Assert.fail("Failed to assert " + switchNotSelected + " not selected");
@@ -415,7 +415,7 @@ public class TestAllControlsRM_PO extends Base_PO {
     public void selectOption(String option) throws IOException, URISyntaxException {
         try {
             //System.out.print("Selecting Picklist item");
-            WebElement actualOption = getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(text(), '" + option + "')]"));
+            WebElement actualOption = getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + option + "')]"));
             actualOption.click();
             System.out.println("Selected " + option);
 
@@ -454,8 +454,12 @@ public class TestAllControlsRM_PO extends Base_PO {
     public void selectSingleResponse(String response) throws IOException, URISyntaxException {
         try {
             System.out.println("Selecting predefined response: '" + response + "'");
-            WebElement actualResponse = getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(text(), '" + response + "')]"));
+            WebElement actualResponse = new WebDriverWait(getDriver(), Duration.ofSeconds(10))
+                    .until(ExpectedConditions.elementToBeClickable(
+                            By.xpath("//lib-options-list-item[contains(@class,'ng-star-inserted') and contains(., '" + response + "')]")
+                    ));
             actualResponse.click();
+
 
         } catch (NoSuchElementException e) {
             Assert.fail("Failed to assert select predefined response");

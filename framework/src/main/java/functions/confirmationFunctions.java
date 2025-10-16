@@ -55,8 +55,8 @@ public class confirmationFunctions extends Base_PO {
     public @FindBy(xpath = "//lib-editor-item[contains(@class, 'ng-star-inserted')]//span[contains(text(),' M')]") WebElement reportViewMRating;
 
     //Baked In
-    //public @FindBy(xpath = "//quill-editor//p[contains (text(), 'These are the baked in values:')]") WebElement bakedInTokens;
-    public @FindBy(xpath = "//quill-editor//div[contains(@class, 'ql-editor')]") WebElement bakedInTokens;
+    public @FindBy(xpath = "//quill-editor//p[contains (text(), 'These are the baked in values:')]") WebElement bakedInTokens;
+    //public @FindBy(xpath = "//quill-editor//div[contains(@class, 'ql-editor')]") WebElement bakedInTokens;
 
     //Targeted Notes
     @FindBy(css = "div.multi-text-item")
@@ -74,9 +74,11 @@ public class confirmationFunctions extends Base_PO {
     public @FindBy(xpath = "//div[contains(text(), 'This is Prefilled Text (Multi)')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')]") WebElement prefilledTextMultiReportView;
     public @FindBy(xpath = "//lib-date//span[contains(@class, 'date')]") WebElement dateReportView;
     public @FindBy(xpath = "//lib-switch[contains(@class, 'ng-star-inserted')]") WebElement switchReportView;
-    public @FindBy(xpath = "//lib-pick-list[contains(@class, 'ng-star-inserted')]") WebElement picklistReportView;
+    public @FindBy(xpath = "//lib-editor-item[.//div[contains(@class,'editor-item__title') and normalize-space(.)='Single Select Pick List']]//lib-placeholder//span") WebElement singlePickListReportView;
+    public @FindBy(xpath = "//div[contains(text(), 'Multi Select Pick List')]/following::lib-pick-list[contains(@class, 'ng-star-inserted')]") WebElement multiPickListReportView;
     public @FindBy(xpath = "//div[contains(text(), 'This Has Baked In Tokens')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')]") WebElement bakedInReportView;
-    public @FindBy(xpath = "//div[contains(text(), 'This is Predefined Responses')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')][1]") WebElement predefinedResponsesReportView;
+    //public @FindBy(xpath = "//div[contains(text(), 'This is Predefined Responses')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')][1]") WebElement predefinedResponsesReportView;
+    public @FindBy(xpath = "//div[contains(text(), 'This is Predefined Responses')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')][1]//div[contains(@class,'multi-text-item')][1]") WebElement predefinedResponsesReportView;
     public @FindBy(xpath = "//lib-numeric[contains(@class, 'ng-star-inserted')]") WebElement numericReportView;
     public @FindBy(xpath = "//div[contains(text(), 'Enter Bold Text')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')][1]") WebElement boldItemReportView;
     public @FindBy(xpath = "//div[contains(text(), 'Enter Italics Text')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')][1]") WebElement italicsItemReportView;
@@ -121,6 +123,25 @@ public class confirmationFunctions extends Base_PO {
     private String enterUnderlinedExpected = "Entering some underlined text to confirm form uploads correctly";
     private String enterMultiformatExpected = "Bold text with some added italics, added underline but removed bold, completed with strikethrough changed with simple bold and finally removed all formatting";
     private String ratingExpected = "N";
+
+
+    //Cloned Report View Expected
+    private String singleTextReportViewExpectedCloned = "Photo in Notes so what happens if photo without notes?";
+    private String multiTextReportViewExpectedCloned = "Enter\n" +
+            "Multi\n" +
+            "Two photos attached\n";
+    private String prefilledTextMultiReportViewExpectedCloned = "Single Sentence\n" + "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus tempor maximus faucibus. Vivamus blandit lorem.\n\n"+ "New Paragraph\n" + "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac molestie odio. Cras in est dolor. Maecenas nec augue eu arcu tincidunt ullamcorper. In eu magna sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.";
+    private String switchReportViewExpectedCloned = "Switch 2";
+    private String picklistExpectedCloned = "Option 4,Option 3";
+    private String singlePicklistExpectedCloned = "Tap to add information";
+    private String bakedInTokensExpectedCloned = "These are the baked in values:\n\n" + "Date : .Date.\n" + "Author Name : .AuthorName.\n" + "Author Initials : .AuthorInitials.\" is displayed in Baked In Tokens report view";
+    private String predefinedResponsesExpectedCloned = "This sentence should be bold.\n\n\n" + "This sentence has multiple formats so needs to be slightly longer.\n\n\n" + "This is to allow for more than a single category to appear in the search results" ;
+    private String numericExpectedCloned = "1,045";
+    private String enterBoldExpectedCloned = "Bold Text";
+    private String enterItalicsExpectedCloned = "Italicised Text";
+    private String enterUnderlinedExpectedCloned = "Underlined Text";
+    private String enterMultiFormattedExpectedCloned = "Multi formatted text to check that all of the options will work together if a single sentenc is entered. We have a couple here a couple here as well but here's 3";
+    private String ratingExpectedCloned = "M";
 
 
     //Numeric elements
@@ -225,10 +246,10 @@ public class confirmationFunctions extends Base_PO {
             System.out.println("Confirming selected Picklist options");
 
             WebElement selectedOption2 =
-                    getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted bg-gray-400') and contains(text(), '" + option2 + "')]"));
+                    getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted bg-gray-400') and contains(., '" + option2 + "')]"));
 
             WebElement selectedOption3 =
-                    getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted bg-gray-400') and contains(text(), '" + option3 + "')]"));
+                    getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted bg-gray-400') and contains(., '" + option3 + "')]"));
 
             Assert.assertEquals(selectedOption2.getText(), option2);
                 System.out.println(option2 + " is selected");
@@ -921,12 +942,12 @@ public class confirmationFunctions extends Base_PO {
 
     public void confirmReportViewPicklistUpload(String option1, String option2, String option3) throws IOException, URISyntaxException {
         try {
-            waitForWebElementToBeVisible(picklistReportView);
+            waitForWebElementToBeVisible(multiPickListReportView);
             System.out.println("Confirming selected picklist options in report view");
-            String actualPicklistReportViewText = picklistReportView.getText();
-            System.out.println("\"" + actualPicklistReportViewText + "\" is displayed in report view");
+            String actualmultiPickListReportViewText = multiPickListReportView.getText();
+            System.out.println("\"" + actualmultiPickListReportViewText + "\" is displayed in report view");
             String supposedReportViewPicklist = (option2 + "," + option3);
-            Assert.assertEquals(actualPicklistReportViewText, supposedReportViewPicklist);
+            Assert.assertEquals(actualmultiPickListReportViewText, supposedReportViewPicklist);
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm picklist selections in report view");
         }
@@ -1000,6 +1021,7 @@ public class confirmationFunctions extends Base_PO {
         }
     }
 
+
     public void confirmReportViewMultiText() throws IOException, URISyntaxException, InterruptedException {
         try {
             System.out.println("Confirming Multi Text in report view");
@@ -1011,6 +1033,8 @@ public class confirmationFunctions extends Base_PO {
             Assert.fail("Unable to confirm multi text in report view");
         }
     }
+
+
 
     public void confirmReportViewMultiTextRating() throws IOException, URISyntaxException, InterruptedException {
         try {
@@ -1030,12 +1054,14 @@ public class confirmationFunctions extends Base_PO {
             waitForWebElementToBeVisible(prefilledTextSingleReportView);
             String reportViewPrefilledSingle = prefilledTextSingleReportView.getText();
             Assert.assertTrue(prefilledSingleExpected.contains(reportViewPrefilledSingle), "Actual text does not contain expected text.");
-            System.out.println("\"" + prefilledSingleExpected + "\" is displayed in report view");
+            System.out.println("\"" + reportViewPrefilledSingle + "\" is displayed in report view");
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm single prefilled in report view");
         }
 
     }
+
+
 
     public void confirmReportViewPrefilledMulti() throws IOException, URISyntaxException, InterruptedException {
         try {
@@ -1049,6 +1075,8 @@ public class confirmationFunctions extends Base_PO {
         }
     }
 
+
+
     public void confirmReportViewDate() throws IOException, URISyntaxException {
         try {
             waitForWebElementToBeVisible(dateReportView);
@@ -1060,6 +1088,8 @@ public class confirmationFunctions extends Base_PO {
             Assert.fail("Unable to confirm report date in report view");
         }
     }
+
+
 
     public void confirmReportViewSwitch() throws IOException, URISyntaxException {
         try {
@@ -1074,29 +1104,33 @@ public class confirmationFunctions extends Base_PO {
 
     }
 
+
+
     public void confirmReportViewPicklist() throws IOException, URISyntaxException {
         try {
-            waitForWebElementToBeVisible(picklistReportView);
+            waitForWebElementToBeVisible(multiPickListReportView);
             System.out.println("Confirming selected picklist options in report view");
-            String actualPicklistReportViewText = picklistReportView.getText();
-            System.out.println("\"" + actualPicklistReportViewText + "\" is displayed in report view");
-            Assert.assertTrue(picklistExpected.contains(actualPicklistReportViewText));
+            String actualmultiPickListReportViewText = multiPickListReportView.getText();
+            System.out.println("\"" + actualmultiPickListReportViewText + "\" is displayed in report view");
+            Assert.assertTrue(picklistExpected.contains(actualmultiPickListReportViewText));
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm picklist selections in report view");
         }
 
     }
 
+
+
     public void confirmReportViewSinglePicklist(String option) throws IOException, URISyntaxException {
         try {
-            waitForWebElementToBeVisible(picklistReportView);
+            waitForWebElementToBeVisible(multiPickListReportView);
             System.out.println("Confirming selected picklist options in report view");
-            String actualPicklistReportViewText = picklistReportView.getText();
-            System.out.println("\"" + actualPicklistReportViewText + "\" is displayed in report view");
+            String actualmultiPickListReportViewText = multiPickListReportView.getText();
+            System.out.println("\"" + actualmultiPickListReportViewText + "\" is displayed in report view");
             String supposedReportViewPicklist = (option);
             Assert.assertTrue(
-                    actualPicklistReportViewText.contains(supposedReportViewPicklist),
-                    "Expected the actual text to contain: " + supposedReportViewPicklist + ", but got: \"" + actualPicklistReportViewText + "\""
+                    actualmultiPickListReportViewText.contains(supposedReportViewPicklist),
+                    "Expected the actual text to contain: " + supposedReportViewPicklist + ", but got: \"" + actualmultiPickListReportViewText + "\""
             );
 
         } catch (NoSuchElementException e) {
@@ -1242,4 +1276,231 @@ public class confirmationFunctions extends Base_PO {
 
     }
 
+
+    //Specific report view confirmations run during clone tests
+
+    public void confirmClonedReportViewSingleText() throws IOException, URISyntaxException, InterruptedException {
+        try {
+            System.out.println("Confirming Single Text in report view");
+            waitForWebElementToBeVisible(singleTextReportView);
+            String reportViewSingleText = singleTextReportView.getText();
+            System.out.println("\"" + reportViewSingleText + "\" is displayed in report view");
+            Assert.assertTrue(singleTextReportViewExpectedCloned.contains(reportViewSingleText), "Actual text does not contain expected text.");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm single text in report view");
+        }
+    }
+
+
+
+    public void confirmClonedReportViewMultiText() throws IOException, URISyntaxException, InterruptedException {
+        try {
+            System.out.println("Confirming Multi Text in report view");
+            waitForWebElementToBeVisible(multiTextReportView);
+            String reportViewMultiText = multiTextReportView.getText();
+            System.out.println("\"" + reportViewMultiText + "\" is displayed in report view");
+            Assert.assertTrue(multiTextReportViewExpectedCloned.contains(reportViewMultiText), "Actual text does not contain expected text.");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm multi text in report view");
+        }
+    }
+
+
+    public void confirmClonedReportViewPrefilledSingle() throws IOException, URISyntaxException, InterruptedException {
+        try {
+            System.out.println("Confirming Prefilled Text (Single) in report view");
+            waitForWebElementToBeVisible(prefilledTextSingleReportView);
+            String reportViewPrefilledSingle = prefilledTextSingleReportView.getText();
+            Assert.assertTrue(prefilledSingleExpectedNoEdit.contains(reportViewPrefilledSingle), "Actual text does not contain expected text.");
+            System.out.println("\"" + reportViewPrefilledSingle + "\" is displayed in report view");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm single prefilled in report view");
+        }
+
+    }
+
+
+    public void confirmClonedReportViewPrefilledMulti() throws IOException, URISyntaxException, InterruptedException {
+        try {
+            System.out.println("Confirming Prefilled Text (Multi) in report view");
+            waitForWebElementToBeVisible(prefilledTextMultiReportView);
+            String reportViewPrefilledMulti = prefilledTextMultiReportView.getText();
+            System.out.println("Multi Prefilled Text Value: " + reportViewPrefilledMulti);
+            Assert.assertTrue(prefilledTextMultiReportViewExpectedCloned.contains(reportViewPrefilledMulti), "Actual text does not contain expected text.");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm multi prefilled in report view");
+        }
+    }
+
+
+    public void confirmClonedReportViewDate(String clonedReportViewDateExpected) throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(dateReportView);
+            System.out.println("Confirming report view date");
+            String actualDateReportViewText = dateReportView.getText();
+            System.out.println("\"" + actualDateReportViewText + "\" is displayed in report view");
+            Assert.assertTrue(clonedReportViewDateExpected.contains(actualDateReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm report date in report view");
+        }
+    }
+
+
+    public void confirmClonedReportViewSwitch() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(switchReportView);
+            System.out.println("Confirming selected Switch in report view");
+            String actualSwitchReportViewText = switchReportView.getText();
+            System.out.println("\"" + actualSwitchReportViewText + "\" is displayed in report view");
+            Assert.assertTrue(switchReportViewExpectedCloned.contains(actualSwitchReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("unable to confirm switch selection in report view");
+        }
+
+    }
+
+
+    public void confirmClonedReportViewMultiSelectPicklist() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(multiPickListReportView);
+            System.out.println("Confirming selected picklist options in report view");
+            String actualMultiPickListReportViewText = multiPickListReportView.getText();
+            System.out.println("\"" + actualMultiPickListReportViewText + "\" is displayed in multi pick list report view");
+            Assert.assertTrue(picklistExpectedCloned.contains(actualMultiPickListReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm picklist selections in report view");
+        }
+
+    }
+
+
+    public void confirmClonedReportViewSingleSelectPicklist() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(singlePickListReportView);
+            System.out.println("Confirming selected picklist options in report view");
+            String actualSinglePickListReportViewText = singlePickListReportView.getText();
+            System.out.println("\"" + actualSinglePickListReportViewText + "\" is displayed in single pick list report view");
+            Assert.assertTrue(singlePicklistExpectedCloned.contains(actualSinglePickListReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm picklist selections in report view");
+        }
+
+    }
+
+
+
+    public void confirmClonedReportBakedInTokens() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(bakedInReportView);
+            System.out.println("Confirming Baked In Tokens in report view");
+            String actualBakedInReportViewText = bakedInReportView.getText();
+            System.out.println("\"" + actualBakedInReportViewText + "\" is displayed in Baked In Tokens report view");
+            Assert.assertTrue(bakedInTokensExpectedCloned.contains(actualBakedInReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm Baked In Tokens in report view");
+        }
+
+    }
+
+
+    public void confirmClonedPredefinedResponses() throws IOException, URISyntaxException {
+
+        try {
+            waitForWebElementToBeVisible(predefinedResponsesReportView);
+            System.out.println("Confirming Predefined Responses in report view");
+            String actualPredefinedResponsesReportViewText = predefinedResponsesReportView.getText();
+            System.out.println("\"" + actualPredefinedResponsesReportViewText + "\" is displayed in Predefined Responses report view");
+            System.out.println("\"" + predefinedResponsesExpectedCloned + "\" is the expected Predefined Responses report view value");
+            Assert.assertTrue(predefinedResponsesExpectedCloned.contains(actualPredefinedResponsesReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to Predefined Responses in report view");
+        }
+    }
+
+
+    public void confirmClonedNumeric() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(numericReportView);
+            System.out.println("Confirming numeric in report view");
+            String actualNumericReportViewText = numericReportView.getText();
+            System.out.println("\"" + actualNumericReportViewText + "\" is displayed in numeric in report view");
+            Assert.assertTrue(numericExpectedCloned.contains(actualNumericReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm numeric in report view");
+        }
+
+    }
+
+
+    public void confirmClonedEnterBold() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(boldItemReportView);
+            System.out.println("Confirming 'Enter Bold Text' in report view");
+            String actualBoldItemReportViewText = boldItemReportView.getText();
+            System.out.println("\"" + actualBoldItemReportViewText + "\" is displayed for 'Enter Bold Text' in report view");
+            System.out.println("\"" + enterBoldExpectedCloned + "\" is displayed in report view");
+            Assert.assertTrue(enterBoldExpectedCloned.contains(actualBoldItemReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm 'Enter Bold Text' in report view");
+        }
+
+    }
+
+
+
+    public void confirmClonedEnterItalics() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(italicsItemReportView);
+            System.out.println("Confirming 'Enter Italics Text' in report view");
+            String actualEnterItalicsReportViewText = italicsItemReportView.getText();
+            System.out.println("\"" + actualEnterItalicsReportViewText + "\" is displayed in 'Enter Italics Text' in report view");
+            Assert.assertTrue(enterItalicsExpectedCloned.contains(actualEnterItalicsReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm 'Enter Italics Text' in report view");
+        }
+
+    }
+
+
+    public void confirmClonedEnterUnderlined() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(underlinedItemReportView);
+            System.out.println("Confirming 'Enter Underlined Text' in report view");
+            String actualEnterUnderlinedReportViewText = underlinedItemReportView.getText();
+            System.out.println("\"" + actualEnterUnderlinedReportViewText + "\" is displayed in 'Enter Underlined Text' in report view");
+            Assert.assertTrue(enterUnderlinedExpectedCloned.contains(actualEnterUnderlinedReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm 'Enter Underlined Text' in report view");
+        }
+
+    }
+
+
+    public void confirmClonedMultiFormatted() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(multiFormattedItemReportView);
+            System.out.println("Confirming 'Enter Multiformatted Text' in report view");
+            String actualEnterMultiformattedReportViewText = multiFormattedItemReportView.getText();
+            System.out.println("\"" + actualEnterMultiformattedReportViewText + "\" is displayed in 'Enter Multi Formatted Text' in report view");
+            Assert.assertTrue(enterMultiFormattedExpectedCloned.contains(actualEnterMultiformattedReportViewText));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm 'Enter Multi Formatted Text' in report view");
+        }
+
+    }
+
+
+    public void confirmClonedRating() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(ratingReportView);
+            System.out.println("Confirming 'Enter Underlined Text' in report view");
+            String actualRatingReportView = ratingReportView.getText();
+            System.out.println("\"" + actualRatingReportView + "\" is displayed in 'Enter Underlined Text' in report view");
+            Assert.assertTrue(ratingExpectedCloned.contains(actualRatingReportView));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm 'Enter Underlined Text' in report view");
+        }
+
+    }
 }
+

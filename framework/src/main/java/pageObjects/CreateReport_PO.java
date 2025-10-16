@@ -267,7 +267,7 @@ public class CreateReport_PO extends Base_PO {
             int count = 0;
             for (WebElement item : datacaptures) {
                 String datacaptureName = item.getText();
-                if (datacaptureName.contains(dataCap)) {
+                if (datacaptureName.equals(dataCap)) {
                     //System.out.println(count);
                     //System.out.println("Located Report!");
                     datacaptures.get(count).click();
