@@ -55,8 +55,8 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(xpath = "//*[text()='Sign out']") WebElement signOutButton;
     public @FindBy(tagName = "app-report-list-items") WebElement firstReport;
     public @FindBy(id = "context-menu") WebElement contextMenu;
-    public @FindBy(xpath = "//button[.//span[text()='Delete Report']]") WebElement deleteButton;
-    public @FindBy(xpath = "//button[.//span[text()='Clone Report']]") WebElement cloneButton;
+    public @FindBy(xpath = "//button[.//span[text()=' Delete Report ']]") WebElement deleteButton;
+    public @FindBy(xpath = "//button[.//span[text()=' Clone Report ']]") WebElement cloneButton;
     public @FindBy(xpath = "//button[@id='confirm-button']") WebElement confirmDelete;
     public @FindBy(xpath = "//button[.//span[text()=' Delete ']]") WebElement deleteReport;
     public @FindBy(xpath = "//input[@formcontrolname='confirmationText']") WebElement confirmDeleteText;

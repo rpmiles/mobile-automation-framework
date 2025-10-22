@@ -7,12 +7,13 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import functions.globalFunctions;
-
+import utils.ImageCompare;
+import java.io.File;
+import java.time.Duration;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.net.URISyntaxException;
-import java.time.Duration;
 import java.util.List;
 import java.util.NoSuchElementException;
 
@@ -68,6 +69,9 @@ public class TestAllControlsRM_PO extends Base_PO {
     public @FindBy(xpath = "//button[@aria-label = 'Next year']") WebElement nextYear;
     public @FindBy(xpath = "//button[.//span[text()=' Clear']]") WebElement clearDate;
 
+
+    //Photos
+    public @FindBy(xpath = "//*[@data-icon= 'grid']") WebElement photoGrid;
 
     public TestAllControlsRM_PO() throws IOException, URISyntaxException {
         super();
@@ -529,6 +533,55 @@ public class TestAllControlsRM_PO extends Base_PO {
         }
     }
 
+    public class PhotoTestUtils {
 
+        /**
+         * Compare the first two photos found under //lib-photo-row with baseline images.
+         *
+         * @param driver             WebDriver / AppiumDriver instance
+         * @param baselineFolderPath path to folder containing baseline-photo-1.png and baseline-photo-2.png
+         * @param tolerancePercent   allowed percent difference (e.g. 1.0 for 1%)
+         * @throws Exception on I/O or comparison failure
+         */
+        public static void compareFirstTwoPhotosUnderLibPhotoRow(WebDriver driver, String baselineFolderPath, double tolerancePercent) throws Exception {
+            WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(15));
+
+            // find img elements inside lib-photo-row
+            List<WebElement> imgs = wait.until(d -> d.findElements(By.xpath("//lib-photo-row//lib-photo//img")));
+            System.out.println("DBG: found imgs = " + imgs.size());
+            if (imgs.size() < 2) {
+                throw new AssertionError("Expected at least 2 photos under lib-photo-row, found: " + imgs.size());
+            }
+
+
+            for (int i = 0; i < 2; i++) {
+                WebElement img = imgs.get(i);
+
+                // scroll into view (helps with screenshots on some drivers)
+                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", img);
+
+                // wait until the image element reports fully loaded (naturalWidth>0)
+                wait.until(d -> ((JavascriptExecutor) d)
+                        .executeScript("return arguments[0].complete && arguments[0].naturalWidth > 0;", img));
+
+                // debug print src (may be blob:)
+                String src = img.getAttribute("src");
+                System.out.println("DBG: image[" + i + "] src = " + src);
+
+                // baseline filename convention: baseline-photo-1.png and baseline-photo-2.png
+                File baseline = new File(baselineFolderPath, String.format("baseline-photo-%d.png", i + 1));
+                if (!baseline.exists()) {
+                    throw new IllegalStateException("Missing baseline file: " + baseline.getAbsolutePath());
+                }
+
+                // compare element screenshot against baseline
+                boolean similar = ImageCompare.imagesAreSimilarFromElement(driver, img, baseline, tolerancePercent);
+                System.out.println("DBG: image[" + i + "] similar? " + similar);
+                Assert.assertTrue(similar, "Image " + (i + 1) + " differs from baseline beyond tolerance");
+            }
+
+            System.out.println("All compared images are within tolerance");
+        }
+    }
 }
 

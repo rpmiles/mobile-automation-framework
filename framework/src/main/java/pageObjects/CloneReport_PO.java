@@ -30,7 +30,8 @@ public class CloneReport_PO extends Base_PO {
     public @FindBy(id = "report-reference") WebElement reference;
     public @FindBy(id = "notes") WebElement extraNotes;
     public @FindBy(id = "save-report") WebElement saveReport;
-    public @FindBy(xpath = "//span[contains(@class, 'ml-2') and normalize-space(text())='Clone Report']") WebElement cloneButton;
+    public @FindBy(xpath = "//button[.//span[text()=' Clone Report ']]") WebElement cloneButton;
+    public @FindBy(xpath = "//button[.//span[text()=' Author ']]") WebElement authorButton;
     public @FindBy(id = "include-notes-button") WebElement includeNotes;
     // public @FindBy(xpath = "//button[contains(@id, 'include-notes-button') and contains(@class, 'mdc-switch--checked')]") WebElement includeNotes;
     public @FindBy(id = "include-photos-audio-button") WebElement includePhotosAudio;

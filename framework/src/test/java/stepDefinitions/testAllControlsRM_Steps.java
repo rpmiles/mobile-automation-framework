@@ -15,8 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import pageObjects.*;
 import utils.globalVariables;
-
-import static utils.globalVariables.*;
+import utils.ImageCompare;
 
 import javax.swing.plaf.UIResource;
 import java.io.IOException;
@@ -970,9 +969,19 @@ public class testAllControlsRM_Steps extends Base_PO {
     }
 
     //Confirming upload
-    @And("I confirm Preformatted Text for Copy and Paste Tests holds the correct value")
-    public void i_confirm_preformatted_text_for_copy_paste_tests_holds_the_correct_value() throws IOException, URISyntaxException, InterruptedException {
+    @And("I confirm the cloned text for Preformatted Text for Copy and Paste Tests in report view are correct")
+    public void i_confirm_preformatted_text_for_copy_paste_tests_in_report_view_holds_the_correct_value() throws IOException, URISyntaxException, InterruptedException {
         confirmationFunctions.confirmReportViewPreformattedText();
+    }
+
+    @And("I confirm the cloned images for Preformatted Text for Copy and Paste Tests in report view are correct")
+    public void i_confirm_the_cloned_images_for_preformatted_text_for_copy_paste_tests_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewPreformattedTextImages();
+    }
+
+    @And("I confirm the cloned notes for preformatted text for copy and paste tests are correct")
+    public void i_confirm_the_cloned_notes_for_preformatted_text_for_copy_paste_tests_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewPreformattedTextNotes();
     }
 
     @And("I confirm This is Single Text holds the correct value")
@@ -1005,14 +1014,30 @@ public class testAllControlsRM_Steps extends Base_PO {
         confirmationFunctions.confirmReportViewDate();
     }
 
+    @And("I confirm the cloned notes for this is a date are correct")
+    public void i_confirm_the_cloned_notes_for_this_is_a_date_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewDateNotes();
+    }
+
     @And("I confirm This is a Switch holds the correct value")
     public void i_confirm_this_is_a_switch_holds_the_correct_value() throws IOException, URISyntaxException {
         confirmationFunctions.confirmReportViewSwitch();
     }
 
+    @And("I confirm the cloned notes for this is a switch are correct")
+    public void i_confirm_the_cloned_notes_for_this_is_a_switch_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewSwitchNotes();
+    }
+
     @And("I confirm This is a Pick List holds the correct value")
     public void i_confirm_this_is_a_pick_list_holds_the_correct_value() throws IOException, URISyntaxException {
         confirmationFunctions.confirmReportViewPicklist();
+    }
+
+
+    @And("I confirm the cloned notes for multi select pick list is correct")
+    public void i_confirm_the_cloned_notes_for_multi_select_pick_list_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewMultiSelectPicklistNotes();
     }
 
     @And("I confirm This Has Baked In Tokens holds the correct value")
@@ -1133,13 +1158,24 @@ public class testAllControlsRM_Steps extends Base_PO {
         waitForWebElementAndClick(homepage_po.contextX);
     }
 
-    @And("I confirm the cloned this is single text report view value is correct")
-    public void i_confirm_the_cloned_this_is_single_text_report_view_value_is_correct() throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmClonedReportViewSingleText();
+    @And("I confirm the cloned text in this is single text report view is correct")
+    public void i_confirm_the_cloned_text_in_this_is_single_text_report_view_is_correct() throws IOException, URISyntaxException, InterruptedException {
+       confirmationFunctions.confirmClonedReportViewSingleText();
     }
 
-    @And("I confirm the cloned text in Multi Text RTF report view")
-    public void i_confirm_the_cloned_text_in_multi_text_rtf() throws IOException, URISyntaxException, InterruptedException {
+
+    @And("I confirm the cloned images in this is single text report view are correct")
+    public void i_confirm_the_cloned_images_in_this_is_single_text_report_view_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewSingleTextImages();
+    }
+
+    @And("I confirm the cloned images in Multi Text RTF report view are correct")
+    public void i_confirm_the_cloned__images_in_multi_text_rtf_report_view_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewMultiTextImages();
+    }
+
+    @And("I confirm the cloned text in Multi Text RTF report view is correct")
+    public void i_confirm_the_cloned_text_in_multi_text_rtf_report_view_is_correct() throws IOException, URISyntaxException, InterruptedException {
         confirmationFunctions.confirmClonedReportViewMultiText();
     }
 
@@ -1148,7 +1184,6 @@ public class testAllControlsRM_Steps extends Base_PO {
     public void i_confirm_the_cloned_text_in_single_text_prefilled_is_correct() throws IOException, URISyntaxException, InterruptedException {
         confirmationFunctions.confirmClonedReportViewPrefilledSingle();
     }
-
 
     @And("I confirm the modified text in Multi Text Prefilled is correct")
     public void i_confirm_the_modified_text_in_multi_text_prefilled_is_correct() throws IOException, URISyntaxException, InterruptedException {
@@ -1172,7 +1207,6 @@ public class testAllControlsRM_Steps extends Base_PO {
     public void i_confirm_the_cloned_multi_select_pick_list_is_correct() throws IOException, URISyntaxException {
         confirmationFunctions.confirmClonedReportViewMultiSelectPicklist();
     }
-
 
 
     @And("I confirm the cloned single select pick list is correct")
@@ -1229,6 +1263,34 @@ public class testAllControlsRM_Steps extends Base_PO {
     @And("I confirm the cloned this is a rating is correct")
     public void  i_confirm_the_cloned_this_is_a_rating_is_correct() throws IOException, URISyntaxException {
         confirmationFunctions.confirmClonedRating();
+    }
+
+    @And("I confirm the cloned notes for predefined responses is correct")
+    public void i_confirm_the_cloned_notes_for_predefined_responses_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewPredefinedResponsesNotes();
+    }
+
+    @And("I confirm the cloned notes for this is a rating is correct")
+    public void i_confirm_the_cloned_notes_for_this_is_a_rating_are_correct() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedReportViewRatingNotes();
+    }
+
+
+    @And("I confirm the cloned rating in Multi Text RTF report view is correct")
+    public void i_confirm_the_cloned_rating_in_multi_text_rtf_report_view_is_correct () throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmClonedMultiTextRating();
+    }
+
+
+    @And("I select the photo grid")
+    public void i_select_the_photo_grid() throws IOException, URISyntaxException {
+        waitForWebElementAndClick(testAllControlsRM_po.photoGrid);
+    }
+
+
+    @And("I confirm the correct photos are displayed")
+    public void i_confirm_the_correct_photos_are_displayed() throws Exception {
+        TestAllControlsRM_PO.PhotoTestUtils.compareFirstTwoPhotosUnderLibPhotoRow(getDriver(), "src/test/resources", 5);
     }
 
 }
