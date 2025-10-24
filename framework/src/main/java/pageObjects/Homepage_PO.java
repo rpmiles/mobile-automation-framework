@@ -60,7 +60,7 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(xpath = "//button[@id='confirm-button']") WebElement confirmDelete;
     public @FindBy(xpath = "//button[.//span[text()=' Delete ']]") WebElement deleteReport;
     public @FindBy(xpath = "//input[@formcontrolname='confirmationText']") WebElement confirmDeleteText;
-    public @FindBy(xpath = "//button[.//span[text()='Remove Report']]") WebElement removeButton;
+    public @FindBy(xpath = "//button[.//span[contains(., 'Remove Report')]]") WebElement removeButton;
     public @FindBy(xpath = "//button[@id='confirm-button']") WebElement confirmRemove;
     public @FindBy(xpath = "//input[@formcontrolname='confirmationText']") WebElement confirmRemoveText;
     public @FindBy(xpath = "//button[.//span[text()=' Remove ']]") WebElement removeReport;
@@ -80,7 +80,6 @@ public class Homepage_PO extends Base_PO {
     public @FindBy (id = "open-cloud-report-search") WebElement cloudSearchButton;
     public @FindBy (id = "cloud-report-search-input") WebElement searchBoxCloud;
     public @FindBy (id = "close-cloud-report-search")  WebElement closeCloudSearch;
-
 
     public Homepage_PO() throws IOException, URISyntaxException
     {
@@ -303,14 +302,15 @@ public class Homepage_PO extends Base_PO {
             wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
             //System.out.println("Report variable: " + report);
             List<WebElement> items = getDriver().findElements(By.tagName("app-report-list-items"));
-            List<WebElement> editButton = getDriver().findElements(By.id("edit-report"));
+            List<WebElement> downloadButton = getDriver().findElements(By.id("edit-report"));
 
             int count = 0;
             for (WebElement item : items) {
                 String title = item.getText().trim();
                 if (title.contains(report)) {
 
-                    editButton.get(count).click();
+                    downloadButton.get(count).click();
+                    waitForWebElementAndClick(confirmButton);
                     break;
                 }
                 count++;

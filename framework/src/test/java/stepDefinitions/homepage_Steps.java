@@ -151,6 +151,11 @@ public class homepage_Steps extends Base_PO {
         homepage_po.searchForCloud(searchTerm);
     }
 
+    @And("I edit the report")
+    public void i_edit_the_report() throws IOException, URISyntaxException, InterruptedException {
+        waitForWebElementAndClick(homepage_po.editReport);
+    }
+
     @And("I close the search field")
     public void i_search_close_the_search_field () throws IOException, URISyntaxException {
         waitForWebElementAndClick(homepage_po.closeLocalSearch);
@@ -158,6 +163,18 @@ public class homepage_Steps extends Base_PO {
 
     @And("I delete the report")
     public void i_delete_the_report() throws IOException, URISyntaxException, InterruptedException {
+        waitForWebElementAndClick(homepage_po.deleteButton);
+        System.out.println("Selecting Delete button from context menu");
+        waitForWebElementAndClick(homepage_po.confirmDelete);
+        System.out.println("Typing Delete");
+        sendKeys(homepage_po.confirmDeleteText, "Delete");
+        System.out.println("Selecting Confirm button");
+        waitForWebElementAndClick(homepage_po.deleteReport);
+        Thread.sleep(1000);
+    }
+
+    @And("I delete the master report")
+    public void i_delete_the_master_report() throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementAndClick(homepage_po.deleteButton);
         System.out.println("Selecting Delete button from context menu");
         waitForWebElementAndClick(homepage_po.confirmDelete);

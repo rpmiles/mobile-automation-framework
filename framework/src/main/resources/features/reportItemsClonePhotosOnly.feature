@@ -37,6 +37,15 @@ Feature: Cloning Reports
     And I confirm the cloned enter underlined text is correct
     And I confirm the cloned multi formatted text is correct
     And I confirm the cloned this is a rating is correct
+    And I select the back arrow
+    And I select the upload button
+    And I select upload
+    And I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
+    Then I select the context menu
+    And I delete the master report
 
     Examples:
       | TargetReport     | ReportName                             | ReferenceText               | SelectInspectionDate | InspectionDate   | SelectDueDate | DueDate         | ExtraNotes                   | AddNotes | AddPhotos |

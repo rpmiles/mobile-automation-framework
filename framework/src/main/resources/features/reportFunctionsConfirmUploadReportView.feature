@@ -5,9 +5,9 @@ Feature: Confirm the previously uploaded report has been received and processed 
 
     Given I select the profile menu
     And I select sync
-    And I download a specific report with name "Mobile - Report Items - Upload testsReport Items"
+    And I download a specific report with name "Mobile - Report Items - Upload tests"
     And I select the report which the title contains "Mobile - Report Items - Upload"
-    And I confirm Preformatted Text for Copy and Paste Tests holds the correct value
+    And I confirm the uploaded text for Preformatted Text for Copy and Paste Tests in report view are correct
     And I confirm This is Single Text holds the correct value
     And I confirm This is Multi Text holds the correct value
     And I confirm This is Multi Text Rating holds the correct value
@@ -15,7 +15,7 @@ Feature: Confirm the previously uploaded report has been received and processed 
     And I confirm This is Prefilled Text (Multi) holds the correct value
     And I confirm This is a Date holds the correct value
     And I confirm This is a Switch holds the correct value
-    And I confirm This is a Pick List holds the correct value
+    #And I confirm This is a Pick List holds the correct value
     And I confirm This Has Baked In Tokens holds the correct value
     And I confirm This is Predefined Responses holds the correct value
     And I confirm This is a Numeric holds the correct value

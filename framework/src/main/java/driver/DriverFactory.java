@@ -28,19 +28,15 @@ public class DriverFactory {
     private static AndroidDriver createDriver() throws URISyntaxException, MalformedURLException {
         UiAutomator2Options options = new UiAutomator2Options();
 
+        //Galaxy S10 FE Details
+        options.setDeviceName("R52Y90CM5MR"); //S10
+        options.setAppPackage("org.chromium.webapk.a3948b4a768532374_v2"); //S10
+        options.setAppActivity("org.chromium.webapk.shell_apk.h2o.H2OOpaqueMainActivity"); //S10
+
         //Galaxy A8 Details
-        //options.setDeviceName("R9PW10PFT5V"); //A7 Lite
-        options.setDeviceName("R9YT90YL90V"); //A8
-        options.setAppPackage("org.chromium.webapk.a5e29f87b2a738c26_v2"); //A8
-
-        options.setAppActivity("org.chromium.webapk.shell_apk.h2o.H2OOpaqueMainActivity"); //A8
-        //options.setAppActivity("org.chromium.webapk.shell_apk.h2o.SplashActivity t145"); //A8
-
-
-        //Galaxy A7 Lite Details
-        //options.setDeviceName("R9PW10PFT5V"); //A7 Lite
-        //options.setAppPackage("org.chromium.webapk.a82949d32357c43ba_v2"); //A7 Lite
-        //options.setAppActivity("org.chromium.webapk.shell_apk.h2o.H2OMainActivity"); //A7 Lite
+        //options.setDeviceName("R9YT90YL90V"); //A8
+        //options.setAppPackage("org.chromium.webapk.a442ebd1057037b65_v2"); //A8
+        //options.setAppActivity("org.chromium.webapk.shell_apk.h2o.H2OOpaqueMainActivity"); //A8
 
         options.setCapability("chromeOptions", Map.of("args", List.of("--start-maximized")));
         options.setAutomationName("UiAutomator2");

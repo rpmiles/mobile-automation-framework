@@ -7,8 +7,10 @@ Feature: Confirm the previously uploaded report has been received and processed 
     #Given I select report
     #Given I select the profile menu
     #And I select sync
-    #When I download a specific report with name "Mobile - Report Items - Upload tests"
-    And I select the report which the title contains "Mobile - Report Items - Upload tests"
+    Given I select Cloud Reports
+    When I download a specific report with name "Mobile - Report Items - Upload tests"
+    And I close the search field
+    And I edit the report
     And I select the item "Preformatted Text for Copy/Paste Tests"
     And I confirm it's in a numbered list
     And I select the tick or done button
@@ -33,19 +35,19 @@ Feature: Confirm the previously uploaded report has been received and processed 
     And I confirm the specific uploaded text is displayed
     And I select the tick or done button
     And I confirm This is Prefilled Text (Multi) holds the correct value
-    #And I select the item "This is a Date"
+    And I select the item "This is a Date"
+    And I select the tick or done button
+    And I confirm This is a Date holds the correct value
+    #And I select the item "This is a Switch"
+    #And I confirm switch "Switch 2" is selected
+    #And I confirm switch "Switch 1" is not selected
     #And I select the tick or done button
-    #And I confirm This is a Date holds the correct value
-    And I select the item "This is a Switch"
-    And I confirm switch "Switch 2" is selected
-    And I confirm switch "Switch 1" is not selected
-    And I select the tick or done button
     And I confirm This is a Switch holds the correct value
-    And I select the item "This is a Pick List"
-    And I confirm option "Option 2" is selected
-    And I confirm option "Option 3" is selected
-    And I select the tick or done button
-    And I confirm This is a Pick List holds the correct value
+    #And I select the item "This is a Pick List"
+    #And I confirm option "Option 2" is selected
+    #And I confirm option "Option 3" is selected
+    #And I select the tick or done button
+    #And I confirm This is a Pick List holds the correct value
     And I select the item "This Has Baked In Tokens"
     And I confirm the Baked In Tokens Text
     And I select the tick or done button

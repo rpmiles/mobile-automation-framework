@@ -1,8 +1,8 @@
 Feature: Single text item testing
   @reportItems
   Scenario Outline: Test 'Single Text' item
-    #Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
-    Given I select a report
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
+    #Given I select a report
     When I select the item "<item>"
     And I check navigation
     And I select the x at the end of the field

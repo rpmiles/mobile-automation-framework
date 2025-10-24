@@ -3,23 +3,23 @@ Feature: Cloning Reports
   Scenario Outline: Clone a report copying with notes only
 
     Given I launch the mobile app
-    #And I select Cloud Reports
-    #And I search cloud reports for "<TargetReport>"
-    #And I download the report
-    #And I close the search field
-    #And I select the profile menu
-    #And I sign out
-    #And I confirm the sign out
-    #And I enter a username
-    #And I enter a password
-    #And I select the sign-in button
+    And I select Cloud Reports
+    And I search cloud reports for "<TargetReport>"
+    And I download the report
+    And I close the search field
+    And I select the profile menu
+    And I sign out
+    And I confirm the sign out
+    And I enter a username
+    And I enter a password
+    And I select the sign-in button
     And I select the context menu
     And I clone a report "<TargetReport>", "<ReportName>", "<ReferenceText>", "<SelectInspectionDate>", "<InspectionDate>", "<SelectDueDate>", "<DueDate>", "<ExtraNotes>", "<AddNotes>", "<AddPhotos>"
     And I select the back arrow
     And I select the cloned report "<ReportName>"
-    And I confirm Preformatted Text for Copy and Paste Tests holds the correct value
-    And I confirm the cloned this is single text report view value is correct
-    And I confirm the cloned text in Multi Text RTF report view
+    And I confirm the cloned text for Preformatted Text for Copy and Paste Tests in report view are correct
+    And I confirm the cloned text in this is single text report view is correct
+    And I confirm the cloned text in Multi Text RTF report view is correct
     And I confirm the cloned rating in Multi Text RTF report view is correct
     And I confirm the cloned text in Single Text Prefilled is correct
     And I confirm the modified text in Multi Text Prefilled is correct
@@ -35,9 +35,18 @@ Feature: Cloning Reports
     And I confirm the cloned enter underlined text is correct
     And I confirm the cloned multi formatted text is correct
     And I confirm the cloned this is a rating is correct
+    And I select the back arrow
+    And I select the upload button
+    And I select upload
+    And I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
+    Then I select the context menu
+    And I delete the master report
 
     Examples:
-      | TargetReport                         | ReportName                                               | ReferenceText               | SelectInspectionDate | InspectionDate   | SelectDueDate | DueDate         | ExtraNotes                   | AddNotes | AddPhotos |
-      | Cloning - Master - Multi Text Rating | Mobile - Reports - Clone Multi Text Rating - Photos Only | Reference Clone Photos Only | true                 | 14 February 2026 | true          | 31 October 2025 | Clone report with notes only | false    | false      |
+      | TargetReport                         | ReportName                                               | ReferenceText                          | SelectInspectionDate | InspectionDate   | SelectDueDate | DueDate         | ExtraNotes                   | AddNotes | AddPhotos |
+      | Cloning - Master - Multi Text Rating | Mobile - Reports - Clone Multi Text Rating - Photos Only | Reference Clone Multi Text Photos Only | true                 | 14 February 2026 | true          | 31 October 2025 | Clone report with notes only | false    | false     |
 
 

@@ -50,4 +50,4 @@ Feature: Ratings testing
     Examples:
       | Datacapture          | ReportName                                   | ReferenceText     | ReportDate | DueDate | AddNotes            | item               | option1 | option2 | option3 |
       | Test All Controls RM | Mobile - Report Items - Ratings              | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is a Rating   | Y       | N       | M       |
-      #| Test All Controls RM | Mobile - Report Items - Ratings (Multi-Text) | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is Multi Text | 1       | 2       | 3       |
+      | Test All Controls RM | Mobile - Report Items - Ratings (Multi-Text) | Ratings Reference | TODAY      | ONEWEEK | Ratings Extra Notes | This is Multi Text | 1       | 2       | 3       |

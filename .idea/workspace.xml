@@ -4,62 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ba102cfd-b902-4f60-ac45-126db305af24" name="Changes" comment="Clone Photos Only complete">
-      <change afterPath="$PROJECT_DIR$/framework/src/main/java/utils/ImageCompare.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneContentOnly.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneMultiTextRating.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsClonePhotosOnly.feature" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/framework/src/main/resources/features/validatePhotosMultiText.feature" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+    <list default="true" id="ba102cfd-b902-4f60-ac45-126db305af24" name="Changes" comment="Clone report view notes complete">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/framework/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/java/driver/DriverFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/driver/DriverFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/src/main/java/functions/confirmationFunctions.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/functions/confirmationFunctions.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/CloneReport_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/CloneReport_PO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/CreateReport_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/CreateReport_PO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/Homepage_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/Homepage_PO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/src/main/java/pageObjects/TestAllControlsRM_PO.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/java/pageObjects/TestAllControlsRM_PO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsAddUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsAddUpload.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUpload.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUploadReportView.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportFunctionsConfirmUploadReportView.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneContentOnly.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneContentOnly.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneMultiTextRating.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneMultiTextRating.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneNotesOnly.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneNotesOnly.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsClonePhotosOnly.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsClonePhotosOnly.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsDetails.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsDetails.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsPickList.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsPickList.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsRatings.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsRatings.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsSingleText.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsSingleText.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/homepage_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/homepage_Steps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/testAllControlsRM_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/testAllControlsRM_Steps.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/uploadReport_Steps.java" beforeDir="false" afterPath="$PROJECT_DIR$/framework/src/test/java/stepDefinitions/uploadReport_Steps.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/automation-framework-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/automation-framework-1.0-SNAPSHOT.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/classes/driver/DriverFactory$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/driver/DriverFactory$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/classes/driver/DriverFactory.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/driver/DriverFactory.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsAddUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsAddUpload.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUpload.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUpload.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUploadReportView.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportFunctionsConfirmUploadReportView.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportItemsCloneNotesOnly.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportItemsCloneNotesOnly.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportItemsDetails.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportItemsDetails.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportItemsPickList.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportItemsPickList.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportItemsRatings.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportItemsRatings.feature" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/framework/target/classes/features/reportItemsSingleText.feature" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/features/reportItemsSingleText.feature" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/confirmationFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/functions/confirmationFunctions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions$DateHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions$DateHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/functions/globalFunctions.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Base_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/Base_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/CloneReport_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/CloneReport_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/CreateReport_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/CreateReport_PO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Homepage_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/Homepage_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/Login_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/Login_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/NotesControl_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/NotesControl_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/SharedStepsFieldNav_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/SharedStepsFieldNav_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/TestAllControlsRM_PO$DecimalTrimmer.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/TestAllControlsRM_PO$DecimalTrimmer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/pageObjects/TestAllControlsRM_PO.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/pageObjects/TestAllControlsRM_PO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/utils/ElementHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/utils/ElementHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/utils/globalVariables$ElementHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/utils/globalVariables$ElementHelper.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/classes/utils/globalVariables.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/classes/utils/globalVariables.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/runners/MainRunner.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/runners/MainRunner.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/base/Hooks$SystemOutFilter.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/base/Hooks$SystemOutFilter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/base/Hooks.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/base/Hooks.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/cloneReportNotesOnly_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/cloneReportNotesOnly_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/createReport_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/createReport_Steps.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/homepage_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/homepage_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/initialLogin_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/initialLogin_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginPageContactUs_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginPageContactUs_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginScreenDisplayedRequiredFieldsHighlighted_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginScreenDisplayedRequiredFieldsHighlighted_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginWithInvalidEmail_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginWithInvalidEmail_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginWithInvalidPassword_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginWithInvalidPassword_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginWithValidEmail_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/loginWithValidEmail_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/sandbox_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/sandbox_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/sharedStepsConfirmNotes_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/sharedStepsConfirmNotes_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/sharedStepsFieldNav_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/sharedStepsFieldNav_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/syncLogin_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/syncLogin_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/syncProfileMenuDuringSync_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/syncProfileMenuDuringSync_Steps.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/syncProfileMenu_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/syncProfileMenu_Steps.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/testAllControlsRM_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/testAllControlsRM_Steps.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/uploadReport_Steps.class" beforeDir="false" afterPath="$PROJECT_DIR$/framework/target/test-classes/stepDefinitions/uploadReport_Steps.class" afterDir="false" />
     </list>
@@ -116,6 +93,7 @@
     "Cucumber Java.Feature: reportFunctionsAddUpload.executor": "Run",
     "Cucumber Java.Feature: reportFunctionsConfirmUpload.executor": "Run",
     "Cucumber Java.Feature: reportFunctionsUpload.executor": "Run",
+    "Cucumber Java.Feature: reportItemsCloneContentOnly.executor": "Run",
     "Cucumber Java.Feature: reportItemsDate.executor": "Run",
     "Cucumber Java.Feature: reportItemsDetails.executor": "Run",
     "Cucumber Java.Feature: reportItemsMultiTextPrefilled.executor": "Run",
@@ -139,9 +117,11 @@
     "Cucumber Java.Scenario: Clone a report copying including all media.executor": "Run",
     "Cucumber Java.Scenario: Clone a report copying with notes only (1).executor": "Run",
     "Cucumber Java.Scenario: Clone a report copying with notes only and including rating in multi text item (1).executor": "Run",
+    "Cucumber Java.Scenario: Clone a report copying with notes only and including rating in multi text item (2).executor": "Run",
     "Cucumber Java.Scenario: Clone a report copying with notes only and including rating in multi text item.executor": "Run",
     "Cucumber Java.Scenario: Clone a report copying with notes only.executor": "Run",
     "Cucumber Java.Scenario: Complete indepth testing of an items notes.executor": "Run",
+    "Cucumber Java.Scenario: Confirm each cloned item value is correct.executor": "Run",
     "Cucumber Java.Scenario: Confirm picklists working correctly.executor": "Run",
     "Cucumber Java.Scenario: Confirm ratings are working correctly.executor": "Run",
     "Cucumber Java.Scenario: Confirm successful upload (1).executor": "Run",
@@ -222,17 +202,16 @@
       <recent name="backup" />
     </key>
   </component>
-  <component name="RunManager" selected="Cucumber Java.Scenario: Clone a report copying with notes only and including rating in multi text item">
-    <configuration name="Scenario: Clone a report copying with notes only (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Cucumber Java.Feature: reportItemsCloneContentOnly">
+    <configuration name="Feature: reportItemsCloneContentOnly" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="7" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneMultiTextRating.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneContentOnly.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="automation-framework" />
-      <option name="NAME_FILTER" value="^Clone a report copying with notes only$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Clone a report copying with notes only$&quot;" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity" />
       <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Scenario: Clone a report copying with notes only" />
+      <option name="SUGGESTED_NAME" value="Feature: reportItemsCloneContentOnly" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -244,7 +223,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Clone a report copying with notes only and including rating in multi text item (1)" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Clone a report copying with notes only and including rating in multi text item" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="7" />
       <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneContentOnly.feature" />
       <option name="GLUE" value="stepDefinitions" />
@@ -265,16 +244,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Clone a report copying with notes only and including rating in multi text item" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Confirm each cloned item value is correct" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="7" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneNotesOnly.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/reportItemsCloneContentOnly.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="automation-framework" />
-      <option name="NAME_FILTER" value="^Clone a report copying with notes only and including rating in multi text item$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Clone a report copying with notes only and including rating in multi text item$&quot;" />
+      <option name="NAME_FILTER" value="^Confirm each cloned item value is correct$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Confirm each cloned item value is correct$&quot;" />
       <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Scenario: Clone a report copying with notes only and including rating in multi text item" />
+      <option name="SUGGESTED_NAME" value="Scenario: Confirm each cloned item value is correct" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -307,16 +286,16 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Scenario: Select the Multi Text RTF field and confirm attached images are correct" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
+    <configuration name="Scenario: Delete non uploaded reports" type="CucumberJavaRunConfigurationType" factoryName="Cucumber java" temporary="true" nameIsGenerated="true">
       <option name="CUCUMBER_CORE_VERSION" value="7" />
-      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/validatePhotosMultiText.feature" />
+      <option name="FILE_PATH" value="$PROJECT_DIR$/framework/src/main/resources/features/toolsDeleteReport.feature" />
       <option name="GLUE" value="stepDefinitions" />
       <option name="MAIN_CLASS_NAME" value="io.cucumber.core.cli.Main" />
       <module name="automation-framework" />
-      <option name="NAME_FILTER" value="^Select the Multi Text RTF field and confirm attached images are correct$" />
-      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Select the Multi Text RTF field and confirm attached images are correct$&quot;" />
+      <option name="NAME_FILTER" value="^Delete non uploaded reports$" />
+      <option name="PROGRAM_PARAMETERS" value=" --plugin teamcity --name &quot;^Delete non uploaded reports$&quot;" />
       <shortenClasspath name="NONE" />
-      <option name="SUGGESTED_NAME" value="Scenario: Select the Multi Text RTF field and confirm attached images are correct" />
+      <option name="SUGGESTED_NAME" value="Scenario: Delete non uploaded reports" />
       <option name="WORKING_DIRECTORY" value="$MODULE_WORKING_DIR$" />
       <extension name="coverage">
         <pattern>
@@ -338,19 +317,19 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Cucumber Java.Feature: reportItemsCloneContentOnly" />
       <item itemvalue="Cucumber Java.Scenario: Clone a report copying with notes only and including rating in multi text item" />
-      <item itemvalue="Cucumber Java.Scenario: Clone a report copying with notes only and including rating in multi text item (1)" />
-      <item itemvalue="Cucumber Java.Scenario: Select the Multi Text RTF field and confirm attached images are correct" />
-      <item itemvalue="Cucumber Java.Scenario: Clone a report copying with notes only (1)" />
+      <item itemvalue="Cucumber Java.Scenario: Confirm each cloned item value is correct" />
+      <item itemvalue="Cucumber Java.Scenario: Delete non uploaded reports" />
       <item itemvalue="Cucumber Java.Scenario: Delete a non uploaded report" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Cucumber Java.Feature: reportItemsCloneContentOnly" />
+        <item itemvalue="Cucumber Java.Scenario: Delete non uploaded reports" />
+        <item itemvalue="Cucumber Java.Scenario: Confirm each cloned item value is correct" />
         <item itemvalue="Cucumber Java.Scenario: Clone a report copying with notes only and including rating in multi text item" />
         <item itemvalue="Cucumber Java.Scenario: Delete a non uploaded report" />
-        <item itemvalue="Cucumber Java.Scenario: Clone a report copying with notes only and including rating in multi text item (1)" />
-        <item itemvalue="Cucumber Java.Scenario: Clone a report copying with notes only (1)" />
-        <item itemvalue="Cucumber Java.Scenario: Select the Multi Text RTF field and confirm attached images are correct" />
       </list>
     </recent_temporary>
   </component>
@@ -435,7 +414,15 @@
       <option name="project" value="LOCAL" />
       <updated>1760627252148</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Clone report view notes complete">
+      <option name="closed" value="true" />
+      <created>1761126613193</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1761126613194</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -464,7 +451,8 @@
     <MESSAGE value="Updated all report titles to show from mobile" />
     <MESSAGE value="Added searching and can run all report item tests via main runner." />
     <MESSAGE value="Clone Photos Only complete" />
-    <option name="LAST_COMMIT_MESSAGE" value="Clone Photos Only complete" />
+    <MESSAGE value="Clone report view notes complete" />
+    <option name="LAST_COMMIT_MESSAGE" value="Clone report view notes complete" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -473,6 +461,11 @@
           <url>file://$PROJECT_DIR$/framework/src/test/java/stepDefinitions/sharedStepsConfirmNotes_Steps.java</url>
           <line>86</line>
           <option name="timeStamp" value="33" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/framework/src/main/java/pageObjects/Homepage_PO.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="86" />
         </line-breakpoint>
         <breakpoint enabled="true" type="java-exception">
           <properties class="java.lang.NoClassDefFoundError" package="java.lang" />

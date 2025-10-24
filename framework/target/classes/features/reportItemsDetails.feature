@@ -11,7 +11,7 @@ Feature: Testing report details editing
     And I enter a report name "<SpecialChars>"
     And I select the logo
     And I select cancel
-    And I flip the card
+    #And I flip the card
     And I select the context menu
     And I select Report Settings
     And I confirm the report name has not changed "<ReportName>"
@@ -23,7 +23,7 @@ Feature: Testing report details editing
     And I confirm the report name has not changed "<ReportName>"
     And I confirm the reference is "<ReferenceText>"
     And I select cancel
-    And I flip the card
+    #And I flip the card
     And I select the context menu
     And I select Report Settings
     And I delete the report name
@@ -31,7 +31,7 @@ Feature: Testing report details editing
     And I delete the reference
     And I enter a Reference "<SpecialChars>"
     And I select update
-    And I flip the card
+    #And I flip the card
     And I confirm the reports list report name is "<SpecialChars>"
     And I confirm the reports list reference is "<SpecialChars>"
     And I select the context menu
@@ -49,6 +49,7 @@ Feature: Testing report details editing
     And I clear the report notes field
     And I enter some report notes "<ExtraNotes>"
     And I select update
+    And I select the context menu
     And I select Report Settings
     And I confirm the report name has not changed "<SpecialChars>"
     And I confirm the reference is "<SpecialChars>"
@@ -58,7 +59,7 @@ Feature: Testing report details editing
     And I delete the report name
     And I enter a Name "<ReportName>"
     And I select update
-    And I flip the card
+    #And I flip the card
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

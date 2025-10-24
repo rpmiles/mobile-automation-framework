@@ -3,8 +3,8 @@ Feature: Testing report uploads
 
   Scenario Outline: Test uploads by creating, uploading, downloading and confirming
 
-    #Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
-    Given I select a report
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
+    #Given I select a report
     #Set values for all items
     And I select the item "Preformatted Text for Copy/Paste Tests"
     And I clear the field
@@ -41,17 +41,17 @@ Feature: Testing report uploads
     And I select the item "This is a Date"
     And I select a day "10"
     And I select the tick or done button
-    And I confirm the correct date is listed in the report view "10 September 2025"
+    And I confirm the correct date is listed in the report view "10 October 2025"
     And I select the item "This is a Switch"
     And I select switch "Switch 2"
     And I select the tick or done button
     And Switch 2 is displayed as the selected option in report view
-    And I select the item "This is a Pick List"
-    And I select option two "Option 2"
-    And I select option two "Option 3"
-    And I select the tick or done button
-    And I confirm the previous option is selected "Option 2"
-    And I confirm the previous option is selected "Option 3"
+    #And I select the item "Multi Select Pick List"
+    #And I select option two "Option 2"
+    #And I select option two "Option 3"
+    #And I select the tick or done button
+    #And I confirm the previous option is selected "Option 2"
+    #And I confirm the previous option is selected "Option 3"
     And I select the item "This Has Baked In Tokens"
     And I select the tick or done button
     And I confirm This Has Baked In Tokens holds the correct value

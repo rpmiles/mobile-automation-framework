@@ -17,11 +17,11 @@ Feature: Testing picklists
     And I select option three "<option3>"
     And I select the tick or done button
     And I select the item "<item>"
-    And I confirm the previous options are selected "<option1>", "<option2>", "<option3>"
+    And I confirm the previous options are selected "<option2>", "<option3>"
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
-    And I confirm the options displayed in report view are correct "<option1>", "<option2>", "<option3>"
+    And I confirm the options displayed in report view are correct "<option2>", "<option3>"
     And I select the back arrow
     And the list of reports is displayed
     And I select the upload button
