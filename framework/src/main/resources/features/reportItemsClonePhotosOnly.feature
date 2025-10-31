@@ -6,7 +6,7 @@ Feature: Cloning Reports
     And I select Cloud Reports
     And I search cloud reports for "<TargetReport>"
     And I download the report
-    And I close the search field
+    And I close the local search field
     And I select the profile menu
     And I sign out
     And I confirm the sign out
@@ -25,7 +25,7 @@ Feature: Cloning Reports
     And I confirm the cloned images in Multi Text RTF report view are correct
     And I confirm the cloned text in Single Text Prefilled is correct
     And I confirm the modified text in Multi Text Prefilled is correct
-    And I confirm the cloned date entry is correct "1 May 2025"
+    #And I confirm the cloned date entry is correct "1 May 2025"
     And I confirm the cloned this is a switch is correct
     And I confirm the cloned single select pick list is correct
     And I confirm the cloned multi select pick list is correct

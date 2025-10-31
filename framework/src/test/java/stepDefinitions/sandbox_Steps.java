@@ -11,7 +11,6 @@ import java.net.URISyntaxException;
 public class sandbox_Steps extends Base_PO {
 
     TestAllControlsRM_PO testAllControlsRM_po;
-    NotesControl_PO notesControl_po;
     Homepage_PO homepage_po;
     SharedStepsFieldNav_PO sharedStepsFieldNav_po;
     globalFunctions globalFunctions;
@@ -23,9 +22,6 @@ public class sandbox_Steps extends Base_PO {
 
         testAllControlsRM_po = new TestAllControlsRM_PO();
         testAllControlsRM_po.initElements();
-
-        notesControl_po = new NotesControl_PO();
-        notesControl_po.initElements();
 
         homepage_po = new Homepage_PO();
         homepage_po.initElements();
@@ -40,21 +36,6 @@ public class sandbox_Steps extends Base_PO {
         confirmationFunctions.initElements();
     }
 
-
-
-    @And("Export the preformatted text field in report view")
-    public void export_the_preformatted_text_field_in_report_view() throws IOException, URISyntaxException, InterruptedException {
-        waitForWebElementToBeVisible(confirmationFunctions.preformattedReportView);
-        String preformatted = confirmationFunctions.preformattedReportView.getText();
-        System.out.println("Preformatted Text: " + preformatted);
-    }
-
-    @And("Export the single text field in report view")
-    public void export_the_single_text_field_in_report_view() throws IOException, URISyntaxException {
-        waitForWebElementToBeVisible(confirmationFunctions.singleTextReportView);
-        String singleText = confirmationFunctions.singleTextReportView.getText();
-        System.out.println("Single Text: " + singleText);
-    }
 
     @And("Export the multi text field in report view")
     public void export_the_multi_text_field_in_report_view() throws IOException, URISyntaxException {

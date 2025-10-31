@@ -49,14 +49,14 @@ public class CreateReport_PO extends Base_PO {
         String buttonText = createReportButton.getText();
         //System.out.println(buttonText);
             System.out.println("Selecting 'Create Report' button");
-        waitForWebElementAndClick(createReport);
+        waitForWebElementAndClickElement(createReport);
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to select 'Create Report' button");
         }
     }
 
     public void selectDataCapture(String dataCap) throws IOException, URISyntaxException {
-        try {waitForWebElementAndClick(dataCapture);
+        try {waitForWebElementAndClickElement(dataCapture);
 
         List<WebElement> datacaptures = getDriver().findElements(By.cssSelector("#template-name-panel mat-option"));
         //System.out.println("Number of items: " + datacaptures.size());
@@ -99,7 +99,7 @@ public class CreateReport_PO extends Base_PO {
     }
 
     public void selectReportName() throws IOException, URISyntaxException {
-        waitForWebElementAndClick(reportName);
+        waitForWebElementAndClickElement(reportName);
     }
 
     public void confirmReference(String reference) throws IOException, URISyntaxException {
@@ -234,7 +234,7 @@ public class CreateReport_PO extends Base_PO {
     }
 
     public void saveReport () throws IOException, URISyntaxException {
-        waitForWebElementAndClick(saveReport);
+        waitForWebElementAndClickElement(saveReport);
     }
 
 /////////////////////////////////Create Report in One Step/////////////////////////////////////
@@ -252,7 +252,7 @@ public class CreateReport_PO extends Base_PO {
             ));
             String buttonText = createReport.getText();
             //System.out.println(buttonText);
-            waitForWebElementAndClick(createReport);
+            waitForWebElementAndClickElement(createReport);
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to select 'Create Report' button");
         }
@@ -260,7 +260,7 @@ public class CreateReport_PO extends Base_PO {
         /////////////////////////Select Datacapture////////////////////////////
         System.out.println("Selecting Datacapture");
         try {
-            waitForWebElementAndClick(dataCapture);
+            waitForWebElementAndClickElement(dataCapture);
 
             List<WebElement> datacaptures = getDriver().findElements(By.cssSelector("#template-name-panel mat-option"));
             //System.out.println("Number of items: " + datacaptures.size());
@@ -310,7 +310,7 @@ public class CreateReport_PO extends Base_PO {
 
         System.out.println("Performing scroll and select to 'Create' button");
 
-        waitForWebElementAndClick(saveReport);
+        waitForWebElementAndClickElement(saveReport);
 
     }
 }

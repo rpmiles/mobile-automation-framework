@@ -8,27 +8,27 @@ Feature: Report notes testing
     And I select the item "<item>"
     When I select all the text
     And I copy all the text
-    And select the notes icon
-    And paste all the text into the notes field
-    And enter a specific text "<text>"
-    And confirm the formatting has been retained
-    And I delete all the text in the Multi Text Prefilled item
+    And I select the notes button
+    And I paste all the text into the notes field
+    And I enter specific text "<text>"
+    And I confirm the notes formatting has been retained
+    And I clear all the text in the Multi Text Prefilled item
     And I select the tick or done button
     And I select the item "<item>"
-    And select the notes icon
-    And add unformatted text
+    And I select the notes button
+    And I add unformatted text
     And I select all the text
-    And I make it bold
-    And confirm it is bold
-    And I make it italics
-    And confirm it's bold italics
+    And I make the text bold
+    And I confirm it is bold
+    And I make the text italics
+    And I confirm it's bold italics
     And I remove bold
     And I remove italics
-    And I make it underlined
-    And confirm it's underlined
-    And I make it strikethrough
-    And confirm it's underlined strikethrough
-    And I delete all the text in the Multi Text Prefilled item
+    And I make the notes underlined
+    And I confirm it's underlined
+    And I make the text strikethrough
+    And I confirm it's underlined strikethrough
+    And I clear all the text in the Multi Text Prefilled item
     And I select the numbered list button
     And I add three lines of text
     And I confirm it's in a numbered list
@@ -36,9 +36,9 @@ Feature: Report notes testing
     And I select the bullet list button
     And I confirm it's in a bullet list
     And I select the tick or done button
-    And I confirm all the correct text is listed in the report view
+    And I confirm all the correct notes text is listed in the report view
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

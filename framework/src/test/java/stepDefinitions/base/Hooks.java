@@ -15,7 +15,9 @@ import java.net.URISyntaxException;
 import java.time.Duration;
 import java.util.Set;
 
-import static driver.DriverFactory.*;
+import driver.DriverFactory.*;
+
+import static driver.DriverFactory.getDriver;
 import static utils.globalVariables.mobilePortalHomepageURL;
 
 
@@ -84,13 +86,13 @@ public class Hooks {
     @Before
     public void setup() throws IOException, URISyntaxException {
         System.setOut(new SystemOutFilter(System.out));
-        DriverFactory.getDriver();
+        getDriver();
         getDriver().get(mobilePortalHomepageURL);
         switchToWebView();
     }
 
     private void switchToWebView() throws MalformedURLException, URISyntaxException {
-        AndroidDriver driver = DriverFactory.getDriver();
+        AndroidDriver driver = getDriver();
 
         // Wait for the WebView to load
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));

@@ -18,11 +18,11 @@ public class syncLogin_Steps {
     private final Login_PO login_po;
 
     public syncLogin_Steps(Homepage_PO homepagePo, Login_PO loginPo) throws MalformedURLException, URISyntaxException {
-        //System.out.println("SyncLogin+Steps constructor called");
 
         homepage_po = homepagePo;
         login_po = loginPo;
     }
+
 
     @And("I select Cloud Reports")
     public void select_cloud_reports() throws IOException, URISyntaxException {
@@ -41,7 +41,6 @@ public class syncLogin_Steps {
         System.out.println("Downloading report");
         homepage_po.downloadReport();
     }
-
 
     @And("I open the report")
     public void open_the_report() throws IOException, URISyntaxException, InterruptedException {
@@ -72,4 +71,5 @@ public class syncLogin_Steps {
         homepage_po.confirmSignout();
         System.out.println("Sign out confirmed");
     }
+
 }

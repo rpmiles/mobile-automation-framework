@@ -85,12 +85,12 @@ public class uploadReport_Steps extends Base_PO {
 
     @Given("I download a specific report with name {string}")
     public void i_Download_A_Specific_Report_With_Name(String reportName) throws IOException, URISyntaxException, InterruptedException {
-        waitForWebElementAndClick(homepage_po.cloudReports);
+        waitForWebElementAndClickElement(homepage_po.cloudReports);
         String updatedReportName = (reportName + " <" + globalVariables.releaseVersion + ">");
         homepage_po.searchForCloud(updatedReportName);
         System.out.println("Report to download: " + updatedReportName);
-        waitForWebElementAndClick(homepage_po.downloadReport);
-        waitForWebElementAndClick(homepage_po.confirmButton);
+        waitForWebElementAndClickElement(homepage_po.downloadReport);
+        waitForWebElementAndClickElement(homepage_po.confirmButton);
     }
 
 

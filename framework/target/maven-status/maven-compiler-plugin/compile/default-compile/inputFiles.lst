@@ -1,12 +1,13 @@
 C:\Projects\mobile-automation-framework\framework\src\main\java\driver\DriverFactory.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\functions\confirmationFunctions.java
+C:\Projects\mobile-automation-framework\framework\src\main\java\functions\confirmationFunctionsConfirmUpload.java
+C:\Projects\mobile-automation-framework\framework\src\main\java\functions\confirmationFunctionsReportView.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\functions\globalFunctions.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\pageObjects\Base_PO.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\pageObjects\CloneReport_PO.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\pageObjects\CreateReport_PO.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\pageObjects\Homepage_PO.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\pageObjects\Login_PO.java
-C:\Projects\mobile-automation-framework\framework\src\main\java\pageObjects\NotesControl_PO.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\pageObjects\SharedStepsFieldNav_PO.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\pageObjects\TestAllControlsRM_PO.java
 C:\Projects\mobile-automation-framework\framework\src\main\java\utils\ElementHelper.java

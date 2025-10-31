@@ -33,7 +33,7 @@ public class SharedStepsFieldNav_PO extends Base_PO {
     public void selectDone () throws IOException, URISyntaxException {
         System.out.println("Selecting Tick icon");
         System.out.println("Returning to report");
-        waitForWebElementAndClick(doneTick);
+        waitForWebElementAndClickElement(doneTick);
 
     }
 

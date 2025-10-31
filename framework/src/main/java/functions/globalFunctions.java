@@ -2,7 +2,6 @@ package functions;
 
 
 import org.openqa.selenium.*;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
@@ -38,28 +37,17 @@ public class globalFunctions extends Base_PO {
 
     //Element Helper - Call using helper.waitForAngularAndClick(element);
 
-
-    // Login function
-    public void login() throws IOException, URISyntaxException, InterruptedException {
-        System.out.println("Logging in");
-        login_po.navigateTo_Mobile_Portal();
-        login_po.setUserName();
-        login_po.setPassword();
-        login_po.clickSignIn();
-
-    }
-
-
     public void scrollAndSelectReportItems(String elementText) throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Performing scroll and select to item: '" + elementText + "'");
 
 
             WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+            waitForAngularBy(By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]"));
             wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//lib-editor-item//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]")
+                    By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]")
             ));
 
-            By scrolledElement = By.xpath("//lib-editor-item//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]");
+            By scrolledElement = By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]");
             wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledElement));
 
 

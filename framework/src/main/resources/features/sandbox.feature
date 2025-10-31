@@ -2,7 +2,7 @@ Feature: Sandbox feature for testing
 
   Scenario: Sandboxing
     #Given I login
-    #Given the list of reports is displayed
+    #Given I confirm the list of reports is displayed
     #When I select a report
     #And Export the preformatted text field in report view
     #And Export the single text field in report view
@@ -24,10 +24,10 @@ Feature: Sandbox feature for testing
     Scenario Outline: Enter Text
       When I select a report
       And I select the item "This is Multi Text"
-      And I delete all the text
+      And I clear the text
       And I type
       And I copy all the text
-      And I delete all the text
+      And I clear the text
       And paste all the text into the notes field
 
 
@@ -77,8 +77,8 @@ Feature: Sandbox feature for testing
     #And I select the back arrow
 
     #And I select the back arrow
-    #And the list of reports is displayed
-    #And I enter a Reference "Reference 1"
+    #And I confirm the list of reports is displayed
+    #And I enter a reference "Reference 1"
     #And I select an inspection date
     #And I select a due date
     #And I add some notes "Notes 1"

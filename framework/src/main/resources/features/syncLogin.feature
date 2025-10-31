@@ -13,7 +13,7 @@ Feature: Sync after logging in
     And I open the report
     Then I confirm the reports data
     And I select the back arrow
-    And I close the search field
+    And I close the local search field
     And I select the context menu
     And I delete the report
     And I select the profile menu

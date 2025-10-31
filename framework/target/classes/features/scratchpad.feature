@@ -17,7 +17,7 @@ Feature: Checking another one
     And I confirm the notes have saved
     And I confirm the correct date is listed in the report view <reportDate>
     And I select the back arrow
-    Then the list of reports is displayed
+    Then I confirm the list of reports is displayed
 
 
     Examples:

@@ -16,16 +16,16 @@ public class globalVariables {
     public static final int DEFAULT_EXPLICIT_TIMEOUT = 45;
     public static final int SYNC_WAIT_TIMEOUT = 180;
 
-    public static final String mobilePortalHomepageURL = "https://mobile.test-goreport.services/";
+    public static String mobilePortalHomepageURL = "https://mobile.test-goreport.services/";
     public static String adminUser = "admin@beta.com";
     public static String adminPsw = "Run my testing decisively@1";
-    //public static String adminUser = "russell.miles+richard_watterson@goreport.com";
-    //public static String adminPsw = "(Richard.Watterson1)";
-    //public static String adminUser = "russell.miles@goreport.com";
-    //public static String adminPsw = "((Password.1))";
+    //public String adminUser = "russell.miles+richard_watterson@goreport.com";
+    //public String adminPsw = "(Richard.Watterson1)";
+    //public String adminUser = "russell.miles@goreport.com";
+    //public String adminPsw = "((Password.1))";
     public static String standardUser = "user@beta.com";
     public static String standardPsw = "run my testing decisively";
-    //public static String releaseVersion = "202568";
+    //public  String releaseVersion = "202568";
     public static String releaseVersion = "Dummy";
 
 

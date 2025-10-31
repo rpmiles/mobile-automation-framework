@@ -10,8 +10,6 @@ import java.util.List;
 import java.util.Map;
 
 
-
-
 public class DriverFactory {
 
     private static final ThreadLocal<AndroidDriver> webDriver = new ThreadLocal<>();

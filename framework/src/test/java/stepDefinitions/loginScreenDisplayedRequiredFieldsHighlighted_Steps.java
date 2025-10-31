@@ -7,12 +7,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import pageObjects.Base_PO;
-import pageObjects.Homepage_PO;
 import pageObjects.Login_PO;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.List;
 
 public class loginScreenDisplayedRequiredFieldsHighlighted_Steps extends Base_PO {
 
@@ -37,14 +35,14 @@ public class loginScreenDisplayedRequiredFieldsHighlighted_Steps extends Base_PO
     @And("I select the email address field")
     public void i_select_the_email_address_field() throws IOException, URISyntaxException {
         System.out.println("Selecting Email field");
-        waitForWebElementAndClick(login_po.userName);
+        waitForWebElementAndClickElement(login_po.userName);
         System.out.println("Email field selected");
     }
 
     @And("I select the password field")
     public void i_select_the_password_field() throws IOException, URISyntaxException {
         System.out.println("Selecting Password field");
-        waitForWebElementAndClick(login_po.password);
+        waitForWebElementAndClickElement(login_po.password);
         System.out.println("Password field selected.");
     }
 
@@ -62,4 +60,5 @@ public class loginScreenDisplayedRequiredFieldsHighlighted_Steps extends Base_PO
         System.out.println("'Password is required' is displayed");
 
     }
+
 }

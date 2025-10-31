@@ -8,11 +8,11 @@ Feature: Multi Text Rich Formatting Item Testing
     And I enter specific text
     And I select the tick or done button
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I reselect the report
     And I select the item "<item>"
     And I confirm all the multi text has been retained
-    And I delete all the text
+    And I clear the text
     And I select the tick or done button
     And I select the back arrow
     And I reselect the report
@@ -22,20 +22,20 @@ Feature: Multi Text Rich Formatting Item Testing
     And I select the back arrow
     And I reselect the report
     And I select the item "<item>"
-    And I confirm the previously entered multiformatted text has saved
-    And I delete all the text
+    And I confirm the specific previously entered multiformatted text has saved
+    And I clear the text
     And I create a bullet list of three entries
     And I select the tick or done button
     And I select the back arrow
     And I reselect the report
     And I select the item "<item>"
-    And I confirm the bullet list has saved
+    And I confirm the multi text bullet list
     And I change the bullet list to a number list.
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

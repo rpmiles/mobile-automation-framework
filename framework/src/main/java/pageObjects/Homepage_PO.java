@@ -1,11 +1,7 @@
 package pageObjects;
 
-import functions.confirmationFunctions;
-import functions.globalFunctions;
 import org.openqa.selenium.*;
-
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -23,17 +19,7 @@ import static utils.globalVariables.adminUser;
 
 public class Homepage_PO extends Base_PO {
 
-    TestAllControlsRM_PO testAllControlsRM_po;
-    NotesControl_PO notesControl_po;
-    Homepage_PO homepage_po;
-    SharedStepsFieldNav_PO sharedStepsFieldNav_po;
-    functions.globalFunctions globalFunctions;
-    functions.confirmationFunctions confirmationFunctions;
     CreateReport_PO createReport_po;
-
-
-    String userProfilePath = "//*[.//span[text()='" + adminUser + "']]";
-    String specialChars = "!@£$%^&*()_+-={}][:'\\?></.,~`";
 
     public @FindBy(id = "email") WebElement userName;
     public @FindBy(id = "password") WebElement password;
@@ -41,6 +27,7 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(id = "sign-in") WebElement signInButton;
     private @FindBy(id = "mat-mdc-error-1") WebElement emailReq;
     private @FindBy(xpath = "//div[text()=' Wrong email or password ']") WebElement wrongUserPsw;
+    public @FindBy(xpath = "//div[@id='no-reports' and contains(., ' You do not have any local reports on this device. ')]") WebElement noReports;
 
     public @FindBy(xpath = "//button[.//span[text()=' Sync Now ']]") WebElement syncButton;
     public @FindBy(id = "user-profile") WebElement profileMenu;
@@ -95,7 +82,7 @@ public class Homepage_PO extends Base_PO {
 
     public void clickSync() throws IOException, URISyntaxException {
         System.out.println("Performing initial sync");
-        waitForWebElementAndClick(syncButton);
+        waitForWebElementAndClickElement(syncButton);
     }
 
     public void validateSuccessfulSync() throws IOException, URISyntaxException {
@@ -103,37 +90,41 @@ public class Homepage_PO extends Base_PO {
         Assert.assertEquals(localReports.getText(), "Local Reports");
     }
 
+    /*public void noReports() throws IOException, URISyntaxException {
+        Assert.assertEquals(noReports.getText(), " You do not have any local reports on this device. ");
+    }*/
+
     public void selectLocalReports() throws IOException, URISyntaxException {
         System.out.println("Selecting local reports");
-        waitForWebElementAndClick(localReports);
+        waitForWebElementAndClickElement(localReports);
 
     }
 
     public void selectCloudReports() throws IOException, URISyntaxException {
         System.out.println("Selecting cloud reports");
-        waitForWebElementAndClick(cloudReports);
+        waitForWebElementAndClickElement(cloudReports);
 
     }
 
     public void searchForLocal(String searchTerm) throws IOException, URISyntaxException, InterruptedException {
-        waitForWebElementAndClick(cloudReports);
-        waitForWebElementAndClick(localReports);
+        waitForWebElementAndClickElement(cloudReports);
+        waitForWebElementAndClickElement(localReports);
 
-        waitForWebElementAndClick(localSearchButton);
+        waitForWebElementAndClickElement(localSearchButton);
 
         sendKeys(searchBoxLocal, searchTerm);
     }
 
     public void searchForCloud(String searchTerm) throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Searching cloud reports for: " + searchTerm);
-        waitForWebElementAndClick(cloudSearchButton);
+        waitForWebElementAndClickElement(cloudSearchButton);
         sendKeys(searchBoxCloud, searchTerm);
     }
 
 
     public void downloadReport() throws IOException, URISyntaxException, InterruptedException {
-        waitForWebElementAndClick(downloadReport);
-        waitForWebElementAndClick(downloadConfirm);
+        waitForWebElementAndClickElement(downloadReport);
+        waitForWebElementAndClickElement(downloadConfirm);
 
         /*try {
             System.out.println("Downloading template");
@@ -150,7 +141,7 @@ public class Homepage_PO extends Base_PO {
 
                     downloadButtons.get(count).click();
                     downloadConfirm.click();
-                    waitForWebElementAndClick(cancelDownload);
+                    waitForWebElementAndClickElement(cancelDownload);
                     downloadButtons.get(count).click();
                     downloadConfirm.click();
                     wait.until(ExpectedConditions.visibilityOfAllElements(editReport));
@@ -180,7 +171,7 @@ public class Homepage_PO extends Base_PO {
 
                     downloadButtons.get(count).click();
                     downloadConfirm.click();
-                    waitForWebElementAndClick(cancelDownload);
+                    waitForWebElementAndClickElement(cancelDownload);
                     downloadButtons.get(count).click();
                     downloadConfirm.click();
                     wait.until(ExpectedConditions.visibilityOfAllElements(editReport));
@@ -196,24 +187,24 @@ public class Homepage_PO extends Base_PO {
 
     public void editReport() throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Editing report");
-        waitForWebElementAndClick(editReport);
+        waitForWebElementAndClickElement(editReport);
     }
 
     public void clickProfileMenu() throws IOException, URISyntaxException {
         System.out.println("Selecting profile menu");
-        waitForWebElementAndClick(profileMenu);
+        waitForWebElementAndClickElement(profileMenu);
 
     }
 
     public void clickProfileSync() throws IOException, URISyntaxException {
         System.out.println("Sychronising from profile menu");
-        waitForWebElementAndClick(profileSync);
+        waitForWebElementAndClickElement(profileSync);
         waitForSyncFinish(cloudReports);
     }
 
     public void clickProfileSyncWithoutWait() throws IOException, URISyntaxException {
         System.out.println("Sychronising from profile menu");
-        waitForWebElementAndClick(profileSync);
+        waitForWebElementAndClickElement(profileSync);
     }
 
     public void confirmReport() throws IOException, URISyntaxException {
@@ -234,6 +225,7 @@ public class Homepage_PO extends Base_PO {
             waitForWebElement(profileUser);
             String actualText = profileUser.getText();
             System.out.println(actualText);
+            System.out.println("Profile menu displays: " + actualText);
             Assert.assertTrue(actualText.contains(adminUser), "Logged in User is " + adminUser);
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm logged in user");
@@ -244,7 +236,7 @@ public class Homepage_PO extends Base_PO {
     public void confirmSignOutButtonClick() throws IOException, URISyntaxException {
         try {
             System.out.println("Confirming sign out");
-            waitForWebElementAndClick(confirmButton);
+            waitForWebElementAndClickElement(confirmButton);
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to click confirm signout");
         }
@@ -263,7 +255,7 @@ public class Homepage_PO extends Base_PO {
     public void signOut() throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Clicking Sign Out");
 
-        waitForWebElementAndClick(signOutButton);
+        waitForWebElementAndClickElement(signOutButton);
         Thread.sleep(1000);
 
     }
@@ -297,24 +289,24 @@ public class Homepage_PO extends Base_PO {
 
     public void selectUploadReport(String report) throws IOException, URISyntaxException, InterruptedException {
         try {
-            System.out.println("Locating uploads test report");
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
-            //System.out.println("Report variable: " + report);
-            List<WebElement> items = getDriver().findElements(By.tagName("app-report-list-items"));
-            List<WebElement> downloadButton = getDriver().findElements(By.id("edit-report"));
+//            System.out.println("Locating uploads test report");
+//            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
+//            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
+//            //System.out.println("Report variable: " + report);
+//            List<WebElement> items = getDriver().findElements(By.tagName("app-report-list-items"));
+//            List<WebElement> downloadButton = getDriver().findElements(By.id("edit-report"));
+//
+//            int count = 0;
+//            for (WebElement item : items) {
+//                String title = item.getText().trim();
+//                if (title.contains(report)) {
+//
+//                    downloadButton.get(count).click();
+//                    waitForWebElementAndClickElement(confirmButton);
+//                    break;
+//                }
+//                count++;
 
-            int count = 0;
-            for (WebElement item : items) {
-                String title = item.getText().trim();
-                if (title.contains(report)) {
-
-                    downloadButton.get(count).click();
-                    waitForWebElementAndClick(confirmButton);
-                    break;
-                }
-                count++;
-            }
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to select upload report");
         }

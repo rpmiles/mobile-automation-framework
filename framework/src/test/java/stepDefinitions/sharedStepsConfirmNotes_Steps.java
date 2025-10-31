@@ -1,22 +1,23 @@
 package stepDefinitions;
 
+import functions.confirmationFunctions;
+import functions.confirmationFunctionsConfirmUpload;
+import functions.globalFunctions;
 import io.cucumber.java.en.And;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.Base_PO;
-import pageObjects.NotesControl_PO;
 import pageObjects.SharedStepsFieldNav_PO;
+import pageObjects.TestAllControlsRM_PO;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.time.Duration;
-
-import static driver.DriverFactory.getDriver;
 
 public class sharedStepsConfirmNotes_Steps extends Base_PO {
 
-    NotesControl_PO notesControl_po;
-    SharedStepsFieldNav_PO sharedStepsFieldNav_po;
+    private TestAllControlsRM_PO testAllControlsRM_po;
+    private SharedStepsFieldNav_PO sharedStepsFieldNav_po;
+    private confirmationFunctions confirmationFunctions;
 
+    private String normalText = "This is normal text";
     private String boldText = "This is bold text";
     private String italicsText = "This is italicised text";
     private String underlineText = "This is underlined text";
@@ -30,66 +31,80 @@ public class sharedStepsConfirmNotes_Steps extends Base_PO {
 
 
     public sharedStepsConfirmNotes_Steps() throws IOException, URISyntaxException {
-        //System.out.println("SharedStepsConfirmNotes constructor called");
-
-        notesControl_po = new NotesControl_PO();
-        notesControl_po.initElements();
 
         sharedStepsFieldNav_po = new SharedStepsFieldNav_PO();
         sharedStepsFieldNav_po.initElements();
 
+        confirmationFunctions = new confirmationFunctions();
+        confirmationFunctions.initElements();
+
+    }
+
+    public void confirmNotesSteps() throws IOException, URISyntaxException {
+        sharedStepsFieldNav_po = new SharedStepsFieldNav_PO();
+        sharedStepsFieldNav_po.initElements();
+
+        confirmationFunctions = new confirmationFunctions();
+        confirmationFunctions.initElements();
+
+        testAllControlsRM_po = new TestAllControlsRM_PO();
+        testAllControlsRM_po.initElements();    // now valid
     }
 
     @And("I confirm notes are working correctly")
     public void confirmNotes() throws IOException, URISyntaxException {
-        notesControl_po.selectNotes();
+        testAllControlsRM_po.selectNotes();
+        // Add normal text
+        testAllControlsRM_po.enterNotes(normalText);
 
         // Add bold text
-        notesControl_po.selectBold();
-        notesControl_po.enterNotes(boldText);
+        testAllControlsRM_po.selectBold();
+        testAllControlsRM_po.enterNotes(boldText);
 
         // Add italicised text
-        notesControl_po.selectItalics();
-        notesControl_po.enterNotes(italicsText);
+        testAllControlsRM_po.selectItalics();
+        testAllControlsRM_po.enterNotes(italicsText);
 
         //Add underlined text
-        notesControl_po.selectUnderline();
-        notesControl_po.enterNotes(underlineText);
+        testAllControlsRM_po.selectUnderline();
+        testAllControlsRM_po.enterNotes(underlineText);
 
         //Add strikethrough text
-        notesControl_po.selectStrikethrough();
-        notesControl_po.enterNotes(strikethroughText);
-        notesControl_po.selectEnter();
+        testAllControlsRM_po.selectStrikethrough();
+        testAllControlsRM_po.enterNotes(strikethroughText);
+        testAllControlsRM_po.selectEnter();
 
         // Enter a bullet list
-        notesControl_po.selectBulletList();
-        notesControl_po.enterNotes(bullet1Text);
-        notesControl_po.enterNotes(bullet2Text);
-        notesControl_po.enterNotes(bullet3Text);
-        notesControl_po.selectEnter();
-        notesControl_po.selectEnter();
+        testAllControlsRM_po.selectBulletList();
+        testAllControlsRM_po.enterNotes(bullet1Text);
+        testAllControlsRM_po.enterNotes(bullet2Text);
+        testAllControlsRM_po.enterNotes(bullet3Text);
+        testAllControlsRM_po.selectEnter();
+        testAllControlsRM_po.selectEnter();
 
         // Enter a number list
-        notesControl_po.selectNumList();
-        notesControl_po.enterNotes(numlist1Text);
-        notesControl_po.enterNotes(numlist2Text);
-        notesControl_po.enterNotes(numlist3Text);
-        notesControl_po.selectEnter();
-        notesControl_po.selectBackspace();
+        testAllControlsRM_po.selectNumList();
+        testAllControlsRM_po.enterNotes(numlist1Text);
+        testAllControlsRM_po.enterNotes(numlist2Text);
+        testAllControlsRM_po.enterNotes(numlist3Text);
+        testAllControlsRM_po.selectEnter();
+        testAllControlsRM_po.selectBackspace();
 
         sharedStepsFieldNav_po.selectDone();
-        //WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
 
     }
 
     @And("I confirm the notes have saved")
     public void confirmNotesSaved() throws IOException, URISyntaxException {
-        notesControl_po.selectNotes();
+        testAllControlsRM_po.selectNotes();
 
         // Confirm formatting
-        notesControl_po.confirmFormatting();
+        System.out.println("Confirming notes formatting");
+        confirmationFunctions.confirmNotesFormatting();
+
 
         // Return to report field
+        System.out.println("Confirming navigation");
         sharedStepsFieldNav_po.selectDone();
 
     }

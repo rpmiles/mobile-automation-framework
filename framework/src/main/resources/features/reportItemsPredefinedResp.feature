@@ -7,18 +7,18 @@ Feature: Testing Predefined Responses
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
-    And I select a single response "<response>"
+    And I select a single predefined response "<response>"
     And I select the tick or done button
     And I select the item "<item>"
-    And confirm the previous entry is still present "<response>"
-    And I select three more responses "<response2>", "<response3>", "<response4>"
-    And I can delete some text "<response3>"
+    And I confirm the previous predefined response is still present "<response>"
+    And I select three more predefined responses "<response2>", "<response3>", "<response4>"
+    And I delete a predefined response "<response3>"
     And I confirm the text is deleted "<response3>"
     And I select the location crosshairs icon
     And I validate the location coordinates have been added
     And I send the cursor to the end of the text
     And I select the carriage return button
-    And I enter some text "<text>"
+    And I enter some text into the multi text item "<text>"
     And I select the tick or done button
     And I select the item "<item>"
     And I confirm the previously entered Text "<text>"
@@ -27,7 +27,7 @@ Feature: Testing Predefined Responses
     And I confirm all previously entered data is saved "<text>"
     And I confirm the notes have saved
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

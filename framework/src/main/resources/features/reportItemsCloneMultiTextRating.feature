@@ -6,7 +6,7 @@ Feature: Cloning Reports
     And I select Cloud Reports
     And I search cloud reports for "<TargetReport>"
     And I download the report
-    And I close the search field
+    And I close the local search field
     And I select the profile menu
     And I sign out
     And I confirm the sign out
@@ -21,20 +21,20 @@ Feature: Cloning Reports
     And I confirm the cloned text in this is single text report view is correct
     And I confirm the cloned text in Multi Text RTF report view is correct
     And I confirm the cloned rating in Multi Text RTF report view is correct
-    And I confirm the cloned text in Single Text Prefilled is correct
-    And I confirm the modified text in Multi Text Prefilled is correct
+    And I confirm the cloned text in the item this is prefilled text single is correct
+    And I confirm the cloned text in the item Multi Text Prefilled is correct
     And I confirm the cloned date entry is correct "1 May 2025"
-    And I confirm the cloned this is a switch is correct
+    And I confirm the cloned item this is a switch is correct
     And I confirm the cloned single select pick list is correct
     And I confirm the cloned multi select pick list is correct
     And I confirm the cloned this has baked in tokens is correct
-    And I confirm the cloned this is predefined responses is correct
-    And I confirm the cloned this is a numeric is correct
-    And I confirm the cloned enter bold text is correct
-    And I confirm the cloned enter italics text is correct
-    And I confirm the cloned enter underlined text is correct
-    And I confirm the cloned multi formatted text is correct
-    And I confirm the cloned this is a rating is correct
+    And I confirm the cloned item this is predefined responses is correct
+    And I confirm the cloned item this is a numeric is correct
+    And I confirm the cloned item enter bold text is correct
+    And I confirm the cloned item enter italics text is correct
+    And I confirm the cloned item enter underlined text is correct
+    And I confirm the cloned item enter multi formatted text is correct
+    And I confirm the cloned item this is a rating is correct
     And I select the back arrow
     And I select the upload button
     And I select upload

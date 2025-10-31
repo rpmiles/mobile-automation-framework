@@ -1,23 +1,16 @@
 package stepDefinitions;
 
 import functions.globalFunctions;
-import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
-import io.cucumber.java.en.When;
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
 import pageObjects.Base_PO;
 import pageObjects.Homepage_PO;
 import pageObjects.CreateReport_PO;
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.Map;
-
 import static utils.globalVariables.releaseVersion;
+
 
 public class createReport_Steps extends Base_PO {
 
@@ -70,7 +63,7 @@ public class createReport_Steps extends Base_PO {
     }
 
 
-    @And("I enter a Reference {string}")
+    @And("I enter a reference {string}")
     public void i_enter_a_reference(String reference) throws IOException, URISyntaxException {
         String replacedRef = reference.replace("<ReleaseVersion>", releaseVersion);
         System.out.println("Report Name after replacement: " + replacedRef);
@@ -85,16 +78,11 @@ public class createReport_Steps extends Base_PO {
         sendKeys(createReport_po.reportDate, (Keys.chord(Keys.CONTROL, "a")));
         sendKeys(createReport_po.reportDate, (Keys.chord(Keys.BACK_SPACE)));
         sendKeys(createReport_po.reportDate, processedReportDate);
-
-        /*String date = LocalDate.now().format(DateTimeFormatter.ofPattern("dd"));
-        System.out.println("Setting inspection date as today");
-        System.out.println("Setting date: " + date );
-        createReport_po.selectInspectionDate(date);*/
     }
 
     @And("I select the report name")
     public void i_select_the_report_name() throws IOException, URISyntaxException, InterruptedException {
-       waitForWebElementAndClick(createReport_po.reportName);
+       waitForWebElementAndClickElement(createReport_po.reportName);
        System.out.println("Selecting a report");
     }
 
@@ -109,20 +97,13 @@ public class createReport_Steps extends Base_PO {
         sendKeys(createReport_po.reportDueDate, (Keys.chord(Keys.BACK_SPACE)));
         dueDate = globalFunctions.reportDateGenerator(dueDate);
         sendKeys(createReport_po.reportDueDate, dueDate);
-        //createReport_po.selectDueDate(dueDate);
     }
 
-    @And("I add some notes {string}")
-    public void i_add_some_notes(String string) throws IOException, URISyntaxException {
-        System.out.println("Adding extra notes: '" + string + "'");
-        waitForWebElement(createReport_po.extraNotes);
-        createReport_po.enterNotes(string);
-    }
 
     @And("I select Create")
     public void i_select_create() throws IOException, URISyntaxException {
         System.out.println("Creating report");
-        waitForWebElementAndClick(createReport_po.saveReport);
+        waitForWebElementAndClickElement(createReport_po.saveReport);
     }
 
 }

@@ -1,8 +1,8 @@
 Feature: Testing picklists
   @reportItems
   Scenario Outline: Confirm picklists working correctly
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
-    #Given I select a report
+    #Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
+    Given I select a report
     And I select the item "<item>"
     And I check navigation
     And I select option one "<option1>"
@@ -23,7 +23,7 @@ Feature: Testing picklists
     And I confirm the notes have saved
     And I confirm the options displayed in report view are correct "<option2>", "<option3>"
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

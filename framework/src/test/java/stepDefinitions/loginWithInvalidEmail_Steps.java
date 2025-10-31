@@ -1,6 +1,5 @@
 package stepDefinitions;
 
-import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
@@ -8,8 +7,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.testng.Assert;
 import pageObjects.Base_PO;
 import pageObjects.Login_PO;
@@ -17,10 +14,7 @@ import pageObjects.Login_PO;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.time.Duration;
-import java.util.List;
 
-import static utils.globalVariables.adminPsw;
-import static utils.globalVariables.adminUser;
 
 public class loginWithInvalidEmail_Steps extends Base_PO {
 
@@ -29,10 +23,9 @@ public class loginWithInvalidEmail_Steps extends Base_PO {
     private @FindBy(xpath = "//div[text()='Wrong email or password']") WebElement wrongUserPsw;
 
     public loginWithInvalidEmail_Steps() throws IOException, URISyntaxException {
-        //System.out.println("LoginPage constructor called");
 
         login_po = new Login_PO();
-        login_po.initElements();  //  Initialize elements AFTER driver is ready
+        login_po.initElements();
 
     }
 

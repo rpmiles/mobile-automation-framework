@@ -29,4 +29,5 @@ public class syncProfileMenuDuringSync_Steps {
         homepage_po.signOut();
         homepage_po.confirmSignOutButtonClick();
     }
+
 }

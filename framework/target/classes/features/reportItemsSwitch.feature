@@ -21,9 +21,9 @@ Feature: Switch item testing
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
-    And Switch 2 is displayed as the selected option in report view
+    And I confirm the switch "<switch2>" is displayed as the selected option in report view
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

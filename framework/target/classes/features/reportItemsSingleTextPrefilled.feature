@@ -6,15 +6,15 @@ Feature: Single text prefilled item testing
     #And I select a report
     When I select the item "<item>"
     And I check navigation
-    And I confirm the field has the correct text
-    And I select the x at the end of the field
+    And I confirm the single text prefilled field holds the correct value
+    And I select the x at the end of the single text field
     And I select the crosshairs icon
     And I confirm the location coordinates have saved
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

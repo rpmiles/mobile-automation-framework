@@ -6,28 +6,28 @@ Feature: Testing numeric item
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
-    And I select the x at the end of the field
-    And I enter the value "01"
+    And I select the x at the end of the single text field
+    And I enter the numeric value "01"
     And I select the tick or done button
     And I select the item "<item>"
     And I confirm there is a decimal point "<valueDot>"
-    And I enter the value "0.123456789000000"
+    And I enter the numeric value "0.123456789000000"
     And I confirm the correct value is listed "0.123456789000000"
     And I select the tick or done button
-    And I confirm the data has been saved and reformatted
+    And I confirm the correct numeric value is listed in report view "0.123"
     And I select the item "<item>"
-    And I select the x at the end of the field
-    And I enter the value "123456789000000000"
+    And I select the x at the end of the single text field
+    And I enter the numeric value "123456789000000000"
     And I confirm the correct value is listed "123,456,789,000,000,000"
-    And I select the x at the end of the field
-    And I enter the value "1.230.000"
+    And I select the x at the end of the single text field
+    And I enter the numeric value "1.230.000"
     And I confirm I am unable to add another decimal point "1.23"
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
-    And I confirm the correct value is listed in report view
+    And I confirm the correct numeric value is listed in report view "1.23"
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

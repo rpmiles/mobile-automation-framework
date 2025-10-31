@@ -6,8 +6,8 @@ Feature: Multi text prefilled item testing
     #Given I select a report
     When I select the item "<item>"
     And I check navigation
-    And I confirm the multi field has the correct text
-    And I add some extra text "<ExtraText>"
+    And I confirm the multi text prefilled field has the correct text
+    And I enter some text into the multi text item "<ExtraText>"
     And I select the tick or done button
     And I select the item "<item>"
     And I confirm the extra text has been saved "<ExtraText>"
@@ -15,7 +15,7 @@ Feature: Multi text prefilled item testing
     And I select the item "<item>"
     And I confirm the notes have saved
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

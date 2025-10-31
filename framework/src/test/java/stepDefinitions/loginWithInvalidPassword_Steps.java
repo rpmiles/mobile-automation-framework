@@ -12,10 +12,9 @@ public class loginWithInvalidPassword_Steps extends Base_PO {
     Login_PO login_po;
 
     public loginWithInvalidPassword_Steps() throws IOException, URISyntaxException {
-        //System.out.println("LoginPage constructor called");
 
         login_po = new Login_PO();
-        login_po.initElements();  //  Initialize elements AFTER driver is ready
+        login_po.initElements();
 
     }
 

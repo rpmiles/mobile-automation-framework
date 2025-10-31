@@ -1,24 +1,12 @@
 package pageObjects;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
-import utils.ElementHelper;
 import utils.globalVariables;
-
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.time.Duration;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.NoSuchElementException;
-import static driver.DriverFactory.getDriver;
 
 
 public class CloneReport_PO extends Base_PO {
@@ -55,7 +43,7 @@ public class CloneReport_PO extends Base_PO {
 
         /////////////////////////Select Report Clone Button////////////////////////////
         System.out.println("Clicking Clone");
-        waitForWebElementAndClick(cloneButton);
+        waitForWebElementAndClickElement(cloneButton);
 
         /////////////////////////Enter Report Name////////////////////////////
         nameOfReport = (nameOfReport + " <" + globalVariables.releaseVersion + ">");
@@ -87,7 +75,7 @@ public class CloneReport_PO extends Base_PO {
         /////////////////////////Include Photo's and Audio?////////////////////////////
         if ("true".equals(addPhotos)) {
             System.out.println("Including photos and audio");
-            waitForWebElementAndClick(homepagePo.addPhotos);
+            waitForWebElementAndClickElement(homepagePo.addPhotos);
         }
 
 
@@ -95,13 +83,13 @@ public class CloneReport_PO extends Base_PO {
 
         if ("true".equals(addNotes)) {
             System.out.println("Including notes");
-            waitForWebElementAndClick(homepagePo.addNotes);
+            waitForWebElementAndClickElement(homepagePo.addNotes);
         }
 
 
         /////////////////////////Create Report///////////////////////////
 
-        waitForWebElementAndClick(saveReport);
+        waitForWebElementAndClickElement(saveReport);
 
     }
 

@@ -1,6 +1,11 @@
 C:\Projects\mobile-automation-framework\framework\src\test\java\runners\MainRunner.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\base\Hooks.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\cloneReportContent_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\cloneReportNotesOnly_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\cloneReportPhotosOnly_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\confirmationFunctions_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\confirmationFunctionsConfirmReportView_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\confirmationFunctionsConfirmUpload_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\createReport_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\homepage_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\initialLogin_Steps.java
@@ -15,5 +20,13 @@ C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\syncLogin_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\syncProfileMenu_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\syncProfileMenuDuringSync_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRatings_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRM_blank_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRM_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMDate_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMNavigation_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMNumeric_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMPickList_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMPredefinedResponses_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMSwitch_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\uploadReport_Steps.java

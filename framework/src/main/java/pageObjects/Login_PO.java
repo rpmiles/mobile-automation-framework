@@ -37,12 +37,12 @@ public class Login_PO extends Base_PO {
     }
 
     public void dismissCookieMessage () throws IOException, URISyntaxException {
-        waitForWebElementAndClick(cookieDialog);
+        waitForWebElementAndClickElement(cookieDialog);
     }
 
     public void clickSignIn () throws IOException, URISyntaxException, InterruptedException {
         Thread.sleep(2000);
-        waitForWebElementAndClick(signInButton);
+        waitForWebElementAndClickElement(signInButton);
     }
 
 }

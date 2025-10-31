@@ -6,56 +6,56 @@ Feature: Testing numeric item
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
-    And I select the x at the end of the field
-    And I select the value "<value0>"
-    And I select the value "<value1>"
+    And I select the x at the end of the single text field
+    And I select the numeric value "<value0>"
+    And I select the numeric value "<value1>"
     And I select the tick or done button
     And I select the item "<item>"
     And I confirm there is a decimal point "<valueDot>"
-    And I select the value "<value2>"
-    And I select the value "<value3>"
-    And I select the value "<value4>"
-    And I select the value "<value5>"
-    And I select the value "<value6>"
-    And I select the value "<value7>"
-    And I select the value "<value8>"
-    And I select the value "<value9>"
-    And I select the value "<value00>"
-    And I select the value "<value000>"
-    And I select the value "<value0000>"
+    And I select the numeric value "<value2>"
+    And I select the numeric value "<value3>"
+    And I select the numeric value "<value4>"
+    And I select the numeric value "<value5>"
+    And I select the numeric value "<value6>"
+    And I select the numeric value "<value7>"
+    And I select the numeric value "<value8>"
+    And I select the numeric value "<value9>"
+    And I select the numeric value "<value00>"
+    And I select the numeric value "<value000>"
+    And I select the numeric value "<value0000>"
     And I confirm the correct amount is listed "<value0>", "<valueDot>", "<value1>", "<value2>", "<value3>", "<value4>", "<value5>", "<value6>", "<value7>", "<value8>", "<value9>", "<value00>", "<value000>"
     And I select the tick or done button
-    And I confirm the data has been saved and reformatted
+    And I confirm the correct numeric value is listed in report view "0.123"
     And I select the item "<item>"
-    And I select the x at the end of the field
-    And I select the value "<value1>"
-    And I select the value "<value2>"
-    And I select the value "<value3>"
-    And I select the value "<value4>"
-    And I select the value "<value5>"
-    And I select the value "<value6>"
-    And I select the value "<value7>"
-    And I select the value "<value8>"
-    And I select the value "<value9>"
-    And I select the value "<value00>"
-    And I select the value "<value000>"
-    And I select the value "<value0000>"
+    And I select the x at the end of the single text field
+    And I select the numeric value "<value1>"
+    And I select the numeric value "<value2>"
+    And I select the numeric value "<value3>"
+    And I select the numeric value "<value4>"
+    And I select the numeric value "<value5>"
+    And I select the numeric value "<value6>"
+    And I select the numeric value "<value7>"
+    And I select the numeric value "<value8>"
+    And I select the numeric value "<value9>"
+    And I select the numeric value "<value00>"
+    And I select the numeric value "<value000>"
+    And I select the numeric value "<value0000>"
     And I confirm the correct value is listed "123,456,789,000,000,000"
-    And I select the x at the end of the field
-    And I select the value "<value1>"
+    And I select the x at the end of the single text field
+    And I select the numeric value "<value1>"
     And I select the decimal point "<valueDot>"
-    And I select the value "<value2>"
-    And I select the value "<value3>"
-    And I select the value "<value0000>"
+    And I select the numeric value "<value2>"
+    And I select the numeric value "<value3>"
+    And I select the numeric value "<value0000>"
     And I confirm the correct number is listed "<value1>", "<valueDot>", "<value2>", "<value3>", "<value0000>"
     And I select the decimal point "<valueDot>"
     And I confirm another decimal point has not been entered "<value1>", "<valueDot>", "<value2>", "<value3>", "<value0000>"
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
-    And I confirm the correct value is listed in report view
+    And I confirm the correct numeric value is listed in report view "1.23"
     And I select the back arrow
-    And the list of reports is displayed
+    And I confirm the list of reports is displayed
     And I select the upload button
     And I select upload
     Then I confirm the upload has completed

@@ -21,13 +21,11 @@ public class loginWithValidEmail_Steps extends Base_PO {
     Login_PO login_po;
 
 
-    @FindBy(id = "mat-mdc-error-2") WebElement visible;
-
     public loginWithValidEmail_Steps() throws IOException, URISyntaxException {
-        //System.out.println("LoginPage constructor called");
+
 
         login_po = new Login_PO();
-        login_po.initElements();  //  Initialize elements AFTER driver is ready
+        login_po.initElements();
 
     }
 
@@ -49,7 +47,6 @@ public class loginWithValidEmail_Steps extends Base_PO {
         login_po.userName.clear();
         System.out.println("Entering a valid email");
         sendKeys(login_po.userName, adminUser);
-
     }
 
     @Then("I do not get the error saying only emails are valid")
@@ -59,5 +56,12 @@ public class loginWithValidEmail_Steps extends Base_PO {
         System.out.println("'Valid email required' message not displayed");
 
         }
+
+    @And("I sign in as Richard Watterson")
+    public void i_sign_in_as_richard_watterson() throws IOException, URISyntaxException {
+        sendKeys(login_po.userName, "user@beta.com");
+        sendKeys(login_po.password, "run my testing decisively");
     }
+
+}
 
