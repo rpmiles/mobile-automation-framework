@@ -195,7 +195,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
     //Cloned report view
     public void confirmClonedCorrectReportView(String item) throws IOException, URISyntaxException {
         try {
-            System.out.println("Confirming uploaded " + item + " in report view");
+            System.out.println("Confirming cloned " + item + " in report view");
 
             WebElement fieldName;
             String expectedText;
@@ -277,7 +277,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
 
     public void confirmClonedReportViewMultiTextRating(String rating) throws IOException, URISyntaxException, InterruptedException {
         try {
-            System.out.println("Confirming rating in Multi Text item");
+            System.out.println("Confirming cloned rating in Multi Text item");
             WebElement selectedRating = getDriver().findElement(By.xpath("//div[contains(text(), 'This is Multi Text')]/following::span[contains(@class, 'read-only-rating-title')]"));
             String selectedRatingText = selectedRating.getText();
             waitForWebElementToBeVisible(selectedRating);
@@ -290,7 +290,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
 
     public void confirmClonedReportViewRating() throws IOException, URISyntaxException, InterruptedException {
         try{
-            System.out.println("Confirming selected This is a Rating in report view");
+            System.out.println("Confirming cloned This is a Rating in report view");
             waitForWebElementToBeVisible(ratingReportView);
             String reportViewRating = ratingReportView.getText();
             System.out.println("Rating displayed in Report View: \n" + reportViewRating);
@@ -303,7 +303,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
 
     public void confirmClonedReportViewTextFormat(String format) throws IOException, URISyntaxException {
         try {
-            System.out.println("Confirming text in: " + format);
+            System.out.println("Confirming cloned text in: " + format);
 
             String formatExpected;
             WebElement fieldName;
@@ -344,7 +344,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
     //Cloned items
     public void confirmClonedCorrectMultiText(String multiItem) throws IOException, URISyntaxException {
         try {
-            System.out.println("Confirming text in: " + multiItem);
+            System.out.println("Confirming cloned text in: " + multiItem);
             waitForWebElementToBeVisible(multiTextItem);
 
             String multiItemExpected;
@@ -381,7 +381,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
 
     public void confirmClonedCorrectSingleText(String singleItem) throws IOException, URISyntaxException {
         try {
-            System.out.println("Confirming text in: " + singleItem);
+            System.out.println("Confirming cloned text in: " + singleItem);
             waitForWebElementToBeVisible(singleTextItem);
 
             String singleItemExpected;
@@ -415,7 +415,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
 
     public void confirmClonedTextFormat(String format) throws IOException, URISyntaxException {
         try {
-            System.out.println("Confirming text in: " + format);
+            System.out.println("Confirming cloned text in: " + format);
             waitForWebElementToBeVisible(multiTextItem);
 
             String uploadedText = (String) ((JavascriptExecutor) getDriver())
@@ -450,7 +450,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
     public void confirmReportPredefinedResponsesCloned() {
         try{
             String actual   = multiTextItem.getText();
-            System.out.println("Predefined responses item value: \n" + actual);
+            System.out.println("Cloned predefined responses item value: \n" + actual);
 
             // 1) Debug print with delimiters and lengths
             //System.out.printf("EXPECTED → «%s» (len=%d)%n", predefinedResponsesExpected, predefinedResponsesExpected.length());
@@ -482,7 +482,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
 
     public void confirmClonedRating(String item, String option) throws IOException, URISyntaxException, InterruptedException {
         try {
-            System.out.println("- Confirming " + option + " is the selected entry for '" + item + "' ");
+            System.out.println("- Confirming cloned " + option + " is the selected entry for '" + item + "' ");
             if (item.equals("This is a Rating")) {
                 if (option.equals("Y")) {
                     Assert.assertTrue(selectedY.isDisplayed());
