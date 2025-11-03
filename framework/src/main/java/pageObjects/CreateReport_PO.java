@@ -290,7 +290,7 @@ public class CreateReport_PO extends Base_PO {
 
         /////////////////////////Select Inspection Date////////////////////////////
 
-        // Use dateInput in your test logic
+
         String processedReportDate = globalFunctions.reportDateGenerator(inspectionDate);
         sendKeys(reportDate, (Keys.chord(Keys.CONTROL, "a")));
         sendKeys(reportDate, (Keys.chord(Keys.BACK_SPACE)));

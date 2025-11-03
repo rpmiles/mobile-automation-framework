@@ -20,6 +20,7 @@ stepDefinitions\syncLogin_Steps.class
 runners\MainRunner.class
 stepDefinitions\sharedStepsFieldNav_Steps.class
 stepDefinitions\cloneReportContent_Steps.class
+stepDefinitions\confirmationFunctionsConfirmCloned_Steps.class
 stepDefinitions\base\Hooks$SystemOutFilter.class
 stepDefinitions\sandbox_Steps.class
 stepDefinitions\loginScreenDisplayedRequiredFieldsHighlighted_Steps.class

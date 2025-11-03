@@ -141,6 +141,7 @@ public class confirmationFunctionsReportView extends Base_PO {
     private static String prefilledMultiExpected = "New Paragraph\n" +
             "THIS IS NEW TEXT ADDED FOR TESTING Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac molestie odio. Cras in est dolor. Maecenas nec augue eu arcu tincidunt ullamcorper. In eu magna sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.";
     private String dateExpected = "10 October 2025";
+    private String switchReportViewExpected = "Switch 2";
     private String multiPicklistExpected = "Option 2,Option 3";
     private static String bakedInTokensExpected = "These are the baked in values:\n" +
             "\n" +
@@ -189,7 +190,7 @@ public class confirmationFunctionsReportView extends Base_PO {
     private String multiTextAttachmentsReportViewExpectedCloned = "2";
     private String preformattedNotesReportViewExpected = "Pictures added to Notes";
     private String dateNotesReportViewExpected = "25th December 2028";
-    private String switchNotesReportViewExpected = "Second Switch selected";
+    private String sw0itchNotesReportViewExpected = "Second Switch selected";
     private String multiPickListNotesReportViewExpected = "Options 3 and 4 selected";
     private String predefinedResponsesNotesReportViewExpected = "This sentence has multiple formats so needs to be slightly longer.\n\n" +
             "This sentence should be bold.\n\n" +
@@ -207,94 +208,6 @@ public class confirmationFunctionsReportView extends Base_PO {
 
 
     // Report View confirmations
-    public void confirmReportViewPreformattedText() throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming Preformatted Text in report view");
-            waitForWebElementToBeVisible(preformattedTextReportView);
-            //Thread.sleep(2000);
-            String reportViewPreformattedText = preformattedTextReportView.getText();
-            System.out.println("PreformattedText Report View: " + reportViewPreformattedText);
-            System.out.println("Preformatted Expected Value: " + preformattedTextExpected);
-            Assert.assertTrue(preformattedTextExpected.contains(reportViewPreformattedText), "Actual text does not contain expected text.");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm preformatted text in report view");
-        }
-    }
-
-    public void confirmReportViewSingleTextModified(String expectedText) throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming Single Text in report view");
-            waitForWebElementToBeVisible(singleTextReportView);
-            String reportViewSingleText = singleTextReportView.getText();
-            System.out.println("\"" + reportViewSingleText + "\" is displayed in report view");
-            Assert.assertTrue(expectedText.contains(reportViewSingleText), "Actual text does not contain expected text.");
-            System.out.println(" is displayed in report view");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm single text in report view");
-        }
-    }
-
-    public void confirmReportViewSingleText() throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming Single Text in report view");
-            waitForWebElementToBeVisible(singleTextReportView);
-            String reportViewSingleText = singleTextReportView.getText();
-            System.out.println("\"" + reportViewSingleText + "\" is displayed in report view");
-            Assert.assertTrue(singleTextExpected.contains(reportViewSingleText), "Actual text does not contain expected text.");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm single text in report view");
-        }
-    }
-
-    public void confirmReportViewMultiText() throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming Multi Text in report view");
-            waitForWebElementToBeVisible(multiTextReportView);
-            String reportViewMultiText = multiTextReportView.getText();
-            System.out.println("\"" + reportViewMultiText + "\" is displayed in report view");
-            Assert.assertTrue(multiTextExpected.contains(reportViewMultiText), "Actual text does not contain expected text.");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm multi text in report view");
-        }
-    }
-
-    public void confirmReportViewMultiTextRating() throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming Multi Text Rating in report view");
-            waitForWebElementToBeVisible(multiTextRatingReportView);
-            String reportViewMultiTextRating = multiTextRatingReportView.getText();
-            Assert.assertTrue(multiTextRatingExpected.contains(reportViewMultiTextRating), "Actual text does not contain expected text.");
-            System.out.println("\"" + reportViewMultiTextRating + "\" is displayed in report view");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm multi text rating in report view");
-        }
-    }
-
-    public void confirmReportViewPrefilledSingle() throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming Prefilled Text (Single) in report view");
-            waitForWebElementToBeVisible(prefilledTextSingleReportView);
-            String reportViewPrefilledSingle = prefilledTextSingleReportView.getText();
-            Assert.assertTrue(prefilledSingleEditedExpected.contains(reportViewPrefilledSingle), "Actual text does not contain expected text.");
-            System.out.println("\"" + reportViewPrefilledSingle + "\" is displayed in report view");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm single prefilled in report view");
-        }
-
-    }
-
-
-    public void confirmReportViewPrefilledMulti() throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming Prefilled Text (Multi) in report view");
-            waitForWebElementToBeVisible(prefilledTextMultiReportView);
-            String reportViewPrefilledMulti = prefilledTextMultiReportView.getText();
-            Assert.assertTrue(prefilledMultiExpected.contains(reportViewPrefilledMulti), "Actual text does not contain expected text.");
-            System.out.println("\"" + prefilledMultiExpected + "\" is displayed in report view");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm multi prefilled in report view");
-        }
-    }
 
     public void confirmReportViewDate(String specifiedViewDate) throws IOException, URISyntaxException {
         try {
@@ -366,38 +279,17 @@ public class confirmationFunctionsReportView extends Base_PO {
 
     }
 
-    public void confirmReportViewPredefinedResponses() {
-        try{
-            String actual   = predefinedResponsesReportView.getText();
-            System.out.println("Confirming Predefined Responses in report view");
-            // 1) Debug print with delimiters and lengths
-            //System.out.printf("EXPECTED → «%s» (len=%d)%n", predefinedResponsesExpected, predefinedResponsesExpected.length());
-            //System.out.printf("ACTUAL   → «%s» (len=%d)%n", actual,   actual.length());
-
-            // 2) Normalize line endings to Unix style (just in case)
-            predefinedResponsesExpected = predefinedResponsesExpected.replaceAll("\\r\\n?", "\n");
-            actual   = actual  .replaceAll("\\r\\n?", "\n");
-
-            // 3) Trim leading/trailing whitespace and collapse any run of whitespace to a single space
-            String normExpected = predefinedResponsesExpected.trim().replaceAll("\\s+", " ");
-            String normActual   = actual  .trim().replaceAll("\\s+", " ");
-
-            //System.out.printf("NORM EXPECTED → «%s» (len=%d)%n", normExpected, normExpected.length());
-            //System.out.printf("NORM ACTUAL   → «%s» (len=%d)%n", normActual,   normActual.length());
-
-            // 4) Now assert contains (or equals) on the normalized strings
-            Assert.assertTrue(
-                    normActual.contains(normExpected),
-                    String.format(
-                            "After normalization actual does not contain expected:%n  actual = «%s»%n  expected = «%s»",
-                            normActual, normExpected
-                    )
-
-            );
-            System.out.println("\"" + actual + "\" is displayed in report view");
+    public void confirmReportViewSwitch() throws IOException, URISyntaxException {
+        try {
+            waitForWebElementToBeVisible(switchReportView);
+            System.out.println("- Confirming selected Switch in report view");
+            String actualSwitchReportViewText = switchReportView.getText();
+            System.out.println("- \"" + actualSwitchReportViewText + "\" is displayed in report view");
+            Assert.assertTrue(switchReportViewExpected.contains(actualSwitchReportViewText));
         } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm predefined responses");
+            Assert.fail("unable to confirm switch selection in report view");
         }
+
     }
 
     public void confirmReportViewNumeric(String expectedNumber) throws IOException, URISyntaxException {

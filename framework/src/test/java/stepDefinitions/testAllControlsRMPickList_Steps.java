@@ -68,10 +68,10 @@ public class testAllControlsRMPickList_Steps extends Base_PO {
         confirmationFunctions.confirmMultiPicklist(option2, option3);
     }
 
-    @And("I confirm the previous option is selected {string}")
+    /*@And("I confirm the previous option is selected {string}")
     public void iConfirmThePreviousOptionIsSelected(String option) throws IOException, URISyntaxException {
         confirmationFunctions.confirmReportViewSinglePicklist(option);
-    }
+    }*/
 
     @And("I confirm the options displayed in report view are correct {string}, {string}")
     public void i_confirm_the_options_displayed_in_report_view_are_correct(String option2, String option3) throws IOException, URISyntaxException {

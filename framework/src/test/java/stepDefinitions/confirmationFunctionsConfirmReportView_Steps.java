@@ -91,20 +91,22 @@ public class confirmationFunctionsConfirmReportView_Steps extends Base_PO {
 
     }*/
 
-    @And("I confirm This is Single Text holds the correct value in report view")
+
+
+  /*  @And("I confirm This is Single Text holds the correct value in report view")
     public void i_confirm_this_is_single_text_holds_the_correct_value_in_report_view() throws IOException, URISyntaxException, InterruptedException {
-        confirmReportView.confirmReportViewSingleText();
+        //confirmReportView.confirmReportViewSingleText();
     }
 
 
     @And("I confirm This is Multi Text Rating holds the correct value in report view")
     public void i_confirm_this_is_multi_text_rating_holds_the_correct_value_in_report_view() throws IOException, URISyntaxException, InterruptedException {
-        confirmReportView.confirmReportViewMultiTextRating();
+        //confirmReportView.confirmReportViewMultiTextRating();
     }
 
     @And("I confirm This is Prefilled Text \\(Single) holds the correct value in report view")
     public void i_confirm_this_is_prefilled_text_single_holds_the_correct_value_in_report_view() throws IOException, URISyntaxException, InterruptedException {
-        confirmReportView.confirmReportViewPrefilledSingle();
+        //confirmReportView.confirmReportViewPrefilledSingle();
     }
 
 

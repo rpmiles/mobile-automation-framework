@@ -6,7 +6,7 @@ import io.cucumber.java.en.Given;
 import pageObjects.Base_PO;
 import pageObjects.CloneReport_PO;
 import pageObjects.Homepage_PO;
-import pageObjects.TestAllControlsRM_PO;
+
 
 import java.io.IOException;
 import java.net.URISyntaxException;
@@ -55,7 +55,7 @@ public class cloneReportContent_Steps extends Base_PO {
         }
     }
 
-
+/*
     //------------------------Report View----------------------------
     @And("I confirm the cloned text for Preformatted Text for Copy and Paste Tests in report view are correct")
     public void i_confirm_the_cloned_text_for_preformatted_text_for_copy_and_paste_tests_in_report_view_are_correct() throws IOException, URISyntaxException, InterruptedException {
@@ -138,7 +138,7 @@ public class cloneReportContent_Steps extends Base_PO {
         confirmationFunctions.confirmClonedReportViewMultiFormatted();
     }
 
-    @And("I confirm the cloned this is a rating is correct in report view")
+    @And("And I confirm for {string}, {string} is selected")
     public void  i_confirm_the_cloned_this_is_a_rating_is_correct() throws IOException, URISyntaxException {
         confirmationFunctions.confirmClonedReportViewRating();
     }
@@ -198,7 +198,7 @@ public class cloneReportContent_Steps extends Base_PO {
 
     @And("I confirm Multi Select Pick List holds the correct value")
     public void i_confirm_this_is_a_pick_list_holds_the_correct_value() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmReportViewMultiPicklist();
+        //confirmationFunctions.confirmReportViewMultiPicklist();
     }
 
     @And("I confirm the cloned this has baked in tokens is correct")
@@ -239,7 +239,7 @@ public class cloneReportContent_Steps extends Base_PO {
     @And("I confirm the cloned item this is a rating is correct")
     public void i_confirm_the_cloned_item_this_is_a_rating_is_correct(String item, String option) throws IOException, URISyntaxException, InterruptedException {
         confirmationFunctions.confirmRating(item, option);
-    }
+    }*/
 
 
 }

@@ -175,6 +175,11 @@ public class confirmationFunctions_Steps extends Base_PO {
         confirmationFunctions.confirmFormatting();
     }
 
+    @And("I confirm the single text field contains {string}")
+    public void i_confirm_the_single_text_field_contains(String text) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmSingleText(text);
+    }
+
     @And("I confirm the single text prefilled field holds the correct value")
     public void i_confirm_the_field_has_the_correct_text() throws IOException, URISyntaxException {
         confirmationFunctions.confirmSinglePrefilledText();
@@ -259,6 +264,11 @@ public class confirmationFunctions_Steps extends Base_PO {
         confirmationFunctions.confirmReportViewPrefilledSingleUpload(text);
 
     }*/
+
+    @And("I confirm switch {string} is selected")
+    public void i_Confirm_Switch_Is_Selected(String switchConfirm) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmSwitchSelected(switchConfirm);
+    }
 
     @And("I confirm switch {string} is not selected")
     public void i_Confirm_Switch_Is_Not_Selected(String switchConfirm) throws IOException, URISyntaxException, InterruptedException {

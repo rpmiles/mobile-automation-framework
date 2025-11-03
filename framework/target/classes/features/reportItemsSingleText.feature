@@ -29,7 +29,7 @@ Feature: Single text item testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                                  | ReferenceText                 | ReportDate | DueDate | AddNotes                        | item                | SampleText |
+      | Datacapture          | ReportName                                  | ReferenceText                 | ReportDate | DueDate | AddNotes                        | item                | SampleText                                     |
       | Test All Controls RM | Mobile - Report Items - Single Text Feature | Single Text Feature Reference | TODAY      | ONEWEEK | Single Text Feature Extra Notes | This Is Single Text | Single text string to check normal field usage |
 
        #https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=50.9034045&lon=--3.4871714

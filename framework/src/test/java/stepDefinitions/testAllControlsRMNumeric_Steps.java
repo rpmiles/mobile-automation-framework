@@ -90,7 +90,7 @@ public class testAllControlsRMNumeric_Steps extends Base_PO {
 
     }
 
-    @And("I confirm the correct numeric value is listed in report view {string}")
+   @And("I confirm the correct numeric value is listed in report view {string}")
     public void i_confirm_the_correct_value_is_listed_in_report_view (String expectedNumber) throws IOException, URISyntaxException {
         waitForWebElementToBeVisible(testAllControlsRM_po.thisIsNumeric);
         confirmationFunctions.confirmReportViewNumeric(expectedNumber);

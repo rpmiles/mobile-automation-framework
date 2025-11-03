@@ -27,7 +27,7 @@ public class cloneReportNotesOnly_Steps extends Base_PO {
 
 // --------------------------- Steps ----------------------------------------
 
-    @And("I confirm the cloned notes for preformatted text for copy and paste tests are correct in report view")
+   /* @And("I confirm the cloned notes for preformatted text for copy and paste tests are correct in report view")
     public void i_confirm_the_cloned_notes_for_preformatted_text_for_copy_paste_tests_are_correct_in_report_view() throws IOException, URISyntaxException, InterruptedException {
         confirmationFunctions.confirmClonedReportViewPreformattedTextNotes();
     }
@@ -56,7 +56,7 @@ public class cloneReportNotesOnly_Steps extends Base_PO {
     public void i_confirm_the_cloned_notes_for_this_is_a_rating_are_correct() throws IOException, URISyntaxException, InterruptedException {
         confirmationFunctions.confirmClonedReportViewRatingNotes();
     }
-
+*/
 
 }
 

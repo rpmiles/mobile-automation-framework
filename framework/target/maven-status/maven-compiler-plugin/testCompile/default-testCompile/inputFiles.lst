@@ -4,6 +4,7 @@ C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\cloneReportNotesOnly_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\cloneReportPhotosOnly_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\confirmationFunctions_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\confirmationFunctionsConfirmCloned_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\confirmationFunctionsConfirmReportView_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\confirmationFunctionsConfirmUpload_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\createReport_Steps.java

@@ -2,6 +2,7 @@ pageObjects\Homepage_PO.class
 functions\confirmationFunctions.class
 pageObjects\SharedStepsFieldNav_PO.class
 pageObjects\TestAllControlsRM_PO.class
+functions\confirmationFunctionsConfirmCloned.class
 driver\DriverFactory$1.class
 functions\globalFunctions$DateHelper.class
 pageObjects\TestAllControlsRM_PO$PhotoTestUtils.class

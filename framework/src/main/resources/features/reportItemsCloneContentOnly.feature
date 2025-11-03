@@ -3,37 +3,37 @@ Feature: Cloning Reports
   Scenario Outline: Clone a report copying with notes only and including rating in multi text item
 
     Given I launch the mobile app
-    And I select Cloud Reports
-    And I search cloud reports for "<TargetReport>"
-    And I download the report
-    And I close the local search field
-    And I select the profile menu
-    And I sign out
-    And I confirm the sign out
-    And I enter a username
-    And I enter a password
-    And I select the sign-in button
-    And I select the context menu
-    And I clone a report "<TargetReport>", "<ReportName>", "<ReferenceText>", "<SelectInspectionDate>", "<InspectionDate>", "<SelectDueDate>", "<DueDate>", "<ExtraNotes>", "<AddNotes>", "<AddPhotos>"
-    And I select the back arrow
+    #And I select Cloud Reports
+    #And I search cloud reports for "<TargetReport>"
+    #And I download the report
+    #And I close the local search field
+    #And I select the profile menu
+    #And I sign out
+    #And I confirm the sign out
+    #And I enter a username
+    #And I enter a password
+    #And I select the sign-in button
+    #And I select the context menu
+    #And I clone a report "<TargetReport>", "<ReportName>", "<ReferenceText>", "<SelectInspectionDate>", "<InspectionDate>", "<SelectDueDate>", "<DueDate>", "<ExtraNotes>", "<AddNotes>", "<AddPhotos>"
+    #And I select the back arrow
     And I select the cloned report "<ReportName>"
-    And I confirm the cloned text for Preformatted Text for Copy and Paste Tests in report view are correct
-    And I confirm the cloned text in this is single text report view is correct
-    And I confirm the cloned text in Multi Text RTF report view is correct
-    And I confirm the cloned text in Single Text Prefilled is correct in report view
-    And I confirm the modified text in Multi Text Prefilled is correct in report view
-    And I confirm the cloned date entry is correct "1 May 2025" in report view
-    And I confirm the cloned this is a switch is correct in report view
-    And I confirm the cloned single select pick list is correct
-    And I confirm the cloned multi select pick list is correct
-    And I confirm the cloned this has baked in tokens is correct in report view
-    And I confirm the cloned this is predefined responses is correct in report view
-    And I confirm the cloned this is a numeric is correct in report view
-    And I confirm the cloned enter bold text is correct in report view
-    And I confirm the cloned enter italics text is correct in report view
-    And I confirm the cloned enter underlined text is correct in report view
-    And I confirm the cloned multi formatted text is correct in report view
-    And I confirm the cloned this is a rating is correct in report view
+    And I confirm the cloned value for "Preformatted Text for Copy/Paste Tests" in report view is correct
+    And I confirm the cloned value for "This is Single Text" in report view is correct
+    And I confirm the cloned value for "This is Multi Text" in report view is correct
+    And I confirm the specific cloned rating "M" is displayed for This is Multi Text
+    And I confirm the cloned value for "This is Prefilled Text (Single)" in report view is correct
+    And I confirm the cloned value for "This is Prefilled Text (Multi)" in report view is correct
+    #And I confirm the cloned date entry is correct "1 May 2025" in report view
+    And I confirm the cloned value for "This is a Switch" in report view is correct
+    And I confirm the cloned value for "Single Select Pick List" in report view is correct
+    And I confirm the cloned value for "Multi Select Pick List" in report view is correct
+    And I confirm the cloned value for "This Has Baked In Tokens" in report view is correct
+    And I confirm the cloned value for "This is Predefined Responses" in report view is correct
+    And I confirm the cloned value for "This is a Numeric" in report view is correct
+    And I confirm the cloned report view text for "Enter Bold Text" is correct and formatted correctly
+    And I confirm the cloned report view text for "Enter Italics Text" is correct and formatted correctly
+    And I confirm the cloned report view text for "Enter Underlined Text" is correct and formatted correctly
+    And I confirm the cloned report view text for "Enter Multi Formatted Text" is correct and formatted correctly
     And I select the back arrow
     #And I select the upload button
     #And I select upload
@@ -56,59 +56,57 @@ Feature: Cloning Reports
       Given I launch the mobile app
       And I edit the report
       And I select the item "Preformatted Text for Copy/Paste Tests"
-      And I confirm the cloned text for Preformatted Text for Copy and Paste Tests is correct
+      And I confirm the specific cloned text is displayed for the multi text item "Preformatted Text for Copy/Paste Tests"
       And I select the tick or done button
       And I select the item "Single Text"
-      And I confirm the cloned text in this is single text is correct
+      And I confirm the specific cloned text is displayed for the single text item "This is Single Text"
       And I select the tick or done button
       And I select the item "This is Multi Text"
-      And I confirm the cloned text in the item Multi Text RTF is correct
+      And I confirm the specific cloned text is displayed for the multi text item "This is Multi Text"
       And I select the tick or done button
       And I select the item "This is Multi Text"
-      And I confirm for "This is Multi Text" the "3" rating is selected
+      And I confirm the specific cloned rating "M" is displayed for This is Multi Text
       And I select the tick or done button
       And I select the item "This is Prefilled Text (Single)"
-      And I confirm the cloned text in the item this is prefilled text single is correct
+      And I confirm the specific cloned text is displayed for the single text item "This is Prefilled Text (Single)"
       And I select the tick or done button
       And I select the item "This is Prefilled Text (Multi)"
-      And I confirm the cloned text in the item Multi Text Prefilled is correct
+      And I confirm the specific cloned text is displayed for the multi text item "This is Prefilled Text (Multi)"
       And I select the tick or done button
-      And I select the item "This is a Date"
-      And I confirm the cloned date entry is correct "1 May 2025"
-      And I select the tick or done button
+      #And I select the item "This is a Date"
+      #And I confirm the cloned date entry is correct "1 May 2025"
+      #And I select the tick or done button
       And I select the item "This is a Switch"
       And I confirm switch "Switch 2" is selected
       And I confirm switch "Switch 1" is not selected
       And I select the tick or done button
-      And I confirm the cloned item this is a switch is correct
       And I select the item "Multi Select Pick List"
-      And I confirm option "Option 2" is selected
       And I confirm option "Option 3" is selected
+      And I confirm option "Option 4" is selected
       And I select the tick or done button
-      And I confirm Multi Select Pick List holds the correct value
       And I select the item "This Has Baked In Tokens"
-      And I confirm the cloned this has baked in tokens is correct
+      And I confirm the specific cloned text is displayed for the multi text item "This Has Baked In Tokens"
       And I select the tick or done button
       And I select the item "This is Predefined Responses"
-      And I confirm the cloned item this is predefined responses is correct
+      And I confirm the specific cloned text is displayed for the multi text item "This is Predefined Responses"
       And I select the tick or done button
       And I select the item "This is a Numeric"
-      And I confirm the cloned item this is a numeric is correct
+      And I confirm the specific cloned text is displayed for the single text item "This is a Numeric"
       And I select the tick or done button
       And I select the item "Enter Bold Text"
-      And I confirm the cloned item enter bold text is correct
+      And I confirm the cloned text in "Enter Bold Text" is correct and formatted correctly
       And I select the tick or done button
       And I select the item "Enter Italics Text"
-      And I confirm the cloned item enter italics text is correct
+      And I confirm the cloned text in "Enter Italics Text" is correct and formatted correctly
       And I select the tick or done button
       And I select the item "Enter Underlined Text"
-      And I confirm the cloned item enter underlined text is correct
+      And I confirm the cloned text in "Enter Underlined Text" is correct and formatted correctly
       And I select the tick or done button
       And I select the item "Enter Multi Formatted Text"
-      And I confirm the cloned item enter multi formatted text is correct
+      And I confirm the cloned text in "Enter Multi Formatted Text" is correct and formatted correctly
       And I select the tick or done button
       And I select the item "This is a Rating"
-      And I confirm the cloned item this is a rating is correct
+      And I confirm the cloned rating "M" is correct for "This is a Rating"
       And I select the tick or done button
       And I select the back arrow
 

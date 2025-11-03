@@ -38,9 +38,12 @@ public class sharedStepsConfirmNotes_Steps extends Base_PO {
         confirmationFunctions = new confirmationFunctions();
         confirmationFunctions.initElements();
 
+        testAllControlsRM_po = new TestAllControlsRM_PO();
+        testAllControlsRM_po.initElements();    // now valid
+
     }
 
-    public void confirmNotesSteps() throws IOException, URISyntaxException {
+    /*public void confirmNotesSteps() throws IOException, URISyntaxException {
         sharedStepsFieldNav_po = new SharedStepsFieldNav_PO();
         sharedStepsFieldNav_po.initElements();
 
@@ -49,7 +52,7 @@ public class sharedStepsConfirmNotes_Steps extends Base_PO {
 
         testAllControlsRM_po = new TestAllControlsRM_PO();
         testAllControlsRM_po.initElements();    // now valid
-    }
+    }*/
 
     @And("I confirm notes are working correctly")
     public void confirmNotes() throws IOException, URISyntaxException {
