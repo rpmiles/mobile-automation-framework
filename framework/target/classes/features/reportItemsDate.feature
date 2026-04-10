@@ -18,7 +18,7 @@ Feature: Date item testing
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
-    And I confirm the correct date is listed in the report view <reportDate>
+    And I confirm the date <reportDate> for item "<item>>" holds the correct value in report view
     And I select the back arrow
     And I confirm the list of reports is displayed
     And I select the upload button
@@ -32,4 +32,4 @@ Feature: Date item testing
     Examples:
       | Datacapture          | ReportName                               | ReferenceText                      | ReportDate | DueDate | AddNotes                             | item           | year   | month | day  | reportDate         |
       | Test All Controls RM | Mobile - Report Items - Date             | Reference Date Testing             | TODAY      | ONEWEEK | Date Testing Extra Notes             | This is a Date | "2017" | "NOV" | "26" | "26 November 2017" |
-      | Test All Controls RM | Mobile - Report Items - Date - Leap Year | Reference Date Testing (Leap Year) | TODAY      | ONEWEEK | Date Testing (Leap Year) Extra Notes | This is a Date | "2024" | "FEB" | "25" | "25 February 2024" |
+      | Test All Controls RM | Mobile - Report Items - Date - Leap Year | Reference Date Testing (Leap Year) | TODAY      | ONEWEEK | Date Testing (Leap Year) Extra Notes | This is a Date | "2024" | "FEB" | "29" | "29 February 2024" |

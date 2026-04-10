@@ -1,0 +1,52 @@
+Feature: Testing Predefined Responses
+
+  @reportItems
+  Scenario Outline: Testing the Predefined Responses item
+
+    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
+    #Given I select a report
+    And I select the item "<item>"
+    And I check navigation
+    And I select a single predefined response "<response>"
+    And I select the tick or done button
+    And I select the item "<item>"
+    And I confirm the previous predefined response is still present "<response>"
+    And I select predefined responses and send the cursor to the end of the text
+    And I select a single predefined response "<response2>"
+    And I select the toolbar context menu on "<device>"
+    And I select the carriage return button on "<device>"
+    And I select a single predefined response "<response3>"
+    And I select the toolbar context menu on "<device>"
+    And I select the carriage return button on "<device>"
+    And I select a single predefined response "<response4>"
+    And I select the toolbar context menu on "<device>"
+    And I select the carriage return button on "<device>"
+    And I delete the specific text "<response3>" from the multi text item "<item>"
+    And I confirm the text is deleted "<response3>"
+    And I select the toolbar context menu on "<device>"
+    And I select the location crosshairs icon on "<device>"
+    And I validate the location coordinates have been added
+    And I send the cursor to the end of the text
+    And I select the carriage return button on "<device>"
+    And I enter some text into the multi text item "<text>"
+    And I select the tick or done button
+    And I select the item "<item>"
+    And I confirm the text "<text>" is displayed for the multi text item "<item>"
+    And I confirm notes are working correctly
+    And I select the item "<item>"
+    And I confirm all previously entered text "<text>" is saved for the multi text item "<item>"
+    #And I confirm all previously entered data is saved "<text>"
+    And I confirm the notes have saved
+    And I select the back arrow
+    And I confirm the list of reports is displayed
+    And I select the upload button
+    And I select upload
+    Then I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
+
+    Examples:
+      | Datacapture          | ReportName                                            | ReferenceText | ReportDate | DueDate | AddNotes        | item                         | response                                         | response2                                  | response3                                            | response4          | text                                    | device |
+      | Test All Controls RM | Mobile - Report Items - Predefined Responses (tablet) | PDR Reference | TODAY      | ONEWEEK | PDR Extra Notes | This is Predefined Responses | Text the same as the button for testing purposes | Multiple more entries are required to test | Entering more options to confirm multiple selections | Testing this entry | Additional not predefined response text | tablet |
+      #| Test All Controls RM | Mobile - Report Items - Predefined Responses (phone) | PDR Reference | TODAY      | ONEWEEK | PDR Extra Notes | This is Predefined Responses | Text the same as the button for testing purposes | Multiple more entries are required to test | Entering more options to confirm multiple selections | Testing this entry | Additional not predefined response text | phone |

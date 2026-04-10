@@ -1,99 +1,70 @@
 package stepDefinitions;
-
-import functions.confirmationFunctions;
 import functions.confirmationFunctionsReportView;
-import functions.globalFunctions;
 import io.cucumber.java.en.And;
-import io.cucumber.java.en.Then;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import pageObjects.*;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
 import java.net.URISyntaxException;
-import java.time.Duration;
 
 
 public class confirmationFunctionsConfirmReportView_Steps extends Base_PO {
 
-        TestAllControlsRM_PO testAllControlsRM_po;
-        Homepage_PO homepage_po;
-        SharedStepsFieldNav_PO sharedStepsFieldNav_po;
-        globalFunctions globalFunctions;
         confirmationFunctionsReportView confirmReportView;
-        CreateReport_PO createReport_po;
-
-
-        private String expectedNumber;
-        public String prefilledText = "New Paragraph\n" +
-                "THIS IS NEW TEXT ADDED FOR TESTING " +
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce euismod rutrum lacinia. " +
-                "Donec auctor, purus vel malesuada fringilla, turpis enim accumsan libero, nec tempor lectus " +
-                "urna interdum sem. Maecenas et turpis scelerisque, convallis dui at, tempor orci. Vivamus ac " +
-                "molestie odio. Cras in est dolor. Maecenas nec augue eu arcu tincidunt ullamcorper. In eu magna " +
-                "sed diam ultrices ornare. Integer tempus magna ac vulputate imperdiet. Aliquam erat volutpat. " +
-                "Sed efficitur ex sed blandit mattis. Maecenas vestibulum tempus quam nec faucibus. Quisque ultrices dapibus sodales.";
-
-        private String numericExpected = "123,456,789,000,000,000";
-        private String enterBoldExpected = "Entering some bold text to confirm form uploads correctly";
-        private String enterItalicsExpected = "Entering some italics text to confirm form uploads correctly";
-        private String enterUnderlinedExpected = "Entering some underlined text to confirm form uploads correctly";
-        private String enterMultiformatExpected = "Bold text with some added italics, added underline but removed bold, completed with strikethrough changed with simple bold and finally removed all formatting";
-
-        private final String bullet1Text = "Bullet list entry 1";
-        private final String bullet2Text = "Bullet list entry 2";
-        private final String bullet3Text = "Bullet list entry 3";
-        private final String numlist1Text = "Number list entry 1";
-        private final String numlist2Text = "Number list entry 2";
-        private final String numlist3Text = "Number list entry 3";
-
-        private @FindBy(xpath = "//button[@value='ordered']") WebElement orderedList;
-
 
         public confirmationFunctionsConfirmReportView_Steps() throws IOException, URISyntaxException {
 
-            testAllControlsRM_po = new TestAllControlsRM_PO();
-            testAllControlsRM_po.initElements();
-
-            homepage_po = new Homepage_PO();
-            homepage_po.initElements();
-
-            globalFunctions = new globalFunctions();
-            globalFunctions.initElements();
-
-            sharedStepsFieldNav_po = new SharedStepsFieldNav_PO();
-            sharedStepsFieldNav_po.initElements();
-
             confirmReportView = new confirmationFunctionsReportView();
             confirmReportView.initElements();
-
-            createReport_po = new CreateReport_PO();
-            createReport_po.initElements();
         }
 
 
 // --------------------------- Report View ----------------------------------------
+    @And("I confirm the value for {string}, {string} is correct in report view")
+    public void i_confirm_the_specific_text_is_showing_in_report_view(String item, String entry) throws IOException, URISyntaxException, InterruptedException {
+        confirmReportView.confirmCorrectReportView(item, entry);
+    }
+
+    @And("I confirm the rating {string} is displayed for {string} in report view")
+    public void i_confirm_the_specific_rating_is_displayed_for_this_is_multi_text(String rating, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmReportView.confirmReportViewRating(rating, item);
+    }
+
+    @And("I confirm the date {string} for item {string} holds the correct value in report view")
+    public void i_Confirm_The_date_for_item_is_correct_in_report_view (String specifiedDate, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmReportView.confirmReportViewDate(specifiedDate, item);
+    }
+
+    @And("I confirm the text in {string}, {string} is correct and formatted correctly in report view")
+    public void i_Confirm_The_Cloned_Text_In_Is_Correct_And_Formatted_Correctly(String format, String entry) throws IOException, URISyntaxException {
+        confirmReportView.confirmReportViewTextFormat(format, entry);
+    }
+
+    @And("I confirm the rating {string} is displayed in report view for {string}")
+    public void i_Confirm_The_Cloned_RatingIs_Correct_For_This_is_a_Rating (String rating, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmReportView.confirmReportViewRating(rating, item);
+    }
+
+    @And("I confirm all the correct notes text is listed in the report view")
+    public void i_confirm_all_the_correct_notes_text_is_listed_in_report_view() throws IOException, URISyntaxException, InterruptedException {
+        confirmReportView.confirmPreformattedNotesTextInReportView();
+    }
+
+
     /*@And("I confirm the specific text is showing in report view")
     public void i_confirm_the_specific_text_is_showing_in_report_view() throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementToBeVisible(confirmationFunctions.prefilledTextMultiReportView);
         confirmationFunctions.confirmUploadReportViewPrefilledMulti(prefilledText);
-    }*/
+    }
 
-    /*@And("I confirm the entry is the same in report view {string}")
+    @And("I confirm the entry is the same in report view {string}")
     public void i_confirm_the_entry_is_the_same_in_report_view(String expectedText) throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementToBeVisible(testAllControlsRM_po.thisIsSingleText);
         confirmReportView.confirmReportViewSingleText(expectedText);
 
-    }*/
+    }
 
 
 
-  /*  @And("I confirm This is Single Text holds the correct value in report view")
+    @And("I confirm This is Single Text holds the correct value in report view")
     public void i_confirm_this_is_single_text_holds_the_correct_value_in_report_view() throws IOException, URISyntaxException, InterruptedException {
         //confirmReportView.confirmReportViewSingleText();
     }

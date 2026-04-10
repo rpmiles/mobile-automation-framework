@@ -6,13 +6,13 @@ Feature: Single text item testing
     #Given I select a report
     When I select the item "<item>"
     And I check navigation
-    And I select the x at the end of the single text field
+    #And I clear the single text field
     And I enter a single line of text "<SampleText>"
     And I select the tick or done button
     And I select the item "<item>"
-    And I confirm the single text field contains "<SampleText>"
-    And I select the x at the end of the single text field
-    And I select the location icon
+    And I confirm the text "<SampleText>" is displayed for the single text item "<item>"
+    And I clear the single text field
+    And I select the location crosshairs icon on "<device>"
     And I return to the report
     And I select the item "<item>"
     And I confirm the location coordinates have saved
@@ -29,7 +29,7 @@ Feature: Single text item testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                                  | ReferenceText                 | ReportDate | DueDate | AddNotes                        | item                | SampleText                                     |
-      | Test All Controls RM | Mobile - Report Items - Single Text Feature | Single Text Feature Reference | TODAY      | ONEWEEK | Single Text Feature Extra Notes | This Is Single Text | Single text string to check normal field usage |
+      | Datacapture          | ReportName                                  | ReferenceText                 | ReportDate | DueDate | AddNotes                        | item                | SampleText                                     | device |
+      | Test All Controls RM | Mobile - Report Items - Single Text Feature | Single Text Feature Reference | TODAY      | ONEWEEK | Single Text Feature Extra Notes | This Is Single Text | Single text string to check normal field usage | tablet |
 
        #https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=50.9034045&lon=--3.4871714

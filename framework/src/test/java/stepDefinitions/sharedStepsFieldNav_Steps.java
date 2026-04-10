@@ -32,4 +32,16 @@ public class sharedStepsFieldNav_Steps extends Base_PO {
 
     }
 
+    @And("I check navigation for preformatted")
+    public void checkNavigationPreformatted() throws IOException, URISyntaxException, InterruptedException {
+        //System.out.println("Selecting next item");
+        waitForWebElementAndClickElement(sharedStepsFieldNav_po.nextItem());
+        //System.out.println("Selecting previous item");
+        waitForWebElementAndClickElement(sharedStepsFieldNav_po.previousItem());
+        //System.out.println("Selecting previous item");
+
+
+
+    }
+
 }

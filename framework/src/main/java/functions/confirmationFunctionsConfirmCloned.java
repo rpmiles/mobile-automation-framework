@@ -21,26 +21,11 @@ import java.util.NoSuchElementException;
 import static org.testng.AssertJUnit.assertTrue;
 
 public class confirmationFunctionsConfirmCloned extends Base_PO {
-    CreateReport_PO createReport_po;
 
     public @FindBy(xpath = "//input[contains(@class, 'mat-mdc-input-element') and @spellcheck='false']") WebElement extractedTextField;
     public @FindBy(xpath = "//div[contains(@class, 'ql-editor')]") WebElement multiTextItem;
     public @FindBy(xpath = "//input") WebElement singleTextItem;
-    public @FindBy(xpath = "//lib-single-text//span[contains(@class,'single-text')][1]") WebElement singleText;
-    public @FindBy(xpath = "//div[@class='editor-item__title'and contains(., ' This is Prefilled Text (Single) ')]/following::lib-single-text/span[@class='single-text']") WebElement singlePrefilledText;
-    public @FindBy(xpath = "//lib-numeric-input//input[@numericfield]") WebElement numericItem;
 
-    private String boldText = "This is bold text";
-    private String italicsText = "This is italicized text";
-    private String underlineText = "This is underlined text";
-    private String strikethroughText = "This is strikethrough text";
-    private String bulletlist1Text = "Bullet list entry 1";
-    private String bulletlist2Text = "Bullet list entry 2";
-    private String bulletlist3Text = "Bullet list entry 3";
-    private String numlist1Text = "Number list entry 1";
-    private String numlist2Text = "Number list entry 2";
-    private String numlist3Text = "Number list entry 3";
-    private String actualValue;
 
     //Report details
     public @FindBy(xpath = "//input[@id='report-date']") WebElement detailsInspectionDate;
@@ -76,10 +61,8 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
     public @FindBy(xpath = "//lib-editor-item[contains(@class, 'ng-star-inserted')]//span[contains(text(),' M')]") WebElement reportViewMRating;
 
 
-
     //Baked In
     public @FindBy(xpath = "//quill-editor//p[contains (text(), 'These are the baked in values:')]") WebElement bakedInTokens;
-    //public @FindBy(xpath = "//quill-editor//div[contains(@class, 'ql-editor')]") WebElement bakedInTokens;
 
 
     //Numeric elements
@@ -129,6 +112,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
             "This is bold text\n" +
             "This is italicised text\n" +
             "This is underlined text\n" +
+            "This is strikethrough text\n" +
             "This is multiple formats text which needs to be slightly longer\n";
     private String singleTextClonedExpected = "Photo in Notes so what happens if photo without notes?";
     private String multiTextClonedExpected = "Enter\n" +
@@ -140,7 +124,7 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
     private String dateClonedExpected = "1 May 2025";
     private String switchClonedExpected = "Switch 2";
     private String singlePickListClonedExpected = "Tap to add information";
-    private String multiPicklistClonedExpected = "Option 4,Option 3";
+    private String multiPicklistClonedExpected = "Option 3,Option 4";
     private String bakedInTokensClonedExpected = "These are the baked in values:\n" +
             "\n" +
             "Date : .Date.\n" +
@@ -174,8 +158,6 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
 
     public confirmationFunctionsConfirmCloned() throws IOException, URISyntaxException {
 
-        createReport_po = new CreateReport_PO();
-        createReport_po.initElements();
     }
 
 
@@ -479,6 +461,20 @@ public class confirmationFunctionsConfirmCloned extends Base_PO {
             Assert.fail("Unable to confirm predefined responses");
         }
     }
+
+    public void confirmClonedReportViewDate(String specifiedViewDate, String item) throws IOException, URISyntaxException {
+        try {
+            System.out.println("Confirming Date displayed in report view");
+            waitForWebElementToBeVisible(dateReportView);
+            System.out.println("Confirming report view date");
+            String actualReportViewText = dateReportView.getText();
+            System.out.println("\"" + actualReportViewText + "\" is displayed in report view");
+            Assert.assertTrue(actualReportViewText.contains(specifiedViewDate));
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm report date in report view");
+        }
+    }
+
 
     public void confirmClonedRating(String item, String option) throws IOException, URISyntaxException, InterruptedException {
         try {

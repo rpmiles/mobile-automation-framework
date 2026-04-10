@@ -5,27 +5,19 @@ import io.appium.java_client.android.AndroidDriver;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeClass;
 
 import java.io.PrintStream;
-import java.util.logging.*;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URISyntaxException;
 import java.time.Duration;
 import java.util.Set;
 
-import driver.DriverFactory.*;
-
 import static driver.DriverFactory.getDriver;
-import static utils.globalVariables.mobilePortalHomepageURL;
-
 
 public class Hooks {
 
-
     public class SystemOutFilter extends PrintStream {
-
         private final PrintStream original;
 
         public SystemOutFilter(PrintStream original) {
@@ -38,7 +30,6 @@ public class Hooks {
             if (shouldPrint(x)) {
                 original.println(x);
             }
-            // else: filter out the message silently
         }
 
         @Override
@@ -50,79 +41,67 @@ public class Hooks {
 
         private boolean shouldPrint(String message) {
             if (message == null) return true;
-            // Filter out unwanted messages here (case-insensitive)
             String lower = message.toLowerCase();
 
-            // Filter Clicking logs
-            if (lower.contains("clicking") && lower.contains("androiddriver")) {
-                return false;
-            }
+            if (lower.contains("clicking") && lower.contains("androiddriver")) return false;
+            if (lower.contains("clicking proxy")) return false;
 
-            // Filter Clicking Proxy logs
-            if (lower.contains("clicking proxy")) {
-                return false;
-            }
+            // ADDED BACK: Sending keys filters
+            if (lower.contains("sendkeys") || lower.contains("sendking keys")) return false;
 
-            // Filter Sending keys logs
-            if (lower.contains("sendkeys") || lower.contains("sendking keys")) {
-                return false;
-            }
-
-            // Filter Waiting logs (like ExpectedCondition waits)
-            if (lower.contains("waiting for") || lower.contains("waited for")) {
-                return false;
-            }
-
-            // Filter androidDriver logs
-            if (lower.contains("androiddriver")) {
-                return false;
-            }
+            if (lower.contains("waiting for") || lower.contains("waited for")) return false;
+            if (lower.contains("androiddriver")) return false;
 
             return true;
         }
     }
 
-
     @Before
     public void setup() throws IOException, URISyntaxException {
         System.setOut(new SystemOutFilter(System.out));
-        getDriver();
-        getDriver().get(mobilePortalHomepageURL);
-        switchToWebView();
-    }
 
-    private void switchToWebView() throws MalformedURLException, URISyntaxException {
         AndroidDriver driver = getDriver();
 
-        // Wait for the WebView to load
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-        wait.until(d -> {
-            Set<String> contexts = driver.getContextHandles();
-            System.out.println("Available contexts: " + contexts);
-            return contexts.stream().anyMatch(c -> c.toLowerCase().contains("webview"));
-        });
+        // 1. Wait for app load
+        try {
+            Thread.sleep(5000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-        // Switch to the WEBVIEW context
-        for (String context : driver.getContextHandles()) {
-            System.out.println("Checking context: " + context);
-            if (context.toLowerCase().contains("webview")) {
-                try {
-                    System.out.print("Switching to context: " + context);
+        // 2. Switch to WebView while explicitly ignoring the Samsung Terrace ghost
+        switchToWebView(driver);
+    }
+
+    private void switchToWebView(AndroidDriver driver) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
+
+        try {
+            // Wait until a valid WebView (that isn't Terrace) appears
+            wait.until(d -> {
+                Set<String> contexts = driver.getContextHandles();
+                return contexts.stream().anyMatch(c -> c.contains("WEBVIEW") && !c.contains("Terrace"));
+            });
+
+            for (String context : driver.getContextHandles()) {
+                if (context.contains("WEBVIEW") && !context.contains("Terrace")) {
+                    System.out.println("- Switching to valid context: " + context);
                     driver.context(context);
-                    System.out.println("Switched to context: " + context);
-                } catch (Exception e) {
-                    System.out.println("Failed to switch context: " + e.getMessage());
+                    break;
                 }
-                break;
             }
+        } catch (Exception e) {
+            System.out.println("- Non-critical: Could not switch to WebView. Error: " + e.getMessage());
         }
     }
 
-
-
     @After
-    public void tearDown() throws InterruptedException {
-        Thread.sleep(2000);
+    public void tearDown() {
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         DriverFactory.cleanupDriver();
     }
 }

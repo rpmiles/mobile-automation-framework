@@ -33,7 +33,8 @@ public class confirmationFunctionsConfirmUpload extends Base_PO {
     public  @FindBy(xpath = "//div[contains(text(), 'Preformatted Text for Copy/Paste Tests')]/following::div[contains(@class, 'multi-text-item')]") WebElement preformattedReportView;
     public  @FindBy(xpath = "//lib-single-text[contains(@class, 'ng-star-inserted')]") WebElement singleTextReportView;
     public  @FindBy(xpath = "//div[contains(text(), 'This is Multi Text')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')]") WebElement multiTextReportView;
-    public  @FindBy(xpath = "//div[contains(text(), 'This is Multi Text')]/following::span[contains(@class, 'read-only-rating-title')]") WebElement multiTextRatingReportView;
+    public  @FindBy(xpath = "//div[contains(text(), 'This is Multi Text')]/following::lib-read-only-rating[contains(@class, 'ng-star-inserted')]") WebElement multiTextRatingReportView;
+    //public  @FindBy(xpath = "//div[contains(text(), 'This is Multi Text')]/following::span[contains(@class, 'read-only-rating-title')]") WebElement multiTextRatingReportView;
     public  @FindBy(xpath = "//div[contains(text(), 'This is Prefilled Text (Single)')]/following::span[contains(@class, 'single-text')]") WebElement prefilledTextSingleReportView;
     public  @FindBy(xpath = "//div[contains(text(), 'This is Prefilled Text (Multi)')]/following::lib-multi-input[contains(@class, 'ng-star-inserted')]") WebElement prefilledTextMultiReportView;
     public  @FindBy(xpath = "//lib-date//span[contains(@class, 'date')]") WebElement dateReportView;
@@ -203,6 +204,58 @@ public class confirmationFunctionsConfirmUpload extends Base_PO {
             Assert.assertTrue(reportViewMultiTextRating.contains(multiTextRatingUploadExpected), "Actual text does not contain expected text.");
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to confirm preformatted text in report view");
+        }
+    }
+
+    public void confirmUploadOptionNotSelected(String option, String item) throws IOException, URISyntaxException, InterruptedException {
+        try {
+            System.out.println("- Confirming " + item + "" + option + " is NOT selected");
+
+            WebElement notSelectedOption = getDriver().findElement(
+                    By.xpath("//lib-options-list-item[contains(., '" + option + "')]")
+            );
+
+            Assert.assertNull(notSelectedOption.getAttribute("selected-option"),
+                    "Element should not have 'selected-option' attribute");
+
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm option not selected");
+        }
+    }
+
+    public void confirmUploadOptionSelected(String option, String item) throws IOException, URISyntaxException, InterruptedException {
+        try {
+            System.out.println("- Confirming " + item + " " + option + " is selected");
+
+            WebElement selectedOption = getDriver().findElement(
+                    By.xpath("//*[contains(@class, 'selected-option') and contains(., '" + option + "')]")
+            );
+
+            Assert.assertTrue(selectedOption.isDisplayed(), "Option element not visible");
+            System.out.println("- " + option + " is selected");
+
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm option selected");
+        }
+    }
+
+    public void confirmDateValue(String item, String value) throws IOException, URISyntaxException {
+        try {
+            WebElement selectedDateValue = getDriver().findElement(
+                    By.xpath("//span[contains(@class, 'mat-calendar-body-selected')]")
+            );
+            System.out.println("- Confirming " + item + " value");
+            String selectedValue = selectedDateValue.getText();
+            System.out.println("- Current selected date value: " + selectedValue);
+            Assert.assertTrue(
+                    selectedValue.contains(value),
+                    "Actual text does not contain expected text."
+            );
+            selectedDateValue.click();
+
+
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm single text");
         }
     }
 

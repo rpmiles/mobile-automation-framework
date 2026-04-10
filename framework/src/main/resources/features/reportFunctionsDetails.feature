@@ -9,7 +9,6 @@ Feature: Testing report details editing
     And I select Report Settings
     And I delete the report name
     And I enter a report name "<SpecialChars>"
-    And I select the logo
     And I select cancel
     And I select the context menu
     And I select Report Settings
@@ -19,6 +18,8 @@ Feature: Testing report details editing
     And I delete the reference
     And I enter a reference "<SpecialChars>"
     And I select cancel
+    And I select the context menu
+    And I select Report Settings
     And I confirm the report name has not changed "<ReportName>"
     And I confirm the reference is "<ReferenceText>"
     And I select cancel

@@ -17,115 +17,43 @@ import driver.DriverFactory;
 
 public class globalFunctions extends Base_PO {
 
-
-    Login_PO login_po;
-    Homepage_PO homepage_po;
-    CreateReport_PO createReport_po;
-    TestAllControlsRM_PO testAllControlsRM_po;
     ElementHelper helper = new ElementHelper();
 
-    public globalFunctions() throws IOException, URISyntaxException {
-        //System.out.println("testAllControlsRM_Steps constructor called");
-
-        testAllControlsRM_po = new TestAllControlsRM_PO();
-        testAllControlsRM_po.initElements();
-
-        homepage_po = new Homepage_PO();
-        homepage_po.initElements();
+    public globalFunctions() throws MalformedURLException, URISyntaxException {
     }
 
 
-    //Element Helper - Call using helper.waitForAngularAndClick(element);
-
-    public void scrollAndSelectReportItems(String elementText) throws IOException, URISyntaxException, InterruptedException {
-        System.out.println("Performing scroll and select to item: '" + elementText + "'");
-
-
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-            waitForAngularBy(By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]"));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]")
-            ));
-
-            By scrolledElement = By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]");
-            wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledElement));
-
-
-            WebElement selectElement = getDriver().findElement(scrolledElement);
-
-            // Scroll into view using JavaScript
-            ((JavascriptExecutor) getDriver()).executeScript(
-                    "arguments[0].scrollIntoView({block: 'center'});", selectElement);
-            Thread.sleep(300);
-
-            // Try normal click, fallback to JS click
-            try {
-                selectElement.click();
-            } catch (Exception e) {
-                System.out.println("Standard click failed, attempting JS click");
-                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
-            }
-
-    }
-
-    public void scrollAndSelectNumeric(String numericValue)  throws IOException, URISyntaxException, InterruptedException  {
-        System.out.println("Performing scroll and select to item: '" + numericValue + "'");
+    public void scrollAndSelectReportViewRatingValue(String option)  throws IOException, URISyntaxException, InterruptedException {
+        System.out.println("Selecting report view rating " + option);
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
         wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//lib-options-list-item[contains(@class,'ng-star-inserted') and contains(.,'" + numericValue + "')]")
+
+                By.xpath("//lib-rating[contains(@class,'ng-star-inserted')]//span[text()='" + option + "']")
         ));
 
-        By scrolledNumeric = By.xpath("//lib-options-list-item[contains(@class,'ng-star-inserted') and contains(.,'" + numericValue + "')]");
-        wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledNumeric));
 
+        By scrolledRating = By.xpath("//lib-rating[contains(@class,'ng-star-inserted')]//span[text()='" + option + "']");
+        System.out.println("ScrolledRating value " + scrolledRating);
+        wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledRating));
 
-        WebElement selectElement = getDriver().findElement(scrolledNumeric);
+        WebElement selectElement = getDriver().findElement(scrolledRating);
+        System.out.println("Selecting rating value " + selectElement);
 
         // Scroll into view using JavaScript
         ((JavascriptExecutor) getDriver()).executeScript(
                 "arguments[0].scrollIntoView({block: 'center'});", selectElement);
+
         Thread.sleep(300);
 
         // Try normal click, fallback to JS click
+
         try {
             selectElement.click();
         } catch (Exception e) {
             System.out.println("Standard click failed, attempting JS click");
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
         }
-    }
-
-    public void scrollAndSelectReportViewRatingValue(String option)  throws IOException, URISyntaxException, InterruptedException {
-            System.out.println("Selecting report view rating " + option);
-
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-
-                    By.xpath("//lib-rating[contains(@class,'ng-star-inserted')]//span[text()='" + option + "']")
-            ));
-
-
-            By scrolledRating = By.xpath("//lib-rating[contains(@class,'ng-star-inserted')]//span[text()='" + option + "']");
-            System.out.println("ScrolledRating value " + scrolledRating);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledRating));
-
-            WebElement selectElement = getDriver().findElement(scrolledRating);
-            System.out.println("Selecting rating value " + selectElement);
-
-            // Scroll into view using JavaScript
-            ((JavascriptExecutor) getDriver()).executeScript(
-                    "arguments[0].scrollIntoView({block: 'center'});", selectElement);
-
-            Thread.sleep(300);
-
-            // Try normal click, fallback to JS click
-            try {
-                selectElement.click();
-            } catch (Exception e) {
-                System.out.println("Standard click failed, attempting JS click");
-                ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
-            }
 
 
     }
@@ -188,6 +116,91 @@ public class globalFunctions extends Base_PO {
         }
     }
 
+    public void scrollAndSelectTableFieldValue(String option)  throws IOException, URISyntaxException, InterruptedException  {
+        System.out.println("Performing scroll and select to item: '" + option + "'");
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+
+                By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + option + "')]")
+        ));
+
+        By scrolledOption = By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + option + "')]"
+        );
+
+        wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledOption));
+
+
+        WebElement selectElement = getDriver().findElement(scrolledOption);
+
+        // Scroll into view using JavaScript
+        ((JavascriptExecutor) getDriver()).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'});", selectElement);
+        Thread.sleep(300);
+
+        // Try normal click, fallback to JS click
+        try {
+            selectElement.click();
+        } catch (Exception e) {
+            System.out.println("Standard click failed, attempting JS click");
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
+        }
+    }
+
+    public void scrollAndSelectRowCheckbox(int rowIndex) throws IOException, URISyntaxException {
+        System.out.println("Performing scroll and select to row index: " + rowIndex);
+
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        int adjustedRowIndex = rowIndex -1;
+
+        By checkboxLocator = By.xpath("//div[@row-index='" + adjustedRowIndex + "']//input[@type='checkbox']");
+
+        WebElement checkboxElement = wait.until(ExpectedConditions.presenceOfElementLocated(checkboxLocator));
+
+        ((JavascriptExecutor) getDriver()).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'});", checkboxElement);
+
+        try {
+            checkboxElement.click();
+        } catch (Exception e) {
+            System.out.println("Standard click failed, attempting JS click");
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", checkboxElement);
+        }
+    }
+
+    public static String reportDateGenerator(String dateInput) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+
+        if ("TODAY".equalsIgnoreCase(dateInput)) {
+            return LocalDate.now().format(formatter);
+        } else if ("ONEWEEK".equalsIgnoreCase(dateInput)) {
+            return LocalDate.now().plusWeeks(1).format(formatter);
+        } else if ("TWOWEEK".equalsIgnoreCase(dateInput)) {
+            return LocalDate.now().plusWeeks(2).format(formatter);
+        }
+
+        // Otherwise, return as-is
+        return dateInput;
+    }
+
+    public static String jsRetriever(WebElement element) throws MalformedURLException, URISyntaxException {
+        JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getDriver();
+
+        String retrievedValue = (String) js.executeScript("return arguments[0].value;", element);
+
+        return retrievedValue;
+
+    }
+
+    public static class DateHelper {
+        public static String getFormattedDate() {
+            LocalDate today = LocalDate.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+            return today.format(formatter);
+        }
+    }
+
+/*
+
     public void scrollAndSelectItemViewRatingValueMultiText(String option)  throws IOException, URISyntaxException, InterruptedException  {
         System.out.println("Performing scroll and select to item: '" + option + "'");
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
@@ -243,15 +256,21 @@ public class globalFunctions extends Base_PO {
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
         }
 
-        /*System.out.println("Performing scroll and select to item: '" + elementText + "'");
+
+
+    }
+
+    public void scrollAndSelectReportItems(String elementText) throws IOException, URISyntaxException, InterruptedException {
+        System.out.println("Performing scroll and select to item: '" + elementText + "'");
 
 
         WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        waitForAngularBy(By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]"));
         wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//span[contains(text(), '" + elementText + "')]")
+                By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]")
         ));
 
-        By scrolledElement = By.xpath("//span[contains(text(), '" + elementText + "')]");
+        By scrolledElement = By.xpath("//div[contains(@class, 'editor-item__title')and contains(text(), '" + elementText + "')]");
         wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledElement));
 
 
@@ -268,41 +287,40 @@ public class globalFunctions extends Base_PO {
         } catch (Exception e) {
             System.out.println("Standard click failed, attempting JS click");
             ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
-        }*/
+        }
 
     }
 
-    public static class DateHelper {
-        public static String getFormattedDate() {
-            LocalDate today = LocalDate.now();
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
-            return today.format(formatter);
+
+
+    public void scrollAndSelectNumeric(String numericValue)  throws IOException, URISyntaxException, InterruptedException  {
+        System.out.println("Performing scroll and select to item: '" + numericValue + "'");
+
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//lib-options-list-item[contains(@class,'ng-star-inserted') and contains(.,'" + numericValue + "')]")
+        ));
+
+        By scrolledNumeric = By.xpath("//lib-options-list-item[contains(@class,'ng-star-inserted') and contains(.,'" + numericValue + "')]");
+        wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledNumeric));
+
+
+        WebElement selectElement = getDriver().findElement(scrolledNumeric);
+
+        // Scroll into view using JavaScript
+        ((JavascriptExecutor) getDriver()).executeScript(
+                "arguments[0].scrollIntoView({block: 'center'});", selectElement);
+        Thread.sleep(300);
+
+        // Try normal click, fallback to JS click
+        try {
+            selectElement.click();
+        } catch (Exception e) {
+            System.out.println("Standard click failed, attempting JS click");
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].click();", selectElement);
         }
     }
 
-    public static String reportDateGenerator(String dateInput) {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
-
-        if ("TODAY".equalsIgnoreCase(dateInput)) {
-            return LocalDate.now().format(formatter);
-        } else if ("ONEWEEK".equalsIgnoreCase(dateInput)) {
-            return LocalDate.now().plusWeeks(1).format(formatter);
-        } else if ("TWOWEEK".equalsIgnoreCase(dateInput)) {
-            return LocalDate.now().plusWeeks(2).format(formatter);
-        }
-
-        // Otherwise, return as-is
-        return dateInput;
-    }
-
-    public static String jsRetriever(WebElement element) throws MalformedURLException, URISyntaxException {
-        JavascriptExecutor js = (JavascriptExecutor) DriverFactory.getDriver();
-
-        String retrievedValue = (String) js.executeScript("return arguments[0].value;", element);
-
-        return retrievedValue;
-
-    }
-
+ */
 
 }

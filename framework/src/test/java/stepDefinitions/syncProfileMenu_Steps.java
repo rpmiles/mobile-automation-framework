@@ -22,13 +22,13 @@ public class syncProfileMenu_Steps extends Base_PO {
     }
 
     @And("I select sync")
-    public void select_sync() throws IOException, URISyntaxException {
+    public void select_sync() throws IOException, URISyntaxException, InterruptedException {
         homepage_po.clickProfileSync();
 
     }
 
     @And("I select sync without wait")
-    public void i_select_sync_without_wait() throws IOException, URISyntaxException {
+    public void i_select_sync_without_wait() throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Selecting Profile menu Sync");
         homepage_po.clickProfileSyncWithoutWait();
 

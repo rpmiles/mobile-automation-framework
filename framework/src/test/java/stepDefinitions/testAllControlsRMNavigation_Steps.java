@@ -35,9 +35,8 @@ public class testAllControlsRMNavigation_Steps extends Base_PO {
 
     @And("I select the item {string}")
     public void i_select_the_item(String item) throws IOException, URISyntaxException, InterruptedException {
-        //globalFunctions.scrollAndSelectReportItems(item);
         By element = By.xpath("//div[contains(text(), '" + item +  "')]");
-        waitForAngularBy(element);
+        System.out.println("Selecting item");
         waitForWebElementAndClickBy(element);
     }
 

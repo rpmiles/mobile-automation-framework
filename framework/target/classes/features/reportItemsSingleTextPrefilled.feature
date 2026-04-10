@@ -7,8 +7,8 @@ Feature: Single text prefilled item testing
     When I select the item "<item>"
     And I check navigation
     And I confirm the single text prefilled field holds the correct value
-    And I select the x at the end of the single text field
-    And I select the crosshairs icon
+    And I clear the single text field
+    And I select the location crosshairs icon on "<device>"
     And I confirm the location coordinates have saved
     And I confirm notes are working correctly
     And I select the item "<item>"
@@ -23,5 +23,5 @@ Feature: Single text prefilled item testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                                          | ReferenceText | ReportDate | DueDate | AddNotes                          | item                            |
-      | Test All Controls RM | Mobile - Report Items - Single Text Prefilled Tests | STP Reference | TODAY      | ONEWEEK | Single Text Prefilled Extra Notes | This is Prefilled Text (Single) |
+      | Datacapture          | ReportName                                          | ReferenceText | ReportDate | DueDate | AddNotes                          | item                            | device |
+      | Test All Controls RM | Mobile - Report Items - Single Text Prefilled Tests | STP Reference | TODAY      | ONEWEEK | Single Text Prefilled Extra Notes | This is Prefilled Text (Single) | tablet |

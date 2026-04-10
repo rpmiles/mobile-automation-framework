@@ -1,12 +1,18 @@
 package pageObjects;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Wait;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import utils.globalVariables;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.Duration;
 
 
 public class CloneReport_PO extends Base_PO {
@@ -42,16 +48,16 @@ public class CloneReport_PO extends Base_PO {
                             String inspectionDateReq, String inspectionDate, String dueDateReq, String dueDate, String notesText, String addNotes, String addPhotos) throws IOException, URISyntaxException, InterruptedException {
 
         /////////////////////////Select Report Clone Button////////////////////////////
-        System.out.println("Clicking Clone");
+        System.out.println("- Clicking Clone");
         waitForWebElementAndClickElement(cloneButton);
 
         /////////////////////////Enter Report Name////////////////////////////
-        nameOfReport = (nameOfReport + " <" + globalVariables.releaseVersion + ">");
+        nameOfReport = (nameOfReport + " (" + globalVariables.releaseVersion + ")");
         reportName.clear();
         sendKeys(reportName, nameOfReport);
 
         /////////////////////////Enter Reference////////////////////////////
-        String fullReferenceText = (referenceText + " <" + globalVariables.releaseVersion + ">");
+        String fullReferenceText = ( referenceText + " (" + globalVariables.releaseVersion + ")");
         reference.clear();
         sendKeys(reference, fullReferenceText);
 
@@ -74,7 +80,7 @@ public class CloneReport_PO extends Base_PO {
 
         /////////////////////////Include Photo's and Audio?////////////////////////////
         if ("true".equals(addPhotos)) {
-            System.out.println("Including photos and audio");
+            System.out.println("- Including photos and audio");
             waitForWebElementAndClickElement(homepagePo.addPhotos);
         }
 
@@ -82,14 +88,34 @@ public class CloneReport_PO extends Base_PO {
         /////////////////////////Include Notes?////////////////////////////
 
         if ("true".equals(addNotes)) {
-            System.out.println("Including notes");
+            System.out.println("- Including notes");
+            getDriver().hideKeyboard();
             waitForWebElementAndClickElement(homepagePo.addNotes);
         }
 
 
         /////////////////////////Create Report///////////////////////////
-
+        System.out.println("Creating Clone Report");
+        waitForWebElementToBeVisible(saveReport);
         waitForWebElementAndClickElement(saveReport);
+
+        System.out.println("Retrieving report header");
+        Thread.sleep(1000);
+        WebElement reportHeader = getDriver().findElement(By.xpath("//div[contains(@class, 'report-name')]"));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//div[contains(@class, 'report-name')]")
+        ));
+
+        String reportHeaderText = reportHeader.getText();
+        System.out.println("Report header text: " + reportHeader);
+
+        System.out.println("Confirming report has loaded");
+        Thread.sleep(1000);
+
+        Assert.assertTrue(reportHeaderText.contains(nameOfReport),
+                "Expected header to contain: '" + nameOfReport + "', but actual text was: '" + reportHeader + "'");
+        ;
 
     }
 

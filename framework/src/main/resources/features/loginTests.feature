@@ -29,8 +29,7 @@ Feature: Login tests except for Initial login
     Then an error message is displayed saying unable to login
 
   Scenario: A link will be shown to take the user to an information page on how to sign up with GoReport
-    Given I launch the mobile app
-    When I select the contact-us page
+    Given I select the contact-us page
     Then I am taken to the contact-us page
 
   Scenario: Successful login and logout

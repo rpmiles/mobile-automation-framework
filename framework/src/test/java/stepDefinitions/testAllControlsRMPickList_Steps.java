@@ -43,15 +43,20 @@ public class testAllControlsRMPickList_Steps extends Base_PO {
     }
 
     //Picklist steps
-    @And("I select option one {string}")
+    /*@And("I select option one {string}")
     public void i_select_option_one(String option1) throws IOException, URISyntaxException {
+        testAllControlsRM_po.selectOption(option1);
+    }*/
+
+    @And("I select the option {string}")
+    public void i_select_the_option(String option1) throws IOException, URISyntaxException {
         testAllControlsRM_po.selectOption(option1);
     }
 
-    @And("I select option two {string}")
+   /*@And("I select option two {string}")
     public void i_select_option_two(String option2) throws IOException, URISyntaxException {
         testAllControlsRM_po.selectOption(option2);
-    }
+    }*/
 
     @And("I deselect the first option {string}")
     public void i_deselect_the_first_option(String option1) throws IOException, URISyntaxException {
@@ -63,22 +68,22 @@ public class testAllControlsRMPickList_Steps extends Base_PO {
         testAllControlsRM_po.selectOption(option3);
     }
 
-    @Then("I confirm the previous options are selected {string}, {string}")
+    /*@Then("I confirm the previous options are selected {string}, {string}")
     public void i_confirm_the_previous_options_are_selected(String option2, String option3) throws IOException, URISyntaxException {
         confirmationFunctions.confirmMultiPicklist(option2, option3);
     }
 
-    /*@And("I confirm the previous option is selected {string}")
+    @And("I confirm the previous option is selected {string}")
     public void iConfirmThePreviousOptionIsSelected(String option) throws IOException, URISyntaxException {
         confirmationFunctions.confirmReportViewSinglePicklist(option);
-    }*/
+
 
     @And("I confirm the options displayed in report view are correct {string}, {string}")
     public void i_confirm_the_options_displayed_in_report_view_are_correct(String option2, String option3) throws IOException, URISyntaxException {
         waitForWebElementToBeVisible(testAllControlsRM_po.multiSelectPicklist);
         confirmationFunctions.confirmMultiPicklist(option2, option3);
 
-    }
+    }*/
 
 }
 

@@ -1,8 +1,7 @@
 Feature: Sync from the profile menu
   @Sync
   Scenario: Login and sync via the profile menu
-    Given I launch the mobile app
-    And I enter a username
+    Given I enter a username
     And I enter a password
     And I select the sign-in button
     And I select the profile menu

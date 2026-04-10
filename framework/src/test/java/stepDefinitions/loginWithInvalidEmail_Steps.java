@@ -31,6 +31,7 @@ public class loginWithInvalidEmail_Steps extends Base_PO {
 
     @Given("I enter an email without an account as the username")
     public void i_enter_an_email_without_an_account_as_the_username() throws IOException, URISyntaxException {
+        login_po.userName.clear();
         sendKeys(login_po.userName, "any@email.com");
     }
 

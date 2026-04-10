@@ -44,6 +44,21 @@ public class confirmationFunctionsConfirmUpload_Steps extends Base_PO {
         confirmUpload.confirmUploadedCorrectSingleText(item);
     }
 
+    @And("I confirm the uploaded {string} is a selected option for {string}")
+    public void i_Confirm_the_uploaded_Option_Is_Selected(String option, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmUpload.confirmUploadOptionSelected(option, item);
+    }
+
+    @And("I confirm the uploaded {string} is not a selected option for {string}")
+    public void i_Confirm_the_uploaded_Option_Is_Not_Selected(String option, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmUpload.confirmUploadOptionNotSelected(option, item);
+    }
+
+    @And("I confirm the uploaded date option {string} is set to {string}")
+    public void i_confirm_the_year_is_set_to(String item, String value) throws IOException, URISyntaxException, InterruptedException {
+        confirmUpload.confirmDateValue(item, value);
+    }
+
     @And("I confirm the uploaded predefined responses are correct")
     public void i_Confirm_The_Predefined_Responses_Are_Correct() throws IOException, URISyntaxException, InterruptedException {
         confirmUpload.confirmReportPredefinedResponsesUpload();

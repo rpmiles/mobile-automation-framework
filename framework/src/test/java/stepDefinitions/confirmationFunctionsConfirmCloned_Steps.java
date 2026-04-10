@@ -58,6 +58,11 @@ public class confirmationFunctionsConfirmCloned_Steps extends Base_PO {
         confirmCloned.confirmClonedTextFormat(format);
     }
 
+    @And("I confirm the cloned date {string} for item {string} holds the correct value in report view")
+    public void i_Confirm_The_date_for_item_is_correct_in_report_view (String specifiedDate, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmCloned.confirmClonedReportViewDate(specifiedDate, item);
+    }
+
     @And("I confirm the specific cloned rating {string} is displayed for This is Multi Text")
     public void i_confirm_the_specific_Cloned_rating_is_displayed_for_this_is_multi_text(String rating) throws IOException, URISyntaxException, InterruptedException {
         confirmCloned.confirmClonedReportViewMultiTextRating(rating);
@@ -105,6 +110,15 @@ public class confirmationFunctionsConfirmCloned_Steps extends Base_PO {
         confirmCloned.confirmClonedRating(item, option);
     }
 
+    @And("I confirm the notes {string} is present")
+    public void i_confirm_the_notes_are_present(String notes) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmMultiText(notes);
+    }
+
+    @And("I confirm the images grid is not present")
+    public void i_confirm_the_images_grid_is_not_present() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmImagesGridNotPresent();
+    }
 
     /*//Items
     @And("I confirm the specific cloned text is displayed for the multi text item {string}")

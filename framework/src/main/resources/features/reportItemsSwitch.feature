@@ -6,22 +6,23 @@ Feature: Switch item testing
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     And I select the item "<item>"
-    When I select switch "<switch1>"
-    And switch "<switch1>" is highlighted
-    And switch "<switch2>" is not highlighted
+    When I select the option "<switch1>"
+    And I confirm "<switch1>" is a selected option for "<item>"
+    And I confirm "<switch2>" is not a selected option for "<item>"
     And I check navigation
-    And I select switch "<switch2>"
-    And switch "<switch2>" is highlighted
-    And switch "<switch1>" is not highlighted
-    And I select switch "<switch2>"
-    And Neither "<switch1>" or "<switch2>" is highlighted
-    And I select switch "<switch2>"
-    And switch "<switch2>" is highlighted
-    And switch "<switch1>" is not highlighted
+    And I select the option "<switch2>"
+    And I confirm "<switch2>" is a selected option for "<item>"
+    And I confirm "<switch1>" is not a selected option for "<item>"
+    And I select the option "<switch2>"
+    And I confirm "<switch2>" is not a selected option for "<item>"
+    And I confirm "<switch1>" is not a selected option for "<item>"
+    And I select the option "<switch2>"
+    And I confirm "<switch2>" is a selected option for "<item>"
+    And I confirm "<switch1>" is not a selected option for "<item>"
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
-    And I confirm the switch "<switch2>" is displayed as the selected option in report view
+    And I confirm the value for "<item>", "<switch2>" is correct in report view
     And I select the back arrow
     And I confirm the list of reports is displayed
     And I select the upload button

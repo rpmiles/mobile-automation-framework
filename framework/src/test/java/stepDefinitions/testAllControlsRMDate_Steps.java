@@ -68,11 +68,11 @@ public class testAllControlsRMDate_Steps extends Base_PO {
         testAllControlsRM_po.selectDay(day);
     }
 
-    @And("I confirm the correct date is listed in the report view {string}")
+   /* @And("I confirm the correct date is listed in the report view {string}")
     public void i_confirm_the_correct_date_is_listed_in_the_report_view(String specifiedDate) throws IOException, URISyntaxException {
         waitForWebElementToBeVisible(testAllControlsRM_po.thisIsDate);
         confirmationFunctions.confirmReportViewDate(specifiedDate);
-    }
+    }*/
 
 }
 

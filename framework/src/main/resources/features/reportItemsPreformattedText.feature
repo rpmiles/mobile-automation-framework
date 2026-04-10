@@ -5,9 +5,9 @@ Feature: Preformatted Text Item Testing
     Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
     #Given I select a report
     When I select the item "<item>"
-    #And I check navigation
-    And I select all and delete
-    And I enter specific text
+    And I check navigation for preformatted
+    And I select all and delete from the multi text item
+    And I enter multiformatted text
     And I select the tick or done button
     And I select the back arrow
     And I confirm the list of reports is displayed

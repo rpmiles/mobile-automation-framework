@@ -1,26 +1,13 @@
 Feature: Checking another one
 
-  Scenario Outline: Troubleshooting why elements are not linking
-    Given I Create a Report "<Datacapture>", "<ReportName>", "<ReferenceText>", "<ReportDate>", "<DueDate>", "<AddNotes>"
-    #Given I select a report
-    And I select the item "<item>"
-    And I check navigation
-    And I confirm I can move to previous and next month
-    And I select the month and year at the top
-    And I confirm I can move to previous and next year ranges
-    And I select a year <year>
-    And I confirm I can move to previous and next year
-    And I select a month <month>
-    And I confirm I can move to previous and next month
-    And I select a day <day>
-    And I select the item "<item>"
-    And I confirm the notes have saved
-    And I confirm the correct date is listed in the report view <reportDate>
-    And I select the back arrow
-    Then I confirm the list of reports is displayed
+  Scenario Outline: Scratchpad
+    Given I visit the homepage
+    And I open the report search
+    And I search for the cloned report "<CloneReportName>"
+    And I select the cloned report "<CloneReportName>"
+    And I select the edit button
 
 
     Examples:
-      | Datacapture          | ReportName                  | ReferenceText                                       |  ReportDate | DueDate | AddNotes         | item               | year   | month | day  | reportDate         |
-      | Test All Controls RM | Report Items - Switch Tests | Reference                                           |  TODAY      | ONEWEEK | Date Extra Notes | This is a Date     | "2017" | "NOV" | "26" | "26 November 2017" |
-      | This is a Date       | Test All Controls RM        | "Report Items - Date - Leap Year(<ReleaseVersion>)" |  TODAY      | ONEWEEK | Reference        |  Date control notes | "2024" | "FEB" | "25" | "25 February 2024" |
+      | SearchReport          | CloneReportName               | Reference            | ReportDate | DueDate | AddNotes                          | item                    | text                                             |
+      | Sorting Test - Master | Report Items - Sorting Tables | Table Reordering Ref | TODAY      | TODAY+1 | Single Text Prefilled Extra Notes | #this_is_prefilled_text | Newly added text to a prefilled multi text field |

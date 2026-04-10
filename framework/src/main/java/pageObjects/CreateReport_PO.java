@@ -42,13 +42,7 @@ public class CreateReport_PO extends Base_PO {
 
     public void selectCreateReport() throws IOException, URISyntaxException {
         try{
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        WebElement createReportButton = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                By.xpath("//span[contains(@class, 'mdc-button__label') and contains(normalize-space(.), 'Create Report')]")
-        ));
-        String buttonText = createReportButton.getText();
-        //System.out.println(buttonText);
-            System.out.println("Selecting 'Create Report' button");
+        System.out.println("- Selecting 'Create Report' button");
         waitForWebElementAndClickElement(createReport);
         } catch (NoSuchElementException e) {
             Assert.fail("Unable to select 'Create Report' button");
@@ -59,22 +53,19 @@ public class CreateReport_PO extends Base_PO {
         try {waitForWebElementAndClickElement(dataCapture);
 
         List<WebElement> datacaptures = getDriver().findElements(By.cssSelector("#template-name-panel mat-option"));
-        //System.out.println("Number of items: " + datacaptures.size());
         int count = 0;
-        for (WebElement item : datacaptures) {
-            String datacaptureName = item.getText();
-            if (datacaptureName.contains(dataCap)) {
-                //System.out.println(count);
-                //System.out.println("Located Report!");
-                datacaptures.get(count).click();
+            for (WebElement item : datacaptures) {
+                String datacaptureName = item.getText();
+                if (datacaptureName.contains(dataCap)) {
+                    datacaptures.get(count).click();
 
-                break;
-            }
+                    break;
+                }
             count++;
-        }
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to select datacapture");
             }
+        } catch (NoSuchElementException e) {
+            Assert.fail("- Unable to select datacapture");
+        }
 
     }
 
@@ -89,11 +80,11 @@ public class CreateReport_PO extends Base_PO {
 
     public void confirmReportName(String nameOfReport) throws IOException, URISyntaxException {
 
-        System.out.println("Confirming report name");
+        System.out.println("- Confirming report name");
 
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         String text = (String) js.executeScript("return arguments[0].textContent;", reportNameText);
-        System.out.println("Report Name: " + text  );
+        System.out.println("- Report Name: " + text  );
 
         Assert.assertTrue(text.contains(nameOfReport));
     }
@@ -104,11 +95,11 @@ public class CreateReport_PO extends Base_PO {
 
     public void confirmReference(String reference) throws IOException, URISyntaxException {
 
-        System.out.println("Confirming reference");
+        System.out.println("- Confirming reference");
 
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         String text = (String) js.executeScript("return arguments[0].textContent;", referenceText);
-        System.out.println("Report Name: " + referenceText  );
+        System.out.println("- Report Name: " + referenceText  );
 
         Assert.assertTrue(text.contains(reference));
     }
@@ -120,46 +111,6 @@ public class CreateReport_PO extends Base_PO {
 
     public void enterReference (String referenceText) throws IOException, URISyntaxException {
         sendKeys(reference, referenceText );
-    }
-
-    public void selectInspectionDate (String date) throws IOException, URISyntaxException, InterruptedException {
-        try {
-        //Thread.sleep(2000);
-
-        List<WebElement> buttons = getDriver().findElements(By.tagName("button"));
-        int count = 0;
-
-        //System.out.println("Total buttons found: " + buttons.size());
-
-        for (WebElement calenderPicker : buttons) {
-            //System.out.println("Is the " + calenderPicker.getText() + " button displayed? =  " + calenderPicker.isDisplayed());
-            String label = calenderPicker.getAttribute("aria-label");
-            if (label != null && label.contains("Open calendar")) {
-                System.out.println("Selecting inspection date picker");
-                calenderPicker.click();
-                break;
-            }
-            count++;
-        }
-
-        List<WebElement> buttonsInMyTable = getDriver().findElements(By.xpath("//table[contains(@class, 'mat-calendar-table')]//button"));
-        //System.out.println("Entering inspection day loop");
-        for (WebElement datePicker : buttonsInMyTable) {
-            String label = datePicker.getText();
-            String actualDate = String.valueOf(Integer.parseInt(date)); // result = "2"
-            if (label.contains(actualDate)) {
-                System.out.println("Selecting inspection date day " + label);
-                datePicker.click();
-                //System.out.println("Exiting inspection day loop");
-                break;
-            }
-            count++;
-        }
-        // Actions actions = new Actions(getDriver());
-        // actions.sendKeys(Keys.ESCAPE).perform();
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to select inspection date");
-            }
     }
 
     public void enterInvalidInspectionDate (String invalidInspectionDate) throws IOException, URISyntaxException {
@@ -179,7 +130,7 @@ public class CreateReport_PO extends Base_PO {
             LocalDate twoWeeksLater = today.plusWeeks(2);
             //String dayOfMonth = String.valueOf(twoWeeksLater.getDayOfMonth());
 
-            System.out.println("Selecting the due date as in two weeks");
+            System.out.println("- Selecting the due date as in two weeks");
 
         List<WebElement> buttons = getDriver().findElements(By.tagName("button"));
         int matchCount = 0;
@@ -191,7 +142,7 @@ public class CreateReport_PO extends Base_PO {
                 matchCount++;
 
                 if (matchCount == 2) { // second instance
-                    System.out.println("Selecting due date calender picker");
+                    System.out.println("- Selecting due date calender picker");
                     button.click(); // or perform any action here
 
                     break;
@@ -207,7 +158,7 @@ public class CreateReport_PO extends Base_PO {
             //System.out.println("Is the " + datePicker.getText() + " button displayed? =  " + datePicker.isDisplayed());
             String label = datePicker.getText();
             if (label.contains(dueDate)) {
-                System.out.println("Selecting due date day " + label);
+                System.out.println("- Selecting due date day " + label);
                 datePicker.click();
                 //System.out.println("Exiting due date day loop");
                 break;
@@ -258,7 +209,7 @@ public class CreateReport_PO extends Base_PO {
         }
 
         /////////////////////////Select Datacapture////////////////////////////
-        System.out.println("Selecting Datacapture");
+        System.out.println("- Selecting Datacapture");
         try {
             waitForWebElementAndClickElement(dataCapture);
 
@@ -281,11 +232,11 @@ public class CreateReport_PO extends Base_PO {
         }
 
         /////////////////////////Enter Report Name////////////////////////////
-        nameOfReport = (nameOfReport + " <" + globalVariables.releaseVersion + ">");
+        nameOfReport = (nameOfReport + " (" + globalVariables.releaseVersion + ")");
         sendKeys(reportName, nameOfReport);
 
         /////////////////////////Enter Reference////////////////////////////
-        String fullReferenceText = (referenceText + " <" + globalVariables.releaseVersion + ">");
+        String fullReferenceText = (referenceText + " (" + globalVariables.releaseVersion + ")");
         sendKeys(reference, fullReferenceText);
 
         /////////////////////////Select Inspection Date////////////////////////////
@@ -308,9 +259,54 @@ public class CreateReport_PO extends Base_PO {
 
         /////////////////////////Create Report////////////////////////////
 
-        System.out.println("Performing scroll and select to 'Create' button");
+        System.out.println("- Selecting 'Create' button");
 
         waitForWebElementAndClickElement(saveReport);
 
     }
 }
+
+/*
+
+    public void selectInspectionDate (String date) throws IOException, URISyntaxException, InterruptedException {
+        try {
+        //Thread.sleep(2000);
+
+        List<WebElement> buttons = getDriver().findElements(By.tagName("button"));
+        int count = 0;
+
+        //System.out.println("Total buttons found: " + buttons.size());
+
+        for (WebElement calenderPicker : buttons) {
+            //System.out.println("Is the " + calenderPicker.getText() + " button displayed? =  " + calenderPicker.isDisplayed());
+            String label = calenderPicker.getAttribute("aria-label");
+            if (label != null && label.contains("Open calendar")) {
+                System.out.println("- Selecting inspection date picker");
+                calenderPicker.click();
+                break;
+            }
+            count++;
+        }
+
+        List<WebElement> buttonsInMyTable = getDriver().findElements(By.xpath("//table[contains(@class, 'mat-calendar-table')]//button"));
+        //System.out.println("Entering inspection day loop");
+        for (WebElement datePicker : buttonsInMyTable) {
+            String label = datePicker.getText();
+            String actualDate = String.valueOf(Integer.parseInt(date)); // result = "2"
+            if (label.contains(actualDate)) {
+                System.out.println("- Selecting inspection date day " + label);
+                datePicker.click();
+                //System.out.println("Exiting inspection day loop");
+                break;
+            }
+            count++;
+        }
+        // Actions actions = new Actions(getDriver());
+        // actions.sendKeys(Keys.ESCAPE).perform();
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to select inspection date");
+            }
+    }
+
+
+ */

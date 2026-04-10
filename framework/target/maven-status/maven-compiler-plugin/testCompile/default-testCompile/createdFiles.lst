@@ -7,10 +7,12 @@ stepDefinitions\confirmationFunctionsConfirmReportView_Steps.class
 stepDefinitions\testAllControlsRMDate_Steps.class
 stepDefinitions\base\Hooks.class
 stepDefinitions\loginPageContactUs_Steps.class
+stepDefinitions\testAllControlsRMImages_Steps.class
 stepDefinitions\testAllControlsRMNumeric_Steps.class
 stepDefinitions\cloneReportPhotosOnly_Steps.class
 stepDefinitions\confirmationFunctions_Steps.class
 stepDefinitions\createReport_Steps.class
+stepDefinitions\scratchpad_Steps.class
 stepDefinitions\cloneReportNotesOnly_Steps.class
 stepDefinitions\initialLogin_Steps.class
 stepDefinitions\testAllControlsRM_Steps.class
@@ -22,7 +24,7 @@ stepDefinitions\sharedStepsFieldNav_Steps.class
 stepDefinitions\cloneReportContent_Steps.class
 stepDefinitions\confirmationFunctionsConfirmCloned_Steps.class
 stepDefinitions\base\Hooks$SystemOutFilter.class
-stepDefinitions\sandbox_Steps.class
+stepDefinitions\testAllControlsRMTablesCreate_Steps.class
 stepDefinitions\loginScreenDisplayedRequiredFieldsHighlighted_Steps.class
 stepDefinitions\syncProfileMenu_Steps.class
 stepDefinitions\loginWithInvalidEmail_Steps.class
@@ -31,4 +33,5 @@ stepDefinitions\syncProfileMenuDuringSync_Steps.class
 stepDefinitions\testAllControlsRMPredefinedResponses_Steps.class
 stepDefinitions\confirmationFunctionsConfirmUpload_Steps.class
 stepDefinitions\homepage_Steps.class
+stepDefinitions\support_Steps.class
 stepDefinitions\uploadReport_Steps.class

@@ -2,6 +2,7 @@ package stepDefinitions;
 
 import functions.confirmationFunctions;
 import functions.globalFunctions;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.*;
@@ -76,15 +77,113 @@ public class confirmationFunctions_Steps extends Base_PO {
         }
 
 
-// --------------------------- Report View ----------------------------------------
+    //----------------------------- Steps ------------------------------------------
 
-    @And("I confirm This is a Date holds the correct value in report view")
-    public void i_confirm_this_is_a_date_holds_the_correct_value_in_report_view() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmNotesFormatting();
+    //Item values
+    @And("I confirm the text {string} is displayed for the multi text item {string}")
+    public void i_confirm_the_text_is_displayed_for_the_multi_text_item(String entry, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmCorrectMultiText(entry, item);
+    }
+
+    @And("I confirm the text {string} is displayed for the single text item {string}")
+    public void i_confirm_the_text_is_displayed_for_the_single_text_item(String entry, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmCorrectSingleText(entry, item);
+    }
+
+    @And("I confirm {string} is a selected option for {string}")
+    public void i_Confirm_Option_Is_Selected(String option, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmOptionSelected(option, item);
+    }
+
+    @And("I confirm {string} is not a selected option for {string}")
+    public void i_Confirm_Option_Is_Not_Selected(String option, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmOptionNotSelected(option, item);
+    }
+
+    @And("I confirm the text {string} in item {string} is correct and formatted correctly")
+    public void i_Confirm_The_Uploaded_Text_In_Is_Correct_And_Formatted_Correctly(String entry, String item) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmTextFormat(entry, item);
+    }
+
+    @And("I confirm the specific rating {string} is displayed for {string}")
+    public void i_confirm_the_specific_rating_is_displayed(String rating, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmRating(rating, item);
+    }
+
+    @And("I confirm the date option {string} is set to {string}")
+    public void i_confirm_the_year_is_set_to(String item, String value) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmDateValue(item, value);
+    }
+
+    @And("I confirm the specific previously entered multiformatted text has saved")
+    public void i_confirm_the_previously_entered_multiformatted_text_has_saved() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmSpecificMultiFormat();
+    }
+
+    @And("I confirm all the multi text has been retained")
+    public void i_confirm_all_the_multi_text_has_been_retained() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmFormatting();
+    }
+
+    @And("I confirm the single text prefilled field holds the correct value")
+    public void i_confirm_the_field_has_the_correct_text() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmSinglePrefilledText();
+    }
+
+    @And("I confirm the multi text prefilled field has the correct text")
+    public void i_confirm_the_multi_field_has_the_correct_text() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmCorrectMultiPrefilledText();
+    }
+
+    @And("I confirm the Baked In Tokens are displayed correctly")
+    public void i_the_baked_in_tokens_are_displayed_correctly() throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmBakedInTokens();
+    }
+
+    @And("I confirm the location coordinates have saved")
+    public void i_confirm_the_location_coordinates_have_saved() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmNotEmpty();
+    }
+
+    @And("I validate the location coordinates have been added")
+    public void i_validate_the_location_coordinates_have_been_added() throws IOException, URISyntaxException, InterruptedException {
+        testAllControlsRM_po.selectDone();
+        testAllControlsRM_po.selectPredefinedResponses();
+        confirmationFunctions.confirmLocationCoordinates();
+    }
+
+    @And("I confirm all previously entered text {string} is saved for the multi text item {string}")
+    public void i_confirm_all_previously_entered_text_is_saved_for_item(String additionalText, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmLocationCoordinates();
+        confirmationFunctions.confirmExtraTextSaved(additionalText);
+
+    }
+
+    @And("I confirm the text is correct and formatted correctly")
+    public void i_Confirm_The_Text_Is_Correct_And_Formatted_Correctly() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmSpecificMultiFormat();
+    }
+
+    @And("I confirm for {string}, {string} is selected")
+    public void i_confirm_rating_is_selected(String item, String option) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmRating(item, option);
+    }
+
+    @And("I confirm the text is deleted {string}")
+    public void i_confirm_the_text_is_deleted(String textToDelete) throws MalformedURLException, URISyntaxException {
+        confirmationFunctions.confirmTextDeletion(textToDelete);
+    }
+
+    @And("I confirm the extra text has been saved {string}")
+    public void i_confirm_the_extra_text_has_been_saved(String additionalText) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmExtraTextSaved(additionalText);
+
     }
 
 
-    //----------------------------- Steps ------------------------------------------
+
+
+    //Details
     @And("I confirm the reports list report name is {string}")
     public void i_confirm_the_report_name_is(String reportName) throws IOException, URISyntaxException {
         createReport_po.confirmReportName(reportName);
@@ -136,12 +235,19 @@ public class confirmationFunctions_Steps extends Base_PO {
     }
 
 
+
+    //Formatting
     @And("I confirm I am unable to add another decimal point {string}")
     public void i_confirm_i_am_unable_to_add_another_decimal_point(String value1) {
         expectedNumber = (value1);
         System.out.println(expectedNumber);
         confirmationFunctions.confirmNumeric(expectedNumber);
 
+    }
+
+    @And("I confirm it is bold")
+    public void confirm_it_is_bold() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmBold();
     }
 
     @And("I confirm it's bold italics")
@@ -159,86 +265,10 @@ public class confirmationFunctions_Steps extends Base_PO {
         confirmationFunctions.confirmUnderlinedStrikethrough();
     }
 
-    @And("I confirm the specific previously entered multiformatted text has saved")
-    public void i_confirm_the_previously_entered_multiformatted_text_has_saved() throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmSpecificMultiFormat();
-    }
-
-    @And("I confirm the extra text has been saved {string}")
-    public void i_confirm_the_extra_text_has_been_saved(String additionalText) throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmExtraTextSaved(additionalText);
-
-    }
-
-    @And("I confirm all the multi text has been retained")
-    public void i_confirm_all_the_multi_text_has_been_retained() throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmFormatting();
-    }
-
-    @And("I confirm the single text field contains {string}")
-    public void i_confirm_the_single_text_field_contains(String text) throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmSingleText(text);
-    }
-
-    @And("I confirm the single text prefilled field holds the correct value")
-    public void i_confirm_the_field_has_the_correct_text() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmSinglePrefilledText();
-    }
-
-    @And("I confirm the multi text prefilled field has the correct text")
-    public void i_confirm_the_multi_field_has_the_correct_text() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmCorrectMultiPrefilledText();
-    }
-
-    @And("I confirm the location coordinates have saved")
-    public void i_confirm_the_location_coordinates_have_saved() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmNotEmpty();
-    }
-
-    @And("I validate the location coordinates have been added")
-    public void i_validate_the_location_coordinates_have_been_added() throws IOException, URISyntaxException, InterruptedException {
-        testAllControlsRM_po.selectDone();
-        testAllControlsRM_po.selectPredefinedResponses();
-        confirmationFunctions.confirmLocationCoordinates();
-    }
-
-    @And("I confirm all previously entered data is saved {string}")
-    public void i_confirm_all_previously_entered_text_is_saved(String additionalText) throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmLocationCoordinates();
-        confirmationFunctions.confirmExtraTextSaved(additionalText);
-
-    }
-
-    @And("I confirm the data for predefined responses is correct in report view")
-    public void i_confirm_the_data_for_predefine_responses_is_correct_in_report_view() throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmReportViewPredefinedResponses();
-
-    }
-
-    @And("I confirm it is bold")
-    public void confirm_it_is_bold() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmBold();
-    }
-
-    @And("I confirm the previously entered Text {string}")
-    public void i_confirm_the_previously_entered_text(String text) throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmMultiText(text);
-    }
-
-    @And("I confirm the text is deleted {string}")
-    public void i_confirm_the_text_is_deleted(String textToDelete) throws MalformedURLException, URISyntaxException {
-        confirmationFunctions.confirmTextDeletion(textToDelete);
-    }
-
     @And("I confirm the notes formatting has been retained")
     public void confirm_the_notes_formatting_has_been_retained() throws IOException, URISyntaxException {
         confirmationFunctions.confirmNotesFormatting();
         confirmationFunctions.confirmMultiFormat();
-    }
-
-    @Then("I confirm all the correct notes text is listed in the report view")
-    public void i_confirm_all_the_correct_text_is_listed_in_the_report_view() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmFormattedNotesTextInReportView();
     }
 
     @And("I confirm it's in a numbered list")
@@ -248,9 +278,9 @@ public class confirmationFunctions_Steps extends Base_PO {
         confirmationFunctions.confirmNumberlist();
     }
 
-    @And("I confirm it's in a bullet list")
-    public void i_confirm_it_s_in_a_bullet_list() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmBulletlist();
+    @And("I confirm the numbered list is now a bullet list")
+    public void i_confirm_it_s_now_a_bullet_list() throws IOException, URISyntaxException {
+        confirmationFunctions.confirmNumToBulletlist();
     }
 
     @And("I confirm the multi text bullet list")
@@ -258,26 +288,32 @@ public class confirmationFunctions_Steps extends Base_PO {
         confirmationFunctions.confirmMultiTextBulletlist();
     }
 
-
-    /*@And("I confirm the single text {string} is present in single text prefilled")
-    public void i_Confirm_The_Single_Text_Is_Present(String text) throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmReportViewPrefilledSingleUpload(text);
-
-    }*/
-
-    @And("I confirm switch {string} is selected")
-    public void i_Confirm_Switch_Is_Selected(String switchConfirm) throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmSwitchSelected(switchConfirm);
+    @Then("I confirm the list of reports is displayed")
+    public void the_list_of_reports_is_displayed() throws IOException, URISyntaxException {
+        System.out.println("Waiting for reports");
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
+        System.out.println("- Checking first report");
+        homepage_po.checkFirstReport();
     }
 
-    @And("I confirm switch {string} is not selected")
-    public void i_Confirm_Switch_Is_Not_Selected(String switchConfirm) throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmSwitchNotSelected(switchConfirm);
+
+    //Tables
+    @And("I confirm field {string} in row {int} is {string}")
+    public void iConfirmFieldInRowIs(String field, int row, String fieldEntry) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmTableEntry(field, row, fieldEntry);
     }
 
-    @And("I confirm option {string} is selected")
-    public void i_Confirm_Option_Is_Selected(String option) throws IOException, URISyntaxException {
-        confirmationFunctions.confirmSinglePicklist(option);
+    /*
+
+    @And("I confirm the month is set to {string}")
+    public void i_confirm_the_month_is_set_to(String month) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmDateValue(month);
+    }
+
+    @And("I confirm the day is set to {string}")
+    public void i_confirm_the_day_is_set_to(String day) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmDateValue(day);
     }
 
     @And("I confirm This Has Baked In Tokens holds the correct value")
@@ -285,10 +321,9 @@ public class confirmationFunctions_Steps extends Base_PO {
         confirmationFunctions.confirmBakedInTokens();
     }
 
-    @And("I confirm the text is correct and formatted correctly")
-    public void i_Confirm_The_Text_Is_Correct_And_Formatted_Correctly() throws IOException, URISyntaxException {
-        confirmationFunctions.confirmSpecificMultiFormat();
-    }
+    @And("I confirm the data for predefined responses is correct in report view")
+    public void i_confirm_the_data_for_predefine_responses_is_correct_in_report_view() throws IOException, URISyntaxException, InterruptedException {
+    confirmationFunctions.confirmReportViewPredefinedResponses();
 
     @And("I confirm for {string} there is now a {string} at the end of the row in report view")
     public void i_confirm_there_is_now_at_the_end_of_the_row_in_report_view(String item, String option) throws IOException, URISyntaxException, InterruptedException {
@@ -303,24 +338,28 @@ public class confirmationFunctions_Steps extends Base_PO {
         }
     }
 
-    @And("I confirm for {string}, {string} is selected")
-    public void i_confirm_rating_is_selected(String item, String option) throws IOException, URISyntaxException, InterruptedException {
-        confirmationFunctions.confirmRating(item, option);
+    @And("I confirm the single text {string} is present in single text prefilled")
+    public void i_Confirm_The_Single_Text_Is_Present(String text) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmReportViewPrefilledSingleUpload(text);
+
     }
 
-    @Then("I confirm the list of reports is displayed")
-    public void the_list_of_reports_is_displayed() throws IOException, URISyntaxException {
-        System.out.println("Waiting for reports");
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
-        System.out.println("Checking first report");
-        homepage_po.checkFirstReport();
+    @And("I confirm the single text field contains {string}")
+    public void i_confirm_the_single_text_field_contains(String entry, String item) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmCorrectSingleText(entry, item);
     }
+
+    @And("I confirm the previously entered Text {string}")
+    public void i_confirm_the_previously_entered_text(String text) throws IOException, URISyntaxException, InterruptedException {
+        confirmationFunctions.confirmMultiText(text);
+    }
+
+*/
 
 }
 
 /*
-
+//div[@row-id='6']//div[@col-id='manufacturer' and contains(text(),'Sega')]
 @And("")
 public void () throws IOException, URISyntaxException {
 

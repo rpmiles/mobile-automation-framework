@@ -3,7 +3,7 @@ Feature: Confirm the previously uploaded report has been received and processed 
 
   Scenario: Confirm successful upload
     Given I select Cloud Reports
-    When I download a specific report with name "Mobile - Report Items - Upload tests"
+    When I download a specific report with name "Mobile - Report Items - Upload tests (Tablet)"
     And I close the local search field
     And I edit the report
     And I select the item "Preformatted Text for Copy/Paste Tests"
@@ -30,17 +30,20 @@ Feature: Confirm the previously uploaded report has been received and processed 
     And I confirm the specific uploaded text is displayed for the multi text item "This is Prefilled Text (Multi)"
     And I select the tick or done button
     And I confirm the uploaded value for "This is Prefilled Text Multi" in report view is correct
-    #And I select the item "This is a Date"
-    #And I select the tick or done button
-    #And I confirm This is a Date holds the correct value in report view
+    And I select the item "This is a Date"
+    And I select the month and year at the top
+    And I confirm the uploaded date option "year" is set to "2025"
+    And I confirm the uploaded date option "month" is set to "SEP"
+    And I confirm the uploaded date option "day" is set to "10"
+    And I select the tick or done button
     And I select the item "This is a Switch"
-    And I confirm switch "Switch 2" is selected
-    And I confirm switch "Switch 1" is not selected
+    And I confirm the uploaded "Switch 2" is a selected option for "This is a Switch"
+    And I confirm the uploaded "Switch 1" is not a selected option for "This is a Switch"
     And I select the tick or done button
     And I confirm the uploaded value for "This is a Switch" in report view is correct
     And I select the item "Multi Select Pick List"
-    And I confirm option "Option 2" is selected
-    And I confirm option "Option 3" is selected
+    And I confirm the uploaded "Option 2" is a selected option for "Multi Select Pick List"
+    And I confirm the uploaded "Option 3" is a selected option for "Multi Select Pick List"
     And I select the tick or done button
     And I confirm the uploaded value for "Multi Select Pick List" in report view is correct
     And I select the item "This Has Baked In Tokens"

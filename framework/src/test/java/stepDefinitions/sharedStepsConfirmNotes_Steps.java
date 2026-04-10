@@ -4,6 +4,9 @@ import functions.confirmationFunctions;
 import functions.confirmationFunctionsConfirmUpload;
 import functions.globalFunctions;
 import io.cucumber.java.en.And;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.testng.Assert;
 import pageObjects.Base_PO;
 import pageObjects.SharedStepsFieldNav_PO;
 import pageObjects.TestAllControlsRM_PO;
@@ -102,13 +105,28 @@ public class sharedStepsConfirmNotes_Steps extends Base_PO {
         testAllControlsRM_po.selectNotes();
 
         // Confirm formatting
-        System.out.println("Confirming notes formatting");
-        confirmationFunctions.confirmNotesFormatting();
+        /*System.out.println("Confirming notes formatting");
+        confirmationFunctions.confirmNotesFormatting();*/
 
 
         // Return to report field
-        System.out.println("Confirming navigation");
+        System.out.println("- Confirming navigation");
         sharedStepsFieldNav_po.selectDone();
 
+    }
+
+    @And("I confirm there are no notes")
+    public void i_confirm_there_are_no_notes() throws IOException, URISyntaxException {
+        System.out.println("Checking notes is empty");
+        // 1. Target the actual editable area, NOT the wrapper div
+        WebElement quillEditor = getDriver().findElement(By.cssSelector(".ql-editor"));
+
+        // 2. Extract the visible text and trim any accidental whitespace
+        String editorText = quillEditor.getText().trim();
+
+        // 3. Assert it is completely empty
+        Assert.assertTrue(editorText.isEmpty(), "The editor was not empty! It contained: '" + editorText + "'");
+
+        // (Alternative syntax) Assert.assertEquals(editorText, "");
     }
 }

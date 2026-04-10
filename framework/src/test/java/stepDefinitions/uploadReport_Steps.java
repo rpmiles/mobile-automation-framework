@@ -42,12 +42,14 @@ public class uploadReport_Steps extends Base_PO {
     @And("I select the upload button")
     public void i_select_the_upload_button() throws IOException, URISyntaxException, InterruptedException {
         //Thread.sleep(2000);
-        globalFunctions.scrollAndSelectHomepage("//gr-icon-button[@id='upload-report']");
+        waitForAngularBy(By.xpath("//gr-icon-button[@id='upload-report']"));
+        waitForWebElementAndClickBy(By.xpath("//gr-icon-button[@id='upload-report']"));
     }
 
     @And("I select cancel")
     public void i_select_cancel() throws IOException, URISyntaxException, InterruptedException {
-        globalFunctions.scrollAndSelectHomepage("//button[@id='cancel']");
+        waitForAngularBy(By.xpath("//button[@id='cancel']"));
+        waitForWebElementAndClickBy(By.xpath("//button[@id='cancel']"));
     }
 
     @When("I select upload")
@@ -56,12 +58,16 @@ public class uploadReport_Steps extends Base_PO {
 
         WebElement upload = getDriver().findElement(firstUploadConfirm);
         waitForWebElementToBeVisible(upload);
-        globalFunctions.scrollAndSelectHomepage("//button[@id='confirm-button']");
+        waitForAngularBy(By.xpath("//button[@id='confirm-button']"));
+        waitForWebElementAndClickBy(By.xpath("//button[@id='confirm-button']"));
+        //globalFunctions.scrollAndSelectHomepage("//button[@id='confirm-button']");
     }
 
     @And("I cancel the upload")
     public void i_cancel_the_upload() throws IOException, URISyntaxException, InterruptedException {
-        globalFunctions.scrollAndSelectHomepage("//button[@id='close-gallery-button']");
+        waitForAngularBy(By.xpath("//button[@id='close-gallery-button']"));
+        waitForWebElementAndClickBy(By.xpath("//button[@id='close-gallery-button']"));
+        //globalFunctions.scrollAndSelectHomepage("//button[@id='close-gallery-button']");
     }
 
     /*@And("I upload the report")
@@ -80,15 +86,17 @@ public class uploadReport_Steps extends Base_PO {
 
     @And("I close the upload dialog")
     public void i_close_the_upload_dialog() throws IOException, URISyntaxException, InterruptedException {
-        globalFunctions.scrollAndSelectHomepage("//button[@id='close-gallery-button']");
+        waitForAngularBy(By.xpath("//button[@id='close-gallery-button']"));
+        waitForWebElementAndClickBy(By.xpath("//button[@id='close-gallery-button']"));
+        //globalFunctions.scrollAndSelectHomepage("//button[@id='close-gallery-button']");
     };
 
     @Given("I download a specific report with name {string}")
     public void i_Download_A_Specific_Report_With_Name(String reportName) throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementAndClickElement(homepage_po.cloudReports);
-        String updatedReportName = (reportName + " <" + globalVariables.releaseVersion + ">");
+        String updatedReportName = (reportName + " (" + globalVariables.releaseVersion + ")");
         homepage_po.searchForCloud(updatedReportName);
-        System.out.println("Report to download: " + updatedReportName);
+        System.out.println("- Report to download: " + updatedReportName);
         waitForWebElementAndClickElement(homepage_po.downloadReport);
         waitForWebElementAndClickElement(homepage_po.confirmButton);
     }

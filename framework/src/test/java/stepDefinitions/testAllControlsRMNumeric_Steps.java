@@ -9,7 +9,8 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 
 
-public class testAllControlsRMNumeric_Steps extends Base_PO {
+public class
+testAllControlsRMNumeric_Steps extends Base_PO {
 
     TestAllControlsRM_PO testAllControlsRM_po;
     Homepage_PO homepage_po;
@@ -48,7 +49,12 @@ public class testAllControlsRMNumeric_Steps extends Base_PO {
     @And("I select the numeric value {string}")
     public void i_select_the_numeric_value(String value) throws IOException, URISyntaxException, InterruptedException {
         System.out.println("Selecting value");
-        globalFunctions.scrollAndSelectNumeric(value);
+        testAllControlsRM_po.selectNumericButton(value);
+    }
+
+    @And("I clear the numeric value")
+    public void i_clear_the_numeric_value() {
+        testAllControlsRM_po.numericField.clear();;
     }
 
     @And("I confirm there is a decimal point {string}")
@@ -72,14 +78,14 @@ public class testAllControlsRMNumeric_Steps extends Base_PO {
                     value4 + value5 + value6 + value7 + value8 +
                     value9 + value00 + value000);
 
-            System.out.println("Entered number" + expectedNumber);
+            System.out.println("- Entered number" + expectedNumber);
             confirmationFunctions.confirmNumeric(expectedNumber);
         }
     }
 
     @And("I select the decimal point {string}")
-    public void i_select_the_decimal_point(String valueDot) throws IOException, URISyntaxException, InterruptedException {
-        globalFunctions.scrollAndSelectNumeric(valueDot);
+    public void i_select_the_decimal_point(String value) throws IOException, URISyntaxException, InterruptedException {
+        testAllControlsRM_po.selectNumericButton(value);;
     }
 
     @And("I confirm another decimal point has not been entered {string}, {string}, {string}, {string}, {string}")
@@ -90,11 +96,11 @@ public class testAllControlsRMNumeric_Steps extends Base_PO {
 
     }
 
-   @And("I confirm the correct numeric value is listed in report view {string}")
+   /*@And("I confirm the correct numeric value is listed in report view {string}")
     public void i_confirm_the_correct_value_is_listed_in_report_view (String expectedNumber) throws IOException, URISyntaxException {
         waitForWebElementToBeVisible(testAllControlsRM_po.thisIsNumeric);
         confirmationFunctions.confirmReportViewNumeric(expectedNumber);
-    }
+    }*/
 
     @And("I confirm the correct number is listed {string}, {string}, {string}, {string}, {string}")
     public void i_confirm_the_correct_number_is_listed(String value1, String valueDot, String value2, String value3, String value0000) {

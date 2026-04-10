@@ -51,6 +51,7 @@ public class cloneReportContent_Steps extends Base_PO {
     public void i_select_if_i_want_to_include_notes (String addNotes) throws IOException, URISyntaxException, InterruptedException {
         if ("true".equals(addNotes)) {
             System.out.println("Including notes");
+            waitForAngularWebElement(homepage_po.addNotes);
             waitForWebElementAndClickElement(homepage_po.addNotes);
         }
     }

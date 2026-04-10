@@ -6,7 +6,7 @@ Feature: Testing numeric item
     #Given I select a report
     And I select the item "<item>"
     And I check navigation
-    And I select the x at the end of the single text field
+    #And I clear the single text field
     And I select the numeric value "<value0>"
     And I select the numeric value "<value1>"
     And I select the tick or done button
@@ -25,9 +25,9 @@ Feature: Testing numeric item
     And I select the numeric value "<value0000>"
     And I confirm the correct amount is listed "<value0>", "<valueDot>", "<value1>", "<value2>", "<value3>", "<value4>", "<value5>", "<value6>", "<value7>", "<value8>", "<value9>", "<value00>", "<value000>"
     And I select the tick or done button
-    And I confirm the correct numeric value is listed in report view "0.123"
+    And I confirm the value for "<item>", "0.123" is correct in report view
     And I select the item "<item>"
-    And I select the x at the end of the single text field
+    And I clear the numeric value
     And I select the numeric value "<value1>"
     And I select the numeric value "<value2>"
     And I select the numeric value "<value3>"
@@ -41,7 +41,7 @@ Feature: Testing numeric item
     And I select the numeric value "<value000>"
     And I select the numeric value "<value0000>"
     And I confirm the correct value is listed "123,456,789,000,000,000"
-    And I select the x at the end of the single text field
+    And I clear the numeric value
     And I select the numeric value "<value1>"
     And I select the decimal point "<valueDot>"
     And I select the numeric value "<value2>"
@@ -53,7 +53,7 @@ Feature: Testing numeric item
     And I confirm notes are working correctly
     And I select the item "<item>"
     And I confirm the notes have saved
-    And I confirm the correct numeric value is listed in report view "1.23"
+    And I confirm the value for "<item>", "1.23" is correct in report view
     And I select the back arrow
     And I confirm the list of reports is displayed
     And I select the upload button

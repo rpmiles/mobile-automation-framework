@@ -8,7 +8,6 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pageObjects.*;
@@ -88,8 +87,8 @@ public class testAllControlsRM_Steps extends Base_PO {
         testAllControlsRM_po.enterMultiFormatText();
     }
 
-    @When("I enter specific text")
-    public void i_enter_specific_text() throws IOException, URISyntaxException {
+    @When("I enter multiformatted text")
+    public void i_enter_multiformatted_text() throws IOException, URISyntaxException {
         System.out.println("Selecting Multi Text item");
 
         // Add bold text
@@ -107,12 +106,11 @@ public class testAllControlsRM_Steps extends Base_PO {
         //Add strikethrough text
         testAllControlsRM_po.selectStrikethrough();
         testAllControlsRM_po.enterMultiTextItem(strikethroughText);
-        testAllControlsRM_po.selectMultiTextEnterButton();
+        testAllControlsRM_po.selectMultiTextEnterKey();
     }
 
     @And("I enter specific text {string}")
     public void enter_a_specific_text(String text) throws IOException, URISyntaxException {
-        testAllControlsRM_po.selectMultiTextCarriageReturnButton();
         sendKeys(testAllControlsRM_po.multiText, text);
 
     }
@@ -144,11 +142,10 @@ public class testAllControlsRM_Steps extends Base_PO {
         testAllControlsRM_po.enterNotes(numlist3Text);
         testAllControlsRM_po.selectEnter();
     }
-    
-    @And("I select the x at the end of the single text field")
-    public void i_select_the_x_at_the_end_of_the_single_text_field() {
-        System.out.println("Clearing field with x");
-        testAllControlsRM_po.clearSingleTextX();
+
+    @And("I clear the single text field")
+    public void i_clear_the_single_text_field() throws IOException, URISyntaxException {
+        testAllControlsRM_po.clearSingleTextX();;
     }
 
     @And("I clear all the text in the Multi Text Prefilled item")
@@ -167,15 +164,15 @@ public class testAllControlsRM_Steps extends Base_PO {
         sendKeys(testAllControlsRM_po.multiText, (Keys.chord(Keys.CONTROL, "a")));
     }
 
-    @And("I select all and delete")
-    public void i_clear_the_field() throws IOException, URISyntaxException {
-        System.out.println("Selecting all text");
-        sendKeys(testAllControlsRM_po.multiText, (Keys.chord(Keys.CONTROL, "a")));
-        System.out.println("Deleting text");
-        sendKeys(testAllControlsRM_po.multiText, (Keys.chord(Keys.BACK_SPACE)));
+    @And("I select all and delete from the multi text item")
+    public void i_clear_the_field() throws IOException, URISyntaxException, InterruptedException {
+        testAllControlsRM_po.selectAllAndDeleteMultiText();
     }
 
-    
+    @And("I select the confirm button")
+    public void i_select_the_confirm_button() throws IOException, URISyntaxException {
+        homepage_po.confirmButton.click();
+    }
 
     //Text formatting steps
     @And("I add unformatted text")
@@ -242,8 +239,8 @@ public class testAllControlsRM_Steps extends Base_PO {
         testAllControlsRM_po.enterNotes(bullet1Text);
         testAllControlsRM_po.enterNotes(bullet2Text);
         testAllControlsRM_po.enterNotes(bullet3Text);
-        testAllControlsRM_po.selectMultiTextEnterButton();
-        testAllControlsRM_po.selectMultiTextEnterButton();
+        testAllControlsRM_po.selectMultiTextEnterKey();
+        testAllControlsRM_po.selectMultiTextEnterKey();
 
     }
 
@@ -272,10 +269,54 @@ public class testAllControlsRM_Steps extends Base_PO {
         waitForWebElementAndClickElement(testAllControlsRM_po.photoGrid);
     }
 
-    @And("I select the crosshairs icon")
-    public void i_select_the_crosshairs_icon_() throws IOException, URISyntaxException, InterruptedException {
-        testAllControlsRM_po.selectSingleTextCrosshairs();
+    @And("I select the location crosshairs icon")
+    public void i_select_the_location_crosshairs_icon() throws IOException, URISyntaxException, InterruptedException {
+        testAllControlsRM_po.selectMultiTextCrosshairs();
     }
+
+    @And("I select the location crosshairs icon on {string}")
+    public void i_select_the_location_crosshairs_icon_on(String device) throws IOException, URISyntaxException, InterruptedException {
+        testAllControlsRM_po.selectMultiTextCrosshairsOn(device);
+    }
+
+    @And("I select the notes button")
+    public void i_select_the_notes_button() throws IOException, URISyntaxException {
+        testAllControlsRM_po.selectNotes();
+    }
+    
+    @And("I select the carriage return button")
+    public void i_select_the_carriage_return_button() throws IOException, URISyntaxException {
+        testAllControlsRM_po.selectMultiTextCarriageReturnButton();
+    }
+
+    @And("I select the carriage return button on {string}")
+    public void i_select_the_carriage_return_button_on(String device) throws IOException, URISyntaxException {
+        testAllControlsRM_po.selectMultiTextCarriageReturnButtonOn(device);
+    }
+
+    @And("I select the toolbar context menu on {string}")
+    public void i_select_the_carriage_the_toolbar_context_button_on(String device) throws IOException, URISyntaxException {
+        testAllControlsRM_po.selectToolbarContextButtonOn(device);
+    }
+
+    @And("I delete the specific text {string} from the multi text item {string}")
+    public void i_delete_the_specific_text_from_the_item(String response, String item) throws MalformedURLException, URISyntaxException {
+        testAllControlsRM_po.deleteSpecificText(response, item);
+    }
+
+
+/*
+    @And("I select the x at the end of the single text field")
+    public void i_select_the_x_at_the_end_of_the_single_text_field() {
+        System.out.println("- Clearing field with x");
+        testAllControlsRM_po.clearSingleTextX();
+    }
+
+    @And("I delete a predefined response {string}")
+    public void i_delete_a_predefined_response(String response3) throws MalformedURLException, URISyntaxException {
+        testAllControlsRM_po.deleteSpecificText(response3);
+    }
+
 
     @And("I select the location icon")
     public void i_select_the_location_icon() throws IOException, URISyntaxException, InterruptedException {
@@ -291,26 +332,14 @@ public class testAllControlsRM_Steps extends Base_PO {
         Thread.sleep(2000);
     }
 
-    @And("I select the location crosshairs icon")
-    public void i_select_the_location_crosshairs_icon() throws IOException, URISyntaxException, InterruptedException {
-        testAllControlsRM_po.selectMultiTextCrosshairs();
+
+    @And("I select the crosshairs icon")
+    public void i_select_the_crosshairs_icon_() throws IOException, URISyntaxException, InterruptedException {
+        testAllControlsRM_po.selectSingleTextCrosshairs();
     }
 
-    @And("I select the notes button")
-    public void i_select_the_notes_button() throws IOException, URISyntaxException {
-        testAllControlsRM_po.selectNotes();
-    }
-    
-    @And("I select the carriage return button")
-    public void i_select_the_carriage_return_button() throws IOException, URISyntaxException {
-        testAllControlsRM_po.selectMultiTextCarriageReturnButton();
-    }
 
-    @And("I delete a predefined response {string}")
-    public void i_delete_a_predefined_response(String response3) throws MalformedURLException, URISyntaxException {
-        testAllControlsRM_po.deleteSpecificText(response3);
-    }
-
+ */
 
 }
 

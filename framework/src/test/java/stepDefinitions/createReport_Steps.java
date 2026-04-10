@@ -36,7 +36,7 @@ public class createReport_Steps extends Base_PO {
     @Given("I Create a Report {string}, {string}, {string}, {string}, {string}, {string}")
     public void i_create_a_report(String dataCap, String reportName, String referenceText, String reportDate, String dueDate, String notesText) throws IOException, URISyntaxException, InterruptedException {
         createReport_po.createReport(dataCap, reportName, referenceText, reportDate, dueDate, notesText);
-        System.out.println("Creating Report");
+        System.out.println("- Creating Report");
     }
 
     @And("I select a Data Capture {string}")
@@ -46,7 +46,7 @@ public class createReport_Steps extends Base_PO {
     }
     @And("I enter a report name {string}")
     public void i_select_a_name(String reportName) throws IOException, URISyntaxException {
-        String replacedName = reportName.replace("<ReleaseVersion>", releaseVersion);
+        String replacedName = reportName.replace("(ReleaseVersion)", releaseVersion);
         //System.out.println("Report Name after replacement: " + replacedName);
 
         createReport_po.enterReportName(replacedName);
@@ -56,7 +56,7 @@ public class createReport_Steps extends Base_PO {
 
     @And("I enter a Name {string}")
     public void i_enter_a_name(String item) throws IOException, URISyntaxException {
-        String replacedName = (item + " <" + releaseVersion + ">");
+        String replacedName = (item + " (" + releaseVersion + ")");
         createReport_po.enterReportName(replacedName);
 
         System.out.println("Entering a report name: " + replacedName);

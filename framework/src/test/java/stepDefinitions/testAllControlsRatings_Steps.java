@@ -19,7 +19,7 @@ public class testAllControlsRatings_Steps extends Base_PO {
     globalFunctions globalFunctions;
     confirmationFunctions confirmationFunctions;
     CreateReport_PO createReport_po;
-    
+
 
     public testAllControlsRatings_Steps() throws IOException, URISyntaxException {
 
@@ -61,6 +61,7 @@ public class testAllControlsRatings_Steps extends Base_PO {
 
     @And("I confirm all the {string} ratings are deselected {string}, {string}, {string}")
     public void i_confirm_all_the_ratings_are_deselected(String item, String option1, String option2, String option3) throws IOException, URISyntaxException, InterruptedException {
+        System.out.println("Confirming all ratings available");
         if (item.equals("This is a Rating")) {
             confirmationFunctions.confirmRatingItemDeselected(option1);
             confirmationFunctions.confirmRatingItemDeselected(option2);

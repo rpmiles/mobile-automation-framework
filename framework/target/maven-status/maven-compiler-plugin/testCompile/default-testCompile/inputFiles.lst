@@ -15,9 +15,10 @@ C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\loginWithInvalidEmail_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\loginWithInvalidPassword_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\loginWithValidEmail_Steps.java
-C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\sandbox_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\scratchpad_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\sharedStepsConfirmNotes_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\sharedStepsFieldNav_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\support_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\syncLogin_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\syncProfileMenu_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\syncProfileMenuDuringSync_Steps.java
@@ -25,9 +26,11 @@ C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRM_blank_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRM_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMDate_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMImages_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMNavigation_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMNumeric_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMPickList_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMPredefinedResponses_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMSwitch_Steps.java
+C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\testAllControlsRMTablesCreate_Steps.java
 C:\Projects\mobile-automation-framework\framework\src\test\java\stepDefinitions\uploadReport_Steps.java

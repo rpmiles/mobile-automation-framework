@@ -10,6 +10,7 @@ Feature: Report notes testing
     And I copy all the text
     And I select the notes button
     And I paste all the text into the notes field
+    And I select the carriage return button on "<device>"
     And I enter specific text "<text>"
     And I confirm the notes formatting has been retained
     And I clear all the text in the Multi Text Prefilled item
@@ -34,7 +35,7 @@ Feature: Report notes testing
     And I confirm it's in a numbered list
     And I select all the text
     And I select the bullet list button
-    And I confirm it's in a bullet list
+    And I confirm the numbered list is now a bullet list
     And I select the tick or done button
     And I confirm all the correct notes text is listed in the report view
     And I select the back arrow
@@ -47,5 +48,5 @@ Feature: Report notes testing
     And I remove the report
 
     Examples:
-      | Datacapture          | ReportName                    | ReferenceText           | ReportDate | DueDate | AddNotes                               | item                                   | text                       |
-      | Test All Controls RM | Mobile - Report Items - Notes | Reference Notes Testing | TODAY      | ONEWEEK | Notes for each report item extra notes | Preformatted Text for Copy/Paste Tests | !@$%^&*()_+=-[]}{\?><,./~` |
+      | Datacapture          | ReportName                    | ReferenceText           | ReportDate | DueDate | AddNotes                               | item                                   | text                       | device |
+      | Test All Controls RM | Mobile - Report Items - Notes | Reference Notes Testing | TODAY      | ONEWEEK | Notes for each report item extra notes | Preformatted Text for Copy/Paste Tests | !@$%^&*()_+=-[]}{\?><,./~` | tablet |
