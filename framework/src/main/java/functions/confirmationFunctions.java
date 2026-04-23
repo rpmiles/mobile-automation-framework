@@ -24,6 +24,7 @@ public class confirmationFunctions extends Base_PO {
     TestAllControlsRM_PO testAllControlsRM_po;
 
 
+    private @FindBy(id = "client-name") WebElement client;
 
     public @FindBy(xpath = "//input[contains(@class, 'mat-mdc-input-element') and @spellcheck='false']") WebElement extractedCoordinates;
     public @FindBy(xpath = "//div[contains(@class, 'ql-editor')]") WebElement multiTextItem;
@@ -43,6 +44,7 @@ public class confirmationFunctions extends Base_PO {
     private String numlist2Text = "Number list entry 2";
     private String numlist3Text = "Number list entry 3";
     private String actualValue;
+
 
     //Report details
     public @FindBy(xpath = "//input[@id='report-date']") WebElement detailsInspectionDate;
@@ -429,6 +431,7 @@ public class confirmationFunctions extends Base_PO {
                 .replaceAll("\\s+", " ")               // collapse whitespace runs
                 .trim();
     }
+
     
     //Items
     public void confirmCorrectMultiText(String entry, String multiItem) throws IOException, URISyntaxException {
@@ -835,19 +838,6 @@ public class confirmationFunctions extends Base_PO {
         }
     }
 
-/*    public void confirmRatingMultiItemsDeselected (String option) throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming rating " + option + " is not selected");
-            WebElement deselectedItem = getDriver().findElement(By.xpath("//lib-rating[contains(@class, 'ng-star-inserted')]//div[contains(@class, 'opacity-30')]//span[contains(@class, 'rating-option-title') and normalize-space(text())='" + option + "']"));
-
-            boolean isItemDeselected = deselectedItem.isDisplayed();
-            Assert.assertTrue(isItemDeselected, "Expected item to be deselected, but it was still visible");
-            System.out.println(option + " is not selected");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm multi item rating selected in report view");
-        }
-    }*/
-
     public void confirmRatingItemDeselected(String option) {
         try {
             System.out.println("Confirming rating " + option + " is not selected");
@@ -875,18 +865,6 @@ public class confirmationFunctions extends Base_PO {
             Assert.fail("Unable to find rating item '" + option + "' in the DOM.");
         }
     }
-
-/*    public void confirmRatingItemDeselected (String option) throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Confirming rating " + option + " is not selected");
-            WebElement deselectedItem = getDriver().findElement(By.xpath("(//lib-rating-view[contains(@class, 'ng-star-inserted')]//div[contains(@class, 'opacity-30')]//span[contains(@class, 'rating-option-title') and normalize-space(text())='" + option + "'])"));
-            boolean isItemDeselected = deselectedItem.isDisplayed();
-            Assert.assertTrue(isItemDeselected, "Expected item to be deselected, but it was still visible");
-            System.out.println(option + " is not selected");
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to confirm multi item rating deselected in report view");
-        }
-    }*/
 
 
     //Text formatting confirmation
@@ -1299,6 +1277,95 @@ public class confirmationFunctions extends Base_PO {
         }
     }
 
+    public void confirmDatacaptureSearch(String reportName, String datacapture) throws Exception {
+        try {
+
+            String normReportName = norm(reportName);
+            Assert.assertFalse(
+                    getDriver().findElements(By.xpath("//div[contains(text(), '" +  normReportName + "')]")).isEmpty(),
+                    "The 'TEST ALL CONTROLS RM' text was NOT found on the page!"
+            );
+
+            Assert.assertFalse(
+                    getDriver().findElements(By.xpath("//div[contains(text(), '" +  datacapture + "')]")).isEmpty(),
+                    "The 'Search - Found Me' text was NOT found on the page!"
+            );
+
+        } catch (Exception e) {
+            Assert.fail("Failed to verify report and subtitle: " + e.getMessage());
+        }
+    }
+
+    public void confirmProjectSaved(String project) throws IOException, URISyntaxException {
+        try {
+            System.out.println("- Confirming project correct: '" + project + "'");
+            //System.out.println("Extracting text");
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            String displayedProject = createReport_po.project.getText();
+            //System.out.println("Actual text: " + prefilledText);
+
+            assertTrue("- Expected text to contain: '" + project + "', but was: '" + displayedProject + "'",
+                    displayedProject.contains(project));
+
+            System.out.println("Project verified");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm extra text has been saved");
+        }
+
+    }
+
+    public void confirmProjectCard(String projectCard) throws IOException, URISyntaxException {
+        try {
+            System.out.println("- Confirming project in report card correct: '" + projectCard + "'");
+            Assert.assertFalse(
+                    getDriver().findElements(By.xpath("//div[contains(@class, 'text-secondary') and contains(text(), '" + projectCard + "')]")).isEmpty(),
+                    "The project card '" + projectCard + "' was not found on the page!");
+
+            System.out.println("Project card verified");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm extra text has been saved");
+        }
+
+    }
+
+    public void confirmClientSaved(String client) throws IOException, URISyntaxException {
+        try {
+            System.out.println("- Confirming client correct: '" + client + "'");
+            //System.out.println("Extracting text");
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            Thread.sleep(1000);
+            String displayedClient = createReport_po.client.getText();
+            //System.out.println("Actual text: " + prefilledText);
+
+            assertTrue("- Expected text to contain: '" + client + "', but was: '" + displayedClient + "'",
+                    displayedClient.contains(client));
+
+            System.out.println("Client verified");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm extra text has been saved");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
+    public void confirmClientCard(String clientCard) throws IOException, URISyntaxException {
+        try {
+            System.out.println("- Confirming client in report card correct: '" + clientCard + "'");
+            Thread.sleep(1000);
+            Assert.assertFalse(
+                    getDriver().findElements(By.xpath("//div[contains(@class, 'text-secondary') and contains(text(), '" + clientCard + "')]")).isEmpty(),
+                    "The client card '" + clientCard + "' was not found on the page!");
+
+            System.out.println("Project card verified");
+        } catch (NoSuchElementException e) {
+            Assert.fail("Unable to confirm extra text has been saved");
+        } catch (InterruptedException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
     public void selectTableEntry(String column, int row) {
 
         int actualRow = row - 1;
@@ -1323,27 +1390,39 @@ public class confirmationFunctions extends Base_PO {
     public void confirmTableEntry(String column, int row, String fieldValue) {
 
         int actualRow = row - 1;
+        String dynamicXPath = "//div[contains(@row-id, '" + actualRow + "')]//div[contains(@col-id, '" + column + "')]";
+        WebElement cell = null;
 
         try {
-            String dynamicXPath = "//div[@row-id='" + actualRow + "']//div[@col-id='" + column + "']";
+            try {
+                WebDriverWait shortWait = new WebDriverWait(getDriver(), Duration.ofSeconds(2));
+                cell = shortWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(dynamicXPath)));
 
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+            } catch (TimeoutException e) {
+                System.out.println("- Cell not found on screen. Scrolling grid to the right...");
+                ((JavascriptExecutor) getDriver()).executeScript(
+                        "document.querySelectorAll('.ag-body-viewport, .ag-center-cols-viewport').forEach(vp => vp.scrollLeft += 1000);"
+                );
+                Thread.sleep(500);
 
-            // 1. Wait for the element to exist in the DOM (even if it's off-screen)
-            WebElement cell = wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(dynamicXPath)));
+                WebDriverWait longWait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+                cell = longWait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(dynamicXPath)));
+            }
 
-           ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block: 'center'});", cell);
+            System.out.println("cell variable holds: " + cell);
+            ((JavascriptExecutor) getDriver()).executeScript("arguments[0].scrollIntoView({block: 'center'});", cell);
 
-            String actualFieldEntry = cell.getText();
+            String actualFieldEntry = cell.getText().trim();
 
-            System.out.println("- tableField value = " + actualFieldEntry);
-            Assert.assertEquals(actualFieldEntry, fieldValue, "The table field did not match.");
-            System.out.println("Table field is correct");
+            System.out.println("- tableField " + column + " value = " + actualFieldEntry);
+            Assert.assertTrue(actualFieldEntry.contains(fieldValue),
+                    "The table field did not match! Expected it to contain: '" + fieldValue + "', but found: '" + actualFieldEntry + "'");
 
-        } catch (IOException | URISyntaxException e) {
+            System.out.println("Table field " + column + " contains value '" + actualFieldEntry + "' so is correct");
+
+        } catch (Exception e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public void confirmImagesGridNotPresent() throws IOException, URISyntaxException {

@@ -1,6 +1,6 @@
-Feature: Feature
+Feature: Confirm searching via title, reference and datacapture work correctly
 
-  Scenario Outline: Scenario
+  Scenario Outline: Searching via title, reference and datacapture
 
     Given I search cloud reports for "Search"
     And I confirm the report "<ReportName>" is listed
@@ -18,5 +18,5 @@ Feature: Feature
 
 
     Examples:
-      | ReportName       | ReportName2       | ReportName3      | DataCapture                 | ReferenceText |
-      | Search - Find Me | Search - Found Me | Search - Open Me | TABLE ROW EDITING & CLONING | Open Me       |
+      | ReportName       | ReportName2       | ReportName3      | DataCapture                           | ReferenceText           |
+      | Search - Find Me | Search - Found Me | Search - Open Me | TEST ALL CONTROLS RM - SEARCH TESTING | Searching for reference |

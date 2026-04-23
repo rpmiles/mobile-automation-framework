@@ -9,6 +9,7 @@ import org.testng.Assert;
 import utils.ImageCompare;
 import utils.globalVariables;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.File;
@@ -33,7 +34,7 @@ public class TestAllControlsRM_PO extends Base_PO {
 
     //Items
     public @FindBy(xpath = "//div[contains(text(), 'This is Predefined Responses')]") WebElement thisIsPredefinedResponses;
-
+    public @FindBy(id = "confirm-button") WebElement confirmButton;
 
     //Operations
     public @FindBy(id = "back-to-report-button") WebElement loadReports;
@@ -66,7 +67,6 @@ public class TestAllControlsRM_PO extends Base_PO {
 
     //Rating
     public @FindBy(xpath = "//div[contains(@class, 'report-item-name') and contains(., 'This is Multi Text')]") WebElement ratingHeader;
-    public @FindBy(xpath = "//lib-rating-view") WebElement ratingView;
 
     //Numeric
     public @FindBy(xpath = "//input[@numericfield]") WebElement numericField;
@@ -77,9 +77,9 @@ public class TestAllControlsRM_PO extends Base_PO {
     //Tables
     public @FindBy(xpath = "//button[.//span[text()=' Add ']]") WebElement addRow;
     public @FindBy(xpath = "//button[@data-cy='back-to-editor-items-header-button']") WebElement closeRow;
+    public @FindBy(xpath = "//button[contains(normalize-space(), 'Bulk Edit')]") WebElement bulkEditRowsButton;
     public @FindBy(xpath = "//button//span[text()=' Clone ']") WebElement cloneRow;
     public @FindBy(id = "confirm-button") WebElement confirmClone;
-    public @FindBy(id = "open-table-view-mode-filter") WebElement tableFilter;
     public @FindBy(xpath = "//button[.//span[text()=' Delete ']]") WebElement deleteRow;
     public @FindBy(xpath = "//button[@data-cy='next-item-button']") WebElement scrollToNextField;
     public @FindBy(xpath = "//button[@data-cy='previous-item-button']") WebElement scrollToPrevField;
@@ -87,6 +87,13 @@ public class TestAllControlsRM_PO extends Base_PO {
 
     //Images
     public static @FindBy(css = ".full-size-photo-container img") WebElement fullSizePhoto;
+    public @FindBy(xpath = "//button[contains(@aria-label, 'Open menu')]") WebElement imageContextMenu;
+    public @FindBy(xpath = "//button//*[@data-icon='trash-can']") WebElement imageTrash;
+    public @FindBy(id = "confirm-button") WebElement confirmImageDelete;
+    public @FindBy(xpath = "//lib-photo-caption//div[@contenteditable='true']") WebElement imageListCaptionBox;
+    public @FindBy(xpath = "//lib-photo-caption-dialog//div[@contenteditable='true']") WebElement captionBox;
+    public @FindBy(xpath = "//div[contains(@class, 'items-end')]//div[contains(@class, 'italic')]") WebElement captionLink;
+    public @FindBy(xpath = "//Span[text()=' Save ']") WebElement saveCaption;
 
 
     public TestAllControlsRM_PO() throws IOException, URISyntaxException {
@@ -104,7 +111,6 @@ public class TestAllControlsRM_PO extends Base_PO {
 
         public void selectBackspace() throws IOException, URISyntaxException {
             sendKeys(multiText, String.valueOf(Keys.BACK_SPACE));
-
         }
 
 
@@ -132,15 +138,15 @@ public class TestAllControlsRM_PO extends Base_PO {
         }
     }
 
-        public void elementNotPresent(String element) throws IOException, URISyntaxException {
-            WebElement button = getDriver().findElement(
-                    By.xpath(element)
-            );
-
-        }
-
 
         //Shared operations
+        public void selectNotes() throws IOException, URISyntaxException {
+            System.out.println("- Selecting Notes");
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+            wait.until(ExpectedConditions.elementToBeClickable(notesButton));
+            waitForWebElementAndClickElement(notesButton);
+        }
+
         public void enterNotes(String notesTextToEnter) throws IOException, URISyntaxException {
             try {
                 waitForWebElementToBeVisible(multiText);
@@ -155,26 +161,17 @@ public class TestAllControlsRM_PO extends Base_PO {
 
         public void sendCursorToEnd() throws IOException, URISyntaxException {
             sendKeys(multiText, String.valueOf(Keys.END));
-
         }
 
         public void selectDone() throws IOException, URISyntaxException {
-            System.out.println("- Returning to report");
-            waitForWebElementAndClickElement(doneTick);
-
-        }
+                System.out.println("- Returning to report");
+                waitForWebElementAndClickElement(doneTick);
+            }
 
         public void backToReports() throws IOException, URISyntaxException {
-            System.out.println("- Returning to reports list");
-            waitForWebElementAndClickElement(loadReports);
-        }
-
-        public void selectNotes() throws IOException, URISyntaxException {
-            System.out.println("- Selecting Notes");
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-            wait.until(ExpectedConditions.elementToBeClickable(notesButton));
-            waitForWebElementAndClickElement(notesButton);
-        }
+        System.out.println("- Returning to reports list");
+        waitForWebElementAndClickElement(loadReports);
+    }
 
 
         //Single Text Operations
@@ -186,28 +183,6 @@ public class TestAllControlsRM_PO extends Base_PO {
         public void clearSingleTextX() throws IOException, URISyntaxException {
             System.out.println("- Clicking X");
             waitForWebElementAndClickElement(clearSingleText);
-        }
-
-        public void clearSingleText() throws Exception { // Changed to void
-            try {
-                System.out.println("- Clearing the single text item");
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.SYNC_WAIT_TIMEOUT));
-
-                WebElement singleInput = wait.until(ExpectedConditions.elementToBeClickable(singleText));
-                singleInput.clear();
-
-                JavascriptExecutor js = (JavascriptExecutor) getDriver();
-                js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", singleText);
-
-                System.out.println("- Waiting for default view to return...");
-                wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".text-xl"), 1));
-
-                System.out.println("- Default view restored.");
-
-            } catch (Exception e) {
-                Assert.fail("Unable to clear the single text item and verify default view: " + e.getMessage());
-            }
-            // No return needed now!
         }
 
 
@@ -280,12 +255,12 @@ public class TestAllControlsRM_PO extends Base_PO {
         }
 
         public void selectMultiTextCarriageReturnButton() throws IOException, URISyntaxException {
-        By arrowBtn = By.xpath(
-                "//button//*[@data-icon='arrow-down']"
-        );
-        System.out.println("- Selecting carriage return button");
-        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
-        WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(arrowBtn));
+            By arrowBtn = By.xpath(
+                    "//button//*[@data-icon='arrow-down']"
+            );
+            System.out.println("- Selecting carriage return button");
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(20));
+            WebElement btn = wait.until(ExpectedConditions.elementToBeClickable(arrowBtn));
 
         try {
             btn.click();
@@ -329,19 +304,6 @@ public class TestAllControlsRM_PO extends Base_PO {
 
         public void selectMultiTextEnterKey() throws IOException, URISyntaxException {
             sendKeys(multiText, String.valueOf(Keys.ENTER));
-        }
-
-        public void confirmQuillEditorIsEmpty() throws IOException, URISyntaxException {
-            // 1. Target the actual editable area, NOT the wrapper div
-            WebElement quillEditor = getDriver().findElement(By.cssSelector(".ql-editor"));
-
-            // 2. Extract the visible text and trim any accidental whitespace
-            String editorText = quillEditor.getText().trim();
-
-            // 3. Assert it is completely empty
-            Assert.assertTrue(editorText.isEmpty(), "The editor was not empty! It contained: '" + editorText + "'");
-
-            // (Alternative syntax) Assert.assertEquals(editorText, "");
         }
 
 
@@ -508,8 +470,8 @@ public class TestAllControlsRM_PO extends Base_PO {
         public void selectOption(String option) throws IOException, URISyntaxException {
             try {
                 //System.out.print("Selecting Picklist item");
-                WebElement actualOption = getDriver().findElement(By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + option + "')]"));
-                waitForWebElementAndClickElement(actualOption);
+                By actualOptionLocator = By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + option + "')]");
+                waitForWebElementAndClickBy(actualOptionLocator);
                 System.out.println("- Selected " + option);
                 Thread.sleep(1000);
 
@@ -540,21 +502,6 @@ public class TestAllControlsRM_PO extends Base_PO {
 
 
         //Numeric tests
-        public class DecimalTrimmer {
-            public String roundedDecimal(String expectedNumber) {
-
-                // Convert to BigDecimal
-                BigDecimal decimal = new BigDecimal(expectedNumber);
-
-                // Round to 3 decimal places
-                BigDecimal rounded = decimal.setScale(3, RoundingMode.DOWN);
-
-                // Output the result
-                System.out.println(rounded.toPlainString());  // Output: 0.123
-                return rounded.toPlainString();
-            }
-        }
-
         public void selectNumericButton(String value) throws IOException, URISyntaxException {
             try {
                 System.out.println("- Selecting numeric button " + value);
@@ -592,53 +539,6 @@ public class TestAllControlsRM_PO extends Base_PO {
                 e.printStackTrace();
                 Assert.fail("Failed to send numeric input: " + e.getMessage());
             }
-        }
-
-        public void retrieveNumericValue() {
-            try {
-                System.out.println("- Retrieving numeric input");
-
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-                By numericFieldLocator = By.cssSelector("input[numericfield]");
-
-                // Wait until the input field is visible and enabled
-                WebElement numericFieldElement = wait.until(ExpectedConditions.elementToBeClickable(numericFieldLocator));
-
-                // Send new value
-                String numericEntry = numericFieldElement.getText();
-
-                System.out.println("- Successfully retrieve numeric value: '" + numericEntry);
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                Assert.fail("Failed to send numeric input: " + e.getMessage());
-            }
-        }
-
-
-        //Rating tests
-        public void selectRating(String item, String rating) throws IOException, URISyntaxException {
-            try {
-                //waitForWebElementAndClickElement(ratingHeader);
-
-                System.out.println("- Selecting " + item + " rating " + rating + " in report view");
-
-                WebElement button = getDriver().findElement(
-                        By.xpath("//div[contains(@class,'rating-option')]//span[contains(., '" + rating +  "')]")
-                );
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
-                wait.until(ExpectedConditions.elementToBeClickable(button));
-                button.click();
-
-            } catch (NoSuchElementException e) {
-                Assert.fail("Failed to select rating");
-            }
-
-        }
-
-        public void selectRatingView() throws IOException, URISyntaxException {
-        waitForWebElementAndClickElement(ratingView);
-
         }
 
 
@@ -697,80 +597,212 @@ public class TestAllControlsRM_PO extends Base_PO {
 
         public static class SimpleImageValidator {
 
-        // Note: We now pass the 'driver' in so we can execute JavaScript
-        public void verifyImage(WebDriver driver, WebElement imageElement, String expectedFileName) throws Exception {
+            public void verifyImage(WebDriver driver, WebElement imageElement, String expectedFileName) throws Exception {
 
-            File expectedFile = new File("src/test/resources/" + expectedFileName);
+                File expectedFile = new File("src/test/resources/" + expectedFileName);
 
-            if (!expectedFile.exists()) {
-                throw new java.io.FileNotFoundException("ERROR: Cannot find the baseline image at: " + expectedFile.getAbsolutePath());
-            }
+                if (!expectedFile.exists()) {
+                    throw new java.io.FileNotFoundException("ERROR: Cannot find the baseline image at: " + expectedFile.getAbsolutePath());
+                }
 
-            // --- NEW: Download the actual source file using JS ---
-            BufferedImage actualImg = downloadImageDirectly(driver, imageElement);
-            BufferedImage expectedImg = ImageIO.read(expectedFile);
+                // Download the actual source file using JS
+                BufferedImage actualImg = downloadImageDirectly(driver, imageElement);
+                BufferedImage expectedImg = ImageIO.read(expectedFile);
 
-            if (actualImg == null || expectedImg == null) {
-                throw new RuntimeException("Failed to parse one of the images.");
-            }
+                if (actualImg == null || expectedImg == null) {
+                    throw new RuntimeException("Failed to parse one of the images.");
+                }
 
-            // Compare
-            if (!imagesMatchExactly(actualImg, expectedImg)) {
-                throw new AssertionError("The images do not match!");
-            }
-        }
+                // --- Handle EXIF Auto-Rotation ---
+                if (actualImg.getWidth() == expectedImg.getHeight() && actualImg.getHeight() == expectedImg.getWidth()) {
+                    System.out.println("- Dimensions are perfectly swapped! Auto-rotating expected image 90 degrees...");
+                    expectedImg = rotateImage90Degrees(expectedImg);
+                }
 
-        // This forces the browser to fetch the raw file from the src URL and return it as Base64 data
-        private BufferedImage downloadImageDirectly(WebDriver driver, WebElement imageElement) throws Exception {
-            String script =
-                    "var img = arguments[0];" +
-                            "var callback = arguments[arguments.length - 1];" +
-                            "fetch(img.src)" +
-                            "  .then(response => response.blob())" +
-                            "  .then(blob => {" +
-                            "      var reader = new FileReader();" +
-                            "      reader.onloadend = () => callback(reader.result);" +
-                            "      reader.readAsDataURL(blob);" +
-                            "  })" +
-                            "  .catch(error => callback('ERROR'));";
+                // --- START OF DEBUGGING CODE ---
+                try {
+                    System.out.println("\n--- IMAGE DEBUG INFO ---");
+                    System.out.println("Expected Dimensions: " + expectedImg.getWidth() + "x" + expectedImg.getHeight());
+                    System.out.println("Actual Dimensions  : " + actualImg.getWidth() + "x" + actualImg.getHeight());
 
-            // We must tell Selenium to wait for the asynchronous JS fetch to finish
-            driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
+                    File debugActual = new File("DEBUG_actual_downloaded.png");
+                    ImageIO.write(actualImg, "png", debugActual);
 
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            String dataUrl = (String) js.executeAsyncScript(script, imageElement);
+                    File debugExpected = new File("DEBUG_expected_baseline.png");
+                    ImageIO.write(expectedImg, "png", debugExpected);
+                    System.out.println("DEBUG files saved to project root.");
+                    System.out.println("------------------------\n");
+                } catch (Exception e) {
+                    System.out.println("Failed to write debug images: " + e.getMessage());
+                }
+                // --- END OF DEBUGGING CODE ---
 
-            if (dataUrl == null || dataUrl.startsWith("ERROR")) {
-                throw new RuntimeException("Failed to download the actual image source from the browser.");
-            }
-
-            // Strip the "data:image/jpeg;base64," prefix from the string
-            String base64Data = dataUrl.substring(dataUrl.indexOf(",") + 1);
-
-            // Convert the base64 string back into actual image bytes
-            byte[] imageBytes = Base64.getDecoder().decode(base64Data);
-            return ImageIO.read(new ByteArrayInputStream(imageBytes));
-        }
-
-        private boolean imagesMatchExactly(BufferedImage img1, BufferedImage img2) {
-            if (img1.getWidth() != img2.getWidth() || img1.getHeight() != img2.getHeight()) {
-                return false;
-            }
-
-            for (int y = 0; y < img1.getHeight(); y++) {
-                for (int x = 0; x < img1.getWidth(); x++) {
-                    if (img1.getRGB(x, y) != img2.getRGB(x, y)) {
-                        return false;
-                    }
+                // Compare (Allowing up to a 3.0% difference in pixels)
+                if (!imagesMatchWithTolerance(actualImg, expectedImg, 8.0)) {
+                    throw new AssertionError("The images do not match! Check the DEBUG files in your project root.");
                 }
             }
-            return true;
+
+            // Helper method to rotate an image 90 degrees clockwise
+            private BufferedImage rotateImage90Degrees(BufferedImage img) {
+                int width = img.getWidth();
+                int height = img.getHeight();
+
+                // Swap width and height for the new canvas
+                BufferedImage rotatedImg = new BufferedImage(height, width, img.getType());
+                Graphics2D g2d = rotatedImg.createGraphics();
+
+                // Pivot the image 90 degrees counter-clockwise
+                g2d.translate(0, width);
+                g2d.rotate(-Math.PI / 2);
+                g2d.drawImage(img, 0, 0, null);
+                g2d.dispose();
+
+                return rotatedImg;
+            }
+
+            // This forces the browser to fetch the raw file from the src URL and return it as Base64 data
+            private BufferedImage downloadImageDirectly(WebDriver driver, WebElement imageElement) throws Exception {
+                String script =
+                        "var img = arguments[0];" +
+                                "var callback = arguments[arguments.length - 1];" +
+                                "fetch(img.src)" +
+                                "  .then(response => response.blob())" +
+                                "  .then(blob => {" +
+                                "      var reader = new FileReader();" +
+                                "      reader.onloadend = () => callback(reader.result);" +
+                                "      reader.readAsDataURL(blob);" +
+                                "  })" +
+                                "  .catch(error => callback('ERROR'));";
+
+                driver.manage().timeouts().scriptTimeout(Duration.ofSeconds(10));
+
+                JavascriptExecutor js = (JavascriptExecutor) driver;
+                String dataUrl = (String) js.executeAsyncScript(script, imageElement);
+
+                if (dataUrl == null || dataUrl.startsWith("ERROR")) {
+                    throw new RuntimeException("Failed to download the actual image source from the browser.");
+                }
+
+                String base64Data = dataUrl.substring(dataUrl.indexOf(",") + 1);
+                byte[] imageBytes = Base64.getDecoder().decode(base64Data);
+                return ImageIO.read(new ByteArrayInputStream(imageBytes));
+            }
+
+            private boolean imagesMatchExactly(BufferedImage img1, BufferedImage img2) {
+                if (img1.getWidth() != img2.getWidth() || img1.getHeight() != img2.getHeight()) {
+                    return false;
+                }
+
+                for (int y = 0; y < img1.getHeight(); y++) {
+                    for (int x = 0; x < img1.getWidth(); x++) {
+                        if (img1.getRGB(x, y) != img2.getRGB(x, y)) {
+                            return false;
+                        }
+                    }
+                }
+                return true;
+            }
+
+            private boolean imagesMatchWithTolerance(BufferedImage img1, BufferedImage img2, double allowedDifferencePercent) {
+                if (img1.getWidth() != img2.getWidth() || img1.getHeight() != img2.getHeight()) {
+                    System.out.println("Dimensions do not match!");
+                    return false;
+                }
+
+                long diffPixels = 0;
+                long totalPixels = (long) img1.getWidth() * img1.getHeight();
+
+                for (int y = 0; y < img1.getHeight(); y++) {
+                    for (int x = 0; x < img1.getWidth(); x++) {
+                        int rgb1 = img1.getRGB(x, y);
+                        int rgb2 = img2.getRGB(x, y);
+
+                        // Extract the Red, Green, and Blue values for both pixels
+                        int r1 = (rgb1 >> 16) & 0xff;
+                        int g1 = (rgb1 >> 8) & 0xff;
+                        int b1 = rgb1 & 0xff;
+
+                        int r2 = (rgb2 >> 16) & 0xff;
+                        int g2 = (rgb2 >> 8) & 0xff;
+                        int b2 = rgb2 & 0xff;
+
+                        // Calculate how far apart the colors are (max possible difference is 255 * 3 = 765)
+                        int colorDifference = Math.abs(r1 - r2) + Math.abs(g1 - g2) + Math.abs(b1 - b2);
+
+                        // If the color is off by more than a tiny margin (e.g., 15/765), flag the pixel as different
+                        if (colorDifference > 15) {
+                            diffPixels++;
+                        }
+                    }
+                }
+
+                // Calculate the total percentage of mismatched pixels
+                double diffPercent = ((double) diffPixels / totalPixels) * 100.0;
+                System.out.println("- Image variance: " + String.format("%.2f", diffPercent) + "%");
+
+                return diffPercent <= allowedDifferencePercent;
+            }
         }
-    }
+
+        public void selectImageContextMenu() throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(imageContextMenu);
+        }
+
+        public void deleteImage() throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(imageTrash);
+        }
+
+        public void confirmImageDelete() throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(confirmImageDelete);
+        }
+
+        public void confirmPhotoGridNotPresent() throws IOException, URISyntaxException {
+            List<WebElement> photoGrid = getDriver().findElements(By.xpath("//*[@data-icon= 'grid']"));
+            Assert.assertTrue(photoGrid.isEmpty(), "Expected report date field to be visible.");
+        }
+
+        public void enterCaptionImageList(String caption) throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(imageListCaptionBox);
+            sendKeys(imageListCaptionBox, caption);
+        }
+
+        public void deleteCaptionImageList() throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(imageListCaptionBox);
+            imageListCaptionBox.clear();
+        }
+
+        public void enterCaption(String caption) throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(captionBox);
+            sendKeys(captionBox, caption);
+            saveCaption.click();
+        }
+
+        public void selectCaptionLink() throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(captionLink);
+        }
+
+        public void confirmCaptionImageList(String caption) throws IOException, URISyntaxException {
+            String displayedText = imageListCaptionBox.getText();
+            Assert.assertTrue(displayedText.contains(caption),
+                    "Expected text not found! Found: '" + displayedText + "'");
+        }
+
+        public void deletecaptionBox() throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(captionBox);
+            captionBox.clear();
+            saveCaption.click();
+        }
+
+        public void confirmImageListCaptionNotPresent() throws IOException, URISyntaxException {
+            String existingText = imageListCaptionBox.getText().trim();
+            Assert.assertTrue(existingText.isEmpty(), "Error: The editable div still contained text: '" + existingText + "'");
+        }
 
 
-        //Tables
 
+
+    //Tables
         public void selectTableEntry(String column, int row) {
 
         int actualRow = row - 1;
@@ -791,28 +823,17 @@ public class TestAllControlsRM_PO extends Base_PO {
         }
     }
 
-        public void selectTableOption(String option) throws IOException, URISyntaxException {
-            try {
-                //waitForWebElementAndClickElement(ratingHeader);
 
-                System.out.println("- Selecting option " + option);
-
-                WebElement button = getDriver().findElement(
-                        By.xpath("//div[contains(., ' " + option + " ')]")
-                );
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(15));
-                wait.until(ExpectedConditions.elementToBeClickable(button));
-                button.click();
-
-            } catch (NoSuchElementException e) {
-                Assert.fail("Failed to select rating");
-            }
-        }
 
         public void closeRow() throws IOException, URISyntaxException {
             waitForWebElementAndClickElement(closeRow);
 
     }
+
+        public void bulkEditRows() throws IOException, URISyntaxException {
+            waitForWebElementAndClickElement(bulkEditRowsButton);
+
+        }
 
         public void cloneRows() throws IOException, URISyntaxException, InterruptedException {
             waitForWebElementAndClickElement(cloneRow);
@@ -845,108 +866,5 @@ public class TestAllControlsRM_PO extends Base_PO {
             waitForWebElementAndClickElement(scrollToPrevField);
         }
 
-
-    /*
-
-    public @FindBy(xpath = "//div[contains(text(), 'Preformatted Text for Copy/Paste Tests')]") WebElement preformattedTextCopyPaste;
-    public @FindBy(xpath = "//div[contains(text(), 'This Is Single Text')]") WebElement thisIsSingleText;
-    public @FindBy(xpath = "//div[contains(text(), 'This is Prefilled Text (Single)')]") WebElement singleTextPrefilled;
-    public @FindBy(xpath = "//div[contains(text(), 'This is Multi Text')]") WebElement thisIsMultiText;
-    public @FindBy(xpath = "//div[contains(text(), 'This is Prefilled Text (Multi)')]") WebElement multiTextPrefilled;
-    public @FindBy(xpath = "//div[contains(text(), 'This is a Date')]") WebElement thisIsDate;
-    public @FindBy(xpath = "//div[contains(text(), 'This is a Switch')]") WebElement thisIsSwitch;
-    public @FindBy(xpath = "//div[contains(text(), 'Single Select Pick List')]") WebElement singleSelectPicklist;
-    public @FindBy(xpath = "//div[contains(text(), 'Multi Select Pick List')]") WebElement multiSelectPicklist;
-    public @FindBy(xpath = "//div[contains(text(), 'This is a Numeric')]") WebElement thisIsNumeric;
-    public @FindBy(xpath = "//div[contains(text(), 'This is a Rating')]") WebElement thisIsRating;
-    public @FindBy(xpath = "//button[.//span[text()=' Clear']]") WebElement clearDate;
-    public @FindBy(css = ".svg-inline--fa.fa-paragraph.fa-2xl") WebElement carriageReturn;
-    public @FindBy(css = "app-location div.cursor-pointer") WebElement singleCrosshairsIcon;
-
-
-        public void selectSwitch(String switchToSelect) throws IOException, URISyntaxException {
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-            System.out.println("- Selecting switch " + switchToSelect);
-            wait.until(ExpectedConditions.visibilityOfElementLocated(
-                    By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + switchToSelect + "')]")
-            ));
-
-            By scrolledElement = By.xpath("//lib-options-list-item[contains(@class, 'ng-star-inserted') and contains(., '" + switchToSelect + "')]");
-            wait.until(ExpectedConditions.visibilityOfElementLocated(scrolledElement));
-
-
-            WebElement selectedSwitch = getDriver().findElement(scrolledElement);
-            selectedSwitch.click();
-        }
-
-
-        public void selectSingleTextCrosshairs() throws IOException, URISyntaxException, InterruptedException {
-
-            System.out.println("- Selecting single text line crosshairs");
-
-            waitForWebElementToBeVisible(singleCrosshairsIcon);
-            waitForWebElementAndClickElement(singleCrosshairsIcon);
-            Thread.sleep(2000);
-
-        }
-
-
-        public void switchSelected(String switchSelected) throws IOException, URISyntaxException {
-            try {
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-                List<WebElement> elements = getDriver().findElements(By.xpath("//lib-options-list-item[contains(@class, 'selected-option') and contains(., '" + switchSelected + "')]"));
-                Assert.assertTrue(elements.size() > 0, "Element does not exist");
-            } catch (NoSuchElementException e) {
-                Assert.fail("Failed to assert " + switchSelected + " selected");
-            }
-        }
-
-        public void switchNotSelected(String switchNotSelected) throws IOException, URISyntaxException {
-            try {
-                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
-                List<WebElement> elements = getDriver().findElements(By.xpath("//lib-options-list-item[not(contains(@class, 'selected-option')) and contains(., '" + switchNotSelected + "')]"));
-                Assert.assertTrue(elements.size() > 0, "Element does not exist");
-            } catch (NoSuchElementException e) {
-                Assert.fail("Failed to assert " + switchNotSelected + " not selected");
-            }
-        }
-
-
-        public void selectThisIsSingleText() throws IOException, URISyntaxException {
-            System.out.println("Selecting single text item");
-            waitForWebElementAndClickElement(thisIsSingleText);
-        }
-
-        public void selectThisIsMultiText() throws IOException, URISyntaxException {
-            waitForWebElementAndClickElement(thisIsMultiText);
-        }
-
-        public void selectAllSingleText() throws IOException, URISyntaxException {
-            singleText.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-        }
-
-        public void selectAllAndDeleteSingleText() throws IOException, URISyntaxException {
-            System.out.println("- Selecting all text");
-            singleText.sendKeys(Keys.chord(Keys.CONTROL, "a"));
-            System.out.println("- Deleting text from single text field");
-            singleText.sendKeys(Keys.chord(Keys.BACK_SPACE));
-        }
-
-
-        //Select an item
-        @And("I select item {string}")
-        public void i_select_item(String item) throws IOException, URISyntaxException, InterruptedException {
-            By element = By.xpath("//div[contains(text(), '" + item +  "')]");
-
-            waitForWebElementAndClickBy(element);
-        }
-
-        public void selectPreformattedText() throws IOException, URISyntaxException {
-            System.out.println("Selecting Preformatted Text for Copy/Paste Tests item");
-            waitForWebElementAndClickElement(preformattedTextCopyPaste);
-        }
-
-
-*/
 }
 

@@ -298,6 +298,24 @@ public class confirmationFunctions_Steps extends Base_PO {
     }
 
 
+    @And("I confirm the report edit")
+    public void i_confirm_the_report_edit() throws IOException, URISyntaxException, InterruptedException {
+            String edit = "This is to confirm an edit";
+        confirmationFunctions.confirmCorrectSingleText(edit, "This Is Single Text");
+    }
+
+    @And("I confirm the correct project {string} is displayed")
+    public void i_confirm_project(String projectName) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmProjectCard(projectName);
+        confirmationFunctions.confirmProjectSaved(projectName);
+    }
+
+    @And("I confirm the correct client {string} is displayed")
+    public void i_confirm_client(String clientName) throws IOException, URISyntaxException {
+        confirmationFunctions.confirmClientCard(clientName);
+        confirmationFunctions.confirmClientSaved(clientName);
+    }
+
     //Tables
     @And("I confirm field {string} in row {int} is {string}")
     public void iConfirmFieldInRowIs(String field, int row, String fieldEntry) throws IOException, URISyntaxException {

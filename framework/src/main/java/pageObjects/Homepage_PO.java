@@ -29,7 +29,6 @@ public class Homepage_PO extends Base_PO {
     private @FindBy(xpath = "//div[text()=' Wrong email or password ']") WebElement wrongUserPsw;
     public @FindBy(xpath = "//div[@id='no-reports' and contains(., ' You do not have any local reports on this device. ')]") WebElement noReports;
     public @FindBy(xpath = "//button[@role='menuitem'][.//span[text()='Support']]") WebElement supportData;;
-    //public @FindBy(xpath = "//div[text()=' Logged in as: ']//span[text()='admin@beta.com']") WebElement supportListedUser;;
     public @FindBy(xpath = "//div[text()=' Logged in user key: ']//span[text()='admin@beta.com']") WebElement supportUserKey;
     public @FindBy(xpath = "//button[.//span[text()=' Sync Now ']]") WebElement syncButton;
     public @FindBy(id = "user-profile") WebElement profileMenu;
@@ -46,6 +45,7 @@ public class Homepage_PO extends Base_PO {
     public @FindBy(id = "context-menu") WebElement contextMenu;
     public @FindBy(xpath = "//button[.//span[text()=' Delete Report ']]") WebElement deleteButton;
     public @FindBy(xpath = "//button[.//span[text()=' Clone Report ']]") WebElement cloneButton;
+    public @FindBy(xpath = "//span[contains(text(), 'Backup Report')]") WebElement backupReportButton;
     public @FindBy(xpath = "//button[@id='confirm-button']") WebElement confirmDelete;
     public @FindBy(xpath = "//button[.//span[text()=' Delete ']]") WebElement deleteReport;
     public @FindBy(xpath = "//input[@formcontrolname='confirmationText']") WebElement confirmDeleteText;
@@ -142,13 +142,50 @@ public class Homepage_PO extends Base_PO {
 
     }
 
+    public void clearCloudReportSearch() throws Exception { // Changed to void
+        try {
+            System.out.println("- Clearing the cloud report search");
+            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.SYNC_WAIT_TIMEOUT));
+
+            WebElement searchInput = wait.until(ExpectedConditions.elementToBeClickable(searchBoxCloud));
+            searchInput.clear();
+
+            JavascriptExecutor js = (JavascriptExecutor) getDriver();
+            js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", searchBoxCloud);
+
+            System.out.println("- Waiting for default view to return...");
+            wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".text-xl"), 1));
+
+            System.out.println("- Default view restored.");
+
+        } catch (Exception e) {
+            Assert.fail("Unable to clear the search bar and verify default view: " + e.getMessage());
+        }
+        // No return needed now!
+    }
+
     public void searchForLocal(String searchTerm) throws IOException, URISyntaxException, InterruptedException {
-        waitForWebElementAndClickElement(cloudReports);
-        waitForWebElementAndClickElement(localReports);
+        System.out.println("- Searching local reports for: " + searchTerm);
 
-        waitForWebElementAndClickElement(localSearchButton);
 
+        System.out.println("- Opening local reports search box");
+        waitForWebElementAndClickElement(magnifyingGlass);
+
+        // sendKeys should also be taking the WebElement
+        searchBoxLocal.clear();
         sendKeys(searchBoxLocal, searchTerm);
+
+        // Trigger the JS event we discussed to make the filter actually work
+        JavascriptExecutor js = (JavascriptExecutor) getDriver();
+        js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", searchBoxLocal);
+
+
+        //        waitForWebElementAndClickElement(cloudReports);
+//        waitForWebElementAndClickElement(localReports);
+//
+//        waitForWebElementAndClickElement(localSearchButton);
+//
+//        sendKeys(searchBoxLocal, searchTerm);
     }
 
     public void searchForCloud(String searchTerm) throws IOException, URISyntaxException, InterruptedException {
@@ -167,14 +204,6 @@ public class Homepage_PO extends Base_PO {
         JavascriptExecutor js = (JavascriptExecutor) getDriver();
         js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", searchBoxCloud);
     }
-
-    /*public void searchForCloud(String searchTerm) throws IOException, URISyntaxException, InterruptedException {
-        System.out.println("- Searching cloud reports for: " + searchTerm);
-        waitForWebElementAndClickElement(cloudSearchButton);
-        System.out.println("- Opening cloud reports search box");
-        waitForWebElementAndClickElement(magnifyingGlass);
-        sendKeys(searchBoxCloud, searchTerm);
-    }*/
 
     public void confirmReportListed(String expectedTitle) {
         try {
@@ -219,48 +248,6 @@ public class Homepage_PO extends Base_PO {
         }
     }
 
-    public void clearCloudReportSearch() throws Exception { // Changed to void
-        try {
-            System.out.println("- Clearing the cloud report search");
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.SYNC_WAIT_TIMEOUT));
-
-            WebElement searchInput = wait.until(ExpectedConditions.elementToBeClickable(searchBoxCloud));
-            searchInput.clear();
-
-            JavascriptExecutor js = (JavascriptExecutor) getDriver();
-            js.executeScript("arguments[0].dispatchEvent(new Event('input', { bubbles: true }));", searchBoxCloud);
-
-            System.out.println("- Waiting for default view to return...");
-            wait.until(ExpectedConditions.numberOfElementsToBeMoreThan(By.cssSelector(".text-xl"), 1));
-
-            System.out.println("- Default view restored.");
-
-        } catch (Exception e) {
-            Assert.fail("Unable to clear the search bar and verify default view: " + e.getMessage());
-        }
-        // No return needed now!
-    }
-
-    public void confirmOnlyReportIsListed(String expectedTitle) throws Exception {
-        try {
-            System.out.println("Confirming ONLY this report is listed: " + expectedTitle);
-            List<WebElement> actualReportElements = getDriver().findElements(By.cssSelector(".report-title"));
-
-            System.out.println("Reports found on page: " + actualReportElements.size());
-
-            // 1. Check count
-            Assert.assertEquals(actualReportElements.size(), 1, "Expected exactly 1 report, but found " + actualReportElements.size());
-
-            // 2. Check content
-            String actualTitle = actualReportElements.get(0).getText().trim();
-            System.out.println("Actual title parsed: " + actualTitle);
-
-            Assert.assertEquals(actualTitle, expectedTitle, "The single displayed report does not match the expected title.");
-        } catch (Exception e) {
-            Assert.fail("Unable to confirm single report is listed: " + e.getMessage());
-        }
-    }
-
     public void noReportsListed() throws Exception {
         try {
             System.out.println("- Verifying 'No Reports' message is displayed...");
@@ -283,37 +270,14 @@ public class Homepage_PO extends Base_PO {
         }
     }
 
+
+
     //Report functions
     public void downloadReport() throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementAndClickElement(downloadReport);
         waitForWebElementAndClickElement(downloadConfirm);
 
     Thread.sleep(3000);
-    }
-
-    public void selectUploadReport(String report) throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("Locating uploads test report");
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
-            //System.out.println("Report variable: " + report);
-            List<WebElement> items = getDriver().findElements(By.tagName("app-report-list-items"));
-            List<WebElement> downloadButton = getDriver().findElements(By.id("edit-report"));
-
-            int count = 0;
-            for (WebElement item : items) {
-                String title = item.getText().trim();
-                if (title.contains(report)) {
-
-                    downloadButton.get(count).click();
-                    waitForWebElementAndClickElement(confirmButton);
-                    break;
-                }
-                count++;
-            }
-        } catch(NoSuchElementException e){
-            Assert.fail("Unable to select upload report");
-        }
     }
 
     public void confirmReport() throws IOException, URISyntaxException {
@@ -340,6 +304,12 @@ public class Homepage_PO extends Base_PO {
     public void editReport() throws IOException, URISyntaxException, InterruptedException {
         System.out.println("- Editing report");
         waitForWebElementAndClickElement(editReport);
+    }
+
+    public void selectSpecificReport(String reportName) throws IOException, URISyntaxException, InterruptedException {
+        System.out.println("- Selecting report: " + reportName);
+        WebElement report = getDriver().findElement(By.xpath("//div[contains(@class, 'text-xl') and contains(normalize-space(), '" + reportName + "')]"));
+        waitForWebElementAndClickElement(report);
     }
 
     public void confirmReportUploaded() throws IOException, URISyntaxException, InterruptedException {
@@ -386,69 +356,4 @@ public class Homepage_PO extends Base_PO {
     }
 
 
-
-/*
-
-
-
-
-        public void downloadUploadedReport(String reportName) throws IOException, URISyntaxException, InterruptedException {
-        try {
-            System.out.println("- Downloading Report: " + reportName);
-            WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(globalVariables.DEFAULT_EXPLICIT_TIMEOUT));
-            wait.until(ExpectedConditions.presenceOfElementLocated(By.tagName("app-report-list-items")));
-
-            List<WebElement> items = getDriver().findElements(By.tagName("app-report-list-items"));
-            List<WebElement> downloadButtons = getDriver().findElements(By.id("download-report"));
-
-            int count = 0;
-            for (WebElement item : items) {
-                String title = item.getText().trim();
-                if (title.contains(reportName)) {
-
-                    downloadButtons.get(count).click();
-                    downloadConfirm.click();
-                    waitForWebElementAndClickElement(cancelDownload);
-                    downloadButtons.get(count).click();
-                    downloadConfirm.click();
-                    wait.until(ExpectedConditions.visibilityOfAllElements(editReport));
-                    break;
-                }
-                count++;
-            }
-        } catch (NoSuchElementException e) {
-            Assert.fail("Unable to download report");
-        }
-
-    }
-
-
-    public void selectField(String field) throws IOException, URISyntaxException {
-        System.out.println("- Selecting " + field + " from context menu");
-        waitForWebElementToBeVisible(reportSettings);
-        waitForSyncFinish(cloudReports);
-    }
-
-    public void clickWhenReady(WebElement el, int timeoutSeconds) throws IOException, URISyntaxException {
-        WebDriver driver = getDriver();
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(timeoutSeconds));
-        wait.until(ExpectedConditions.visibilityOf(el));
-        wait.until(ExpectedConditions.elementToBeClickable(el));
-
-        try {
-            el.click();
-            return;
-        } catch (Throwable t1) {
-            try {
-                new Actions(driver).moveToElement(el).click().perform();
-                return;
-            } catch (Throwable t2) {
-                ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView({block:'center'}); arguments[0].click();", el);
-            }
-        }
-    }
-
-        public void noReports() throws IOException, URISyntaxException {
-        Assert.assertEquals(noReports.getText(), " You do not have any local reports on this device. ");
-    }*/
 }

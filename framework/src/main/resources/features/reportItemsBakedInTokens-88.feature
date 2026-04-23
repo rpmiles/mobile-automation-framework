@@ -7,8 +7,15 @@ Feature: Confirm Baked In Tokens created when report is
     When I select the item "<item>"
     And I check navigation
     Then I confirm the Baked In Tokens are displayed correctly
+    And I select the tick or done button
     And I select the back arrow
+    And I confirm the list of reports is displayed
     And I select the upload button
+    And I select upload
+    Then I confirm the upload has completed
+    And I close the upload dialog
+    And I select the context menu
+    And I remove the report
 
 
     Examples:

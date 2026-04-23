@@ -71,6 +71,7 @@ public class testAllControlsRM_Steps extends Base_PO {
         createReport_po.initElements();
     }
 
+
     //Text operations steps
     @And("I send the cursor to the end of the text")
     public void i_send_the_cursor_to_the_end_of_the_text() throws IOException, URISyntaxException, InterruptedException {
@@ -174,6 +175,7 @@ public class testAllControlsRM_Steps extends Base_PO {
         homepage_po.confirmButton.click();
     }
 
+
     //Text formatting steps
     @And("I add unformatted text")
     public void add_unformatted_text() throws IOException, URISyntaxException {
@@ -261,7 +263,6 @@ public class testAllControlsRM_Steps extends Base_PO {
         testAllControlsRM_po.selectNumList();
     }
 
-
     
     //Item functions
     @And("I select the photo grid")
@@ -303,43 +304,6 @@ public class testAllControlsRM_Steps extends Base_PO {
     public void i_delete_the_specific_text_from_the_item(String response, String item) throws MalformedURLException, URISyntaxException {
         testAllControlsRM_po.deleteSpecificText(response, item);
     }
-
-
-/*
-    @And("I select the x at the end of the single text field")
-    public void i_select_the_x_at_the_end_of_the_single_text_field() {
-        System.out.println("- Clearing field with x");
-        testAllControlsRM_po.clearSingleTextX();
-    }
-
-    @And("I delete a predefined response {string}")
-    public void i_delete_a_predefined_response(String response3) throws MalformedURLException, URISyntaxException {
-        testAllControlsRM_po.deleteSpecificText(response3);
-    }
-
-
-    @And("I select the location icon")
-    public void i_select_the_location_icon() throws IOException, URISyntaxException, InterruptedException {
-        WebElement wrapper = new WebDriverWait(getDriver(), Duration.ofSeconds(8))
-                .until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("app-location div.cursor-pointer")));
-
-        new Actions(getDriver())
-                .moveToElement(wrapper)
-                .pause(Duration.ofMillis(150))
-                .click()
-                .perform();
-
-        Thread.sleep(2000);
-    }
-
-
-    @And("I select the crosshairs icon")
-    public void i_select_the_crosshairs_icon_() throws IOException, URISyntaxException, InterruptedException {
-        testAllControlsRM_po.selectSingleTextCrosshairs();
-    }
-
-
- */
 
 }
 

@@ -38,6 +38,12 @@ public class cloneReportContent_Steps extends Base_PO {
         cloneReport_po.cloneReport(targetReport, nameOfReport, referenceText, inspectionDateReq, inspectionDate, dueDateReq, dueDate, notesText, addNotes, addPhotos);
     }
 
+    @Given("I clone a report with client and project {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public void i_clone_a_report_with_client_and_project(String targetReport,String isProjectRequired, String projectName, String isClientRequired, String clientName, String nameOfReport, String referenceText,
+                                 String inspectionDateReq, String inspectionDate, String dueDateReq, String dueDate, String notesText, String addNotes, String addPhotos) throws IOException, URISyntaxException, InterruptedException {
+        cloneReport_po.cloneReportWithClientProject(targetReport, isProjectRequired, projectName, isClientRequired, clientName, nameOfReport, referenceText, inspectionDateReq, inspectionDate, dueDateReq, dueDate, notesText, addNotes, addPhotos);
+    }
+
 
     @And("I select if I want to include photos and audio {string}")
     public void i_select_if_i_want_to_include_photos_and_audio(String addPhotos) throws IOException, URISyntaxException, InterruptedException {

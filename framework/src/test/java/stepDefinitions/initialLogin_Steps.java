@@ -26,11 +26,6 @@ public class initialLogin_Steps extends Base_PO {
         homepage_po.initElements();
     }
 
-    @Given("I launch the mobile app")
-    public void i_launch_the_mobile_app() throws IOException, URISyntaxException {
-        System.out.println("Launching app");
-        login_po.navigateTo_Mobile_Portal();
-    }
 
     @When("I dismiss the cookie message")
     public void i_dismiss_the_cookie_message() throws IOException, URISyntaxException {

@@ -10,7 +10,7 @@ Feature: Confirm creating and editing entries in a table works correctly
 
 
   Scenario Outline: Enter Rows
-    Given I select a report
+    Given I select a specific report "Report Items - Tables Create & Edit"
     When I select the item "Multi Sheet Databacked"
     And I wait 1 seconds
     And I select Add to add a row
@@ -38,7 +38,7 @@ Feature: Confirm creating and editing entries in a table works correctly
 
 
   Scenario Outline: Confirm the entered rows
-    Given I select a report
+    Given I select a specific report "Report Items - Tables Create & Edit"
     When I select the item "Multi Sheet Databacked"
     And I wait 1 seconds
     And I confirm field "manufacturer" in row <Row> is "<Manufacturer>"

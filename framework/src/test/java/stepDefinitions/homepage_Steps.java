@@ -4,18 +4,11 @@ import functions.confirmationFunctions;
 import functions.globalFunctions;
 import io.cucumber.java.en.And;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
+import org.openqa.selenium.support.PageFactory;
 import pageObjects.*;
-import utils.globalVariables;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.time.Duration;
-import java.util.ArrayList;
-import java.util.List;
 
 public class homepage_Steps extends Base_PO {
 
@@ -23,10 +16,12 @@ public class homepage_Steps extends Base_PO {
     Homepage_PO homepage_po;
     SharedStepsFieldNav_PO sharedStepsFieldNav_po;
     CreateReport_PO createReport_po;
-    scratchpad_PO scratchpad_po;
+    Misc_PO misc_po;
 
     functions.globalFunctions globalFunctions;
     functions.confirmationFunctions confirmationFunctions;
+
+
 
     public homepage_Steps() throws IOException, URISyntaxException {
 
@@ -61,7 +56,7 @@ public class homepage_Steps extends Base_PO {
 
     @And("I search for the report {string}")
     public void i_search_for_the_report(String report) throws IOException, URISyntaxException {
-        sendKeys(scratchpad_po.searchReportField, report);
+        sendKeys(misc_po.searchReportField, report);
     }
 
     @And("I confirm the report {string} is listed")
@@ -69,7 +64,7 @@ public class homepage_Steps extends Base_PO {
         homepage_po.confirmReportListed(expectedTitle);
     }
 
-    @And("I confirm the only listed is report {string}")
+    @And("I confirm the only listed report is {string}")
     public void i_confirm_the_only_report_listed_is(String expectedTitle) throws IOException, URISyntaxException {
         homepage_po.confirmOnlyReportListed(expectedTitle);
     }
@@ -84,6 +79,11 @@ public class homepage_Steps extends Base_PO {
         waitForWebElementAndClickElement(homepage_po.editReport);
     }
 
+    @And("I select a specific report {string}")
+    public void i_select_the_specific_report(String reportName) throws IOException, URISyntaxException, InterruptedException {
+       homepage_po.selectSpecificReport(reportName);
+    }
+
     @And("I confirm the only report listed is {string}")
     public void confirmOnlyReportIsListed(String expectedTitle) throws Exception {
         confirmationFunctions.confirmOnlyReportIsListed(expectedTitle);
@@ -91,7 +91,7 @@ public class homepage_Steps extends Base_PO {
 
     @And("I confirm a report exists with title {string} and reference {string}")
     public void confirmReportAndSubtitleExists(String expectedTitle, String expectedSubtitle) throws Exception {
-       confirmationFunctions.confirmReportAndSubtitleExists(expectedTitle, expectedSubtitle);
+       confirmationFunctions.confirmDatacaptureSearch(expectedTitle, expectedSubtitle);
     }
 
     @And("I confirm the only report listed is {string} with reference {string}")
@@ -141,6 +141,18 @@ public class homepage_Steps extends Base_PO {
     @And("I search cloud reports for {string}")
     public void i_search_for (String searchTerm) throws IOException, URISyntaxException, InterruptedException {
         homepage_po.searchForCloud(searchTerm);
+        Thread.sleep(1000);
+    }
+
+    @And("I search local reports for {string}")
+    public void i_search_local_for (String searchTerm) throws IOException, URISyntaxException, InterruptedException {
+        homepage_po.searchForLocal(searchTerm);
+        Thread.sleep(1000);
+    }
+
+    @And("I search for the client {string}")
+    public void i_search_for_client (String searchTerm) throws IOException, URISyntaxException, InterruptedException {
+        homepage_po.searchForLocal(searchTerm);
         Thread.sleep(1000);
     }
 
@@ -217,6 +229,16 @@ public class homepage_Steps extends Base_PO {
     @And("I select the context menu")
     public void i_select_the_context_menu() throws IOException, URISyntaxException, InterruptedException {
         waitForWebElementAndClickElement(homepage_po.contextMenu);
+    }
+
+    @And("I select the Backup Button")
+    public void i_select_the_backup_button() throws IOException, URISyntaxException, InterruptedException {
+        waitForWebElementAndClickElement(homepage_po.backupReportButton);
+    }
+
+    @And("I close the backup dialog")
+    public void i_close_the_backup_dialog() throws IOException, URISyntaxException, InterruptedException {
+        waitForWebElementAndClickBy(By.xpath("//button[@id='close-gallery-button']"));
     }
 
     //Misc

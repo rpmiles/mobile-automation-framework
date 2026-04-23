@@ -2,15 +2,15 @@ package pageObjects;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.PageFactory;
 
-import javax.print.URIException;
 import java.io.IOException;
 import java.net.URISyntaxException;
 
 import static utils.globalVariables.adminPsw;
 import static utils.globalVariables.adminUser;
 
-public class scratchpad_PO extends Base_PO {
+public class Misc_PO extends Base_PO {
 
     public @FindBy(id = "email") WebElement userName;
     public @FindBy(id = "password") WebElement password;
@@ -19,6 +19,7 @@ public class scratchpad_PO extends Base_PO {
     private @FindBy(id = "mat-mdc-error-1") WebElement emailReq;
     private @FindBy(xpath = "//div[text()=' Wrong email or password ']") WebElement wrongUserPsw;
     private @FindBy(id = "open-report-search") WebElement openReportSearch;
+    private @FindBy(id = "open-local-report-search") WebElement openLocalReportSearch;
     private @FindBy(id = "close-report-search") WebElement closeReportSearch;
     public @FindBy(id = "search-reports-input") WebElement searchReportField;
     private @FindBy(xpath = "//div[.='Report Items - Sorting Tables <Dummy>']/following-sibling::div//button[.//*[local-name()='svg' and @data-icon='pencil']]"
@@ -27,8 +28,10 @@ public class scratchpad_PO extends Base_PO {
 
 
 
-    public scratchpad_PO() throws IOException, URISyntaxException{
+    public Misc_PO() throws IOException, URISyntaxException
+    {
         super();
+        PageFactory.initElements(getDriver(), this);
     }
 
     public void navigateTo_Web_Portal() throws IOException, URISyntaxException {
@@ -44,13 +47,7 @@ public class scratchpad_PO extends Base_PO {
         sendKeys(password, adminPsw);
     }
 
-
-    public void clickSignIn () throws IOException, URISyntaxException, InterruptedException {
-        Thread.sleep(2000);
-        waitForWebElementAndClickElement(signInButton);
-    }
-
-    public void open_report_search () throws IOException, URISyntaxException, InterruptedException {
+    public void open_report_search() throws IOException, URISyntaxException, InterruptedException {
         Thread.sleep(2000);
         waitForWebElementAndClickElement(openReportSearch);
     }
@@ -60,18 +57,6 @@ public class scratchpad_PO extends Base_PO {
         waitForWebElementAndClickElement(closeReportSearch);
         waitForWebElementAndClickElement(openReportSearch);
         sendKeys(searchReportField, clonedReport);
-    }
-
-    public void searchForReport(String report) throws IOException, URISyntaxException, InterruptedException {
-        Thread.sleep(2000);
-        waitForWebElementAndClickElement(openReportSearch);
-        sendKeys(searchReportField, report);
-    }
-
-    public void openAndSearchForReport(String report) throws IOException, URISyntaxException, InterruptedException {
-        Thread.sleep(2000);
-        waitForWebElementAndClickElement(openReportSearch);
-        sendKeys(searchReportField, report);
     }
 
     public void selectCloneEdit() throws IOException, URISyntaxException {

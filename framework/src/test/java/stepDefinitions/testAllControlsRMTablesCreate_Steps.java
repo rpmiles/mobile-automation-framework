@@ -30,15 +30,25 @@ public class testAllControlsRMTablesCreate_Steps extends Base_PO {
     }
 
 
+
     @And("I select the table field option {string}")
     public void neither_this_or_that_is_highlighted(String option) throws IOException, URISyntaxException, InterruptedException {
         globalFunctions.scrollAndSelectTableFieldValue(option);
 }
 
-
     @And("I close the row editor")
     public void i_close_the_row_editor() throws IOException, URISyntaxException {
         testAllControlsRM_po.closeRow();
+    }
+
+    @And("I bulk edit the rows")
+    public void i_bulk_edit_the_rows() throws IOException, URISyntaxException, InterruptedException {
+        testAllControlsRM_po.bulkEditRows();
+    }
+
+    @And("I confirm the bulk edit")
+    public void i_confirm_the_bulk_edit() throws IOException, URISyntaxException, InterruptedException {
+        waitForWebElementAndClickElement(testAllControlsRM_po.confirmButton);
     }
 
     @And("I close the table")
@@ -76,28 +86,11 @@ public class testAllControlsRMTablesCreate_Steps extends Base_PO {
         testAllControlsRM_po.scrollToPrev();
     }
 
-
     @And("I select the {string} field in row {int}")
     public void i_select_the_field_in_row(String field, int row) throws IOException, URISyntaxException, InterruptedException {
         testAllControlsRM_po.selectTableEntry(field, row);
     }
-
-
-
-//button//span[text()=' Clone ']
-    /*
-    @And("switch {string} is highlighted")
-    public void switch_Is_Selected(String switchHighlighted) throws IOException, URISyntaxException {
-        testAllControlsRM_po.switchSelected(switchHighlighted);
-    }
-
-    @And("switch {string} is not highlighted")
-    public void switch_Is_Not_Selected(String switchNotHighlighted) throws IOException, URISyntaxException {
-        testAllControlsRM_po.switchNotSelected(switchNotHighlighted);
-    }
-
-
-   */
+    
 }
 
 /*

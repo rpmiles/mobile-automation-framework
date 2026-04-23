@@ -18,7 +18,7 @@ Feature: Deleting a report on the homepage (copy paste instances for more than o
     And I delete the report
 
 
-  Scenario: Delete non uploaded reports
+  Scenario: Delete 3 non uploaded reports
     #1
     Given I select the context menu
     And I delete the report
@@ -31,28 +31,28 @@ Feature: Deleting a report on the homepage (copy paste instances for more than o
     And I select a report
     And I select the back arrow
 
-    And I select the context menu
-    And I delete the report
-    And I select a report
-    And I select the back arrow
-
-    And I select the context menu
-    And I delete the report
-    And I select a report
-    And I select the back arrow
-
-    And I select the context menu
-    And I delete the report
-    And I select a report
-    And I select the back arrow
-
-    And I select the context menu
-    And I delete the report
-    And I select a report
-    And I select the back arrow
     #3
     And I select the context menu
     And I delete the report
+
+
+#    And I select the context menu
+#    And I delete the report
+#    And I select a report
+#    And I select the back arrow
+#
+#    And I select the context menu
+#    And I delete the report
+#    And I select a report
+#    And I select the back arrow
+#
+#    And I select the context menu
+#    And I delete the report
+#    And I select a report
+#    And I select the back arrow
+#    #3
+#    And I select the context menu
+#    And I delete the report
 
 
 

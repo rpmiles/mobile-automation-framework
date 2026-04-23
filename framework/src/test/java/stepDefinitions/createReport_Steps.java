@@ -1,6 +1,8 @@
 package stepDefinitions;
 
+import functions.confirmationFunctions;
 import functions.globalFunctions;
+import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import org.openqa.selenium.Keys;
@@ -39,6 +41,12 @@ public class createReport_Steps extends Base_PO {
         System.out.println("- Creating Report");
     }
 
+    @Given("I Create a full Report {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}, {string}")
+    public void iCreateAFullReport(String dataCap, String isProjectRequired, String projectName, String isClientRequired, String clientName, String reportName, String referenceText, String reportDate, String dueDate, String notesText) throws IOException, URISyntaxException, InterruptedException {
+        createReport_po.createFullReport(dataCap, isProjectRequired, projectName, isClientRequired, clientName, reportName, referenceText, reportDate, dueDate, notesText);
+        System.out.println("- Creating Full Report");
+    }
+
     @And("I select a Data Capture {string}")
     public void i_select_a_data_capture(String string) throws IOException, URISyntaxException {
         createReport_po.selectDataCapture(string);
@@ -61,7 +69,6 @@ public class createReport_Steps extends Base_PO {
 
         System.out.println("Entering a report name: " + replacedName);
     }
-
 
     @And("I enter a reference {string}")
     public void i_enter_a_reference(String reference) throws IOException, URISyntaxException {
@@ -106,4 +113,5 @@ public class createReport_Steps extends Base_PO {
         waitForWebElementAndClickElement(createReport_po.saveReport);
     }
 
+//div[contains(@class, 'text-secondary') and contains(text(), 'Smoke Tests Project')]
 }

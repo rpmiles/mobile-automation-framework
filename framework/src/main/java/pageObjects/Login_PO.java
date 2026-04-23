@@ -23,11 +23,6 @@ public class Login_PO extends Base_PO {
         super();
     }
 
-    public void navigateTo_Mobile_Portal() throws IOException, URISyntaxException {
-        navigateTo_URL("https://mobile.test-goreport.services"); // Make sure this line exists
-
-    }
-
     public void setUserName() throws IOException, URISyntaxException {
         sendKeys(userName, adminUser);
     }

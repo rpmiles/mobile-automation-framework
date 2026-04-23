@@ -18,6 +18,7 @@ import java.time.Duration;
 public class CloneReport_PO extends Base_PO {
 
     Homepage_PO homepagePo;
+    CreateReport_PO createReport_po;
 
     public @FindBy(id = "template-name") WebElement dataCapture;
     public @FindBy(id = "report-name") WebElement reportName;
@@ -27,7 +28,6 @@ public class CloneReport_PO extends Base_PO {
     public @FindBy(xpath = "//button[.//span[text()=' Clone Report ']]") WebElement cloneButton;
     public @FindBy(xpath = "//button[.//span[text()=' Author ']]") WebElement authorButton;
     public @FindBy(id = "include-notes-button") WebElement includeNotes;
-    // public @FindBy(xpath = "//button[contains(@id, 'include-notes-button') and contains(@class, 'mdc-switch--checked')]") WebElement includeNotes;
     public @FindBy(id = "include-photos-audio-button") WebElement includePhotosAudio;
     public @FindBy(id = "report-date") WebElement inspectionDateElement;
     public @FindBy(id = "due-date") WebElement dueDateElement;
@@ -38,6 +38,11 @@ public class CloneReport_PO extends Base_PO {
         PageFactory.initElements(getDriver(), this);
         homepagePo = new Homepage_PO();
         homepagePo.initElements();
+
+        createReport_po = new CreateReport_PO();
+        createReport_po.initElements();
+
+
     }
 
     public void selectAll(WebElement fieldToSelect) throws IOException, URISyntaxException {
@@ -50,6 +55,128 @@ public class CloneReport_PO extends Base_PO {
         /////////////////////////Select Report Clone Button////////////////////////////
         System.out.println("- Clicking Clone");
         waitForWebElementAndClickElement(cloneButton);
+
+        /////////////////////////Enter Report Name////////////////////////////
+        System.out.println("Adding release version to title");;
+        nameOfReport = (nameOfReport + " (" + globalVariables.releaseVersion + ")");
+        reportName.clear();
+        sendKeys(reportName, nameOfReport);
+
+        /////////////////////////Enter Reference////////////////////////////
+        String fullReferenceText = ( referenceText + " (" + globalVariables.releaseVersion + ")");
+        reference.clear();
+        sendKeys(reference, fullReferenceText);
+
+        /////////////////////////Select Inspection Date////////////////////////////
+        if (inspectionDateReq.equals("true")) {
+
+            selectAll(inspectionDateElement);
+            sendKeys(inspectionDateElement, inspectionDate);
+        }
+
+        /////////////////////////Select Due Date////////////////////////////
+        if (dueDateReq.equals("true")) {
+
+            selectAll(dueDateElement);
+            sendKeys(dueDateElement, dueDate);
+        }
+        /////////////////////////Add Notes////////////////////////////
+        sendKeys(extraNotes, notesText);
+
+
+        /////////////////////////Include Photo's and Audio?////////////////////////////
+        if ("true".equals(addPhotos)) {
+            System.out.println("- Including photos and audio");
+            waitForWebElementAndClickElement(homepagePo.addPhotos);
+        }
+
+
+        /////////////////////////Include Notes?////////////////////////////
+
+        if ("true".equals(addNotes)) {
+            System.out.println("- Including notes");
+            getDriver().hideKeyboard();
+            waitForWebElementAndClickElement(homepagePo.addNotes);
+        }
+
+
+        /////////////////////////Create Report///////////////////////////
+        System.out.println("Creating Clone Report");
+        waitForWebElementToBeVisible(saveReport);
+        waitForWebElementAndClickElement(saveReport);
+
+        System.out.println("Retrieving report header");
+        Thread.sleep(1000);
+        WebElement reportHeader = getDriver().findElement(By.xpath("//div[contains(@class, 'report-name')]"));
+        WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOfElementLocated(
+                By.xpath("//div[contains(@class, 'report-name')]")
+        ));
+
+        String reportHeaderText = reportHeader.getText();
+        System.out.println("Report header text: " + reportHeader);
+
+        System.out.println("Confirming report has loaded");
+        Thread.sleep(1000);
+
+        Assert.assertTrue(reportHeaderText.contains(nameOfReport),
+                "Expected header to contain: '" + nameOfReport + "', but actual text was: '" + reportHeader + "'");
+        ;
+
+    }
+
+    public void cloneReportWithClientProject(String targetReport,String isProjectRequired, String projectName, String isClientRequired, String clientName,  String nameOfReport, String referenceText,
+                            String inspectionDateReq, String inspectionDate, String dueDateReq, String dueDate, String notesText, String addNotes, String addPhotos) throws IOException, URISyntaxException, InterruptedException {
+
+        /////////////////////////Select Report Clone Button////////////////////////////
+        System.out.println("- Clicking Clone");
+        waitForWebElementAndClickElement(cloneButton);
+
+        /////////////////////////Select Project If Required/////////////////////////////
+        if (isProjectRequired.equalsIgnoreCase("true")) {
+            System.out.println("- Project required, selecting Project '" + projectName + "'");
+
+            try {
+                waitForWebElementAndClickElement(createReport_po.project);
+
+                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.id("project-name")));
+
+                WebElement selectProject = getDriver().findElement(By.xpath("//mat-option//span[contains(text(), '" + projectName + "')]"));
+                selectProject.click();
+
+            } catch (IOException | URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+
+        } else {
+            // If the Examples table passes 'false', it skips the click and just prints this
+            System.out.println("- Project not required, Skipping Project Selection.");
+        }
+
+
+
+        /////////////////////////Select Client If Required/////////////////////////////
+        if (isClientRequired.equalsIgnoreCase("true")) {
+            System.out.println("- Client required, selecting Client '" + clientName + "'");
+
+            try {
+                waitForWebElementAndClickElement(createReport_po.client);
+
+                WebDriverWait wait = new WebDriverWait(getDriver(), Duration.ofSeconds(5));
+                wait.until(ExpectedConditions.presenceOfElementLocated(By.id("client-name")));
+                WebElement selectClient = getDriver().findElement(By.xpath("//mat-option//span[contains(text(), '" + clientName + "')]"));
+                selectClient.click();
+
+            } catch (IOException | URISyntaxException e) {
+                throw new RuntimeException(e);
+            }
+
+        } else {
+            // If the Examples table passes 'false', it skips the click and just prints this
+            System.out.println("- Client not required, Skipping Client Selection.");
+        }
+
 
         /////////////////////////Enter Report Name////////////////////////////
         nameOfReport = (nameOfReport + " (" + globalVariables.releaseVersion + ")");
@@ -118,5 +245,5 @@ public class CloneReport_PO extends Base_PO {
         ;
 
     }
-
 }
+
